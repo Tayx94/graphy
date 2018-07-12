@@ -2,9 +2,10 @@
 Graphy is the ultimate, easy to use, feature packed stats monitor and debugger for your Unity project.
 
 Main Features: 
-- FPS (Graph and Text) 
-- Memory (Graph and Text) 
-- Audio (Graph and Text) 
+- Graph & Text:
+  - FPS
+  - Memory
+  - Audio
 - Advanced device information 
 - Debugging tools 
 
