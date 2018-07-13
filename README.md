@@ -1,5 +1,8 @@
 # Graphy - Ultimate Stats Monitor & Debugger (Unity)
-
+<p align="center">
+  <img />
+  ![Graphy Image](https://image.ibb.co/cR3vo7/Graphy_Runtime_4_3_GIF.gif)
+</p>
 ![Graphy Image](https://image.ibb.co/cR3vo7/Graphy_Runtime_4_3_GIF.gif)
 
 Graphy is the ultimate, easy to use, feature packed stats monitor and debugger for your Unity project.
