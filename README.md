@@ -53,8 +53,8 @@ You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussi
 **Planned features (DEFINITELY YES):**
 
   - Add toggle from code API.
-	- Scale Canvas (GetComponent<Canvas>().scaleFactor *= multiplier;) -> If it changes, set again.
-	- Log Graphy messages to UI.Text in the scene as well as the console.
+  - Scale Canvas (GetComponent<Canvas>().scaleFactor *= multiplier;) -> If it changes, set again.
+  - Log Graphy messages to UI.Text in the scene as well as the console.
   - Make UI layout adapt on the fly to compact it when not showing graphs.
     
 **Other features (DEFINITELY MAYBE):** 
@@ -62,13 +62,13 @@ You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussi
   - Network stats
   - Show all Debug.Log from Unity in a UI.Text in the scene.
   - Allow storing FPS for a predetermined time to allow benchmarks.
-	- Make changes in the inspector immediatly visible in the scene, without waiting to enter play mode.
-	- Dump all Graphy Data as a string to:
-		- File
-		- Send to server
-		- Send mail
-	- Add a preprocessor key #GRAPHY to avoid adding the asset in builds
-	- Option to hide Graphy when not in Play Mode
+  - Make changes in the inspector immediatly visible in the scene, without waiting to enter play mode.
+  - Dump all Graphy Data as a string to:
+  	- File
+	- Send to server
+	- Send mail
+  - Add a preprocessor key #GRAPHY to avoid adding the asset in builds
+  - Option to hide Graphy when not in Play Mode
   
 ## License
 
