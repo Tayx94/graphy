@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8a88e148dbc2d0f45a027f72e59aee4d
+labels:
+- counter
+- fps
+- graph
+- material
+- monitor
+- shader
+- stats
+timeCreated: 1511697739
+licenseType: Free
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

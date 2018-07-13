@@ -1,0 +1,56 @@
+-----------------------------
+v1.2.2
+
+- Improved the dB calculations, now the values are much more precise.
+
+-----------------------------
+v1.2.1
+
+- Modified the default UI text values to more generic placeholders to increase clarity.
+- Small fixes in the audio module.
+
+-----------------------------
+v1.2
+
+- MASSIVE reduction in garbage generation. From 8-10 KB every 2-3 seconds to just 200-300 bytes. Garbage generation right now is negligible.
+- Some code optimizations.
+
+-----------------------------
+v1.1
+
+- New Feature: Added a modifiable MODE. If set to LIGHT it will reduce some features or maximum values (like graph resolution) but it will improve compatibility with older hardware.
+- Small performance optimizations.
+- Code refactoring.
+- Improved the vetical alpha fade-off effect in the graph to make it more visible for lower values.
+- Updated the "Customize Graphy" scene to account for these new changes.
+
+-----------------------------
+v1.0
+
+- First major update!
+- Removed some leftover raycast targets from the Graphy UI to avoid interfering with users UI.
+- Added a Customization Scene that allows changing all the parameters in runtime to improve the user experience when testing new values.
+- Added a feature to rescale the background overlay of the Advanced Data module to the text with the highest width.
+- Made ALL parameters modifiable from code using the API.
+- Fixed a bug where sometimes the Graphy Manager would fail trying to retrieve the Audio Module.
+- Improved stabilty.
+
+
+-----------------------------
+v0.6
+
+- Added a feature to choose if you want to apply a background overlay to Graphy, improving readability in cluttered scenes.
+- Optimized the access to Shader parameters when updating them, improving performance.
+
+
+-----------------------------
+v0.5.1
+
+- Added a feature to choose if you want to keep Graphy alive through scene changes. Careful, if you activate it but Graphy is the child of another object, the root GameObject will also survive scene changes.
+- Fixed a bug where setting Graphy as a child of another object would break the graphs.
+
+
+-----------------------------
+v0.5
+
+- Initial release!
