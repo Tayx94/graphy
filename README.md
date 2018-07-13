@@ -35,3 +35,39 @@ The debugger allows you to set one or more conditions, that if met will have the
 - [Mail](martintayx@gmail.com)
 - [Twitter](https://twitter.com/tayx94?)
 - [Discord](https://discord.gg/2KgNEHK?)
+
+## Development of Graphy
+
+### Contributing
+
+I would really appreciate any contributions! Below you can find a roadmap for future planned features and optimisations that you might be able to help out with.
+
+Please create a GitHub issue if you want to start a discussion or request a feature, and please label appropriately.
+
+You can also join the Discord
+
+### Roadmap
+
+Planned features (DEFINITELY YES):
+
+  - Add toggle from code API.
+	- Scale Canvas (GetComponent<Canvas>().scaleFactor *= multiplier;) -> If it changes, set again.
+	- Log Graphy messages to UI.Text in the scene as well as the console.
+  - Make UI layout adapt on the fly to compact it when not showing graphs.
+    
+Other features (DEFINITELY MAYBE): 
+
+  - Network stats
+  - Show all Debug.Log from Unity in a UI.Text in the scene.
+  - Allow storing FPS for a predetermined time to allow benchmarks.
+	- Make changes in the inspector immediatly visible in the scene, without waiting to enter play mode.
+	- Dump all Graphy Data as a string to:
+		- File
+		- Send to server
+		- Send mail
+	- Add a preprocessor key #GRAPHY to avoid adding the asset in builds
+	- Option to hide Graphy when not in Play Mode
+  
+## License
+
+Graphy is released under the [MIT license](https://github.com/Tayx94/graphy/blob/master/LICENSE). Although I don't require attribution, I would love to know if you decide to use it in a project! Let me know on [Twitter](https://twitter.com/tayx94?) or by [email](martintayx@gmail.com).
