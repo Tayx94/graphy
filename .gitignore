@@ -9,5 +9,5 @@
 
 # Whitelisted directories/files
 !/ProjectSettings/
-#!/Assets/Tayx/
-!/Assets/
+/Assets/Tayx/
+!/Assets/Tayx/
