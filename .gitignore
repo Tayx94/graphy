@@ -1,10 +1,3 @@
-
-
-!.gitignore
-!/Assets/Tayx/
-!/ProjectSettings/
-
-
 # =============== #
 # Unity generated #
 # =============== #
@@ -50,3 +43,10 @@ ehthumbs.db
 [Dd]esktop.ini
 Corridor/Library/ShaderCache/
 Corridor/Library/metadata/
+
+/*
+/*/
+
+!.gitignore
+!/Assets/Tayx/
+!/ProjectSettings/
