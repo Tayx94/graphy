@@ -1,6 +1,6 @@
 # Ignore everything.  We'll whitelist what we want to pull in.
 /*
-/*/
+#/*/
 
 # Git meta files
 !.gitignore
@@ -10,4 +10,3 @@
 # Whitelisted directories/files
 !/ProjectSettings/
 !/Assets/Tayx/
-!/Assets/Tayx/*
