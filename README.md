@@ -27,9 +27,10 @@ Additional features:
 - Works from Unity 5.4 and up! 
 - Well documented C# and Shader code included 
 
-Link to the asset store: [Click here](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778)
+Links:
 
-Link to the forum post: [Click here](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/)
+  - Asset store: [Click here](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778)
+  - Forum post: [Click here](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/)
 
 Contact: 
 - Mail 
