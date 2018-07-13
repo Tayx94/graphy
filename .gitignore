@@ -2,7 +2,7 @@
 /*/
 
 !.gitignore
-!/Assets/Tayx
+!/Assets
 !/ProjectSettings/
 
 # =============== #
