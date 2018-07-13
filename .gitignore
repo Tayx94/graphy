@@ -1,6 +1,6 @@
 # Ignore everything.  We'll whitelist what we want to pull in.
 /*
-#/*/
+/*/
 
 # Git meta files
 !.gitignore
@@ -8,5 +8,5 @@
 !README.md
 
 # Whitelisted directories/files
-!/ProjectSettings/
-!/Assets/Tayx/
+!/ProjectSettings/**
+!/Assets/Tayx/**
