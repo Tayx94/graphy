@@ -8,6 +8,7 @@
 !README.md
 
 # Whitelisted directories/files
-/ProjectSettings/
-/Assets/
+!/ProjectSettings/
+!/Assets/
+/Assets/*
 !/Assets/Tayx/
