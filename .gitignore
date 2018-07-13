@@ -44,9 +44,18 @@ ehthumbs.db
 Corridor/Library/ShaderCache/
 Corridor/Library/metadata/
 
+# Ignore everything.  We'll whitelist what we want to pull in.
 /*
 /*/
 
+# Git meta files
 !.gitignore
-!/Assets/Tayx/
+!.gitattributes
+!README.md
+
+# Whitelisted directories/files
 !/ProjectSettings/
+!/Assets/                # Add Assets folder, but ...
+/Assets/*                # Remove everything under Assets again.
+!/Assets/Tayx/           # Now add back our core folder.
+
