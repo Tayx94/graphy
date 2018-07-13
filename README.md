@@ -4,7 +4,7 @@
 
 Graphy is the ultimate, easy to use, feature packed stats monitor and debugger for your Unity project.
 
-Main Features: 
+**Main Features:**
 - Graph & Text:
   - FPS
   - Memory
@@ -16,7 +16,7 @@ With this tool you will be able to visualize and catch when your game has some u
 
 The debugger allows you to set one or more conditions, that if met will have the consequences you desire, such as taking a screenshot, pausing the editor, printing a message to the console and more! Even call a method from your own code if you want! 
 
-Additional features: 
+**Additional features: **
 - Customizable look and feel 
 - Multiple layouts 
 - Custom Inspector 
@@ -27,12 +27,11 @@ Additional features:
 - Works from Unity 5.4 and up! 
 - Well documented C# and Shader code included 
 
-Links:
+**Links:**
+  - [Asset store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778)
+  - [Forum post](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/)
 
-  - Asset store: [Click here](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778)
-  - Forum post: [Click here](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/)
-
-Contact: 
-- Mail 
-- Twitter 
-- Discord 
+**Contact:**
+- [Mail](martintayx@gmail.com)
+- [Twitter](https://twitter.com/tayx94?)
+- [Discord](https://discord.gg/2KgNEHK?)
