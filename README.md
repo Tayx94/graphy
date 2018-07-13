@@ -16,7 +16,7 @@ With this tool you will be able to visualize and catch when your game has some u
 
 The debugger allows you to set one or more conditions, that if met will have the consequences you desire, such as taking a screenshot, pausing the editor, printing a message to the console and more! Even call a method from your own code if you want! 
 
-**Additional features: **
+**Additional features:**
 - Customizable look and feel 
 - Multiple layouts 
 - Custom Inspector 
