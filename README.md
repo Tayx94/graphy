@@ -40,11 +40,13 @@ The debugger allows you to set one or more conditions, that if met will have the
 
 ### Contributing
 
+Let's make Graphy the go-to for stats monitoring in Unity!
+
 I would really appreciate any contributions! Below you can find a roadmap for future planned features and optimisations that you might be able to help out with.
 
 Please create a GitHub issue if you want to start a discussion or request a feature, and please label appropriately.
 
-You can also join the Discord
+You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussions with other members of the community.
 
 ### Roadmap
 
