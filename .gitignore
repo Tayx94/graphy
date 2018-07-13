@@ -56,6 +56,6 @@ Corridor/Library/metadata/
 # Whitelisted directories/files
 !/ProjectSettings/
 !/Assets/                                       # Add Assets folder, but ...
-/Assets/*                                       # Remove everything under Assets again.
-!/Assets/Tayx/Graphy - Ultimate Stats Monitor/*  # Now add back our core folder.
+#/Assets/*                                       # Remove everything under Assets again.
+#!/Assets/Tayx/Graphy - Ultimate Stats Monitor/*  # Now add back our core folder.
 
