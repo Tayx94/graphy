@@ -31,6 +31,7 @@ namespace Tayx.Graphy.Audio
         private int m_spectrumSize = 512;
 
         private float[] m_spectrum;
+        private float[] m_spectrumHighestValues;
 
         private float m_maxDB;
 
@@ -42,6 +43,11 @@ namespace Tayx.Graphy.Audio
         /// Current audio spectrum from the specified AudioListener.
         /// </summary>
         public float[] Spectrum { get { return m_spectrum; } }
+
+        /// <summary>
+        /// Highest audio spectrum from the specified AudioListener in the last few seconds.
+        /// </summary>
+        public float[] SpectrumHighestValues { get { return m_spectrumHighestValues; } }
 
         /// <summary>
         /// Maximum DB registered in the current spectrum.
@@ -66,6 +72,8 @@ namespace Tayx.Graphy.Audio
         {
             if (m_audioListener != null)
             {
+                // Use this data to calculate the dB value
+
                 AudioListener.GetOutputData(m_spectrum, 0);
 
                 float sum = 0;
@@ -81,34 +89,52 @@ namespace Tayx.Graphy.Audio
 
                 if (m_maxDB < -80) m_maxDB = -80; // clamp it to -80dB min
 
+                // Use this data to draw the spectrum in the graphs
+
                 AudioListener.GetSpectrumData(m_spectrum, 0, m_FFTWindow);
+
+                for (int i = 0; i < m_spectrum.Length; i++)
+                {
+                    // Update the highest value if its lower than the current one
+                    if (m_spectrum[i] > m_spectrumHighestValues[i])
+                    {
+                        m_spectrumHighestValues[i] = m_spectrum[i];
+                    }
+
+                    // Slowly lower the value 
+                    else
+                    {
+                        m_spectrumHighestValues[i] = Mathf.Clamp(m_spectrumHighestValues[i] - m_spectrumHighestValues[i] * Time.deltaTime * 2, 0, 1);
+                    }
+                }
             }
             else if(     m_audioListener == null 
                      &&  m_findAudioListenerInCameraIfNull == GraphyManager.LookForAudioListener.ALWAYS)
             {
                 FindAudioListener();
             }
-        }   
-        
+        }
+
         #endregion
 
         #region Public Methods
-        
+
         public void UpdateParameters()
         {
             m_findAudioListenerInCameraIfNull = m_graphyManager.FindAudioListenerInCameraIfNull;
 
             m_audioListener = m_graphyManager.AudioListener;
-            m_FFTWindow     = m_graphyManager.FftWindow;
-            m_spectrumSize  = m_graphyManager.SpectrumSize;
+            m_FFTWindow = m_graphyManager.FftWindow;
+            m_spectrumSize = m_graphyManager.SpectrumSize;
 
-            if (    m_audioListener == null 
-                    &&  m_findAudioListenerInCameraIfNull != GraphyManager.LookForAudioListener.NEVER)
+            if (m_audioListener == null
+                    && m_findAudioListenerInCameraIfNull != GraphyManager.LookForAudioListener.NEVER)
             {
                 FindAudioListener();
             }
 
             m_spectrum = new float[m_spectrumSize];
+            m_spectrumHighestValues = new float[m_spectrumSize];
         }
 
         /// <summary>

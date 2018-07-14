@@ -132,7 +132,7 @@
 					if (graphValue - yCoord > increment * 4)
 					{
 						//color.a = yCoord * graphValue * 0.3;
-						color.a = yCoord * 0.3 / graphValue;
+						color.a *= yCoord * 0.3 / graphValue;
 					}
 
 					// Set as transparent the part on top of the current point value
