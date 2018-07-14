@@ -52,7 +52,7 @@ You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussi
 
 **Planned features (DEFINITELY YES):**
 
-  - Add toggle from code API.
+  - ~~Add toggle from code API.~~
   - Scale Canvas (GetComponent<Canvas>().scaleFactor *= multiplier;) -> If it changes, set again.
   - Log Graphy messages to UI.Text in the scene as well as the console.
   - Make UI layout adapt on the fly to compact it when not showing graphs.
