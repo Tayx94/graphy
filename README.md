@@ -63,7 +63,6 @@ You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussi
   - Network stats
   - Show all Debug.Log from Unity in a UI.Text in the scene.
   - Allow storing FPS for a predetermined time to allow benchmarks.
-  - Make changes in the inspector immediatly visible in the scene, without waiting to enter play mode.
   - Dump all Graphy Data as a string to:
   	- File
 	- Send to server
