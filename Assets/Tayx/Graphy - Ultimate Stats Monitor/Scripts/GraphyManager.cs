@@ -63,7 +63,7 @@ namespace Tayx.Graphy
             NEVER
         }
 
-        private enum ModuleToggleState
+        public enum ModulePreset
         {
             FPS_BASIC = 0,
             FPS_TEXT = 1,
@@ -97,7 +97,7 @@ namespace Tayx.Graphy
 
         [SerializeField] private Mode m_graphyMode = Mode.FULL;
 
-        private ModuleToggleState m_moduleToggleState = ModuleToggleState.FPS_BASIC_ADVANCED_FULL;
+        private ModulePreset m_modulePresetState = ModulePreset.FPS_BASIC_ADVANCED_FULL;
 
         private bool m_active = true;
         
@@ -380,11 +380,141 @@ namespace Tayx.Graphy
                     break;
             }
         }
-        
+
+        public void ToggleModes()
+        {
+            if ((int)m_modulePresetState >= Enum.GetNames(typeof(ModulePreset)).Length - 1)
+            {
+                m_modulePresetState = 0;
+            }
+            else
+            {
+                m_modulePresetState++;
+            }
+
+            SetPreset(m_modulePresetState);
+        }
+
+        public void SetPreset(ModulePreset modulePreset)
+        {
+            m_modulePresetState = modulePreset;
+            
+            switch (m_modulePresetState)
+            {
+                case ModulePreset.FPS_BASIC:
+                    m_fpsManager.SetState(ModuleState.BASIC);
+                    m_ramManager.SetState(ModuleState.OFF);
+                    m_audioManager.SetState(ModuleState.OFF);
+                    m_advancedData.SetState(ModuleState.OFF);
+                    break;
+
+                case ModulePreset.FPS_TEXT:
+                    m_fpsManager.SetState(ModuleState.TEXT);
+                    m_ramManager.SetState(ModuleState.OFF);
+                    m_audioManager.SetState(ModuleState.OFF);
+                    m_advancedData.SetState(ModuleState.OFF);
+                    break;
+
+                case ModulePreset.FPS_FULL:
+                    m_fpsManager.SetState(ModuleState.FULL);
+                    m_ramManager.SetState(ModuleState.OFF);
+                    m_audioManager.SetState(ModuleState.OFF);
+                    m_advancedData.SetState(ModuleState.OFF);
+                    break;
+
+                case ModulePreset.FPS_TEXT_RAM_TEXT:
+                    m_fpsManager.SetState(ModuleState.TEXT);
+                    m_ramManager.SetState(ModuleState.TEXT);
+                    m_audioManager.SetState(ModuleState.OFF);
+                    m_advancedData.SetState(ModuleState.OFF);
+                    break;
+
+                case ModulePreset.FPS_FULL_RAM_TEXT:
+                    m_fpsManager.SetState(ModuleState.FULL);
+                    m_ramManager.SetState(ModuleState.TEXT);
+                    m_audioManager.SetState(ModuleState.OFF);
+                    m_advancedData.SetState(ModuleState.OFF);
+                    break;
+
+                case ModulePreset.FPS_FULL_RAM_FULL:
+                    m_fpsManager.SetState(ModuleState.FULL);
+                    m_ramManager.SetState(ModuleState.FULL);
+                    m_audioManager.SetState(ModuleState.OFF);
+                    m_advancedData.SetState(ModuleState.OFF);
+                    break;
+
+                case ModulePreset.FPS_TEXT_RAM_TEXT_AUDIO_TEXT:
+                    m_fpsManager.SetState(ModuleState.TEXT);
+                    m_ramManager.SetState(ModuleState.TEXT);
+                    m_audioManager.SetState(ModuleState.TEXT);
+                    m_advancedData.SetState(ModuleState.OFF);
+                    break;
+
+                case ModulePreset.FPS_FULL_RAM_TEXT_AUDIO_TEXT:
+                    m_fpsManager.SetState(ModuleState.FULL);
+                    m_ramManager.SetState(ModuleState.TEXT);
+                    m_audioManager.SetState(ModuleState.TEXT);
+                    m_advancedData.SetState(ModuleState.OFF);
+                    break;
+
+                case ModulePreset.FPS_FULL_RAM_FULL_AUDIO_TEXT:
+                    m_fpsManager.SetState(ModuleState.FULL);
+                    m_ramManager.SetState(ModuleState.FULL);
+                    m_audioManager.SetState(ModuleState.TEXT);
+                    m_advancedData.SetState(ModuleState.OFF);
+                    break;
+
+                case ModulePreset.FPS_FULL_RAM_FULL_AUDIO_FULL:
+                    m_fpsManager.SetState(ModuleState.FULL);
+                    m_ramManager.SetState(ModuleState.FULL);
+                    m_audioManager.SetState(ModuleState.FULL);
+                    m_advancedData.SetState(ModuleState.OFF);
+                    break;
+
+                case ModulePreset.FPS_FULL_RAM_FULL_AUDIO_FULL_ADVANCED_FULL:
+                    m_fpsManager.SetState(ModuleState.FULL);
+                    m_ramManager.SetState(ModuleState.FULL);
+                    m_audioManager.SetState(ModuleState.FULL);
+                    m_advancedData.SetState(ModuleState.FULL);
+                    break;
+
+                case ModulePreset.FPS_BASIC_ADVANCED_FULL:
+                    m_fpsManager.SetState(ModuleState.BASIC);
+                    m_ramManager.SetState(ModuleState.OFF);
+                    m_audioManager.SetState(ModuleState.OFF);
+                    m_advancedData.SetState(ModuleState.FULL);
+                    break;
+
+                default:
+                    //throw new ArgumentOutOfRangeException();
+                    break;
+            }
+        }
+
+        public void ToggleActive()
+        {
+            m_active = !m_active;
+
+            if (m_active)
+            {
+                m_fpsManager.RestorePreviousState();
+                m_ramManager.RestorePreviousState();
+                m_audioManager.RestorePreviousState();
+                m_advancedData.RestorePreviousState();
+            }
+            else
+            {
+                m_fpsManager.SetState(ModuleState.OFF);
+                m_ramManager.SetState(ModuleState.OFF);
+                m_audioManager.SetState(ModuleState.OFF);
+                m_advancedData.SetState(ModuleState.OFF);
+            }
+        }
+
         #endregion
 
         #region Private Methods
-        
+
         private void Init()
         {
             if (m_keepAlive)
@@ -485,129 +615,6 @@ namespace Tayx.Graphy
                 {
                     ToggleActive();
                 }
-            }
-        }
-
-        private void ToggleModes()
-        {
-            if ((int)m_moduleToggleState >= Enum.GetNames(typeof(ModuleToggleState)).Length - 1)
-            {
-                m_moduleToggleState = 0;
-            }
-            else
-            {
-                m_moduleToggleState++;
-            }
-
-            switch (m_moduleToggleState)
-            {
-                case ModuleToggleState.FPS_BASIC:
-                    m_fpsManager.SetState(ModuleState.BASIC);
-                    m_ramManager.SetState(ModuleState.OFF);
-                    m_audioManager.SetState(ModuleState.OFF);
-                    m_advancedData.SetState(ModuleState.OFF);
-                    break;
-
-                case ModuleToggleState.FPS_TEXT:
-                    m_fpsManager.SetState(ModuleState.TEXT);
-                    m_ramManager.SetState(ModuleState.OFF);
-                    m_audioManager.SetState(ModuleState.OFF);
-                    m_advancedData.SetState(ModuleState.OFF);
-                    break;
-
-                case ModuleToggleState.FPS_FULL:
-                    m_fpsManager.SetState(ModuleState.FULL);
-                    m_ramManager.SetState(ModuleState.OFF);
-                    m_audioManager.SetState(ModuleState.OFF);
-                    m_advancedData.SetState(ModuleState.OFF);
-                    break;
-
-                case ModuleToggleState.FPS_TEXT_RAM_TEXT:
-                    m_fpsManager.SetState(ModuleState.TEXT);
-                    m_ramManager.SetState(ModuleState.TEXT);
-                    m_audioManager.SetState(ModuleState.OFF);
-                    m_advancedData.SetState(ModuleState.OFF);
-                    break;
-
-                case ModuleToggleState.FPS_FULL_RAM_TEXT:
-                    m_fpsManager.SetState(ModuleState.FULL);
-                    m_ramManager.SetState(ModuleState.TEXT);
-                    m_audioManager.SetState(ModuleState.OFF);
-                    m_advancedData.SetState(ModuleState.OFF);
-                    break;
-
-                case ModuleToggleState.FPS_FULL_RAM_FULL:
-                    m_fpsManager.SetState(ModuleState.FULL);
-                    m_ramManager.SetState(ModuleState.FULL);
-                    m_audioManager.SetState(ModuleState.OFF);
-                    m_advancedData.SetState(ModuleState.OFF);
-                    break;
-
-                case ModuleToggleState.FPS_TEXT_RAM_TEXT_AUDIO_TEXT:
-                    m_fpsManager.SetState(ModuleState.TEXT);
-                    m_ramManager.SetState(ModuleState.TEXT);
-                    m_audioManager.SetState(ModuleState.TEXT);
-                    m_advancedData.SetState(ModuleState.OFF);
-                    break;
-
-                case ModuleToggleState.FPS_FULL_RAM_TEXT_AUDIO_TEXT:
-                    m_fpsManager.SetState(ModuleState.FULL);
-                    m_ramManager.SetState(ModuleState.TEXT);
-                    m_audioManager.SetState(ModuleState.TEXT);
-                    m_advancedData.SetState(ModuleState.OFF);
-                    break;
-
-                case ModuleToggleState.FPS_FULL_RAM_FULL_AUDIO_TEXT:
-                    m_fpsManager.SetState(ModuleState.FULL);
-                    m_ramManager.SetState(ModuleState.FULL);
-                    m_audioManager.SetState(ModuleState.TEXT);
-                    m_advancedData.SetState(ModuleState.OFF);
-                    break;
-
-                case ModuleToggleState.FPS_FULL_RAM_FULL_AUDIO_FULL:
-                    m_fpsManager.SetState(ModuleState.FULL);
-                    m_ramManager.SetState(ModuleState.FULL);
-                    m_audioManager.SetState(ModuleState.FULL);
-                    m_advancedData.SetState(ModuleState.OFF);
-                    break;
-
-                case ModuleToggleState.FPS_FULL_RAM_FULL_AUDIO_FULL_ADVANCED_FULL:
-                    m_fpsManager.SetState(ModuleState.FULL);
-                    m_ramManager.SetState(ModuleState.FULL);
-                    m_audioManager.SetState(ModuleState.FULL);
-                    m_advancedData.SetState(ModuleState.FULL);
-                    break;
-
-                case ModuleToggleState.FPS_BASIC_ADVANCED_FULL:
-                    m_fpsManager.SetState(ModuleState.BASIC);
-                    m_ramManager.SetState(ModuleState.OFF);
-                    m_audioManager.SetState(ModuleState.OFF);
-                    m_advancedData.SetState(ModuleState.FULL);
-                    break;
-
-                default:
-                    //throw new ArgumentOutOfRangeException();
-                    break;
-            }
-        }
-
-        private void ToggleActive()
-        {
-            m_active = !m_active;
-
-            if (m_active)
-            {
-                m_fpsManager    .RestorePreviousState();
-                m_ramManager    .RestorePreviousState();
-                m_audioManager  .RestorePreviousState();
-                m_advancedData  .RestorePreviousState();
-            }
-            else
-            {
-                m_fpsManager    .SetState(ModuleState.OFF);
-                m_ramManager    .SetState(ModuleState.OFF);
-                m_audioManager  .SetState(ModuleState.OFF);
-                m_advancedData  .SetState(ModuleState.OFF);
             }
         }
 
