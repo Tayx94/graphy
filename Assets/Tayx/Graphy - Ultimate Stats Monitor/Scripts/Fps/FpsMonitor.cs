@@ -63,7 +63,7 @@ namespace Tayx.Graphy.Fps
 
             // Update fps and ms
 
-            m_currentFps = 1 / Time.deltaTime;
+            m_currentFps = 1 / unscaledDeltaTime;
 
             // Update avg fps
 
