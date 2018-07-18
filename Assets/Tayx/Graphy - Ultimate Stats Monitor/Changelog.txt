@@ -1,4 +1,11 @@
 -----------------------------
+v1.3
+
+- Added a second graph to the Audio module that shows the highest spectrum value.
+- Added option to Toggle Active and Mode, as well as setting a specific Preset from the API.
+- Fixed a bug that occured when Time.timeScale = 0 (thanks @xDavidLeon!).
+
+-----------------------------
 v1.2.2
 
 - Improved the dB calculations, now the values are much more precise.
