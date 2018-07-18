@@ -185,10 +185,8 @@ namespace Tayx.Graphy
 
         #region Properties
         
-        public bool EnableOnStartup {
-            get { return m_enableOnStartup; }
-            set { m_enableOnStartup = value; UpdateAllParameters(); }
-        }
+        public bool EnableOnStartup                     { get { return m_enableOnStartup; }
+                                                          set { m_enableOnStartup = value; UpdateAllParameters(); } }
 
         public Mode GraphyMode                          { get { return m_graphyMode; }
                                                           set { m_graphyMode = value; UpdateAllParameters(); } }
