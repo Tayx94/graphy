@@ -438,7 +438,6 @@ GameObject:
   - component: {fileID: 22451668}
   - component: {fileID: 22323726}
   - component: {fileID: 11439282}
-  - component: {fileID: 11490170}
   - component: {fileID: 11496292}
   - component: {fileID: 11480938}
   m_Layer: 5
@@ -2130,22 +2129,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.903}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
---- !u!114 &11490170
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &11491282
 MonoBehaviour:
   m_ObjectHideFlags: 1
