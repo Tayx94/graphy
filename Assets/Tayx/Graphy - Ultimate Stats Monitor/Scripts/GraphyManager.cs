@@ -100,7 +100,9 @@ namespace Tayx.Graphy
         private ModulePreset m_modulePresetState = ModulePreset.FPS_BASIC_ADVANCED_FULL;
 
         private bool m_active = true;
-        
+
+        [SerializeField] private bool m_enableOnStartup = true;
+
         [SerializeField] private bool m_keepAlive = true;
         
         [SerializeField] private bool m_background = true;
@@ -186,6 +188,8 @@ namespace Tayx.Graphy
 
         public Mode GraphyMode                          { get { return m_graphyMode; }
                                                           set { m_graphyMode = value; UpdateAllParameters(); } }
+
+        public bool EnableOnStartup                     { get { return m_enableOnStartup; } }
 
         public bool KeepAlive                           { get { return m_keepAlive; } }
 
@@ -540,6 +544,11 @@ namespace Tayx.Graphy
             m_ramManager    .SetState   (m_ramModuleState);
             m_audioManager  .SetState   (m_audioModuleState);
             m_advancedData  .SetState   (m_advancedModuleState);
+
+            if (!m_enableOnStartup)
+            {
+                ToggleActive();
+            }
         }
 
         private void CheckForHotkeyPresses()

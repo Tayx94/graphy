@@ -41,7 +41,9 @@ namespace Tayx.Graphy
         };
 
         private SerializedProperty m_graphyMode;
-        
+
+        private SerializedProperty m_enableOnStartup;
+
         private SerializedProperty m_keepAlive;
 
         private SerializedProperty m_background;
@@ -135,6 +137,8 @@ namespace Tayx.Graphy
             SerializedObject serObj = serializedObject;
 
             m_graphyMode = serObj.FindProperty("m_graphyMode");
+
+            m_enableOnStartup = serObj.FindProperty("m_enableOnStartup");
 
             m_keepAlive = serObj.FindProperty("m_keepAlive");
 
@@ -260,6 +264,8 @@ namespace Tayx.Graphy
             EditorGUILayout.PropertyField(m_graphyMode, new GUIContent("Graphy Mode", "LIGHT mode increases compatibility with older GPUs, but reduces the maximum graph resolutions to 128."));
 
             GUILayout.Space(10);
+
+            m_enableOnStartup.boolValue = EditorGUILayout.Toggle(new GUIContent("Enable On Startup", "If ticked, Graphy will be displayed by default on startup, otherwise it will initiate and hide."), m_enableOnStartup.boolValue);
 
             m_keepAlive.boolValue = EditorGUILayout.Toggle(new GUIContent("Keep Alive", "If ticked, it will survive scene changes. Careful, if you set Graphy as a chilof another GameObject, the root GameObject will also survive scene changes. If you want to avoid that put Graphy in the root of the Scene as its own entity."), m_keepAlive.boolValue);
                
