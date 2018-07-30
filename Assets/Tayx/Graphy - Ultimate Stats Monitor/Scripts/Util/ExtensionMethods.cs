@@ -3,8 +3,8 @@
  * Project: Graphy - Ultimate Stats Monitor
  * Date: 04-Jan-18
  * Studio: Tayx
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
+ * This project is released under the MIT license.
+ * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
 using UnityEngine;
