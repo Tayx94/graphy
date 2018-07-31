@@ -45,8 +45,6 @@ namespace Tayx.Graphy
         public void OnEnable()
         {
             m_target = (GraphyDebugger) target;
-            
-            LoadGuiStyles();
         }
 
         public override void OnInspectorGUI()
@@ -58,6 +56,10 @@ namespace Tayx.Graphy
                 return;
             }
 
+            // Called here instead of OnEnable due to some users reporting
+            // NullRef for EditorStyles.boldlabel
+            LoadGuiStyles();
+            
             GUILayout.Space(20);
 
             if (m_logoTexture != null)

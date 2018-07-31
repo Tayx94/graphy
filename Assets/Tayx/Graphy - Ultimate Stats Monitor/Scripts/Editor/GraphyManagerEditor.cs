@@ -132,8 +132,6 @@ namespace Tayx.Graphy
         {
             m_target = (GraphyManager)target;
 
-            LoadGuiStyles();
-
             SerializedObject serObj = serializedObject;
 
             m_graphyMode = serObj.FindProperty("m_graphyMode");
@@ -220,6 +218,10 @@ namespace Tayx.Graphy
 
                 return;
             }
+
+            // Called here instead of OnEnable due to some users reporting
+            // NullRef for EditorStyles.boldlabel
+            LoadGuiStyles();
 
             float defaultLabelWidth = EditorGUIUtility.labelWidth;
             float defaultFieldWidth = EditorGUIUtility.fieldWidth;
