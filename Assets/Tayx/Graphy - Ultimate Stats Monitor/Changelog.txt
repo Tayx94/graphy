@@ -1,9 +1,11 @@
 -----------------------------
 v1.4
 
+- Updated the header comments in all scripts.
 - Added option to toggle active on start up (thanks @DarkMio).
 - Removed a leftover raycast script in the Graphy UI.Canvas (thanks @DarkMio).
 - Updated the shaders to use UnityObjectToClipPos() (thanks @DarkMio).
+- Bug-Fix: NullRef for EditorStyles.boldlabel (thanks @Flavelius)
 
 -----------------------------
 v1.3

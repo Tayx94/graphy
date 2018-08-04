@@ -56,8 +56,6 @@ namespace Tayx.Graphy
                 return;
             }
 
-            // Called here instead of OnEnable due to some users reporting
-            // NullRef for EditorStyles.boldlabel
             LoadGuiStyles();
             
             GUILayout.Space(20);

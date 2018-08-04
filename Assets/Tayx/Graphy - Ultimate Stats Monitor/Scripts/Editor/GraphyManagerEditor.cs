@@ -219,15 +219,11 @@ namespace Tayx.Graphy
                 return;
             }
 
-            // Called here instead of OnEnable due to some users reporting
-            // NullRef for EditorStyles.boldlabel
             LoadGuiStyles();
 
             float defaultLabelWidth = EditorGUIUtility.labelWidth;
             float defaultFieldWidth = EditorGUIUtility.fieldWidth;
             
-            
-
             GUIStyle foldoutStyle = new GUIStyle(EditorStyles.foldout);
 
             foldoutStyle.font = m_headerStyle2.font;
