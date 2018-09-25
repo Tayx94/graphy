@@ -20,10 +20,10 @@ namespace Tayx.Graphy.Fps
 
         private GraphyManager m_graphyManager;
 
-        private float m_currentFps                          = -1;
-        private float m_avgFps                              = -1;
-        private float m_minFps                              = -1;
-        private float m_maxFps                              = -1;
+        private float m_currentFps                          = 0;
+        private float m_avgFps                              = 0;
+        private float m_minFps                              = 0;
+        private float m_maxFps                              = 0;
 
         [SerializeField] private int m_averageSamples       = 200;
 
@@ -91,14 +91,14 @@ namespace Tayx.Graphy.Fps
             if (    m_timeToResetMinMaxFps    > 0 
                 &&  m_timeToResetMinFpsPassed > m_timeToResetMinMaxFps)
             {
-                m_minFps = -1;
+                m_minFps = 0;
                 m_timeToResetMinFpsPassed = 0;
             }
 
             if (    m_timeToResetMinMaxFps    > 0 
                 &&  m_timeToResetMaxFpsPassed > m_timeToResetMinMaxFps)
             {
-                m_maxFps = -1;
+                m_maxFps = 0;
                 m_timeToResetMaxFpsPassed = 0;
             }
 

@@ -30,8 +30,8 @@ namespace Tayx.Graphy.Audio
         private ShaderGraph m_shaderGraph;
         private ShaderGraph m_shaderGraphHighestValues;
 
-        public Shader ShaderFull;
-        public Shader ShaderLight;
+        [SerializeField] private Shader ShaderFull;
+        [SerializeField] private Shader ShaderLight;
 
         private float[] m_graphArray;
         private float[] m_graphArrayHighestValue;

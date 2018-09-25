@@ -86,101 +86,103 @@ namespace Tayx.Graphy
 
         #region Private Variables
 
-        private FpsManager      m_fpsManager;
-        private RamManager      m_ramManager;
-        private AudioManager    m_audioManager;
-        private AdvancedData    m_advancedData;
+        private                     bool                    m_initialized = false;
 
-        private FpsMonitor      m_fpsMonitor;
-        private RamMonitor      m_ramMonitor;
-        private AudioMonitor    m_audioMonitor;
+        private                     FpsManager              m_fpsManager;
+        private                     RamManager              m_ramManager;
+        private                     AudioManager            m_audioManager;
+        private                     AdvancedData            m_advancedData;
 
-        [SerializeField] private Mode m_graphyMode = Mode.FULL;
+        private                     FpsMonitor              m_fpsMonitor;
+        private                     RamMonitor              m_ramMonitor;
+        private                     AudioMonitor            m_audioMonitor;
 
-        private ModulePreset m_modulePresetState = ModulePreset.FPS_BASIC_ADVANCED_FULL;
+        [SerializeField] private    Mode                    m_graphyMode = Mode.FULL;
 
-        private bool m_active = true;
+        private                     ModulePreset            m_modulePresetState = ModulePreset.FPS_BASIC_ADVANCED_FULL;
 
-        [SerializeField] private bool m_enableOnStartup = true;
+        private                     bool                    m_active = true;
 
-        [SerializeField] private bool m_keepAlive = true;
+        [SerializeField] private    bool                    m_enableOnStartup = true;
+
+        [SerializeField] private    bool                    m_keepAlive = true;
         
-        [SerializeField] private bool m_background = true;
-        [SerializeField] private Color m_backgroundColor = new Color(0, 0, 0, 0.3f);
+        [SerializeField] private    bool                    m_background = true;
+        [SerializeField] private    Color                   m_backgroundColor = new Color(0, 0, 0, 0.3f);
 
-        [SerializeField] private KeyCode m_toggleModeKeyCode = KeyCode.G;
-        [SerializeField] private bool m_toggleModeCtrl = true;
-        [SerializeField] private bool m_toggleModeAlt = false;
+        [SerializeField] private    KeyCode                 m_toggleModeKeyCode = KeyCode.G;
+        [SerializeField] private    bool                    m_toggleModeCtrl = true;
+        [SerializeField] private    bool                    m_toggleModeAlt = false;
 
-        [SerializeField] private KeyCode m_toggleActiveKeyCode = KeyCode.H;
-        [SerializeField] private bool m_toggleActiveCtrl = true;
-        [SerializeField] private bool m_toggleActiveAlt = false;
+        [SerializeField] private    KeyCode                 m_toggleActiveKeyCode = KeyCode.H;
+        [SerializeField] private    bool                    m_toggleActiveCtrl = true;
+        [SerializeField] private    bool                    m_toggleActiveAlt = false;
         
-        [SerializeField] private ModulePosition m_graphModulePosition = ModulePosition.TOP_RIGHT;
+        [SerializeField] private    ModulePosition          m_graphModulePosition = ModulePosition.TOP_RIGHT;
         
         // Fps ---------------------------------------------------------------------------
 
-        [SerializeField] private ModuleState m_fpsModuleState = ModuleState.FULL;
+        [SerializeField] private    ModuleState             m_fpsModuleState = ModuleState.FULL;
 
         [Range(0, 200)]
         [Tooltip("Time (in seconds) to reset the minimum and maximum framerates if they don't change in the specified time. Set to 0 if you don't want it to reset.")]
-        [SerializeField] private int m_timeToResetMinMaxFps = 10;
+        [SerializeField] private    int                     m_timeToResetMinMaxFps = 10;
 
-        [SerializeField] private Color m_goodFpsColor = new Color32(118, 212, 58, 255);
-        [SerializeField] private int m_goodFpsThreshold = 60;
+        [SerializeField] private    Color                   m_goodFpsColor = new Color32(118, 212, 58, 255);
+        [SerializeField] private    int                     m_goodFpsThreshold = 60;
 
-        [SerializeField] private Color m_cautionFpsColor = new Color32(243, 232, 0, 255);
-        [SerializeField] private int m_cautionFpsThreshold = 30;
+        [SerializeField] private    Color                   m_cautionFpsColor = new Color32(243, 232, 0, 255);
+        [SerializeField] private    int                     m_cautionFpsThreshold = 30;
 
-        [SerializeField] private Color m_criticalFpsColor = new Color32(220, 41, 30, 255);
+        [SerializeField] private    Color                   m_criticalFpsColor = new Color32(220, 41, 30, 255);
 
         [Range(10, 300)]
-        [SerializeField] private int m_fpsGraphResolution = 150;
+        [SerializeField] private    int                     m_fpsGraphResolution = 150;
 
         [Range(1, 200)]
-        [SerializeField] private int m_fpsTextUpdateRate = 3;  // 3 updates per sec.
+        [SerializeField] private    int                     m_fpsTextUpdateRate = 3;  // 3 updates per sec.
 
         // Ram ---------------------------------------------------------------------------
 
-        [SerializeField] private ModuleState m_ramModuleState = ModuleState.FULL;
+        [SerializeField] private    ModuleState             m_ramModuleState = ModuleState.FULL;
 
-        [SerializeField] private Color m_allocatedRamColor = new Color32(255, 190, 60, 255);
-        [SerializeField] private Color m_reservedRamColor = new Color32(205, 84, 229, 255);
-        [SerializeField] private Color m_monoRamColor = new Color(0.3f, 0.65f, 1f, 1);
+        [SerializeField] private    Color                   m_allocatedRamColor = new Color32(255, 190, 60, 255);
+        [SerializeField] private    Color                   m_reservedRamColor = new Color32(205, 84, 229, 255);
+        [SerializeField] private    Color                   m_monoRamColor = new Color(0.3f, 0.65f, 1f, 1);
 
         [Range(10, 300)]
-        [SerializeField] private int m_ramGraphResolution = 150;
+        [SerializeField] private    int                     m_ramGraphResolution = 150;
 
 
         [Range(1, 200)]
-        [SerializeField] private int m_ramTextUpdateRate = 3;  // 3 updates per sec.
+        [SerializeField] private    int                     m_ramTextUpdateRate = 3;  // 3 updates per sec.
 
         // Audio -------------------------------------------------------------------------
 
-        [SerializeField] private ModuleState m_audioModuleState = ModuleState.FULL;
+        [SerializeField] private    ModuleState             m_audioModuleState = ModuleState.FULL;
 
-        [SerializeField] private LookForAudioListener m_findAudioListenerInCameraIfNull = LookForAudioListener.ON_SCENE_LOAD;
+        [SerializeField] private    LookForAudioListener    m_findAudioListenerInCameraIfNull = LookForAudioListener.ON_SCENE_LOAD;
 
-        [SerializeField] private AudioListener m_audioListener;
+        [SerializeField] private    AudioListener           m_audioListener;
         
-        [SerializeField] private Color m_audioGraphColor = Color.white;
+        [SerializeField] private    Color                   m_audioGraphColor = Color.white;
 
         [Range(10, 300)]
-        [SerializeField] private int m_audioGraphResolution = 81;
+        [SerializeField] private    int                     m_audioGraphResolution = 81;
         
         [Range(1, 200)]
-        [SerializeField] private int m_audioTextUpdateRate = 3;  // 3 updates per sec.
+        [SerializeField] private    int                     m_audioTextUpdateRate = 3;  // 3 updates per sec.
         
-        [SerializeField] private FFTWindow m_FFTWindow = FFTWindow.Blackman;
+        [SerializeField] private    FFTWindow               m_FFTWindow = FFTWindow.Blackman;
 
         [Tooltip("Must be a power of 2 and between 64-8192")]
-        [SerializeField] private int m_spectrumSize = 512;
+        [SerializeField] private    int                     m_spectrumSize = 512;
 
         // Advanced ----------------------------------------------------------------------
 
-        [SerializeField] private ModulePosition m_advancedModulePosition = ModulePosition.BOTTOM_LEFT;
+        [SerializeField] private    ModulePosition          m_advancedModulePosition = ModulePosition.BOTTOM_LEFT;
 
-        [SerializeField] private ModuleState m_advancedModuleState = ModuleState.FULL;
+        [SerializeField] private    ModuleState             m_advancedModuleState = ModuleState.FULL;
 
         #endregion
 
@@ -337,6 +339,14 @@ namespace Tayx.Graphy
         void Update()
         {
             CheckForHotkeyPresses();
+        }
+
+        void OnApplicationFocus(bool focus)
+        {
+            if (m_initialized && focus)
+            {
+                UpdateAllParameters();
+            }
         }
 
         #endregion
@@ -526,14 +536,14 @@ namespace Tayx.Graphy
                 DontDestroyOnLoad(transform.root.gameObject);
             }
             
-            m_fpsMonitor    = GetComponentInChildren(typeof(FpsMonitor), true) as FpsMonitor;
-            m_ramMonitor    = GetComponentInChildren(typeof(RamMonitor), true) as RamMonitor;
-            m_audioMonitor  = GetComponentInChildren(typeof(AudioMonitor), true) as AudioMonitor;
+            m_fpsMonitor    = GetComponentInChildren(typeof(FpsMonitor),    true) as FpsMonitor;
+            m_ramMonitor    = GetComponentInChildren(typeof(RamMonitor),    true) as RamMonitor;
+            m_audioMonitor  = GetComponentInChildren(typeof(AudioMonitor),  true) as AudioMonitor;
             
-            m_fpsManager    = GetComponentInChildren(typeof(FpsManager), true) as FpsManager;
-            m_ramManager    = GetComponentInChildren(typeof(RamManager), true) as RamManager;
-            m_audioManager  = GetComponentInChildren(typeof(AudioManager), true) as AudioManager;
-            m_advancedData  = GetComponentInChildren(typeof(AdvancedData), true) as AdvancedData;
+            m_fpsManager    = GetComponentInChildren(typeof(FpsManager),    true) as FpsManager;
+            m_ramManager    = GetComponentInChildren(typeof(RamManager),    true) as RamManager;
+            m_audioManager  = GetComponentInChildren(typeof(AudioManager),  true) as AudioManager;
+            m_advancedData  = GetComponentInChildren(typeof(AdvancedData),  true) as AdvancedData;
 
             m_fpsManager    .SetPosition(m_graphModulePosition);
             m_ramManager    .SetPosition(m_graphModulePosition);
@@ -549,6 +559,8 @@ namespace Tayx.Graphy
             {
                 ToggleActive();
             }
+
+            m_initialized = true;
         }
 
         private void CheckForHotkeyPresses()

@@ -30,8 +30,8 @@ namespace Tayx.Graphy.Fps
 
         private ShaderGraph m_shaderGraph;
 
-        public Shader ShaderFull;
-        public Shader ShaderLight;
+        [SerializeField] private Shader ShaderFull;
+        [SerializeField] private Shader ShaderLight;
 
         private int[] m_fpsArray;
 

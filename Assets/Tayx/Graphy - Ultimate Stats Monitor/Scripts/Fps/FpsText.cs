@@ -87,7 +87,6 @@ namespace Tayx.Graphy.Fps
 
                 // Reset variables
 
-                //m_deltaTime -= 1.0f / m_updateRate;
                 m_deltaTime = 0;
                 m_frameCount = 0;
             }

@@ -37,8 +37,8 @@ namespace Tayx.Graphy.Ram
         private ShaderGraph m_shaderGraphReserved;
         private ShaderGraph m_shaderGraphMono;
 
-        public Shader ShaderFull;
-        public Shader ShaderLight;
+        [SerializeField] private Shader ShaderFull;
+        [SerializeField] private Shader ShaderLight;
 
         private float[] m_allocatedArray;
         private float[] m_reservedArray;

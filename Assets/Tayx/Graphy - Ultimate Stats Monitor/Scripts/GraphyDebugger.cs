@@ -181,7 +181,10 @@ namespace Tayx.Graphy
         /// </summary>
         public void AddNewDebugPacket(DebugPacket newDebugPacket)
         {
-            m_debugPackets.Add(newDebugPacket);
+            if (m_debugPackets != null)
+            {
+                m_debugPackets.Add(newDebugPacket);
+            }
         }
 
         /// <summary>
@@ -311,7 +314,10 @@ namespace Tayx.Graphy
         /// <returns></returns>
         public void RemoveFirstDebugPacketWithId(int packetId)
         {
-            m_debugPackets.Remove(GetFirstDebugPacketWithId(packetId));
+            if (m_debugPackets != null && GetFirstDebugPacketWithId(packetId) != null)
+            {
+                m_debugPackets.Remove(GetFirstDebugPacketWithId(packetId));
+            }
         }
 
         /// <summary>
@@ -321,7 +327,10 @@ namespace Tayx.Graphy
         /// <returns></returns>
         public void RemoveAllDebugPacketsWithId(int packetId)
         {
-            m_debugPackets.RemoveAll(x => x.Id == packetId);
+            if (m_debugPackets != null)
+            {
+                m_debugPackets.RemoveAll(x => x.Id == packetId);
+            }
         }
 
         /// <summary>
@@ -331,7 +340,10 @@ namespace Tayx.Graphy
         /// <param name="id"></param>
         public void AddCallbackToFirstDebugPacketWithId(Action callback, int id)
         {
-            GetFirstDebugPacketWithId(id).Callbacks.Add(callback);
+            if (GetFirstDebugPacketWithId(id) != null)
+            {
+                GetFirstDebugPacketWithId(id).Callbacks.Add(callback);
+            }
         }
 
         /// <summary>
@@ -341,9 +353,15 @@ namespace Tayx.Graphy
         /// <param name="id"></param>
         public void AddCallbackToAllDebugPacketWithId(Action callback, int id)
         {
-            foreach (var debugPacket in GetAllDebugPacketsWithId(id))
+            if (GetAllDebugPacketsWithId(id) != null)
             {
-                debugPacket.Callbacks.Add(callback);
+                foreach (var debugPacket in GetAllDebugPacketsWithId(id))
+                {
+                    if (callback != null)
+                    {
+                        debugPacket.Callbacks.Add(callback);
+                    }
+                }
             }
         }
 
@@ -356,42 +374,30 @@ namespace Tayx.Graphy
         /// </summary>
         private void CheckDebugPackets()
         {
-            foreach (DebugPacket packet in m_debugPackets)
+            if (m_debugPackets != null && m_debugPackets.Count > 0)
             {
-                if (packet.Active)
+                foreach (DebugPacket packet in m_debugPackets)
                 {
-                    packet.Update();
-
-                    if (packet.Check)
+                    if (packet != null && packet.Active)
                     {
-                        switch (packet.ConditionEvaluation)
+                        packet.Update();
+
+                        if (packet.Check)
                         {
-                            case ConditionEvaluation.All_conditions_must_be_met:
-                                int count = 0;
+                            switch (packet.ConditionEvaluation)
+                            {
+                                case ConditionEvaluation.All_conditions_must_be_met:
+                                    int count = 0;
 
-                                foreach (var packetDebugCondition in packet.DebugConditions)
-                                {
-                                    if (CheckIfConditionIsMet(packetDebugCondition))
+                                    foreach (var packetDebugCondition in packet.DebugConditions)
                                     {
-                                        count++;
+                                        if (CheckIfConditionIsMet(packetDebugCondition))
+                                        {
+                                            count++;
+                                        }
                                     }
-                                }
 
-                                if (count >= packet.DebugConditions.Count)
-                                {
-                                    ExecuteOperationsInDebugPacket(packet);
-
-                                    if (packet.ExecuteOnce)
-                                    {
-                                        m_debugPackets[m_debugPackets.IndexOf(packet)] = null;
-                                    }
-                                }
-                                break;
-
-                            case ConditionEvaluation.Only_one_condition_has_to_be_met:
-                                foreach (var packetDebugCondition in packet.DebugConditions)
-                                {
-                                    if (CheckIfConditionIsMet(packetDebugCondition))
+                                    if (count >= packet.DebugConditions.Count)
                                     {
                                         ExecuteOperationsInDebugPacket(packet);
 
@@ -399,17 +405,35 @@ namespace Tayx.Graphy
                                         {
                                             m_debugPackets[m_debugPackets.IndexOf(packet)] = null;
                                         }
-
-                                        break;
                                     }
-                                }
-                                break;
+                                    break;
+
+                                case ConditionEvaluation.Only_one_condition_has_to_be_met:
+                                    foreach (var packetDebugCondition in packet.DebugConditions)
+                                    {
+                                        if (CheckIfConditionIsMet(packetDebugCondition))
+                                        {
+                                            ExecuteOperationsInDebugPacket(packet);
+
+                                            if (packet.ExecuteOnce)
+                                            {
+                                                m_debugPackets[m_debugPackets.IndexOf(packet)] = null;
+                                            }
+
+                                            break;
+                                        }
+                                    }
+                                    break;
+                            }
                         }
                     }
                 }
             }
 
-            m_debugPackets.RemoveAll((packet) => packet == null);
+            if (m_debugPackets != null)
+            {
+                m_debugPackets.RemoveAll((packet) => packet == null);
+            }
         }
 
         /// <summary>
@@ -447,23 +471,23 @@ namespace Tayx.Graphy
             switch (debugVariable)
             {
                 case DebugVariable.Fps:
-                    return m_fpsMonitor.CurrentFPS;
+                    return m_fpsMonitor != null     ? m_fpsMonitor.CurrentFPS   : 0;
                 case DebugVariable.Fps_Min:
-                    return m_fpsMonitor.MinFPS;
+                    return m_fpsMonitor != null     ? m_fpsMonitor.MinFPS       : 0;
                 case DebugVariable.Fps_Max:
-                    return m_fpsMonitor.MaxFPS;
+                    return m_fpsMonitor != null     ? m_fpsMonitor.MaxFPS       : 0;
                 case DebugVariable.Fps_Avg:
-                    return m_fpsMonitor.AverageFPS;
+                    return m_fpsMonitor != null     ? m_fpsMonitor.AverageFPS   : 0;
 
                 case DebugVariable.Ram_Allocated:
-                    return m_ramMonitor.AllocatedRam;
+                    return m_ramMonitor != null     ? m_ramMonitor.AllocatedRam : 0;
                 case DebugVariable.Ram_Reserved:
-                    return m_ramMonitor.AllocatedRam;
+                    return m_ramMonitor != null     ? m_ramMonitor.AllocatedRam : 0;
                 case DebugVariable.Ram_Mono:
-                    return m_ramMonitor.AllocatedRam;
+                    return m_ramMonitor != null     ? m_ramMonitor.AllocatedRam : 0;
 
                 case DebugVariable.Audio_DB:
-                    return m_audioMonitor.MaxDB;
+                    return m_audioMonitor != null   ? m_audioMonitor.MaxDB      : 0;
 
                 default:
                     return 0;
@@ -477,49 +501,52 @@ namespace Tayx.Graphy
         /// <param name="debugPacket"></param>
         private void ExecuteOperationsInDebugPacket(DebugPacket debugPacket)
         {
-            if (debugPacket.DebugBreak)
+            if (debugPacket != null)
             {
-                Debug.Break();
-            }
-
-            if (debugPacket.Message != "")
-            {
-                string message = "[Graphy] (" + System.DateTime.Now + "): " + debugPacket.Message;
-
-                switch (debugPacket.MessageType)
+                if (debugPacket.DebugBreak)
                 {
-                    case MessageType.Log:
-                        Debug.Log(message);
-                        break;
-                    case MessageType.Warning:
-                        Debug.LogWarning(message);
-                        break;
-                    case MessageType.Error:
-                        Debug.LogError(message);
-                        break;
+                    Debug.Break();
                 }
-            }
 
-            if (debugPacket.TakeScreenshot)
-            {
-                string path = debugPacket.ScreenshotFileName + "_" + System.DateTime.Now + ".png";
-                path = path.Replace("/", "-").Replace(" ", "_").Replace(":", "-");
+                if (debugPacket.Message != "")
+                {
+                    string message = "[Graphy] (" + System.DateTime.Now + "): " + debugPacket.Message;
+
+                    switch (debugPacket.MessageType)
+                    {
+                        case MessageType.Log:
+                            Debug.Log(message);
+                            break;
+                        case MessageType.Warning:
+                            Debug.LogWarning(message);
+                            break;
+                        case MessageType.Error:
+                            Debug.LogError(message);
+                            break;
+                    }
+                }
+
+                if (debugPacket.TakeScreenshot)
+                {
+                    string path = debugPacket.ScreenshotFileName + "_" + System.DateTime.Now + ".png";
+                    path = path.Replace("/", "-").Replace(" ", "_").Replace(":", "-");
 
 #if UNITY_2017_1_OR_NEWER
-                ScreenCapture.CaptureScreenshot(path);
+                    ScreenCapture.CaptureScreenshot(path);
 #else
-                Application.CaptureScreenshot(path);
+                    Application.CaptureScreenshot(path);
 #endif
-            }
+                }
 
-            debugPacket.UnityEvents.Invoke();
+                debugPacket.UnityEvents.Invoke();
 
-            foreach (var callback in debugPacket.Callbacks)
-            {
-                if (callback != null) callback();
+                foreach (var callback in debugPacket.Callbacks)
+                {
+                    if (callback != null) callback();
+                }
+
+                debugPacket.Executed();
             }
-            
-            debugPacket.Executed();
         }
 
         #endregion
