@@ -1,4 +1,4 @@
-# Graphy - Ultimate Stats Monitor & Debugger (Unity)
+# Graphy - Ultimate FPS Counter - Stats Monitor & Debugger (Unity)
 
 ![Graphy Image](https://image.ibb.co/dbcDu8/2018_07_15_15_10_05.gif)
 
