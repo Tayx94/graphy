@@ -104,7 +104,7 @@ namespace Tayx.Graphy.Fps
 
             // Update min fps
 
-            if (m_currentFps < m_minFps || m_minFps < 0)
+            if (m_currentFps < m_minFps || m_minFps <= 0)
             {
                 m_minFps = m_currentFps;
 
@@ -113,7 +113,7 @@ namespace Tayx.Graphy.Fps
 
             // Update max fps
 
-            if (m_currentFps > m_maxFps || m_maxFps < 0)
+            if (m_currentFps > m_maxFps || m_maxFps <= 0)
             {
                 m_maxFps = m_currentFps;
 

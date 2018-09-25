@@ -1,4 +1,11 @@
 -----------------------------
+v1.4.1
+
+- Introduced plenty of safety checks to avoid some null reference errors.
+- Possibly fixed the graphs bug when the Editor is defocused and focused back.
+- Code cleanup and refactoring.
+
+-----------------------------
 v1.4
 
 - Updated the header comments in all scripts.
