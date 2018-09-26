@@ -15,9 +15,23 @@ namespace Tayx.Graphy.Utils
 {
     public static class IntString
     {
-        public static string[] positiveBuffer = new string[0];
+        #region Private Variables
 
-        public static string[] negativeBuffer = new string[0];
+        private static string[] positiveBuffer = new string[0];
+
+        private static string[] negativeBuffer = new string[0];
+
+        #endregion
+
+        #region Properties
+
+        public static bool Inited
+        {
+            get
+            {
+                return positiveBuffer.Length > 0 || negativeBuffer.Length > 0;
+            }
+        }
 
         public static int MaxValue
         {
@@ -34,18 +48,14 @@ namespace Tayx.Graphy.Utils
                 return negativeBuffer.Length;
             }
         }
-        
-        public static bool Inited
-        {
-            get
-            {
-                return positiveBuffer.Length > 0 || negativeBuffer.Length > 0;
-            }
-        }
-        
+
+        #endregion
+
+        #region Public Methods
+
         public static void Init(int minNegativeValue, int maxPositiveValue)
         {
-            if(maxPositiveValue >= 0)
+            if (maxPositiveValue >= 0)
             {
                 positiveBuffer = new string[maxPositiveValue];
                 for (int i = 0; i < maxPositiveValue; i++)
@@ -66,25 +76,37 @@ namespace Tayx.Graphy.Utils
                 
         public static string ToStringNonAlloc(this int value)
         {
-            if(value >= 0 && value < positiveBuffer.Length)
+            if (value >= 0 && value < positiveBuffer.Length)
             {
                 return positiveBuffer[value];
             }
 
-            if(value < 0 && -value < negativeBuffer.Length)
+            if (value < 0 && -value < negativeBuffer.Length)
             {
                 return negativeBuffer[-value];
             }
 
             return value.ToString();
         }
-        
+
+        #endregion
     }
 
     public static class FloatString
     {
+        #region Private Variables
+
         private const string format = "0.0";
-        private static float decimalMultiplayer = 1;
+
+        private static float decimalMultiplayer = 1f;
+
+        private static string[] positiveBuffer = new string[0];
+
+        private static string[] negativeBuffer = new string[0];
+
+        #endregion
+
+        #region Properties
 
         public static bool Inited
         {
@@ -93,10 +115,6 @@ namespace Tayx.Graphy.Utils
                 return positiveBuffer.Length > 0 || negativeBuffer.Length > 0;
             }
         }
-
-        public static string[] positiveBuffer = new string[0];
-
-        public static string[] negativeBuffer = new string[0];
 
         public static float MaxValue
         {
@@ -114,9 +132,13 @@ namespace Tayx.Graphy.Utils
             }
         }
 
-        public static void Init(float minNegativeValue, float maxPositiveValue, int deciminals = 1)
+        #endregion
+
+        #region Public Methods
+
+        public static void Init(float minNegativeValue, float maxPositiveValue, int decimals = 1)
         {
-            decimalMultiplayer = Pow(10, Mathf.Clamp(deciminals, 1, 5));
+            decimalMultiplayer = Pow(10, Mathf.Clamp(decimals, 1, 5));
 
             int negativeLength = minNegativeValue.ToIndex();
             int positiveLength = maxPositiveValue.ToIndex();
@@ -172,11 +194,26 @@ namespace Tayx.Graphy.Utils
             return value.ToString(format);
         }
 
+        public static int ToInt(this float f)
+        {
+            return (int)f;
+        }
+
+        public static float ToFloat(this int i)
+        {
+            return (float)i;
+        }
+
+        #endregion
+
+        #region Private Methods
+
         private static int Pow(int f, int p)
         {
             for (int i = 1; i < p; i++)
+            {
                 f *= f;
-
+            }
             return f;
         }
 
@@ -190,15 +227,6 @@ namespace Tayx.Graphy.Utils
             return (i.ToFloat() / decimalMultiplayer);
         }
 
-        public static int ToInt(this float f)
-        {
-            return (int)f;
-        }
-
-        public static float ToFloat(this int i)
-        {
-            return (float)i;
-        }
-
+        #endregion
     }
 }
