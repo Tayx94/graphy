@@ -19,7 +19,7 @@ namespace Tayx.Graphy.Utils
 
         public static string[] negativeBuffer = new string[0];
 
-        public static int maxValue
+        public static int MaxValue
         {
             get
             {
@@ -27,7 +27,7 @@ namespace Tayx.Graphy.Utils
             }
         }
 
-        public static int minValue
+        public static int MinValue
         {
             get
             {
@@ -97,7 +97,7 @@ namespace Tayx.Graphy.Utils
 
         public static string[] negativeBuffer = new string[0];
 
-        public static float maxValue
+        public static float MaxValue
         {
             get
             {
@@ -105,7 +105,7 @@ namespace Tayx.Graphy.Utils
             }
         }
 
-        public static float minValue
+        public static float MinValue
         {
             get
             {
