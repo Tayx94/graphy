@@ -19,6 +19,8 @@ namespace Tayx.Graphy.CustomizationScene
 {
     public class CustomizeGraphy : MonoBehaviour
     {
+        #region Private Variables
+
         [Header("Customize Graphy")]
 
         [SerializeField] private CUIColorPicker m_colorPicker;
@@ -102,7 +104,9 @@ namespace Tayx.Graphy.CustomizationScene
 
         private GraphyManager m_graphyManager;
 
-        // Unity Methods --------------------------------
+        #endregion
+
+        #region Unity Methods
 
         private void Start()
         {
@@ -111,7 +115,9 @@ namespace Tayx.Graphy.CustomizationScene
             SetupCallbacks();
         }
 
-        // Private Methods -------------------------------
+        #endregion
+
+        #region Private Methods
 
         private void SetupCallbacks()
         {
@@ -135,15 +141,15 @@ namespace Tayx.Graphy.CustomizationScene
                     switch ((GraphyManager.Mode)value)
                     {
                         case GraphyManager.Mode.FULL:
-                            m_fpsGraphResolutionSlider.maxValue = 300;
-                            m_ramGraphResolutionSlider.maxValue = 300;
-                            m_audioGraphResolutionSlider.maxValue = 300;
+                            m_fpsGraphResolutionSlider.maxValue = 300f;
+                            m_ramGraphResolutionSlider.maxValue = 300f;
+                            m_audioGraphResolutionSlider.maxValue = 300f;
                             break;
 
                         case GraphyManager.Mode.LIGHT:
-                            m_fpsGraphResolutionSlider.maxValue = 128;
-                            m_ramGraphResolutionSlider.maxValue = 128;
-                            m_audioGraphResolutionSlider.maxValue = 128;
+                            m_fpsGraphResolutionSlider.maxValue = 128f;
+                            m_ramGraphResolutionSlider.maxValue = 128f;
+                            m_audioGraphResolutionSlider.maxValue = 128f;
                             break;
                     }
 
@@ -321,6 +327,8 @@ namespace Tayx.Graphy.CustomizationScene
                 m_sfxAudioSource.Play();
             }
         }
+
+        #endregion
     }
 
 }
