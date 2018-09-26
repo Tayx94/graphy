@@ -55,9 +55,9 @@ namespace Tayx.Graphy.Utils
             }
             if (minNegativeValue <= 0)
             {
-                int lenght = Mathf.Abs(minNegativeValue); 
-                negativeBuffer = new string[lenght];
-                for (int i = 0; i < lenght; i++)
+                int length = Mathf.Abs(minNegativeValue); 
+                negativeBuffer = new string[length];
+                for (int i = 0; i < length; i++)
                 {
                     negativeBuffer[i] = (-i).ToString();
                 }
@@ -83,6 +83,7 @@ namespace Tayx.Graphy.Utils
 
     public static class FloatString
     {
+        private const string format = "0.0";
         private static float decimalMultiplayer = 1;
 
         public static bool Inited
@@ -117,24 +118,24 @@ namespace Tayx.Graphy.Utils
         {
             decimalMultiplayer = Pow(10, Mathf.Clamp(deciminals, 1, 5));
 
-            int negativeLenght = minNegativeValue.ToIndex();
-            int positiveLenght = maxPositiveValue.ToIndex();
+            int negativeLength = minNegativeValue.ToIndex();
+            int positiveLength = maxPositiveValue.ToIndex();
 
-            if (positiveLenght >= 0)
+            if (positiveLength >= 0)
             {
-                positiveBuffer = new string[positiveLenght];
-                for (int i = 0; i < positiveLenght; i++)
+                positiveBuffer = new string[positiveLength];
+                for (int i = 0; i < positiveLength; i++)
                 {
-                    positiveBuffer[i] = i.FromIndex().ToString("0.0");
+                    positiveBuffer[i] = i.FromIndex().ToString(format);
                 }
             }
 
-            if (negativeLenght >= 0)
+            if (negativeLength >= 0)
             {
-                negativeBuffer = new string[negativeLenght];
-                for (int i = 0; i < negativeLenght; i++)
+                negativeBuffer = new string[negativeLength];
+                for (int i = 0; i < negativeLength; i++)
                 {
-                    negativeBuffer[i] = (-i).FromIndex().ToString("0.0");
+                    negativeBuffer[i] = (-i).FromIndex().ToString(format);
                 }
             }
         }
