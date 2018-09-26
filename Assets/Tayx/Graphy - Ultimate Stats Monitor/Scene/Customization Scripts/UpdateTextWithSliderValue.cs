@@ -14,6 +14,7 @@ using System.Collections;
 
 namespace Tayx.Graphy.CustomizationScene
 {
+    [RequireComponent(typeof(Text))]
 	public class UpdateTextWithSliderValue : MonoBehaviour
 	{
 		[SerializeField] private Slider m_slider;
