@@ -315,7 +315,7 @@ namespace Tayx.Graphy.Utils
 
         #region Private Methods
 
-        //TODO: Figure out why this doesnt just use Mathf.Pow() and add the remaining descriptions.
+        //TODO: Replace this with a better algorithm.
         private static int Pow(int f, int p)
         {
             for (int i = 1; i < p; i++)
