@@ -110,6 +110,8 @@ namespace Tayx.Graphy
         [SerializeField] private    bool                    m_background = true;
         [SerializeField] private    Color                   m_backgroundColor = new Color(0, 0, 0, 0.3f);
 
+        [SerializeField] private    bool                    m_enableHotkeys = true;
+
         [SerializeField] private    KeyCode                 m_toggleModeKeyCode = KeyCode.G;
         [SerializeField] private    bool                    m_toggleModeCtrl = true;
         [SerializeField] private    bool                    m_toggleModeAlt = false;
@@ -338,7 +340,7 @@ namespace Tayx.Graphy
 
         void Update()
         {
-            if (m_focused)
+            if (m_focused && m_enableHotkeys)
             {
                 CheckForHotkeyPresses();
             }
@@ -347,6 +349,7 @@ namespace Tayx.Graphy
         void OnApplicationFocus(bool isFocused)
         {
             m_focused = isFocused;
+
             if (m_initialized && isFocused)
             {
                 UpdateAllParameters();
