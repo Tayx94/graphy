@@ -14,22 +14,35 @@ using System.Collections;
 
 namespace Tayx.Graphy.CustomizationScene
 {
+    [RequireComponent(typeof(Text))]
 	public class UpdateTextWithSliderValue : MonoBehaviour
 	{
-		[SerializeField] private Slider m_slider;
+        #region Private Variables
+
+        [SerializeField] private Slider m_slider;
 
 		private Text m_text;
-		
-		void Start()
+
+        #endregion
+
+        #region Unity Methods
+
+        void Start()
 		{
 			m_text = GetComponent<Text>();
 
 			m_slider.onValueChanged.AddListener(UpdateText);
 		}
 
-		private void UpdateText(float value)
+        #endregion
+
+        #region Private Methods
+
+        private void UpdateText(float value)
 		{
 			m_text.text = value.ToString();
 		}
-	}
+
+        #endregion
+    }
 }

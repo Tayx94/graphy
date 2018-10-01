@@ -71,9 +71,14 @@ namespace Tayx.Graphy.Audio
 
         private void Init()
         {
-            if (!FloatString.Inited || FloatString.minValue > -1000f || FloatString.maxValue < 16384f)
+            //TODO: Replace this with one activated from the core and figure out the min value.
+            if (!FloatString.Inited || FloatString.MinValue > -1000f || FloatString.MaxValue < 16384f)
             {
-                FloatString.Init(-1001f, 16386f);
+                FloatString.Init
+                (
+                    minNegativeValue: -1001f,
+                    maxPositiveValue: 16386f
+                );
             }
 
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
