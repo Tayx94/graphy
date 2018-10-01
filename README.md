@@ -42,8 +42,6 @@ The debugger allows you to set one or more conditions, that if met will have the
 
 Maintainer and main developer: **Martín Pane**
 
-Contact: [Twitter](https://twitter.com/tayx94?) - [Email](martintayx@gmail.com).
-
 ### Contributing
 
 Let's make Graphy the go-to for stats monitoring in Unity!
