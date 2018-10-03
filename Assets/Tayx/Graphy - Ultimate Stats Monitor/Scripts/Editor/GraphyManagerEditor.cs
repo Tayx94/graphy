@@ -385,7 +385,7 @@ namespace Tayx.Graphy
             {
                 font            = m_headerStyle2.font,
                 fontStyle       = m_headerStyle2.fontStyle,
-                contentOffset   = Vector2.down * 3f //TODO: Maybe replace this with "new Vector2(0, -3);"
+                contentOffset   = Vector2.down * 3f //TODO: Maybe replace this with "new Vector2(0f, -3f);"
             };
 
             SetGuiStyleFontColor
@@ -793,28 +793,59 @@ namespace Tayx.Graphy
 
             #region Section -> RAM
 
-            m_ramModuleInspectorToggle = EditorGUILayout.Foldout(m_ramModuleInspectorToggle,
-                " [ RAM ]", foldoutStyle);
+            m_ramModuleInspectorToggle = EditorGUILayout.Foldout
+            (
+                foldout:    m_ramModuleInspectorToggle,
+                content:    " [ RAM ]",
+                style:      foldoutStyle
+            );
 
-            GUILayout.Space(5);
+            GUILayout.Space
+            (
+                pixels: 5
+            );
 
             if (m_ramModuleInspectorToggle)
             {
-                EditorGUILayout.PropertyField(m_ramModuleState, new GUIContent("Module state", "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"));
+                EditorGUILayout.PropertyField
+                (
+                    property:       m_ramModuleState,
+                    label:          new GUIContent
+                    (
+                        text:       "Module state",
+                        tooltip:    "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"
+                    )
+                );
 
                 GUILayout.Space
                 (
                     pixels: 5
                 );
 
-                EditorGUILayout.LabelField("Graph colors:");
+                EditorGUILayout.LabelField
+                (
+                    label: "Graph colors:"
+                );
 
                 EditorGUI.indentLevel++;
 
-                m_allocatedRamColor.colorValue = EditorGUILayout.ColorField("- Allocated",
-                    m_allocatedRamColor.colorValue);
-                m_reservedRamColor.colorValue = EditorGUILayout.ColorField("- Reserved", m_reservedRamColor.colorValue);
-                m_monoRamColor.colorValue = EditorGUILayout.ColorField("- Mono", m_monoRamColor.colorValue);
+                m_allocatedRamColor.colorValue = EditorGUILayout.ColorField
+                (
+                    label: "- Allocated",
+                    value: m_allocatedRamColor.colorValue
+                );
+
+                m_reservedRamColor.colorValue = EditorGUILayout.ColorField
+                (
+                    label: "- Reserved",
+                    value: m_reservedRamColor.colorValue
+                );
+
+                m_monoRamColor.colorValue = EditorGUILayout.ColorField
+                (
+                    label: "- Mono",
+                    value: m_monoRamColor.colorValue
+                );
 
                 EditorGUI.indentLevel--;
 
@@ -822,15 +853,27 @@ namespace Tayx.Graphy
                 {
                     m_ramGraphResolution.intValue = EditorGUILayout.IntSlider
                     (
-                        new GUIContent("Graph resolution", "Defines the amount of points are in the graph"),
-                        m_ramGraphResolution.intValue, 20, m_graphyMode.intValue == 0 ? 300 : 128
+                        new GUIContent
+                        (
+                            text:       "Graph resolution",
+                            tooltip:    "Defines the amount of points are in the graph"
+                        ),
+                        m_ramGraphResolution.intValue,
+                        leftValue:      20,
+                        rightValue:     m_graphyMode.intValue == 0 ? 300 : 128
                     ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
                 }
 
                 m_ramTextUpdateRate.intValue = EditorGUILayout.IntSlider
                 (
-                    new GUIContent("Text update rate", "Defines the amount times the text is updated in 1 second"),
-                    m_ramTextUpdateRate.intValue, 1, 60
+                    new GUIContent
+                    (
+                        text:       "Text update rate",
+                        tooltip:    "Defines the amount times the text is updated in 1 second"
+                    ),
+                    m_ramTextUpdateRate.intValue,
+                    leftValue:      1,
+                    rightValue:     60
                 ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
             }
 
@@ -886,6 +929,7 @@ namespace Tayx.Graphy
                     {
                         m_audioGraphResolution.intValue += 3 - m_audioGraphResolution.intValue % 3;
                     }
+                    //TODO: Figure out why a static version of the ForceMultipleOf3 isnt used.
                 }
 
                 EditorGUILayout.PropertyField
