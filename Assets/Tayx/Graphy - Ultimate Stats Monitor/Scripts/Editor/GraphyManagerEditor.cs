@@ -262,7 +262,7 @@ namespace Tayx.Graphy
             {
                 font            = m_headerStyle2.font,
                 fontStyle       = m_headerStyle2.fontStyle,
-                contentOffset   = Vector2.down * 3f
+                contentOffset   = Vector2.down * 3f //TODO: Maybe replace this with "new Vector2(0, -3);"
             };
 
             SetGuiStyleFontColor
@@ -326,26 +326,79 @@ namespace Tayx.Graphy
             EditorGUIUtility.labelWidth = 130;
             EditorGUIUtility.fieldWidth = 35;
 
-            EditorGUILayout.PropertyField(m_graphyMode, new GUIContent("Graphy Mode", "LIGHT mode increases compatibility with older GPUs, but reduces the maximum graph resolutions to 128."));
+            EditorGUILayout.PropertyField
+            (
+                property:       m_graphyMode,
+                label:          new GUIContent
+                (
+                    text:       "Graphy Mode",
+                    tooltip:    "LIGHT mode increases compatibility with older GPUs, but reduces the maximum graph resolutions to 128."
+                )
+            );
 
-            GUILayout.Space(10);
+            GUILayout.Space
+            (
+                pixels: 10
+            );
 
-            m_enableOnStartup.boolValue = EditorGUILayout.Toggle(new GUIContent("Enable On Startup", "If ticked, Graphy will be displayed by default on startup, otherwise it will initiate and hide."), m_enableOnStartup.boolValue);
+            m_enableOnStartup.boolValue = EditorGUILayout.Toggle
+            (
+                label:          new GUIContent
+                (
+                    text:       "Enable On Startup",
+                    tooltip:    "If ticked, Graphy will be displayed by default on startup, otherwise it will initiate and hide."
+                ),
+                value:          m_enableOnStartup.boolValue
+            );
 
-            m_keepAlive.boolValue = EditorGUILayout.Toggle(new GUIContent("Keep Alive", "If ticked, it will survive scene changes. Careful, if you set Graphy as a chilof another GameObject, the root GameObject will also survive scene changes. If you want to avoid that put Graphy in the root of the Scene as its own entity."), m_keepAlive.boolValue);
+            m_keepAlive.boolValue = EditorGUILayout.Toggle
+            (
+                label:          new GUIContent
+                (
+                    text:       "Keep Alive",
+                    tooltip:    "If ticked, it will survive scene changes. Careful, if you set Graphy as a child of another GameObject, the root GameObject will also survive scene changes. If you want to avoid that put Graphy in the root of the Scene as its own entity."
+                ),
+                value:          m_keepAlive.boolValue
+            );
                
-            GUILayout.Space(10);
+            GUILayout.Space
+            (
+                pixels: 10
+            );
             
             EditorGUILayout.BeginHorizontal();
 
-            m_background.boolValue = EditorGUILayout.Toggle(new GUIContent("Background", "If ticked, it will show a background overlay to improve readability in cluttered scenes."), m_background.boolValue);
-            m_backgroundColor.colorValue = EditorGUILayout.ColorField(m_backgroundColor.colorValue);
+            m_background.boolValue = EditorGUILayout.Toggle
+            (
+                label:          new GUIContent
+                (
+                    text:       "Background",
+                    tooltip:    "If ticked, it will show a background overlay to improve readability in cluttered scenes."
+                ),
+                value:          m_background.boolValue
+            );
+
+            m_backgroundColor.colorValue = EditorGUILayout.ColorField
+            (
+                value: m_backgroundColor.colorValue
+            );
 
             EditorGUILayout.EndHorizontal();
 
-            GUILayout.Space(10);
+            GUILayout.Space
+            (
+                pixels: 10
+            );
 
-            m_enableHotkeys.boolValue = EditorGUILayout.Toggle(new GUIContent("Enable Hotkeys", "If ticked, it will enable the hotkeys to be ablet o modify Graphy in runtime with custom keyboard shortvuts"), m_enableHotkeys.boolValue);
+            m_enableHotkeys.boolValue = EditorGUILayout.Toggle
+            (
+                label:          new GUIContent
+                (
+                    text:       "Enable Hotkeys",
+                    tooltip:    "If ticked, it will enable the hotkeys to be able to modify Graphy in runtime with custom keyboard shortcuts."
+                ),
+                value:          m_enableHotkeys.boolValue
+            );
 
             if (m_enableHotkeys.boolValue)
             {
@@ -353,12 +406,39 @@ namespace Tayx.Graphy
 
                 EditorGUIUtility.labelWidth = 130;
                 EditorGUIUtility.fieldWidth = 35;
-                EditorGUILayout.PropertyField(m_toggleModeKeyCode, new GUIContent("Toggle Mode Key", "If ticked, it will require clicking this key and the other ones you have set up"));
+
+                EditorGUILayout.PropertyField
+                (
+                    property:       m_toggleModeKeyCode,
+                    label:          new GUIContent
+                    (
+                        text:       "Toggle Mode Key",
+                        tooltip:    "If ticked, it will require clicking this key and the other ones you have set up."
+                    )
+                );
 
                 EditorGUIUtility.labelWidth = 30;
                 EditorGUIUtility.fieldWidth = 35;
-                m_toggleModeCtrl.boolValue = EditorGUILayout.Toggle(new GUIContent("Ctrl", "If ticked, it will require clicking Ctrl and the other keys you have set up"), m_toggleModeCtrl.boolValue);
-                m_toggleModeAlt.boolValue = EditorGUILayout.Toggle(new GUIContent("Alt", "If ticked, it will require clicking Alt and the other keys you have set up"), m_toggleModeAlt.boolValue);
+
+                m_toggleModeCtrl.boolValue = EditorGUILayout.Toggle
+                (
+                    label:          new GUIContent
+                    (
+                        text:       "Ctrl",
+                        tooltip:    "If ticked, it will require clicking Ctrl and the other keys you have set up."
+                    ),
+                    value:          m_toggleModeCtrl.boolValue
+                );
+
+                m_toggleModeAlt.boolValue = EditorGUILayout.Toggle
+                (
+                    label:          new GUIContent
+                    (
+                        text:       "Alt",
+                        tooltip:    "If ticked, it will require clicking Alt and the other keys you have set up."
+                    ),
+                    value:          m_toggleModeAlt.boolValue
+                );
 
                 EditorGUILayout.EndHorizontal();
 
@@ -366,22 +446,60 @@ namespace Tayx.Graphy
 
                 EditorGUIUtility.labelWidth = 130;
                 EditorGUIUtility.fieldWidth = 35;
-                EditorGUILayout.PropertyField(m_toggleActiveKeyCode, new GUIContent("Toggle Active Key", "If ticked, it will require clicking this key and the other ones you have set up"));
+
+                EditorGUILayout.PropertyField
+                (
+                    property:       m_toggleActiveKeyCode,
+                    label:          new GUIContent
+                    (
+                        text:       "Toggle Active Key",
+                        tooltip:    "If ticked, it will require clicking this key and the other ones you have set up."
+                    )
+                );
 
                 EditorGUIUtility.labelWidth = 30;
                 EditorGUIUtility.fieldWidth = 35;
-                m_toggleActiveCtrl.boolValue = EditorGUILayout.Toggle(new GUIContent("Ctrl", "If ticked, it will require clicking Ctrl and the other keys you have set up"), m_toggleActiveCtrl.boolValue);
-                m_toggleActiveAlt.boolValue = EditorGUILayout.Toggle(new GUIContent("Alt", "If ticked, it will require clicking Alt and the other keys you have set up"), m_toggleActiveAlt.boolValue);
+
+                m_toggleActiveCtrl.boolValue = EditorGUILayout.Toggle
+                (
+                    label:          new GUIContent
+                    (
+                        text:       "Ctrl",
+                        tooltip:    "If ticked, it will require clicking Ctrl and the other keys you have set up"
+                    ),
+                    value:          m_toggleActiveCtrl.boolValue
+                );
+
+                m_toggleActiveAlt.boolValue = EditorGUILayout.Toggle
+                (
+                    label:          new GUIContent
+                    (
+                        text:       "Alt",
+                        tooltip:    "If ticked, it will require clicking Alt and the other keys you have set up"
+                    ),
+                    value:          m_toggleActiveAlt.boolValue
+                );
 
                 EditorGUILayout.EndHorizontal();
             }
 
-            GUILayout.Space(15);
+            GUILayout.Space
+            (
+                pixels: 15
+            );
 
             EditorGUIUtility.labelWidth = 155;
             EditorGUIUtility.fieldWidth = 35;
 
-            EditorGUILayout.PropertyField(m_graphModulePosition, new GUIContent("Graph modules position", "Defines in wich top corner the modules will be located"));
+            EditorGUILayout.PropertyField
+            (
+                property:       m_graphModulePosition,
+                label:          new GUIContent
+                (
+                    text:       "Graph modules position",
+                    tooltip:    "Defines in which top corner the modules will be located"
+                )
+            );
 
             #endregion
 
