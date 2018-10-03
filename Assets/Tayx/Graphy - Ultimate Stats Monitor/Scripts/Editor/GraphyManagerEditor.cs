@@ -378,7 +378,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Toggle Mode Key",
-                        tooltip:    "If ticked, it will require clicking this key and the other ones you have set up."
+                        tooltip:    "If ticked, it will require clicking this key and the other one you have set up."
                     )
                 );
 
@@ -390,7 +390,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Ctrl",
-                        tooltip:    "If ticked, it will require clicking Ctrl and the other keys you have set up."
+                        tooltip:    "If ticked, it will require clicking Ctrl and the other key you have set up."
                     ),
                     value:          m_toggleModeCtrl.boolValue
                 );
@@ -400,7 +400,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Alt",
-                        tooltip:    "If ticked, it will require clicking Alt and the other keys you have set up."
+                        tooltip:    "If ticked, it will require clicking Alt and the other key you have set up."
                     ),
                     value:          m_toggleModeAlt.boolValue
                 );
@@ -417,7 +417,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Toggle Active Key",
-                        tooltip:    "If ticked, it will require clicking this key and the other ones you have set up."
+                        tooltip:    "If ticked, it will require clicking this key and the other one you have set up."
                     )
                 );
 
@@ -429,7 +429,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Ctrl",
-                        tooltip:    "If ticked, it will require clicking Ctrl and the other keys you have set up"
+                        tooltip:    "If ticked, it will require clicking Ctrl and the other key you have set up."
                     ),
                     value:          m_toggleActiveCtrl.boolValue
                 );
@@ -439,7 +439,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Alt",
-                        tooltip:    "If ticked, it will require clicking Alt and the other keys you have set up"
+                        tooltip:    "If ticked, it will require clicking Alt and the other key you have set up."
                     ),
                     value:          m_toggleActiveAlt.boolValue
                 );
@@ -458,7 +458,7 @@ namespace Tayx.Graphy
                 new GUIContent
                 (
                     text:       "Graph modules position",
-                    tooltip:    "Defines in which top corner the modules will be located"
+                    tooltip:    "Defines in which top corner the modules will be located."
                 )
             );
 
@@ -599,7 +599,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Text update rate",
-                        tooltip:    "Defines the amount times the text is updated in 1 second"
+                        tooltip:    "Defines the amount times the text is updated in 1 second."
                     ),
                     m_fpsTextUpdateRate.intValue,
                     leftValue:      1,
@@ -679,7 +679,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Text update rate",
-                        tooltip:    "Defines the amount times the text is updated in 1 second"
+                        tooltip:    "Defines the amount times the text is updated in 1 second."
                     ),
                     m_ramTextUpdateRate.intValue,
                     leftValue:      1,
@@ -722,7 +722,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Find audio listener",
-                        tooltip:    "Tries to find the AudioListener in the Main camera in the scene (if AudioListener is null)"
+                        tooltip:    "Tries to find the AudioListener in the Main camera in the scene. (if AudioListener is null)"
                     )
                 );
 
