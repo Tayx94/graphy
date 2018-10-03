@@ -441,57 +441,40 @@ namespace Tayx.Graphy
 
             #region Section -> FPS
 
-            m_fpsModuleInspectorToggle = EditorGUILayout.Foldout
-            (
-                foldout:    m_fpsModuleInspectorToggle,
+            m_fpsModuleInspectorToggle = EditorGUILayout.Foldout(
+                m_fpsModuleInspectorToggle,
                 content:    " [ FPS ]",
                 style:      foldoutStyle
             );
             
-            GUILayout.Space
-            (
-                pixels: 5
-            );
+            GUILayout.Space(5);
 
             if (m_fpsModuleInspectorToggle)
             {
-                EditorGUILayout.PropertyField
-                (
-                    property:       m_fpsModuleState,
-                    label:          new GUIContent
-                    (
+                EditorGUILayout.PropertyField(
+                    m_fpsModuleState,
+                    new GUIContent(
                         text:       "Module state",
                         tooltip:    "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"
                     )
                 );
 
-                GUILayout.Space
-                (
-                    pixels: 5
-                );
+                GUILayout.Space(5);
 
-                EditorGUILayout.LabelField
-                (
-                    label: "Fps thresholds and colors:"
-                );
+                EditorGUILayout.LabelField("Fps thresholds and colors:");
 
                 EditorGUI.indentLevel++;
                 EditorGUILayout.BeginHorizontal();
 
-                m_goodFpsThreshold.intValue = EditorGUILayout.IntField
-                (
-                    label:          new GUIContent
-                    (
+                m_goodFpsThreshold.intValue = EditorGUILayout.IntField(
+                    new GUIContent(
                         text:       "- Good",
                         tooltip:    "When FPS rise above this value, this color will be used"
                     ),
                     value:          m_goodFpsThreshold.intValue
                 );
                 
-                m_goodFpsColor.colorValue = EditorGUILayout.ColorField
-                (
-                    value: m_goodFpsColor.colorValue
-                );
+                m_goodFpsColor.colorValue = EditorGUILayout.ColorField(m_goodFpsColor.colorValue);
 
                 EditorGUILayout.EndHorizontal();
 
@@ -506,15 +489,14 @@ namespace Tayx.Graphy
 
                 EditorGUILayout.BeginHorizontal();
 
-                m_cautionFpsThreshold.intValue = EditorGUILayout.IntField
-                (
-                    label:          new GUIContent
-                    (
+                m_cautionFpsThreshold.intValue = EditorGUILayout.IntField(
+                    new GUIContent(
                         text:       "- Caution",
                         tooltip:    "When FPS are between this and the Good value, this color will be used"
                     ),
                     value:          m_cautionFpsThreshold.intValue
                 );
+
                 m_cautionFpsColor.colorValue = EditorGUILayout.ColorField(m_cautionFpsColor.colorValue);
 
                 EditorGUILayout.EndHorizontal();
@@ -530,10 +512,8 @@ namespace Tayx.Graphy
 
                 EditorGUILayout.BeginHorizontal();
 
-                EditorGUILayout.IntField
-                (
-                    label:          new GUIContent
-                    (
+                EditorGUILayout.IntField(
+                    new GUIContent(
                         text:       "- Critical",
                         tooltip:    "When FPS are below the Caution value, this color will be used. (You can't have negative FPS, so this value is just for reference, it can't be changed)."
                     ),
@@ -547,49 +527,42 @@ namespace Tayx.Graphy
 
                 if (m_fpsModuleState.intValue == 0)
                 {
-                    m_fpsGraphResolution.intValue = EditorGUILayout.IntSlider
-                    (
-                        new GUIContent
-                        (
+                    m_fpsGraphResolution.intValue = EditorGUILayout.IntSlider(
+                        new GUIContent(
                             text:       "Graph resolution",
                             tooltip:    "Defines the amount of points are in the graph"
                         ),
                         m_fpsGraphResolution.intValue,
                         leftValue:      20,
                         rightValue:     m_graphyMode.intValue == 0 ? 300 : 128
-                    ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
+                    );
                 }
 
                 EditorGUIUtility.labelWidth = 180;
                 EditorGUIUtility.fieldWidth = 35;
 
-                m_timeToResetMinMaxFps.intValue = EditorGUILayout.IntSlider
-                (
-                    new GUIContent
-                    (
+                m_timeToResetMinMaxFps.intValue = EditorGUILayout.IntSlider(
+                    new GUIContent(
                         text:       "Time to reset min/max values",
                         tooltip:    "If the min/max value doesn't change in the specified time, they will be reset. This allows tracking the min/max fps in a shorter interval. \n\nSet to 0 if you  don't want it to reset."
                     ),
                     m_timeToResetMinMaxFps.intValue,
                     leftValue:      0,
                     rightValue:     120
-                ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
+                );
 
                 EditorGUIUtility.labelWidth = 155;
                 EditorGUIUtility.fieldWidth = 35;
 
-                m_fpsTextUpdateRate.intValue = EditorGUILayout.IntSlider
-                (
-                    new GUIContent
-                    (
+                m_fpsTextUpdateRate.intValue = EditorGUILayout.IntSlider(
+                    new GUIContent(
                         text:       "Text update rate",
                         tooltip:    "Defines the amount times the text is updated in 1 second"
                     ),
                     m_fpsTextUpdateRate.intValue,
                     leftValue:      1,
                     rightValue:     60
-                ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
-
+                );
             }
 
             #endregion
@@ -612,42 +585,31 @@ namespace Tayx.Graphy
 
             if (m_ramModuleInspectorToggle)
             {
-                EditorGUILayout.PropertyField
-                (
-                    property:       m_ramModuleState,
-                    label:          new GUIContent
-                    (
+                EditorGUILayout.PropertyField(
+                    m_ramModuleState,
+                    new GUIContent(
                         text:       "Module state",
                         tooltip:    "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"
                     )
                 );
 
-                GUILayout.Space
-                (
-                    pixels: 5
-                );
+                GUILayout.Space(5);
 
-                EditorGUILayout.LabelField
-                (
-                    label: "Graph colors:"
-                );
+                EditorGUILayout.LabelField("Graph colors:");
 
                 EditorGUI.indentLevel++;
 
-                m_allocatedRamColor.colorValue = EditorGUILayout.ColorField
-                (
+                m_allocatedRamColor.colorValue = EditorGUILayout.ColorField(
                     label: "- Allocated",
                     value: m_allocatedRamColor.colorValue
                 );
 
-                m_reservedRamColor.colorValue = EditorGUILayout.ColorField
-                (
+                m_reservedRamColor.colorValue = EditorGUILayout.ColorField(
                     label: "- Reserved",
                     value: m_reservedRamColor.colorValue
                 );
 
-                m_monoRamColor.colorValue = EditorGUILayout.ColorField
-                (
+                m_monoRamColor.colorValue = EditorGUILayout.ColorField(
                     label: "- Mono",
                     value: m_monoRamColor.colorValue
                 );
@@ -656,30 +618,26 @@ namespace Tayx.Graphy
 
                 if (m_ramModuleState.intValue == 0)
                 {
-                    m_ramGraphResolution.intValue = EditorGUILayout.IntSlider
-                    (
-                        new GUIContent
-                        (
+                    m_ramGraphResolution.intValue = EditorGUILayout.IntSlider(
+                        new GUIContent(
                             text:       "Graph resolution",
                             tooltip:    "Defines the amount of points are in the graph"
                         ),
                         m_ramGraphResolution.intValue,
                         leftValue:      20,
                         rightValue:     m_graphyMode.intValue == 0 ? 300 : 128
-                    ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
+                    );
                 }
 
-                m_ramTextUpdateRate.intValue = EditorGUILayout.IntSlider
-                (
-                    new GUIContent
-                    (
+                m_ramTextUpdateRate.intValue = EditorGUILayout.IntSlider(
+                    new GUIContent(
                         text:       "Text update rate",
                         tooltip:    "Defines the amount times the text is updated in 1 second"
                     ),
                     m_ramTextUpdateRate.intValue,
                     leftValue:      1,
                     rightValue:     60
-                ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
+                );
             }
 
             #endregion
@@ -688,9 +646,8 @@ namespace Tayx.Graphy
 
             #region Section -> Audio
 
-            m_audioModuleInspectorToggle = EditorGUILayout.Foldout
-            (
-                foldout:    m_audioModuleInspectorToggle,
+            m_audioModuleInspectorToggle = EditorGUILayout.Foldout(
+                m_audioModuleInspectorToggle,
                 content:    " [ AUDIO ]",
                 style:      foldoutStyle
             );
