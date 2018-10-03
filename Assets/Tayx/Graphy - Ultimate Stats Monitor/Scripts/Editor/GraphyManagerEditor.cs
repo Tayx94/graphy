@@ -268,45 +268,93 @@ namespace Tayx.Graphy
 
             #region Section -> RAM
 
-            m_ramModuleState = serObj.FindProperty("m_ramModuleState");
+            m_ramModuleState = serObj.FindProperty
+            (
+                propertyPath: "m_ramModuleState"
+            );
             
-            m_allocatedRamColor = serObj.FindProperty("m_allocatedRamColor");
+            m_allocatedRamColor = serObj.FindProperty
+            (
+                propertyPath: "m_allocatedRamColor"
+            );
 
-            m_reservedRamColor = serObj.FindProperty("m_reservedRamColor");
+            m_reservedRamColor = serObj.FindProperty
+            (
+                propertyPath: "m_reservedRamColor"
+            );
 
-            m_monoRamColor = serObj.FindProperty("m_monoRamColor");
+            m_monoRamColor = serObj.FindProperty
+            (
+                propertyPath: "m_monoRamColor"
+            );
 
-            m_ramGraphResolution = serObj.FindProperty("m_ramGraphResolution");
+            m_ramGraphResolution = serObj.FindProperty
+            (
+                propertyPath: "m_ramGraphResolution"
+            );
 
-            m_ramTextUpdateRate = serObj.FindProperty("m_ramTextUpdateRate");
+            m_ramTextUpdateRate = serObj.FindProperty
+            (
+                propertyPath: "m_ramTextUpdateRate"
+            );
 
             #endregion
 
             #region Section -> Audio
 
-            m_findAudioListenerInCameraIfNull = serObj.FindProperty("m_findAudioListenerInCameraIfNull");
+            m_findAudioListenerInCameraIfNull = serObj.FindProperty
+            (
+                propertyPath: "m_findAudioListenerInCameraIfNull"
+            );
 
-            m_audioListener = serObj.FindProperty("m_audioListener");
+            m_audioListener = serObj.FindProperty
+            (
+                propertyPath: "m_audioListener"
+            );
             
-            m_audioModuleState = serObj.FindProperty("m_audioModuleState");
+            m_audioModuleState = serObj.FindProperty
+            (
+                propertyPath: "m_audioModuleState"
+            );
 
-            m_audioGraphColor = serObj.FindProperty("m_audioGraphColor");
+            m_audioGraphColor = serObj.FindProperty
+            (
+                propertyPath: "m_audioGraphColor"
+            );
 
-            m_audioGraphResolution = serObj.FindProperty("m_audioGraphResolution");
+            m_audioGraphResolution = serObj.FindProperty
+            (
+                propertyPath: "m_audioGraphResolution"
+            );
 
-            m_audioTextUpdateRate = serObj.FindProperty("m_audioTextUpdateRate");
+            m_audioTextUpdateRate = serObj.FindProperty
+            (
+                propertyPath: "m_audioTextUpdateRate"
+            );
 
-            m_FFTWindow = serObj.FindProperty("m_FFTWindow");
+            m_FFTWindow = serObj.FindProperty
+            (
+                propertyPath: "m_FFTWindow"
+            );
 
-            m_spectrumSize = serObj.FindProperty("m_spectrumSize");
+            m_spectrumSize = serObj.FindProperty
+            (
+                propertyPath: "m_spectrumSize"
+            );
 
             #endregion
 
             #region Section -> Advanced Settings
 
-            m_advancedModulePosition = serObj.FindProperty("m_advancedModulePosition");
+            m_advancedModulePosition = serObj.FindProperty
+            (
+                propertyPath: "m_advancedModulePosition"
+            );
 
-            m_advancedModuleState = serObj.FindProperty("m_advancedModuleState");
+            m_advancedModuleState = serObj.FindProperty
+            (
+                propertyPath: "m_advancedModuleState"
+            );
 
             #endregion
 
@@ -587,9 +635,9 @@ namespace Tayx.Graphy
 
             m_fpsModuleInspectorToggle = EditorGUILayout.Foldout
             (
-                foldout: m_fpsModuleInspectorToggle,
-                content: " [ FPS ]",
-                style: foldoutStyle
+                foldout:    m_fpsModuleInspectorToggle,
+                content:    " [ FPS ]",
+                style:      foldoutStyle
             );
             
             GUILayout.Space
@@ -831,16 +879,34 @@ namespace Tayx.Graphy
 
             #region Section -> Advanced Settings
 
-            m_advancedModuleInspectorToggle = EditorGUILayout.Foldout(m_advancedModuleInspectorToggle,
-                " [ ADVANCED DATA ]", foldoutStyle);
+            m_advancedModuleInspectorToggle = EditorGUILayout.Foldout
+            (
+                foldout:    m_advancedModuleInspectorToggle,
+                content:    " [ ADVANCED DATA ]",
+                style:      foldoutStyle
+            );
 
-            GUILayout.Space(5);
+            GUILayout.Space
+            (
+                pixels: 5
+            );
 
             if (m_advancedModuleInspectorToggle)
             {
-                EditorGUILayout.PropertyField(m_advancedModulePosition);
+                EditorGUILayout.PropertyField
+                (
+                    property: m_advancedModulePosition
+                );
 
-                EditorGUILayout.PropertyField(m_advancedModuleState, new GUIContent("Module state", "FULL -> Text \nOFF -> Turned off"));
+                EditorGUILayout.PropertyField
+                (
+                    property:       m_advancedModuleState,
+                    label:          new GUIContent
+                    (
+                        text:       "Module state",
+                        tooltip:    "FULL -> Text \nOFF -> Turned off"
+                    )
+                );
             }
 
             #endregion;
