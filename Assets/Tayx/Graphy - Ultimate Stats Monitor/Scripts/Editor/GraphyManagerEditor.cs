@@ -22,16 +22,16 @@ namespace Tayx.Graphy
     {
         #region Variables -> Private -> Style
         
-        private GraphyManager m_target;
+        private GraphyManager       m_target;
 
-        private GUISkin m_skin;
+        private GUISkin             m_skin;
 
-        private GUIStyle m_headerStyle1;
-        private GUIStyle m_headerStyle2;
+        private GUIStyle            m_headerStyle1;
+        private GUIStyle            m_headerStyle2;
 
-        private Texture2D m_logoTexture;
+        private Texture2D           m_logoTexture;
 
-        private int[] m_spectrumSizeValues =
+        private int[]               m_spectrumSizeValues =
         {
             128,
             256,
@@ -46,97 +46,97 @@ namespace Tayx.Graphy
 
         #region Variables -> Private -> Settings
 
-        private SerializedProperty m_graphyMode;
+        private SerializedProperty  m_graphyMode;
 
-        private SerializedProperty m_enableOnStartup;
+        private SerializedProperty  m_enableOnStartup;
 
-        private SerializedProperty m_keepAlive;
+        private SerializedProperty  m_keepAlive;
 
-        private SerializedProperty m_background;
-        private SerializedProperty m_backgroundColor;
+        private SerializedProperty  m_background;
+        private SerializedProperty  m_backgroundColor;
 
-        private SerializedProperty m_enableHotkeys;
+        private SerializedProperty  m_enableHotkeys;
 
-        private SerializedProperty m_toggleModeKeyCode;
-        private SerializedProperty m_toggleModeCtrl;
-        private SerializedProperty m_toggleModeAlt;
+        private SerializedProperty  m_toggleModeKeyCode;
+        private SerializedProperty  m_toggleModeCtrl;
+        private SerializedProperty  m_toggleModeAlt;
 
-        private SerializedProperty m_toggleActiveKeyCode;
-        private SerializedProperty m_toggleActiveCtrl;
-        private SerializedProperty m_toggleActiveAlt;
+        private SerializedProperty  m_toggleActiveKeyCode;
+        private SerializedProperty  m_toggleActiveCtrl;
+        private SerializedProperty  m_toggleActiveAlt;
 
 
-        private SerializedProperty m_graphModulePosition;
+        private SerializedProperty  m_graphModulePosition;
 
         #endregion
 
         #region Variables -> Private -> FPS
 
-        private bool m_fpsModuleInspectorToggle = true;
+        private bool                m_fpsModuleInspectorToggle = true;
             
-        private SerializedProperty m_fpsModuleState;
+        private SerializedProperty  m_fpsModuleState;
 
-        private SerializedProperty m_timeToResetMinMaxFps;
+        private SerializedProperty  m_timeToResetMinMaxFps;
 
-        private SerializedProperty m_goodFpsColor;
-        private SerializedProperty m_goodFpsThreshold;
+        private SerializedProperty  m_goodFpsColor;
+        private SerializedProperty  m_goodFpsThreshold;
 
-        private SerializedProperty m_cautionFpsColor;
-        private SerializedProperty m_cautionFpsThreshold;
+        private SerializedProperty  m_cautionFpsColor;
+        private SerializedProperty  m_cautionFpsThreshold;
 
-        private SerializedProperty m_criticalFpsColor;
+        private SerializedProperty  m_criticalFpsColor;
 
-        private SerializedProperty m_fpsGraphResolution;
+        private SerializedProperty  m_fpsGraphResolution;
 
-        private SerializedProperty m_fpsTextUpdateRate;
+        private SerializedProperty  m_fpsTextUpdateRate;
 
         #endregion
 
         #region Variables -> Private -> RAM
 
-        private bool m_ramModuleInspectorToggle = true;
+        private bool                m_ramModuleInspectorToggle = true;
 
-        private SerializedProperty m_ramModuleState;
+        private SerializedProperty  m_ramModuleState;
             
-        private SerializedProperty m_allocatedRamColor;
-        private SerializedProperty m_reservedRamColor;
-        private SerializedProperty m_monoRamColor;
+        private SerializedProperty  m_allocatedRamColor;
+        private SerializedProperty  m_reservedRamColor;
+        private SerializedProperty  m_monoRamColor;
 
-        private SerializedProperty m_ramGraphResolution;
+        private SerializedProperty  m_ramGraphResolution;
 
-        private SerializedProperty m_ramTextUpdateRate;
+        private SerializedProperty  m_ramTextUpdateRate;
 
         #endregion
 
         #region Variables -> Private -> Audio
 
-        private bool m_audioModuleInspectorToggle = true;
+        private bool                m_audioModuleInspectorToggle = true;
             
-        private SerializedProperty m_findAudioListenerInCameraIfNull;
+        private SerializedProperty  m_findAudioListenerInCameraIfNull;
 
-        private SerializedProperty m_audioListener;
+        private SerializedProperty  m_audioListener;
         
-        private SerializedProperty m_audioModuleState;
+        private SerializedProperty  m_audioModuleState;
 
-        private SerializedProperty m_audioGraphColor;
+        private SerializedProperty  m_audioGraphColor;
 
-        private SerializedProperty m_audioGraphResolution;
+        private SerializedProperty  m_audioGraphResolution;
 
-        private SerializedProperty m_audioTextUpdateRate;
+        private SerializedProperty  m_audioTextUpdateRate;
         
-        private SerializedProperty m_FFTWindow;
+        private SerializedProperty  m_FFTWindow;
 
-        private SerializedProperty m_spectrumSize;
+        private SerializedProperty  m_spectrumSize;
 
         #endregion
 
         #region Variables -> Private -> Advanced Settings
 
-        private bool m_advancedModuleInspectorToggle = true;
+        private bool                m_advancedModuleInspectorToggle = true;
             
-        private SerializedProperty m_advancedModulePosition;
+        private SerializedProperty  m_advancedModulePosition;
 
-        private SerializedProperty m_advancedModuleState;
+        private SerializedProperty  m_advancedModuleState;
 
         #endregion
 
@@ -144,68 +144,68 @@ namespace Tayx.Graphy
 
         private void OnEnable()
         {
-            m_target = (GraphyManager)target;
+            m_target                            = (GraphyManager)target;
 
-            SerializedObject serObj = serializedObject;
+            SerializedObject serObj             = serializedObject;
 
             #region Section -> Settings
 
-            m_graphyMode            = serObj.FindProperty("m_graphyMode");
+            m_graphyMode                        = serObj.FindProperty("m_graphyMode");
 
-            m_enableOnStartup       = serObj.FindProperty("m_enableOnStartup");
+            m_enableOnStartup                   = serObj.FindProperty("m_enableOnStartup");
 
-            m_keepAlive             = serObj.FindProperty("m_keepAlive");
+            m_keepAlive                         = serObj.FindProperty("m_keepAlive");
 
-            m_background            = serObj.FindProperty("m_background");
-            m_backgroundColor       = serObj.FindProperty("m_backgroundColor");
+            m_background                        = serObj.FindProperty("m_background");
+            m_backgroundColor                   = serObj.FindProperty("m_backgroundColor");
 
-            m_enableHotkeys         = serObj.FindProperty("m_enableHotkeys");
+            m_enableHotkeys                     = serObj.FindProperty("m_enableHotkeys");
 
-            m_toggleModeKeyCode     = serObj.FindProperty("m_toggleModeKeyCode");
+            m_toggleModeKeyCode                 = serObj.FindProperty("m_toggleModeKeyCode");
 
-            m_toggleModeCtrl        = serObj.FindProperty("m_toggleModeCtrl");
-            m_toggleModeAlt         = serObj.FindProperty("m_toggleModeAlt");
+            m_toggleModeCtrl                    = serObj.FindProperty("m_toggleModeCtrl");
+            m_toggleModeAlt                     = serObj.FindProperty("m_toggleModeAlt");
 
-            m_toggleActiveKeyCode   = serObj.FindProperty("m_toggleActiveKeyCode");
+            m_toggleActiveKeyCode               = serObj.FindProperty("m_toggleActiveKeyCode");
 
-            m_toggleActiveCtrl      = serObj.FindProperty("m_toggleActiveCtrl");
-            m_toggleActiveAlt       = serObj.FindProperty("m_toggleActiveAlt");
+            m_toggleActiveCtrl                  = serObj.FindProperty("m_toggleActiveCtrl");
+            m_toggleActiveAlt                   = serObj.FindProperty("m_toggleActiveAlt");
 
-            m_graphModulePosition   = serObj.FindProperty("m_graphModulePosition");
+            m_graphModulePosition               = serObj.FindProperty("m_graphModulePosition");
 
             #endregion
 
             #region Section -> FPS
 
-            m_fpsModuleState        = serObj.FindProperty("m_fpsModuleState");
+            m_fpsModuleState                    = serObj.FindProperty("m_fpsModuleState");
 
-            m_timeToResetMinMaxFps  = serObj.FindProperty("m_timeToResetMinMaxFps");
+            m_timeToResetMinMaxFps              = serObj.FindProperty("m_timeToResetMinMaxFps");
 
-            m_goodFpsColor          = serObj.FindProperty("m_goodFpsColor");
-            m_goodFpsThreshold      = serObj.FindProperty("m_goodFpsThreshold");
+            m_goodFpsColor                      = serObj.FindProperty("m_goodFpsColor");
+            m_goodFpsThreshold                  = serObj.FindProperty("m_goodFpsThreshold");
 
-            m_cautionFpsColor       = serObj.FindProperty("m_cautionFpsColor");
-            m_cautionFpsThreshold   = serObj.FindProperty("m_cautionFpsThreshold");
+            m_cautionFpsColor                   = serObj.FindProperty("m_cautionFpsColor");
+            m_cautionFpsThreshold               = serObj.FindProperty("m_cautionFpsThreshold");
 
-            m_criticalFpsColor      = serObj.FindProperty("m_criticalFpsColor");
+            m_criticalFpsColor                  = serObj.FindProperty("m_criticalFpsColor");
 
-            m_fpsGraphResolution    = serObj.FindProperty("m_fpsGraphResolution");
+            m_fpsGraphResolution                = serObj.FindProperty("m_fpsGraphResolution");
 
-            m_fpsTextUpdateRate     = serObj.FindProperty("m_fpsTextUpdateRate");
+            m_fpsTextUpdateRate                 = serObj.FindProperty("m_fpsTextUpdateRate");
 
             #endregion
 
             #region Section -> RAM
 
-            m_ramModuleState        = serObj.FindProperty("m_ramModuleState");
+            m_ramModuleState                    = serObj.FindProperty("m_ramModuleState");
             
-            m_allocatedRamColor     = serObj.FindProperty("m_allocatedRamColor");
-            m_reservedRamColor      = serObj.FindProperty("m_reservedRamColor");
-            m_monoRamColor          = serObj.FindProperty("m_monoRamColor");
+            m_allocatedRamColor                 = serObj.FindProperty("m_allocatedRamColor");
+            m_reservedRamColor                  = serObj.FindProperty("m_reservedRamColor");
+            m_monoRamColor                      = serObj.FindProperty("m_monoRamColor");
 
-            m_ramGraphResolution    = serObj.FindProperty("m_ramGraphResolution");
+            m_ramGraphResolution                = serObj.FindProperty("m_ramGraphResolution");
 
-            m_ramTextUpdateRate     = serObj.FindProperty("m_ramTextUpdateRate");
+            m_ramTextUpdateRate                 = serObj.FindProperty("m_ramTextUpdateRate");
 
             #endregion
 
@@ -231,9 +231,9 @@ namespace Tayx.Graphy
 
             #region Section -> Advanced Settings
 
-            m_advancedModulePosition    = serObj.FindProperty("m_advancedModulePosition");
+            m_advancedModulePosition            = serObj.FindProperty("m_advancedModulePosition");
 
-            m_advancedModuleState       = serObj.FindProperty("m_advancedModuleState");
+            m_advancedModuleState               = serObj.FindProperty("m_advancedModuleState");
 
             #endregion
 
@@ -252,6 +252,7 @@ namespace Tayx.Graphy
             }
 
             LoadGuiStyles();
+
             float defaultLabelWidth = EditorGUIUtility.labelWidth;
             float defaultFieldWidth = EditorGUIUtility.fieldWidth;
 
@@ -311,7 +312,7 @@ namespace Tayx.Graphy
                 new GUIContent
                 (
                     text:       "Graphy Mode",
-                    tooltip:    "LIGHT mode increases compatibility with older GPUs, but reduces the maximum graph resolutions to 128."
+                    tooltip:    "LIGHT mode increases compatibility with mobile and older, less powerful GPUs, but reduces the maximum graph resolutions to 128."
                 )
             );
 
@@ -332,12 +333,13 @@ namespace Tayx.Graphy
                 new GUIContent
                 (
                     text:       "Keep Alive",
-                    tooltip:    "If ticked, it will survive scene changes. Careful, if you set Graphy as a child of another GameObject, the root GameObject will also survive scene changes. If you want to avoid that put Graphy in the root of the Scene as its own entity."
+                    tooltip:    "If ticked, it will survive scene changes.\n\nCAREFUL, if you set Graphy as a child of another GameObject, the root GameObject will also survive scene changes. If you want to avoid that put Graphy in the root of the Scene as its own entity."
                 ),
                 value:          m_keepAlive.boolValue
             );
                
             GUILayout.Space(10);
+
             EditorGUILayout.BeginHorizontal();
 
             m_background.boolValue = EditorGUILayout.Toggle
@@ -353,6 +355,7 @@ namespace Tayx.Graphy
             m_backgroundColor.colorValue = EditorGUILayout.ColorField(m_backgroundColor.colorValue);
 
             EditorGUILayout.EndHorizontal();
+
             GUILayout.Space(10);
 
             m_enableHotkeys.boolValue = EditorGUILayout.Toggle
@@ -378,7 +381,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Toggle Mode Key",
-                        tooltip:    "If ticked, it will require clicking this key and the other one you have set up."
+                        tooltip:    "If ticked, it will require clicking this key and the other ones you have set up."
                     )
                 );
 
@@ -390,7 +393,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Ctrl",
-                        tooltip:    "If ticked, it will require clicking Ctrl and the other key you have set up."
+                        tooltip:    "If ticked, it will require clicking Ctrl and the other keys you have set up."
                     ),
                     value:          m_toggleModeCtrl.boolValue
                 );
@@ -400,12 +403,13 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Alt",
-                        tooltip:    "If ticked, it will require clicking Alt and the other key you have set up."
+                        tooltip:    "If ticked, it will require clicking Alt and the other keys you have set up."
                     ),
                     value:          m_toggleModeAlt.boolValue
                 );
 
                 EditorGUILayout.EndHorizontal();
+
                 EditorGUILayout.BeginHorizontal();
 
                 EditorGUIUtility.labelWidth = 130;
@@ -417,7 +421,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Toggle Active Key",
-                        tooltip:    "If ticked, it will require clicking this key and the other one you have set up."
+                        tooltip:    "If ticked, it will require clicking this key and the other ones you have set up."
                     )
                 );
 
@@ -429,7 +433,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Ctrl",
-                        tooltip:    "If ticked, it will require clicking Ctrl and the other key you have set up."
+                        tooltip:    "If ticked, it will require clicking Ctrl and the other kesy you have set up."
                     ),
                     value:          m_toggleActiveCtrl.boolValue
                 );
@@ -439,7 +443,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Alt",
-                        tooltip:    "If ticked, it will require clicking Alt and the other key you have set up."
+                        tooltip:    "If ticked, it will require clicking Alt and the other keys you have set up."
                     ),
                     value:          m_toggleActiveAlt.boolValue
                 );
@@ -458,7 +462,7 @@ namespace Tayx.Graphy
                 new GUIContent
                 (
                     text:       "Graph modules position",
-                    tooltip:    "Defines in which top corner the modules will be located."
+                    tooltip:    "Defines in which corner the modules will be located."
                 )
             );
 
@@ -494,6 +498,7 @@ namespace Tayx.Graphy
                 EditorGUILayout.LabelField("Fps thresholds and colors:");
 
                 EditorGUI.indentLevel++;
+
                 EditorGUILayout.BeginHorizontal();
 
                 m_goodFpsThreshold.intValue = EditorGUILayout.IntField
@@ -559,6 +564,7 @@ namespace Tayx.Graphy
                 m_criticalFpsColor.colorValue = EditorGUILayout.ColorField(m_criticalFpsColor.colorValue);
 
                 EditorGUILayout.EndHorizontal();
+
                 EditorGUI.indentLevel--;
 
                 if (m_fpsModuleState.intValue == 0)
@@ -749,7 +755,7 @@ namespace Tayx.Graphy
                         new GUIContent
                         (
                             text:       "Graph resolution",
-                            tooltip:    "Defines the amount of points are in the graph. \nUse a number divisible by 3 for the best results."
+                            tooltip:    "Defines the amount of points that are in the graph."
                         ),
                         m_audioGraphResolution.intValue,
                         leftValue:      20,
