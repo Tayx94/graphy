@@ -886,45 +886,67 @@ namespace Tayx.Graphy
 
             #region Section -> Audio
 
-            m_audioModuleInspectorToggle = EditorGUILayout.Foldout(m_audioModuleInspectorToggle,
-                " [ AUDIO ]", foldoutStyle);
+            m_audioModuleInspectorToggle = EditorGUILayout.Foldout
+            (
+                foldout:    m_audioModuleInspectorToggle,
+                content:    " [ AUDIO ]",
+                style:      foldoutStyle
+            );
 
-            GUILayout.Space(5);
+            GUILayout.Space
+            (
+                pixels: 5
+            );
 
             if (m_audioModuleInspectorToggle)
             {
-                EditorGUILayout.PropertyField(m_audioModuleState, new GUIContent("Module state", "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"));
+                EditorGUILayout.PropertyField
+                (
+                    property:       m_audioModuleState,
+                    label:          new GUIContent
+                    (
+                        text:       "Module state",
+                        tooltip:    "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"
+                    )
+                );
 
                 GUILayout.Space
                 (
                     pixels: 5
                 );
 
-                EditorGUILayout.PropertyField
-                (
-                    m_findAudioListenerInCameraIfNull,
-                    new GUIContent("Find audio listener", "Tries to find the AudioListener in the Main camera in the scene (if AudioListener is null)")
+                EditorGUILayout.PropertyField(
+                    property:       m_findAudioListenerInCameraIfNull,
+                    label:          new GUIContent(
+                        text:       "Find audio listener",
+                        tooltip:    "Tries to find the AudioListener in the Main camera in the scene (if AudioListener is null)"
+                    )
                 );
 
-                EditorGUILayout.PropertyField
-                (
-                    m_audioListener,
-                    new GUIContent("Audio Listener", "Graphy will take the data from this Listener. If none is specified, it will try to get it from the Main Camera in the scene.")
+                EditorGUILayout.PropertyField(
+                    property:   m_audioListener,
+                    label:      new GUIContent(
+                    text:       "Audio Listener",
+                    tooltip:    "Graphy will take the data from this Listener. If none is specified, it will try to get it from the Main Camera in the scene.")
                 );
 
                 if (m_audioModuleState.intValue == 0)
                 {
-                    m_audioGraphColor.colorValue = EditorGUILayout.ColorField("Graph color",
-                        m_audioGraphColor.colorValue);
+                    m_audioGraphColor.colorValue = EditorGUILayout.ColorField(
+                        label: "Graph color",
+                        value: m_audioGraphColor.colorValue
+                    );
 
-                    m_audioGraphResolution.intValue = EditorGUILayout.IntSlider
-                    (
-                        new GUIContent("Graph resolution", "Defines the amount of points are in the graph. \nUse a multiple of 3 for the best results"),
-                        m_audioGraphResolution.intValue, 20, m_graphyMode.intValue == 0 ? 300 : 128
+                    m_audioGraphResolution.intValue = EditorGUILayout.IntSlider(
+                        /*label:*/      new GUIContent(
+                        text:           "Graph resolution",
+                        tooltip:        "Defines the amount of points are in the graph. \nUse a multiple of 3 for the best results"),
+                        /*value:*/      m_audioGraphResolution.intValue,
+                        leftValue:      20,
+                        rightValue:     m_graphyMode.intValue == 0 ? 300 : 128
                     ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
 
                     // Forces the value to be a multiple of 3, this way the audio graph is painted correctly
-
                     if (m_audioGraphResolution.intValue % 3 != 0 && m_audioGraphResolution.intValue < 300)
                     {
                         m_audioGraphResolution.intValue += 3 - m_audioGraphResolution.intValue % 3;
@@ -934,8 +956,12 @@ namespace Tayx.Graphy
 
                 EditorGUILayout.PropertyField
                 (
-                    property: m_FFTWindow,
-                    label: new GUIContent("FFT Window", "Used to reduce leakage between frequency bins/bands. Note, the more complex window type, the better the quality, but reduced speed. \n\nSimplest is rectangular. Most complex is BlackmanHarris")
+                    property:       m_FFTWindow,
+                    label:          new GUIContent
+                    (
+                        text:       "FFT Window",
+                        tooltip:    "Used to reduce leakage between frequency bins/bands. Note, the more complex window type, the better the quality, but reduced speed. \n\nSimplest is rectangular. Most complex is BlackmanHarris"
+                    )
                 );
 
                 m_spectrumSize.intValue = EditorGUILayout.IntSlider
