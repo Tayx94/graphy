@@ -150,70 +150,28 @@ namespace Tayx.Graphy
 
             #region Section -> Settings
 
-            m_graphyMode = serObj.FindProperty
-            (
-                propertyPath: "m_graphyMode"
-            );
+            m_graphyMode            = serObj.FindProperty("m_graphyMode");
 
-            m_enableOnStartup = serObj.FindProperty
-            (
-                propertyPath: "m_enableOnStartup"
-            );
+            m_enableOnStartup       = serObj.FindProperty("m_enableOnStartup");
 
-            m_keepAlive = serObj.FindProperty
-            (
-                propertyPath: "m_keepAlive"
-            );
+            m_keepAlive             = serObj.FindProperty("m_keepAlive");
 
-            m_background = serObj.FindProperty
-            (
-                propertyPath: "m_background"
-            );
+            m_background            = serObj.FindProperty("m_background");
+            m_backgroundColor       = serObj.FindProperty("m_backgroundColor");
 
-            m_backgroundColor = serObj.FindProperty
-            (
-                propertyPath: "m_backgroundColor"
-            );
+            m_enableHotkeys         = serObj.FindProperty("m_enableHotkeys");
 
-            m_enableHotkeys = serObj.FindProperty
-            (
-                propertyPath: "m_enableHotkeys"
-            );
+            m_toggleModeKeyCode     = serObj.FindProperty("m_toggleModeKeyCode");
 
-            m_toggleModeKeyCode = serObj.FindProperty
-            (
-                propertyPath: "m_toggleModeKeyCode"
-            );
+            m_toggleModeCtrl        = serObj.FindProperty("m_toggleModeCtrl");
+            m_toggleModeAlt         = serObj.FindProperty("m_toggleModeAlt");
 
-            m_toggleModeCtrl = serObj.FindProperty
-            (
-                propertyPath: "m_toggleModeCtrl"
-            );
+            m_toggleActiveKeyCode   = serObj.FindProperty("m_toggleActiveKeyCode");
 
-            m_toggleModeAlt = serObj.FindProperty
-            (
-                propertyPath: "m_toggleModeAlt"
-            );
+            m_toggleActiveCtrl      = serObj.FindProperty("m_toggleActiveCtrl");
+            m_toggleActiveAlt       = serObj.FindProperty("m_toggleActiveAlt");
 
-            m_toggleActiveKeyCode = serObj.FindProperty
-            (
-                propertyPath: "m_toggleActiveKeyCode"
-            );
-
-            m_toggleActiveCtrl = serObj.FindProperty
-            (
-                propertyPath: "m_toggleActiveCtrl"
-            );
-
-            m_toggleActiveAlt = serObj.FindProperty
-            (
-                propertyPath: "m_toggleActiveAlt"
-            );
-
-            m_graphModulePosition = serObj.FindProperty
-            (
-                propertyPath: "m_graphModulePosition"
-            );
+            m_graphModulePosition   = serObj.FindProperty("m_graphModulePosition");
 
             #endregion
 
@@ -396,10 +354,7 @@ namespace Tayx.Graphy
 
             //The content
 
-            GUILayout.Space
-            (
-                pixels: 20
-            );
+            GUILayout.Space(pixels: 20);
 
             #region Section -> Logo
 
@@ -439,10 +394,7 @@ namespace Tayx.Graphy
 
             #endregion
 
-            GUILayout.Space
-            (
-                pixels: 5 //Extra pixels added when the logo is used.
-            );
+            GUILayout.Space(pixels: 5); //Extra pixels added when the logo is used.
 
             #region Section -> Settings
 
@@ -626,10 +578,7 @@ namespace Tayx.Graphy
 
             #endregion
 
-            GUILayout.Space
-            (
-                pixels: 20
-            );
+            GUILayout.Space(pixels: 20);
 
             #region Section -> FPS
 
@@ -786,10 +735,7 @@ namespace Tayx.Graphy
 
             #endregion
 
-            GUILayout.Space
-            (
-                pixels: 20
-            );
+            GUILayout.Space(pixels: 20);
 
             #region Section -> RAM
 
@@ -879,10 +825,7 @@ namespace Tayx.Graphy
 
             #endregion
 
-            GUILayout.Space
-            (
-                pixels: 20
-            );
+            GUILayout.Space(pixels: 20);
 
             #region Section -> Audio
 
@@ -1010,10 +953,7 @@ namespace Tayx.Graphy
 
             #endregion
 
-            GUILayout.Space
-            (
-                pixels: 20
-            );
+            GUILayout.Space(pixels: 20);
 
             #region Section -> Advanced Settings
 
@@ -1024,10 +964,7 @@ namespace Tayx.Graphy
                 style:      foldoutStyle
             );
 
-            GUILayout.Space
-            (
-                pixels: 5
-            );
+            GUILayout.Space(pixels: 5);
 
             if (m_advancedModuleInspectorToggle)
             {
@@ -1036,8 +973,7 @@ namespace Tayx.Graphy
                     property: m_advancedModulePosition
                 );
 
-                EditorGUILayout.PropertyField
-                (
+                EditorGUILayout.PropertyField(
                     property:       m_advancedModuleState,
                     label:          new GUIContent
                     (
