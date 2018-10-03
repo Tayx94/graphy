@@ -568,7 +568,7 @@ namespace Tayx.Graphy
                         new GUIContent
                         (
                             text:       "Graph resolution",
-                            tooltip:    "Defines the amount of points are in the graph"
+                            tooltip:    "Defines the amount of points in the graph"
                         ),
                         m_fpsGraphResolution.intValue,
                         leftValue:      20,
@@ -732,7 +732,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Audio Listener",
-                        tooltip:    "Graphy will take the data from this Listener. If none is specified, it will try to get it from the Main Camera in the scene."
+                        tooltip:    "Graphy will take the data from this Listener. If none are specified, it will try to get it from the Main Camera in the scene."
                     )
                 );
 
@@ -749,7 +749,7 @@ namespace Tayx.Graphy
                         new GUIContent
                         (
                             text:       "Graph resolution",
-                            tooltip:    "Defines the amount of points are in the graph. \nUse a multiple of 3 for the best results"
+                            tooltip:    "Defines the amount of points are in the graph. \nUse a number divisible by 3 for the best results."
                         ),
                         m_audioGraphResolution.intValue,
                         leftValue:      20,
