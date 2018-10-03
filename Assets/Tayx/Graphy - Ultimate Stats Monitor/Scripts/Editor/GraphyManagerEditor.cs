@@ -648,7 +648,10 @@ namespace Tayx.Graphy
 
             if (m_fpsModuleInspectorToggle)
             {
-                EditorGUILayout.PropertyField(m_fpsModuleState, new GUIContent("Module state", "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"));
+                EditorGUILayout.PropertyField
+                (
+                    property: m_fpsModuleState,
+                    label: new GUIContent(text: "Module state", tooltip: "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"));
             
                 GUILayout.Space(5);
 
@@ -923,21 +926,46 @@ namespace Tayx.Graphy
 
         private void LoadGuiStyles()
         {
-            string path = GetMonoScriptFilePath(this);
+            string path = GetMonoScriptFilePath
+            (
+                scriptableObject: this
+            );
 
-            path = path.Split(new string[] { "Assets" }, StringSplitOptions.None)[1]
-                       .Split(new string[] { "Tayx"   }, StringSplitOptions.None)[0];
+            path = path.Split(separator: new string[] { "Assets" }, options: StringSplitOptions.None)[1]
+                       .Split(separator: new string[] { "Tayx"   }, options: StringSplitOptions.None)[0];
 
-            m_logoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets" + path + "Tayx/Graphy - Ultimate Stats Monitor/Textures/Manager_Logo_" + (EditorGUIUtility.isProSkin ? "White.png" : "Dark.png"));
+            m_logoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>
+            (
+                assetPath:  "Assets" +
+                            path +
+                            "Tayx/Graphy - Ultimate Stats Monitor/Textures/Manager_Logo_" +
+                            (EditorGUIUtility.isProSkin ? "White.png" : "Dark.png")
+            );
 
-            m_skin = AssetDatabase.LoadAssetAtPath<GUISkin>("Assets" + path + "Tayx/Graphy - Ultimate Stats Monitor/GUI/Graphy.guiskin");
+            m_skin = AssetDatabase.LoadAssetAtPath<GUISkin>
+            (
+                assetPath:  "Assets" +
+                            path +
+                            "Tayx/Graphy - Ultimate Stats Monitor/GUI/Graphy.guiskin"
+            );
 
             if (m_skin != null)
             {
-                m_headerStyle1 = m_skin.GetStyle("Header1");
-                m_headerStyle2 = m_skin.GetStyle("Header2");
+                m_headerStyle1 = m_skin.GetStyle
+                (
+                    styleName: "Header1"
+                );
 
-                SetGuiStyleFontColor(m_headerStyle2, EditorGUIUtility.isProSkin ? Color.white : Color.black);
+                m_headerStyle2 = m_skin.GetStyle
+                (
+                    styleName: "Header2"
+                );
+
+                SetGuiStyleFontColor
+                (
+                    guiStyle:   m_headerStyle2,
+                    color:      EditorGUIUtility.isProSkin ? Color.white : Color.black
+                );
             }
             else
             {
@@ -955,7 +983,7 @@ namespace Tayx.Graphy
         /// <param name="color">
         /// The color for the text.
         /// </param>
-        private void SetGuiStyleFontColor(GUIStyle guiStyle, Color color)
+        private void SetGuiStyleFontColor(GUIStyle guiStyle, Color color) //TODO: Perhaps add a null check.
         {
             guiStyle.normal     .textColor = color;
             guiStyle.hover      .textColor = color;
@@ -967,19 +995,32 @@ namespace Tayx.Graphy
             guiStyle.onFocused  .textColor = color;
         }
 
-        private string GetMonoScriptFilePath(ScriptableObject scriptableObject)
+        private string GetMonoScriptFilePath(ScriptableObject scriptableObject) //TODO: Perhaps add a null check.
         {
-            MonoScript ms = MonoScript.FromScriptableObject(scriptableObject);
+            MonoScript ms = MonoScript.FromScriptableObject
+            (
+                scriptableObject: scriptableObject
+            );
 
-            string filePath = AssetDatabase.GetAssetPath(ms);
+            string filePath = AssetDatabase.GetAssetPath
+            (
+                assetObject: ms
+            );
 
-            FileInfo fi = new FileInfo(filePath);
+            FileInfo fi = new FileInfo
+            (
+                fileName: filePath
+            );
 
             if (fi.Directory != null)
             {
                 filePath = fi.Directory.ToString();
 
-                filePath = filePath.Replace('\\', '/');
+                filePath = filePath.Replace
+                (
+                    oldChar: '\\',
+                    newChar: '/'
+                );
 
                 return filePath;
             }
