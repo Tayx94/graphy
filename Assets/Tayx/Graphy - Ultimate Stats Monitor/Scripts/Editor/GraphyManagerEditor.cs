@@ -1,9 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Collaborators: Rockylars (@Rockylars).
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 20-Dec-17
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Rockylars (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            20-Dec-17
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -17,7 +18,7 @@ using UnityEditor;
 namespace Tayx.Graphy
 {
     [CustomEditor(typeof(GraphyManager))]
-    internal class GraphyManagerEditor : Editor
+    internal sealed class GraphyManagerEditor : Editor
     {
         #region Variables -> Private -> Style
         
@@ -147,32 +148,76 @@ namespace Tayx.Graphy
 
             SerializedObject serObj = serializedObject;
 
-            #region Settings
+            #region Section -> Settings
 
-            m_graphyMode = serObj.FindProperty("m_graphyMode");
+            m_graphyMode = serObj.FindProperty
+            (
+                propertyPath: "m_graphyMode"
+            );
 
-            m_enableOnStartup = serObj.FindProperty("m_enableOnStartup");
+            m_enableOnStartup = serObj.FindProperty
+            (
+                propertyPath: "m_enableOnStartup"
+            );
 
-            m_keepAlive = serObj.FindProperty("m_keepAlive");
+            m_keepAlive = serObj.FindProperty
+            (
+                propertyPath: "m_keepAlive"
+            );
 
-            m_background = serObj.FindProperty("m_background");
-            m_backgroundColor = serObj.FindProperty("m_backgroundColor");
+            m_background = serObj.FindProperty
+            (
+                propertyPath: "m_background"
+            );
 
-            m_enableHotkeys = serObj.FindProperty("m_enableHotkeys");
+            m_backgroundColor = serObj.FindProperty
+            (
+                propertyPath: "m_backgroundColor"
+            );
 
-            m_toggleModeKeyCode = serObj.FindProperty("m_toggleModeKeyCode");
-            m_toggleModeCtrl = serObj.FindProperty("m_toggleModeCtrl");
-            m_toggleModeAlt = serObj.FindProperty("m_toggleModeAlt");
+            m_enableHotkeys = serObj.FindProperty
+            (
+                propertyPath: "m_enableHotkeys"
+            );
 
-            m_toggleActiveKeyCode = serObj.FindProperty("m_toggleActiveKeyCode");
-            m_toggleActiveCtrl = serObj.FindProperty("m_toggleActiveCtrl");
-            m_toggleActiveAlt = serObj.FindProperty("m_toggleActiveAlt");
+            m_toggleModeKeyCode = serObj.FindProperty
+            (
+                propertyPath: "m_toggleModeKeyCode"
+            );
 
-            m_graphModulePosition = serObj.FindProperty("m_graphModulePosition");
+            m_toggleModeCtrl = serObj.FindProperty
+            (
+                propertyPath: "m_toggleModeCtrl"
+            );
+
+            m_toggleModeAlt = serObj.FindProperty
+            (
+                propertyPath: "m_toggleModeAlt"
+            );
+
+            m_toggleActiveKeyCode = serObj.FindProperty
+            (
+                propertyPath: "m_toggleActiveKeyCode"
+            );
+
+            m_toggleActiveCtrl = serObj.FindProperty
+            (
+                propertyPath: "m_toggleActiveCtrl"
+            );
+
+            m_toggleActiveAlt = serObj.FindProperty
+            (
+                propertyPath: "m_toggleActiveAlt"
+            );
+
+            m_graphModulePosition = serObj.FindProperty
+            (
+                propertyPath: "m_graphModulePosition"
+            );
 
             #endregion
 
-            #region FPS
+            #region Section -> FPS
 
             m_fpsModuleState = serObj.FindProperty("m_fpsModuleState");
 
@@ -192,7 +237,7 @@ namespace Tayx.Graphy
 
             #endregion
 
-            #region RAM
+            #region Section -> RAM
 
             m_ramModuleState = serObj.FindProperty("m_ramModuleState");
             
@@ -206,7 +251,7 @@ namespace Tayx.Graphy
 
             #endregion
 
-            #region Audio
+            #region Section -> Audio
 
             m_findAudioListenerInCameraIfNull = serObj.FindProperty("m_findAudioListenerInCameraIfNull");
 
@@ -227,7 +272,7 @@ namespace Tayx.Graphy
 
             #endregion
 
-            #region Advanced Settings
+            #region Section -> Advanced Settings
 
             m_advancedModulePosition = serObj.FindProperty("m_advancedModulePosition");
 
