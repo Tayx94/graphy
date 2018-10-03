@@ -1,6 +1,6 @@
 ﻿/* ---------------------------------------
  * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
- * Collaborators:   Rockylars (@Rockylars)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
  * Project:         Graphy - Ultimate Stats Monitor
  * Date:            20-Dec-17
  * Studio:          Tayx
@@ -219,21 +219,50 @@ namespace Tayx.Graphy
 
             #region Section -> FPS
 
-            m_fpsModuleState = serObj.FindProperty("m_fpsModuleState");
+            m_fpsModuleState = serObj.FindProperty
+            (
+                propertyPath: "m_fpsModuleState"
+            );
 
-            m_timeToResetMinMaxFps = serObj.FindProperty("m_timeToResetMinMaxFps");
+            m_timeToResetMinMaxFps = serObj.FindProperty
+            (
+                propertyPath: "m_timeToResetMinMaxFps"
+            );
 
-            m_goodFpsColor = serObj.FindProperty("m_goodFpsColor");
-            m_goodFpsThreshold = serObj.FindProperty("m_goodFpsThreshold");
+            m_goodFpsColor = serObj.FindProperty
+            (
+                propertyPath: "m_goodFpsColor"
+            );
 
-            m_cautionFpsColor = serObj.FindProperty("m_cautionFpsColor");
-            m_cautionFpsThreshold = serObj.FindProperty("m_cautionFpsThreshold");
+            m_goodFpsThreshold = serObj.FindProperty
+            (
+                propertyPath: "m_goodFpsThreshold"
+            );
 
-            m_criticalFpsColor = serObj.FindProperty("m_criticalFpsColor");
+            m_cautionFpsColor = serObj.FindProperty
+            (
+                propertyPath: "m_cautionFpsColor"
+            );
 
-            m_fpsGraphResolution = serObj.FindProperty("m_fpsGraphResolution");
+            m_cautionFpsThreshold = serObj.FindProperty
+            (
+                propertyPath: "m_cautionFpsThreshold"
+            );
 
-            m_fpsTextUpdateRate = serObj.FindProperty("m_fpsTextUpdateRate");
+            m_criticalFpsColor = serObj.FindProperty
+            (
+                propertyPath: "m_criticalFpsColor"
+            );
+
+            m_fpsGraphResolution = serObj.FindProperty
+            (
+                propertyPath: "m_fpsGraphResolution"
+            );
+
+            m_fpsTextUpdateRate = serObj.FindProperty
+            (
+                propertyPath: "m_fpsTextUpdateRate"
+            );
 
             #endregion
 
@@ -242,7 +271,9 @@ namespace Tayx.Graphy
             m_ramModuleState = serObj.FindProperty("m_ramModuleState");
             
             m_allocatedRamColor = serObj.FindProperty("m_allocatedRamColor");
+
             m_reservedRamColor = serObj.FindProperty("m_reservedRamColor");
+
             m_monoRamColor = serObj.FindProperty("m_monoRamColor");
 
             m_ramGraphResolution = serObj.FindProperty("m_ramGraphResolution");
@@ -264,7 +295,6 @@ namespace Tayx.Graphy
             m_audioGraphResolution = serObj.FindProperty("m_audioGraphResolution");
 
             m_audioTextUpdateRate = serObj.FindProperty("m_audioTextUpdateRate");
-
 
             m_FFTWindow = serObj.FindProperty("m_FFTWindow");
 
@@ -302,7 +332,7 @@ namespace Tayx.Graphy
 
             GUIStyle foldoutStyle = new GUIStyle
             (
-                other: EditorStyles.foldout
+                other:          EditorStyles.foldout
             )
             {
                 font            = m_headerStyle2.font,
@@ -312,8 +342,8 @@ namespace Tayx.Graphy
 
             SetGuiStyleFontColor
             (
-                guiStyle:   foldoutStyle,
-                color:      EditorGUIUtility.isProSkin ? Color.white : Color.black
+                guiStyle:       foldoutStyle,
+                color:          EditorGUIUtility.isProSkin ? Color.white : Color.black
             );
 
             //The content
