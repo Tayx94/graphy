@@ -182,122 +182,58 @@ namespace Tayx.Graphy
             m_timeToResetMinMaxFps  = serObj.FindProperty("m_timeToResetMinMaxFps");
 
             m_goodFpsColor          = serObj.FindProperty("m_goodFpsColor");
-
             m_goodFpsThreshold      = serObj.FindProperty("m_goodFpsThreshold");
 
             m_cautionFpsColor       = serObj.FindProperty("m_cautionFpsColor");
+            m_cautionFpsThreshold   = serObj.FindProperty("m_cautionFpsThreshold");
 
-            m_cautionFpsThreshold   = serObj.FindProperty
-            (
-                propertyPath: "m_cautionFpsThreshold"
-            );
+            m_criticalFpsColor      = serObj.FindProperty("m_criticalFpsColor");
 
-            m_criticalFpsColor = serObj.FindProperty
-            (
-                propertyPath: "m_criticalFpsColor"
-            );
+            m_fpsGraphResolution    = serObj.FindProperty("m_fpsGraphResolution");
 
-            m_fpsGraphResolution = serObj.FindProperty
-            (
-                propertyPath: "m_fpsGraphResolution"
-            );
-
-            m_fpsTextUpdateRate = serObj.FindProperty
-            (
-                propertyPath: "m_fpsTextUpdateRate"
-            );
+            m_fpsTextUpdateRate     = serObj.FindProperty("m_fpsTextUpdateRate");
 
             #endregion
 
             #region Section -> RAM
 
-            m_ramModuleState = serObj.FindProperty
-            (
-                propertyPath: "m_ramModuleState"
-            );
+            m_ramModuleState        = serObj.FindProperty("m_ramModuleState");
             
-            m_allocatedRamColor = serObj.FindProperty
-            (
-                propertyPath: "m_allocatedRamColor"
-            );
+            m_allocatedRamColor     = serObj.FindProperty("m_allocatedRamColor");
+            m_reservedRamColor      = serObj.FindProperty("m_reservedRamColor");
+            m_monoRamColor          = serObj.FindProperty("m_monoRamColor");
 
-            m_reservedRamColor = serObj.FindProperty
-            (
-                propertyPath: "m_reservedRamColor"
-            );
+            m_ramGraphResolution    = serObj.FindProperty("m_ramGraphResolution");
 
-            m_monoRamColor = serObj.FindProperty
-            (
-                propertyPath: "m_monoRamColor"
-            );
-
-            m_ramGraphResolution = serObj.FindProperty
-            (
-                propertyPath: "m_ramGraphResolution"
-            );
-
-            m_ramTextUpdateRate = serObj.FindProperty
-            (
-                propertyPath: "m_ramTextUpdateRate"
-            );
+            m_ramTextUpdateRate     = serObj.FindProperty("m_ramTextUpdateRate");
 
             #endregion
 
             #region Section -> Audio
 
-            m_findAudioListenerInCameraIfNull = serObj.FindProperty
-            (
-                propertyPath: "m_findAudioListenerInCameraIfNull"
-            );
+            m_findAudioListenerInCameraIfNull   = serObj.FindProperty("m_findAudioListenerInCameraIfNull");
 
-            m_audioListener = serObj.FindProperty
-            (
-                propertyPath: "m_audioListener"
-            );
+            m_audioListener                     = serObj.FindProperty("m_audioListener");
             
-            m_audioModuleState = serObj.FindProperty
-            (
-                propertyPath: "m_audioModuleState"
-            );
+            m_audioModuleState                  = serObj.FindProperty("m_audioModuleState");
 
-            m_audioGraphColor = serObj.FindProperty
-            (
-                propertyPath: "m_audioGraphColor"
-            );
+            m_audioGraphColor                   = serObj.FindProperty("m_audioGraphColor");
 
-            m_audioGraphResolution = serObj.FindProperty
-            (
-                propertyPath: "m_audioGraphResolution"
-            );
+            m_audioGraphResolution              = serObj.FindProperty("m_audioGraphResolution");
 
-            m_audioTextUpdateRate = serObj.FindProperty
-            (
-                propertyPath: "m_audioTextUpdateRate"
-            );
+            m_audioTextUpdateRate               = serObj.FindProperty("m_audioTextUpdateRate");
 
-            m_FFTWindow = serObj.FindProperty
-            (
-                propertyPath: "m_FFTWindow"
-            );
+            m_FFTWindow                         = serObj.FindProperty("m_FFTWindow");
 
-            m_spectrumSize = serObj.FindProperty
-            (
-                propertyPath: "m_spectrumSize"
-            );
+            m_spectrumSize                      = serObj.FindProperty("m_spectrumSize");
 
             #endregion
 
             #region Section -> Advanced Settings
 
-            m_advancedModulePosition = serObj.FindProperty
-            (
-                propertyPath: "m_advancedModulePosition"
-            );
+            m_advancedModulePosition    = serObj.FindProperty("m_advancedModulePosition");
 
-            m_advancedModuleState = serObj.FindProperty
-            (
-                propertyPath: "m_advancedModuleState"
-            );
+            m_advancedModuleState       = serObj.FindProperty("m_advancedModuleState");
 
             #endregion
 
@@ -326,10 +262,9 @@ namespace Tayx.Graphy
                 contentOffset   = Vector2.down * 3f //TODO: Maybe replace this with "new Vector2(0f, -3f);"
             };
 
-            SetGuiStyleFontColor
-            (
-                guiStyle:       foldoutStyle,
-                color:          EditorGUIUtility.isProSkin ? Color.white : Color.black
+            SetGuiStyleFontColor(
+                guiStyle:   foldoutStyle,
+                color:      EditorGUIUtility.isProSkin ? Color.white : Color.black
             );
 
             //===== CONTENT REGION ========================================================================
@@ -338,35 +273,21 @@ namespace Tayx.Graphy
 
             #region Section -> Logo
 
-            //Space above the logo region.
-
-            //The logo region.
             if (m_logoTexture != null)
             {
-                GUILayout.Label
-                (
+                GUILayout.Label(
                     image: m_logoTexture,
-                    style: new GUIStyle
-                    (
-                        other: GUI.skin.GetStyle
-                        (
-                            styleName: "Label"
-                        )
-                    )
+                    style: new GUIStyle(GUI.skin.GetStyle("Label"))
                     {
                         alignment = TextAnchor.UpperCenter
                     }
                 );
 
-                GUILayout.Space
-                (
-                    pixels: 10
-                );
+                GUILayout.Space(10);
             }
             else
             {
-                EditorGUILayout.LabelField
-                (
+                EditorGUILayout.LabelField(
                     label: "[ GRAPHY - MANAGER ]",
                     style: m_headerStyle1
                 );
@@ -381,74 +302,50 @@ namespace Tayx.Graphy
             EditorGUIUtility.labelWidth = 130;
             EditorGUIUtility.fieldWidth = 35;
 
-            EditorGUILayout.PropertyField
-            (
-                property:       m_graphyMode,
-                label:          new GUIContent
-                (
+            EditorGUILayout.PropertyField(
+                m_graphyMode,
+                new GUIContent(
                     text:       "Graphy Mode",
                     tooltip:    "LIGHT mode increases compatibility with older GPUs, but reduces the maximum graph resolutions to 128."
                 )
             );
 
-            GUILayout.Space
-            (
-                pixels: 10
-            );
+            GUILayout.Space(10);
 
-            m_enableOnStartup.boolValue = EditorGUILayout.Toggle
-            (
-                label:          new GUIContent
-                (
+            m_enableOnStartup.boolValue = EditorGUILayout.Toggle(
+                new GUIContent(
                     text:       "Enable On Startup",
                     tooltip:    "If ticked, Graphy will be displayed by default on startup, otherwise it will initiate and hide."
                 ),
                 value:          m_enableOnStartup.boolValue
             );
 
-            m_keepAlive.boolValue = EditorGUILayout.Toggle
-            (
-                label:          new GUIContent
-                (
+            m_keepAlive.boolValue = EditorGUILayout.Toggle(
+                new GUIContent(
                     text:       "Keep Alive",
                     tooltip:    "If ticked, it will survive scene changes. Careful, if you set Graphy as a child of another GameObject, the root GameObject will also survive scene changes. If you want to avoid that put Graphy in the root of the Scene as its own entity."
                 ),
                 value:          m_keepAlive.boolValue
             );
                
-            GUILayout.Space
-            (
-                pixels: 10
-            );
-            
+            GUILayout.Space(10);
             EditorGUILayout.BeginHorizontal();
 
-            m_background.boolValue = EditorGUILayout.Toggle
-            (
-                label:          new GUIContent
-                (
+            m_background.boolValue = EditorGUILayout.Toggle(
+                new GUIContent(
                     text:       "Background",
                     tooltip:    "If ticked, it will show a background overlay to improve readability in cluttered scenes."
                 ),
                 value:          m_background.boolValue
             );
 
-            m_backgroundColor.colorValue = EditorGUILayout.ColorField
-            (
-                value: m_backgroundColor.colorValue
-            );
+            m_backgroundColor.colorValue = EditorGUILayout.ColorField(m_backgroundColor.colorValue);
 
             EditorGUILayout.EndHorizontal();
+            GUILayout.Space(10);
 
-            GUILayout.Space
-            (
-                pixels: 10
-            );
-
-            m_enableHotkeys.boolValue = EditorGUILayout.Toggle
-            (
-                label:          new GUIContent
-                (
+            m_enableHotkeys.boolValue = EditorGUILayout.Toggle(
+                new GUIContent(
                     text:       "Enable Hotkeys",
                     tooltip:    "If ticked, it will enable the hotkeys to be able to modify Graphy in runtime with custom keyboard shortcuts."
                 ),
@@ -462,11 +359,9 @@ namespace Tayx.Graphy
                 EditorGUIUtility.labelWidth = 130;
                 EditorGUIUtility.fieldWidth = 35;
 
-                EditorGUILayout.PropertyField
-                (
-                    property:       m_toggleModeKeyCode,
-                    label:          new GUIContent
-                    (
+                EditorGUILayout.PropertyField(
+                    m_toggleModeKeyCode,
+                    new GUIContent(
                         text:       "Toggle Mode Key",
                         tooltip:    "If ticked, it will require clicking this key and the other ones you have set up."
                     )
@@ -475,20 +370,16 @@ namespace Tayx.Graphy
                 EditorGUIUtility.labelWidth = 30;
                 EditorGUIUtility.fieldWidth = 35;
 
-                m_toggleModeCtrl.boolValue = EditorGUILayout.Toggle
-                (
-                    label:          new GUIContent
-                    (
+                m_toggleModeCtrl.boolValue = EditorGUILayout.Toggle(
+                    new GUIContent(
                         text:       "Ctrl",
                         tooltip:    "If ticked, it will require clicking Ctrl and the other keys you have set up."
                     ),
                     value:          m_toggleModeCtrl.boolValue
                 );
 
-                m_toggleModeAlt.boolValue = EditorGUILayout.Toggle
-                (
-                    label:          new GUIContent
-                    (
+                m_toggleModeAlt.boolValue = EditorGUILayout.Toggle(
+                    new GUIContent(
                         text:       "Alt",
                         tooltip:    "If ticked, it will require clicking Alt and the other keys you have set up."
                     ),
@@ -496,17 +387,14 @@ namespace Tayx.Graphy
                 );
 
                 EditorGUILayout.EndHorizontal();
-
                 EditorGUILayout.BeginHorizontal();
 
                 EditorGUIUtility.labelWidth = 130;
                 EditorGUIUtility.fieldWidth = 35;
 
-                EditorGUILayout.PropertyField
-                (
-                    property:       m_toggleActiveKeyCode,
-                    label:          new GUIContent
-                    (
+                EditorGUILayout.PropertyField(
+                    m_toggleActiveKeyCode,
+                    new GUIContent(
                         text:       "Toggle Active Key",
                         tooltip:    "If ticked, it will require clicking this key and the other ones you have set up."
                     )
@@ -515,20 +403,16 @@ namespace Tayx.Graphy
                 EditorGUIUtility.labelWidth = 30;
                 EditorGUIUtility.fieldWidth = 35;
 
-                m_toggleActiveCtrl.boolValue = EditorGUILayout.Toggle
-                (
-                    label:          new GUIContent
-                    (
+                m_toggleActiveCtrl.boolValue = EditorGUILayout.Toggle(
+                    new GUIContent(
                         text:       "Ctrl",
                         tooltip:    "If ticked, it will require clicking Ctrl and the other keys you have set up"
                     ),
                     value:          m_toggleActiveCtrl.boolValue
                 );
 
-                m_toggleActiveAlt.boolValue = EditorGUILayout.Toggle
-                (
-                    label:          new GUIContent
-                    (
+                m_toggleActiveAlt.boolValue = EditorGUILayout.Toggle(
+                    new GUIContent(
                         text:       "Alt",
                         tooltip:    "If ticked, it will require clicking Alt and the other keys you have set up"
                     ),
@@ -538,19 +422,14 @@ namespace Tayx.Graphy
                 EditorGUILayout.EndHorizontal();
             }
 
-            GUILayout.Space
-            (
-                pixels: 15
-            );
+            GUILayout.Space(15);
 
             EditorGUIUtility.labelWidth = 155;
             EditorGUIUtility.fieldWidth = 35;
 
-            EditorGUILayout.PropertyField
-            (
-                property:       m_graphModulePosition,
-                label:          new GUIContent
-                (
+            EditorGUILayout.PropertyField(
+                m_graphModulePosition,
+                new GUIContent(
                     text:       "Graph modules position",
                     tooltip:    "Defines in which top corner the modules will be located"
                 )
@@ -925,26 +804,23 @@ namespace Tayx.Graphy
 
             #region Section -> Advanced Settings
 
-            m_advancedModuleInspectorToggle = EditorGUILayout.Foldout
-            (
-                foldout:    m_advancedModuleInspectorToggle,
+            m_advancedModuleInspectorToggle = EditorGUILayout.Foldout(
+                m_advancedModuleInspectorToggle,
                 content:    " [ ADVANCED DATA ]",
                 style:      foldoutStyle
             );
 
-            GUILayout.Space(pixels: 5);
+            GUILayout.Space(5);
 
             if (m_advancedModuleInspectorToggle)
             {
-                EditorGUILayout.PropertyField
-                (
-                    property: m_advancedModulePosition
+                EditorGUILayout.PropertyField(
+                    m_advancedModulePosition
                 );
 
                 EditorGUILayout.PropertyField(
-                    property:       m_advancedModuleState,
-                    label:          new GUIContent
-                    (
+                    m_advancedModuleState,
+                    new GUIContent(
                         text:       "Module state",
                         tooltip:    "FULL -> Text \nOFF -> Turned off"
                     )
