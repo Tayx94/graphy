@@ -14,9 +14,14 @@ using System.Collections;
 
 namespace Tayx.Graphy.CustomizationScene
 {
+    //TODO: Check if we can seal the class.
 	public class ForceSliderToPowerOf2 : MonoBehaviour
 	{
-		[SerializeField] private Slider m_slider;
+        //TODO: Add summaries.
+
+        #region Private Variables
+
+        [SerializeField] private Slider m_slider;
 
 		private int[] m_powerOf2Values =
 		{
@@ -30,17 +35,26 @@ namespace Tayx.Graphy.CustomizationScene
 		};
 		
 		private Text m_text;
-		
-		void Start()
+
+        #endregion
+
+        #region Unity Methods
+
+        void Start()
 		{
 			m_slider.onValueChanged.AddListener(UpdateValue);
 		}
 
-		private void UpdateValue(float value)
+        #endregion
+
+        #region Private Methods
+
+        private void UpdateValue(float value)
 		{
 			int closestSpectrumIndex = 0;
 			int minDistanceToSpectrumValue = 100000;
 
+            //TODO: Put the int cast outside of the loop.
 			for (int i = 0; i < m_powerOf2Values.Length; i++)
 			{
 				int newDistance = Mathf.Abs((int)value - m_powerOf2Values[i]);
@@ -53,5 +67,7 @@ namespace Tayx.Graphy.CustomizationScene
 			
 			m_slider.value = m_powerOf2Values[closestSpectrumIndex];
 		}
-	}
+
+        #endregion
+    }
 }

@@ -87,6 +87,8 @@ namespace Tayx.Graphy
         #region Private Variables
 
         private                     bool                    m_initialized = false;
+        private                     bool                    m_active = true;
+        private                     bool                    m_focused = true;
 
         private                     FpsManager              m_fpsManager;
         private                     RamManager              m_ramManager;
@@ -101,14 +103,14 @@ namespace Tayx.Graphy
 
         private                     ModulePreset            m_modulePresetState = ModulePreset.FPS_BASIC_ADVANCED_FULL;
 
-        private                     bool                    m_active = true;
-
         [SerializeField] private    bool                    m_enableOnStartup = true;
 
         [SerializeField] private    bool                    m_keepAlive = true;
         
         [SerializeField] private    bool                    m_background = true;
         [SerializeField] private    Color                   m_backgroundColor = new Color(0, 0, 0, 0.3f);
+
+        [SerializeField] private    bool                    m_enableHotkeys = true;
 
         [SerializeField] private    KeyCode                 m_toggleModeKeyCode = KeyCode.G;
         [SerializeField] private    bool                    m_toggleModeCtrl = true;
@@ -338,12 +340,17 @@ namespace Tayx.Graphy
 
         void Update()
         {
-            CheckForHotkeyPresses();
+            if (m_focused && m_enableHotkeys)
+            {
+                CheckForHotkeyPresses();
+            }
         }
 
-        void OnApplicationFocus(bool focus)
+        void OnApplicationFocus(bool isFocused)
         {
-            if (m_initialized && focus)
+            m_focused = isFocused;
+
+            if (m_initialized && isFocused)
             {
                 UpdateAllParameters();
             }

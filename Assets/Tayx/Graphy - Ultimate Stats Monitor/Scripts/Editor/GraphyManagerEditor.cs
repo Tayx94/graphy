@@ -49,7 +49,8 @@ namespace Tayx.Graphy
         private SerializedProperty m_background;
         private SerializedProperty m_backgroundColor;
 
-        
+        private SerializedProperty m_enableHotkeys;
+
         private SerializedProperty m_toggleModeKeyCode;
         private SerializedProperty m_toggleModeCtrl;
         private SerializedProperty m_toggleModeAlt;
@@ -142,6 +143,8 @@ namespace Tayx.Graphy
 
             m_background = serObj.FindProperty("m_background");
             m_backgroundColor = serObj.FindProperty("m_backgroundColor");
+
+            m_enableHotkeys = serObj.FindProperty("m_enableHotkeys");
 
             m_toggleModeKeyCode = serObj.FindProperty("m_toggleModeKeyCode");
             m_toggleModeCtrl = serObj.FindProperty("m_toggleModeCtrl");
@@ -277,32 +280,37 @@ namespace Tayx.Graphy
             EditorGUILayout.EndHorizontal();
 
             GUILayout.Space(10);
-            
-            EditorGUILayout.BeginHorizontal();
 
-            EditorGUIUtility.labelWidth = 130;
-            EditorGUIUtility.fieldWidth = 35;
-            EditorGUILayout.PropertyField(m_toggleModeKeyCode, new GUIContent("Toggle Mode Key", "If ticked, it will require clicking this key and the other ones you have set up"));
+            m_enableHotkeys.boolValue = EditorGUILayout.Toggle(new GUIContent("Enable Hotkeys", "If ticked, it will enable the hotkeys to be ablet o modify Graphy in runtime with custom keyboard shortvuts"), m_enableHotkeys.boolValue);
 
-            EditorGUIUtility.labelWidth = 30;
-            EditorGUIUtility.fieldWidth = 35;
-            m_toggleModeCtrl.boolValue = EditorGUILayout.Toggle(new GUIContent("Ctrl", "If ticked, it will require clicking Ctrl and the other keys you have set up"), m_toggleModeCtrl.boolValue);
-            m_toggleModeAlt.boolValue = EditorGUILayout.Toggle(new GUIContent("Alt", "If ticked, it will require clicking Alt and the other keys you have set up"), m_toggleModeAlt.boolValue);
+            if (m_enableHotkeys.boolValue)
+            {
+                EditorGUILayout.BeginHorizontal();
 
-            EditorGUILayout.EndHorizontal();
+                EditorGUIUtility.labelWidth = 130;
+                EditorGUIUtility.fieldWidth = 35;
+                EditorGUILayout.PropertyField(m_toggleModeKeyCode, new GUIContent("Toggle Mode Key", "If ticked, it will require clicking this key and the other ones you have set up"));
 
-            EditorGUILayout.BeginHorizontal();
+                EditorGUIUtility.labelWidth = 30;
+                EditorGUIUtility.fieldWidth = 35;
+                m_toggleModeCtrl.boolValue = EditorGUILayout.Toggle(new GUIContent("Ctrl", "If ticked, it will require clicking Ctrl and the other keys you have set up"), m_toggleModeCtrl.boolValue);
+                m_toggleModeAlt.boolValue = EditorGUILayout.Toggle(new GUIContent("Alt", "If ticked, it will require clicking Alt and the other keys you have set up"), m_toggleModeAlt.boolValue);
 
-            EditorGUIUtility.labelWidth = 130;
-            EditorGUIUtility.fieldWidth = 35;
-            EditorGUILayout.PropertyField(m_toggleActiveKeyCode, new GUIContent("Toggle Active Key", "If ticked, it will require clicking this key and the other ones you have set up"));
+                EditorGUILayout.EndHorizontal();
 
-            EditorGUIUtility.labelWidth = 30;
-            EditorGUIUtility.fieldWidth = 35;
-            m_toggleActiveCtrl.boolValue = EditorGUILayout.Toggle(new GUIContent("Ctrl", "If ticked, it will require clicking Ctrl and the other keys you have set up"), m_toggleActiveCtrl.boolValue);
-            m_toggleActiveAlt.boolValue = EditorGUILayout.Toggle(new GUIContent("Alt", "If ticked, it will require clicking Alt and the other keys you have set up"), m_toggleActiveAlt.boolValue);
+                EditorGUILayout.BeginHorizontal();
 
-            EditorGUILayout.EndHorizontal();
+                EditorGUIUtility.labelWidth = 130;
+                EditorGUIUtility.fieldWidth = 35;
+                EditorGUILayout.PropertyField(m_toggleActiveKeyCode, new GUIContent("Toggle Active Key", "If ticked, it will require clicking this key and the other ones you have set up"));
+
+                EditorGUIUtility.labelWidth = 30;
+                EditorGUIUtility.fieldWidth = 35;
+                m_toggleActiveCtrl.boolValue = EditorGUILayout.Toggle(new GUIContent("Ctrl", "If ticked, it will require clicking Ctrl and the other keys you have set up"), m_toggleActiveCtrl.boolValue);
+                m_toggleActiveAlt.boolValue = EditorGUILayout.Toggle(new GUIContent("Alt", "If ticked, it will require clicking Alt and the other keys you have set up"), m_toggleActiveAlt.boolValue);
+
+                EditorGUILayout.EndHorizontal();
+            }
 
             GUILayout.Space(15);
 
@@ -326,8 +334,6 @@ namespace Tayx.Graphy
                 EditorGUILayout.PropertyField(m_fpsModuleState, new GUIContent("Module state", "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"));
             
                 GUILayout.Space(5);
-
-                EditorGUI.indentLevel++;
 
                 EditorGUILayout.LabelField("Fps thresholds and colors:");
 
@@ -395,7 +401,7 @@ namespace Tayx.Graphy
                     );
                 }
 
-                EditorGUIUtility.labelWidth = 200;
+                EditorGUIUtility.labelWidth = 180;
                 EditorGUIUtility.fieldWidth = 35;
 
                 m_timeToResetMinMaxFps.intValue = EditorGUILayout.IntSlider
@@ -414,8 +420,6 @@ namespace Tayx.Graphy
                 );
 
                 GUILayout.Space(10);
-
-                EditorGUI.indentLevel--;
             }
             
             // Ram ---------------------------------------------------------------------------
@@ -430,8 +434,6 @@ namespace Tayx.Graphy
                 EditorGUILayout.PropertyField(m_ramModuleState, new GUIContent("Module state", "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"));
 
                 GUILayout.Space(5);
-            
-                EditorGUI.indentLevel++;
 
                 EditorGUILayout.LabelField("Graph colors:");
 
@@ -460,8 +462,6 @@ namespace Tayx.Graphy
                 );
 
                 GUILayout.Space(10);
-
-                EditorGUI.indentLevel--;
             }
 
             // Audio -------------------------------------------------------------------------
@@ -476,8 +476,6 @@ namespace Tayx.Graphy
                 EditorGUILayout.PropertyField(m_audioModuleState, new GUIContent("Module state", "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"));
 
                 GUILayout.Space(5);
-                
-                EditorGUI.indentLevel++;
                 
                 EditorGUILayout.PropertyField
                 (
@@ -544,8 +542,6 @@ namespace Tayx.Graphy
                 );
 
                 GUILayout.Space(10);
-                
-                EditorGUI.indentLevel--;
             }
 
             // Advanced -----------------------------------------------------------------------

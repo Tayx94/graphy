@@ -2,7 +2,7 @@
 
 ![Graphy Image](https://image.ibb.co/dbcDu8/2018_07_15_15_10_05.gif)
 
-Graphy is the ultimate, easy to use, feature packed stats monitor and debugger for your Unity project.
+Graphy is the ultimate, easy to use, feature packed FPS Counter, stats monitor and debugger for your Unity project.
 
 **Main Features:**
 - Graph & Text:
@@ -39,6 +39,8 @@ The debugger allows you to set one or more conditions, that if met will have the
 - [Discord](https://discord.gg/2KgNEHK?)
 
 ## Development of Graphy
+
+Maintainer and main developer: **Martín Pane**
 
 ### Contributing
 
