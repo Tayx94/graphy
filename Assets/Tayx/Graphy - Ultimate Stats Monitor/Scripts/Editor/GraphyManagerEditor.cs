@@ -1,12 +1,13 @@
 ﻿/* ---------------------------------------
  * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators: Rockylars (@Rockylars).
  * Project: Graphy - Ultimate Stats Monitor
  * Date: 20-Dec-17
  * Studio: Tayx
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
- 
+
 using System;
 using UnityEngine;
 using System.Collections;
@@ -18,8 +19,8 @@ namespace Tayx.Graphy
     [CustomEditor(typeof(GraphyManager))]
     internal class GraphyManagerEditor : Editor
     {
-        #region Private Variables
-
+        #region Variables -> Private -> Style
+        
         private GraphyManager m_target;
 
         private GUISkin m_skin;
@@ -39,6 +40,10 @@ namespace Tayx.Graphy
             4096,
             8192
         };
+
+        #endregion
+
+        #region Variables -> Private -> Settings
 
         private SerializedProperty m_graphyMode;
 
@@ -62,7 +67,9 @@ namespace Tayx.Graphy
 
         private SerializedProperty m_graphModulePosition;
 
-        // Fps ---------------------------------------------------------------------------
+        #endregion
+
+        #region Variables -> Private -> FPS
 
         private bool m_fpsModuleInspectorToggle = true;
             
@@ -82,7 +89,9 @@ namespace Tayx.Graphy
 
         private SerializedProperty m_fpsTextUpdateRate;
 
-        // Ram ---------------------------------------------------------------------------
+        #endregion
+
+        #region Variables -> Private -> RAM
 
         private bool m_ramModuleInspectorToggle = true;
 
@@ -96,7 +105,9 @@ namespace Tayx.Graphy
 
         private SerializedProperty m_ramTextUpdateRate;
 
-        // Audio -------------------------------------------------------------------------
+        #endregion
+
+        #region Variables -> Private -> Audio
 
         private bool m_audioModuleInspectorToggle = true;
             
@@ -116,7 +127,9 @@ namespace Tayx.Graphy
 
         private SerializedProperty m_spectrumSize;
 
-        // Advanced ----------------------------------------------------------------------
+        #endregion
+
+        #region Variables -> Private -> Advanced Settings
 
         private bool m_advancedModuleInspectorToggle = true;
             
@@ -124,16 +137,17 @@ namespace Tayx.Graphy
 
         private SerializedProperty m_advancedModuleState;
 
-
         #endregion
 
-        #region Unity Editor Methods
+        #region Methods -> Unity Callbacks
 
-        public void OnEnable()
+        private void OnEnable()
         {
             m_target = (GraphyManager)target;
 
             SerializedObject serObj = serializedObject;
+
+            #region Settings
 
             m_graphyMode = serObj.FindProperty("m_graphyMode");
 
@@ -156,7 +170,9 @@ namespace Tayx.Graphy
 
             m_graphModulePosition = serObj.FindProperty("m_graphModulePosition");
 
-            // Fps ---------------------------------------------------------------------------
+            #endregion
+
+            #region FPS
 
             m_fpsModuleState = serObj.FindProperty("m_fpsModuleState");
 
@@ -174,7 +190,9 @@ namespace Tayx.Graphy
 
             m_fpsTextUpdateRate = serObj.FindProperty("m_fpsTextUpdateRate");
 
-            // Ram ---------------------------------------------------------------------------
+            #endregion
+
+            #region RAM
 
             m_ramModuleState = serObj.FindProperty("m_ramModuleState");
             
@@ -186,7 +204,9 @@ namespace Tayx.Graphy
 
             m_ramTextUpdateRate = serObj.FindProperty("m_ramTextUpdateRate");
 
-            // Audio -------------------------------------------------------------------------
+            #endregion
+
+            #region Audio
 
             m_findAudioListenerInCameraIfNull = serObj.FindProperty("m_findAudioListenerInCameraIfNull");
 
@@ -205,13 +225,21 @@ namespace Tayx.Graphy
 
             m_spectrumSize = serObj.FindProperty("m_spectrumSize");
 
-            // Advanced ----------------------------------------------------------------------
+            #endregion
+
+            #region Advanced Settings
 
             m_advancedModulePosition = serObj.FindProperty("m_advancedModulePosition");
 
             m_advancedModuleState = serObj.FindProperty("m_advancedModuleState");
-            
+
+            #endregion
+
         }
+
+        #endregion
+
+        #region Methods -> Override
 
         public override void OnInspectorGUI()
         {
@@ -226,39 +254,75 @@ namespace Tayx.Graphy
 
             float defaultLabelWidth = EditorGUIUtility.labelWidth;
             float defaultFieldWidth = EditorGUIUtility.fieldWidth;
-            
-            GUIStyle foldoutStyle = new GUIStyle(EditorStyles.foldout);
 
-            foldoutStyle.font = m_headerStyle2.font;
-            foldoutStyle.fontStyle = m_headerStyle2.fontStyle;
+            GUIStyle foldoutStyle = new GUIStyle
+            (
+                other: EditorStyles.foldout
+            )
+            {
+                font            = m_headerStyle2.font,
+                fontStyle       = m_headerStyle2.fontStyle,
+                contentOffset   = Vector2.down * 3f
+            };
 
-            foldoutStyle.normal.textColor       = EditorGUIUtility.isProSkin ? Color.white : Color.black;
-            foldoutStyle.onNormal.textColor     = EditorGUIUtility.isProSkin ? Color.white : Color.black;
-            foldoutStyle.hover.textColor        = EditorGUIUtility.isProSkin ? Color.white : Color.black;
-            foldoutStyle.onHover.textColor      = EditorGUIUtility.isProSkin ? Color.white : Color.black;
-            foldoutStyle.focused.textColor      = EditorGUIUtility.isProSkin ? Color.white : Color.black;
-            foldoutStyle.onFocused.textColor    = EditorGUIUtility.isProSkin ? Color.white : Color.black;
-            foldoutStyle.active.textColor       = EditorGUIUtility.isProSkin ? Color.white : Color.black;
-            foldoutStyle.onActive.textColor     = EditorGUIUtility.isProSkin ? Color.white : Color.black;
+            SetGuiStyleFontColor
+            (
+                guiStyle:   foldoutStyle,
+                color:      EditorGUIUtility.isProSkin ? Color.white : Color.black
+            );
 
-            foldoutStyle.contentOffset = Vector2.down * 3f;
+            //The content
 
-            GUILayout.Space(20);
+            GUILayout.Space
+            (
+                pixels: 20
+            );
 
+            #region Section -> Logo
+
+            //Space above the logo region.
+
+            //The logo region.
             if (m_logoTexture != null)
             {
-                var centeredStyle = new GUIStyle(GUI.skin.GetStyle("Label"));
-                centeredStyle.alignment = TextAnchor.UpperCenter;
+                GUILayout.Label
+                (
+                    image: m_logoTexture,
+                    style: new GUIStyle
+                    (
+                        other: GUI.skin.GetStyle
+                        (
+                            styleName: "Label"
+                        )
+                    )
+                    {
+                        alignment = TextAnchor.UpperCenter
+                    }
+                );
 
-                GUILayout.Label(m_logoTexture, centeredStyle);
+                GUILayout.Space
+                (
+                    pixels: 10
+                );
             }
             else
             {
-                EditorGUILayout.LabelField("[ GRAPHY - MANAGER ]", m_headerStyle1);
+                EditorGUILayout.LabelField
+                (
+                    label: "[ GRAPHY - MANAGER ]",
+                    style: m_headerStyle1
+                );
             }
 
-            GUILayout.Space(10);
-            
+            #endregion
+
+            GUILayout.Space
+            (
+                pixels: 5 //Extra pixels added when the logo is used.
+            );
+
+            #region Section -> Settings
+
             EditorGUIUtility.labelWidth = 130;
             EditorGUIUtility.fieldWidth = 35;
 
@@ -318,15 +382,27 @@ namespace Tayx.Graphy
             EditorGUIUtility.fieldWidth = 35;
 
             EditorGUILayout.PropertyField(m_graphModulePosition, new GUIContent("Graph modules position", "Defines in wich top corner the modules will be located"));
-            
-            GUILayout.Space(5);
 
-            // Fps ---------------------------------------------------------------------------
+            #endregion
 
-            m_fpsModuleInspectorToggle = EditorGUILayout.Foldout(m_fpsModuleInspectorToggle,
-                " [ FPS ]", foldoutStyle);
+            GUILayout.Space
+            (
+                pixels: 20
+            );
+
+            #region Section -> FPS
+
+            m_fpsModuleInspectorToggle = EditorGUILayout.Foldout
+            (
+                foldout: m_fpsModuleInspectorToggle,
+                content: " [ FPS ]",
+                style: foldoutStyle
+            );
             
-            GUILayout.Space(5);
+            GUILayout.Space
+            (
+                pixels: 5
+            );
 
 
             if (m_fpsModuleInspectorToggle)
@@ -418,11 +494,17 @@ namespace Tayx.Graphy
                     new GUIContent("Text update rate", "Defines the amount times the text is updated in 1 second"),
                     m_fpsTextUpdateRate.intValue, 1, 60
                 );
-
-                GUILayout.Space(10);
+                
             }
-            
-            // Ram ---------------------------------------------------------------------------
+
+            #endregion
+
+            GUILayout.Space
+            (
+                pixels: 20
+            );
+
+            #region Section -> RAM
 
             m_ramModuleInspectorToggle = EditorGUILayout.Foldout(m_ramModuleInspectorToggle,
                 " [ RAM ]", foldoutStyle);
@@ -460,11 +542,16 @@ namespace Tayx.Graphy
                     new GUIContent("Text update rate", "Defines the amount times the text is updated in 1 second"),
                     m_ramTextUpdateRate.intValue, 1, 60
                 );
-
-                GUILayout.Space(10);
             }
 
-            // Audio -------------------------------------------------------------------------
+            #endregion
+
+            GUILayout.Space
+            (
+                pixels: 20
+            );
+
+            #region Section -> Audio
 
             m_audioModuleInspectorToggle = EditorGUILayout.Foldout(m_audioModuleInspectorToggle,
                 " [ AUDIO ]", foldoutStyle);
@@ -540,11 +627,16 @@ namespace Tayx.Graphy
                     new GUIContent("Text update rate", "Defines the amount times the text is updated in 1 second"),
                     m_audioTextUpdateRate.intValue, 1, 60
                 );
-
-                GUILayout.Space(10);
             }
 
-            // Advanced -----------------------------------------------------------------------
+            #endregion
+
+            GUILayout.Space
+            (
+                pixels: 20
+            );
+
+            #region Section -> Advanced Settings
 
             m_advancedModuleInspectorToggle = EditorGUILayout.Foldout(m_advancedModuleInspectorToggle,
                 " [ ADVANCED DATA ]", foldoutStyle);
@@ -557,19 +649,18 @@ namespace Tayx.Graphy
 
                 EditorGUILayout.PropertyField(m_advancedModuleState, new GUIContent("Module state", "FULL -> Text \nOFF -> Turned off"));
             }
-            
-            // End ----------------------------------
+
+            #endregion;
 
             EditorGUIUtility.labelWidth = defaultLabelWidth;
             EditorGUIUtility.fieldWidth = defaultFieldWidth;
 
             serializedObject.ApplyModifiedProperties();
-            
         }
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         private void LoadGuiStyles()
         {
@@ -596,6 +687,15 @@ namespace Tayx.Graphy
             }
         }
 
+        /// <summary>
+        /// Sets the colors of the GUIStyle's text.
+        /// </summary>
+        /// <param name="guiStyle">
+        /// The GUIStyle to be altered.
+        /// </param>
+        /// <param name="color">
+        /// The color for the text.
+        /// </param>
         private void SetGuiStyleFontColor(GUIStyle guiStyle, Color color)
         {
             guiStyle.normal     .textColor = color;
@@ -624,11 +724,7 @@ namespace Tayx.Graphy
 
                 return filePath;
             }
-            else
-            {
-                return null;
-            }
-            
+            return null;
         }
 
         #endregion
