@@ -645,28 +645,45 @@ namespace Tayx.Graphy
                 pixels: 5
             );
 
-
             if (m_fpsModuleInspectorToggle)
             {
                 EditorGUILayout.PropertyField
                 (
-                    property: m_fpsModuleState,
-                    label: new GUIContent(text: "Module state", tooltip: "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"));
-            
-                GUILayout.Space(5);
+                    property:       m_fpsModuleState,
+                    label:          new GUIContent
+                    (
+                        text:       "Module state",
+                        tooltip:    "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"
+                    )
+                );
 
-                EditorGUILayout.LabelField("Fps thresholds and colors:");
+                GUILayout.Space
+                (
+                    pixels: 5
+                );
+
+                EditorGUILayout.LabelField
+                (
+                    label: "Fps thresholds and colors:"
+                );
 
                 EditorGUI.indentLevel++;
-
                 EditorGUILayout.BeginHorizontal();
 
                 m_goodFpsThreshold.intValue = EditorGUILayout.IntField
                 (
-                    new GUIContent("- Good", "When FPS rise above this value, this color will be used"), 
-                    m_goodFpsThreshold.intValue
+                    label:          new GUIContent
+                    (
+                        text:       "- Good",
+                        tooltip:    "When FPS rise above this value, this color will be used"
+                    ),
+                    value:          m_goodFpsThreshold.intValue
                 );
-                m_goodFpsColor.colorValue = EditorGUILayout.ColorField(m_goodFpsColor.colorValue);
+                
+                m_goodFpsColor.colorValue = EditorGUILayout.ColorField
+                (
+                    value: m_goodFpsColor.colorValue
+                );
 
                 EditorGUILayout.EndHorizontal();
 
@@ -683,8 +700,12 @@ namespace Tayx.Graphy
 
                 m_cautionFpsThreshold.intValue = EditorGUILayout.IntField
                 (
-                    new GUIContent("- Caution", "When FPS are between this and the Good value, this color will be used"), 
-                    m_cautionFpsThreshold.intValue
+                    label:          new GUIContent
+                    (
+                        text:       "- Caution",
+                        tooltip:    "When FPS are between this and the Good value, this color will be used"
+                    ),
+                    value:          m_cautionFpsThreshold.intValue
                 );
                 m_cautionFpsColor.colorValue = EditorGUILayout.ColorField(m_cautionFpsColor.colorValue);
 
@@ -703,22 +724,32 @@ namespace Tayx.Graphy
 
                 EditorGUILayout.IntField
                 (
-                    new GUIContent("- Critical", "When FPS are below the Caution value, this color will be used. (You can't have negative FPS, so this value is just for reference, it can't be changed)."), 
-                    0
+                    label:          new GUIContent
+                    (
+                        text:       "- Critical",
+                        tooltip:    "When FPS are below the Caution value, this color will be used. (You can't have negative FPS, so this value is just for reference, it can't be changed)."
+                    ),
+                    value:          0
                 );
+
                 m_criticalFpsColor.colorValue = EditorGUILayout.ColorField(m_criticalFpsColor.colorValue);
 
                 EditorGUILayout.EndHorizontal();
-
                 EditorGUI.indentLevel--;
 
                 if (m_fpsModuleState.intValue == 0)
                 {
                     m_fpsGraphResolution.intValue = EditorGUILayout.IntSlider
                     (
-                        new GUIContent("Graph resolution", "Defines the amount of points are in the graph"),
-                        m_fpsGraphResolution.intValue, 20, m_graphyMode.intValue == 0 ? 300 : 128
-                    );
+                        new GUIContent
+                        (
+                            text:       "Graph resolution",
+                            tooltip:    "Defines the amount of points are in the graph"
+                        ),
+                        m_fpsGraphResolution.intValue,
+                        leftValue:      20,
+                        rightValue:     m_graphyMode.intValue == 0 ? 300 : 128
+                    ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
                 }
 
                 EditorGUIUtility.labelWidth = 180;
@@ -726,19 +757,31 @@ namespace Tayx.Graphy
 
                 m_timeToResetMinMaxFps.intValue = EditorGUILayout.IntSlider
                 (
-                    new GUIContent("Time to reset min/max values", "If the min/max value doesn't change in the specified time, they will be reset. This allows tracking the min/max fps in a shorter interval. \n\nSet to 0 if you  don't want it to reset."), 
-                    m_timeToResetMinMaxFps.intValue, 0, 120
-                );
+                    new GUIContent
+                    (
+                        text:       "Time to reset min/max values",
+                        tooltip:    "If the min/max value doesn't change in the specified time, they will be reset. This allows tracking the min/max fps in a shorter interval. \n\nSet to 0 if you  don't want it to reset."
+                    ),
+                    m_timeToResetMinMaxFps.intValue,
+                    leftValue:      0,
+                    rightValue:     120
+                ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
 
                 EditorGUIUtility.labelWidth = 155;
                 EditorGUIUtility.fieldWidth = 35;
 
                 m_fpsTextUpdateRate.intValue = EditorGUILayout.IntSlider
                 (
-                    new GUIContent("Text update rate", "Defines the amount times the text is updated in 1 second"),
-                    m_fpsTextUpdateRate.intValue, 1, 60
-                );
-                
+                    new GUIContent
+                    (
+                        text:       "Text update rate",
+                        tooltip:    "Defines the amount times the text is updated in 1 second"
+                    ),
+                    m_fpsTextUpdateRate.intValue,
+                    leftValue:      1,
+                    rightValue:     60
+                ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
+
             }
 
             #endregion
@@ -759,7 +802,10 @@ namespace Tayx.Graphy
             {
                 EditorGUILayout.PropertyField(m_ramModuleState, new GUIContent("Module state", "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"));
 
-                GUILayout.Space(5);
+                GUILayout.Space
+                (
+                    pixels: 5
+                );
 
                 EditorGUILayout.LabelField("Graph colors:");
 
@@ -778,14 +824,14 @@ namespace Tayx.Graphy
                     (
                         new GUIContent("Graph resolution", "Defines the amount of points are in the graph"),
                         m_ramGraphResolution.intValue, 20, m_graphyMode.intValue == 0 ? 300 : 128
-                    );
+                    ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
                 }
 
                 m_ramTextUpdateRate.intValue = EditorGUILayout.IntSlider
                 (
                     new GUIContent("Text update rate", "Defines the amount times the text is updated in 1 second"),
                     m_ramTextUpdateRate.intValue, 1, 60
-                );
+                ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
             }
 
             #endregion
@@ -806,8 +852,11 @@ namespace Tayx.Graphy
             {
                 EditorGUILayout.PropertyField(m_audioModuleState, new GUIContent("Module state", "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"));
 
-                GUILayout.Space(5);
-                
+                GUILayout.Space
+                (
+                    pixels: 5
+                );
+
                 EditorGUILayout.PropertyField
                 (
                     m_findAudioListenerInCameraIfNull,
@@ -829,7 +878,7 @@ namespace Tayx.Graphy
                     (
                         new GUIContent("Graph resolution", "Defines the amount of points are in the graph. \nUse a multiple of 3 for the best results"),
                         m_audioGraphResolution.intValue, 20, m_graphyMode.intValue == 0 ? 300 : 128
-                    );
+                    ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
 
                     // Forces the value to be a multiple of 3, this way the audio graph is painted correctly
 
@@ -841,22 +890,32 @@ namespace Tayx.Graphy
 
                 EditorGUILayout.PropertyField
                 (
-                    m_FFTWindow,
-                    new GUIContent("FFT Window", "Used to reduce leakage between frequency bins/bands. Note, the more complex window type, the better the quality, but reduced speed. \n\nSimplest is rectangular. Most complex is BlackmanHarris")
+                    property: m_FFTWindow,
+                    label: new GUIContent("FFT Window", "Used to reduce leakage between frequency bins/bands. Note, the more complex window type, the better the quality, but reduced speed. \n\nSimplest is rectangular. Most complex is BlackmanHarris")
                 );
 
                 m_spectrumSize.intValue = EditorGUILayout.IntSlider
                 (
-                    new GUIContent("Spectrum size", "Has to be a power of 2 between 128-8192. The higher sample rate, the less precision but also more impact on performance. Careful with mobile devices"), 
-                    m_spectrumSize.intValue, 128, 8192
-                );
+                    new GUIContent
+                    (
+                        text:       "Spectrum size",
+                        tooltip:    "Has to be a power of 2 between 128-8192. The higher sample rate, the less precision but also more impact on performance. Careful with mobile devices"
+                    ),
+                    m_spectrumSize.intValue,
+                    leftValue:      128,
+                    rightValue:     8192
+                ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
 
                 int closestSpectrumIndex = 0;
                 int minDistanceToSpectrumValue = 100000;
 
                 for (int i = 0; i < m_spectrumSizeValues.Length; i++)
                 {
-                    int newDistance = Mathf.Abs(m_spectrumSize.intValue - m_spectrumSizeValues[i]);
+                    int newDistance = Mathf.Abs
+                    (
+                        value: m_spectrumSize.intValue - m_spectrumSizeValues[i]
+                    );
+
                     if (newDistance < minDistanceToSpectrumValue)
                     {
                         minDistanceToSpectrumValue = newDistance;
@@ -868,9 +927,15 @@ namespace Tayx.Graphy
 
                 m_audioTextUpdateRate.intValue = EditorGUILayout.IntSlider
                 (
-                    new GUIContent("Text update rate", "Defines the amount times the text is updated in 1 second"),
-                    m_audioTextUpdateRate.intValue, 1, 60
-                );
+                    new GUIContent
+                    (
+                        text:       "Text update rate",
+                        tooltip:    "Defines the amount times the text is updated in 1 second"
+                    ),
+                    m_audioTextUpdateRate.intValue,
+                    leftValue:      1,
+                    rightValue:     60
+                ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
             }
 
             #endregion
