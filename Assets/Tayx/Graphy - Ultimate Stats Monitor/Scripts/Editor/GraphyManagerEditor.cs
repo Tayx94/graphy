@@ -501,7 +501,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "- Good",
-                        tooltip:    "When FPS rise above this value, this color will be used"
+                        tooltip:    "When FPS rise above this value, this color will be used."
                     ),
                     value:          m_goodFpsThreshold.intValue
                 );
@@ -526,7 +526,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "- Caution",
-                        tooltip:    "When FPS are between this and the Good value, this color will be used"
+                        tooltip:    "When FPS falls between this and the Good value, this color will be used."
                     ),
                     value:          m_cautionFpsThreshold.intValue
                 );
@@ -551,7 +551,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "- Critical",
-                        tooltip:    "When FPS are below the Caution value, this color will be used. (You can't have negative FPS, so this value is just for reference, it can't be changed)."
+                        tooltip:    "When FPS falls below the Caution value, this color will be used. (You can't have negative FPS, so this value is just for reference, it can't be changed)."
                     ),
                     value:          0
                 );
@@ -584,7 +584,7 @@ namespace Tayx.Graphy
                     new GUIContent
                     (
                         text:       "Time to reset min/max values",
-                        tooltip:    "If the min/max value doesn't change in the specified time, they will be reset. This allows tracking the min/max fps in a shorter interval. \n\nSet to 0 if you  don't want it to reset."
+                        tooltip:    "If the min/max value doesn't change in the specified time, they will be reset. This allows tracking the min/max fps in a shorter interval. \n\nSet it to 0 if you don't want it to reset."
                     ),
                     m_timeToResetMinMaxFps.intValue,
                     leftValue:      0,
