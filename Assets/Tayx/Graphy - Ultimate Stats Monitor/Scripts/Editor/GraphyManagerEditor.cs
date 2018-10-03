@@ -262,7 +262,8 @@ namespace Tayx.Graphy
                 contentOffset   = Vector2.down * 3f //TODO: Maybe replace this with "new Vector2(0f, -3f);"
             };
 
-            SetGuiStyleFontColor(
+            SetGuiStyleFontColor
+            (
                 guiStyle:   foldoutStyle,
                 color:      EditorGUIUtility.isProSkin ? Color.white : Color.black
             );
@@ -275,7 +276,8 @@ namespace Tayx.Graphy
 
             if (m_logoTexture != null)
             {
-                GUILayout.Label(
+                GUILayout.Label
+                (
                     image: m_logoTexture,
                     style: new GUIStyle(GUI.skin.GetStyle("Label"))
                     {
@@ -287,7 +289,8 @@ namespace Tayx.Graphy
             }
             else
             {
-                EditorGUILayout.LabelField(
+                EditorGUILayout.LabelField
+                (
                     label: "[ GRAPHY - MANAGER ]",
                     style: m_headerStyle1
                 );
@@ -302,9 +305,11 @@ namespace Tayx.Graphy
             EditorGUIUtility.labelWidth = 130;
             EditorGUIUtility.fieldWidth = 35;
 
-            EditorGUILayout.PropertyField(
+            EditorGUILayout.PropertyField
+            (
                 m_graphyMode,
-                new GUIContent(
+                new GUIContent
+                (
                     text:       "Graphy Mode",
                     tooltip:    "LIGHT mode increases compatibility with older GPUs, but reduces the maximum graph resolutions to 128."
                 )
@@ -312,16 +317,20 @@ namespace Tayx.Graphy
 
             GUILayout.Space(10);
 
-            m_enableOnStartup.boolValue = EditorGUILayout.Toggle(
-                new GUIContent(
+            m_enableOnStartup.boolValue = EditorGUILayout.Toggle
+            (
+                new GUIContent
+                (
                     text:       "Enable On Startup",
                     tooltip:    "If ticked, Graphy will be displayed by default on startup, otherwise it will initiate and hide."
                 ),
                 value:          m_enableOnStartup.boolValue
             );
 
-            m_keepAlive.boolValue = EditorGUILayout.Toggle(
-                new GUIContent(
+            m_keepAlive.boolValue = EditorGUILayout.Toggle
+            (
+                new GUIContent
+                (
                     text:       "Keep Alive",
                     tooltip:    "If ticked, it will survive scene changes. Careful, if you set Graphy as a child of another GameObject, the root GameObject will also survive scene changes. If you want to avoid that put Graphy in the root of the Scene as its own entity."
                 ),
@@ -331,8 +340,10 @@ namespace Tayx.Graphy
             GUILayout.Space(10);
             EditorGUILayout.BeginHorizontal();
 
-            m_background.boolValue = EditorGUILayout.Toggle(
-                new GUIContent(
+            m_background.boolValue = EditorGUILayout.Toggle
+            (
+                new GUIContent
+                (
                     text:       "Background",
                     tooltip:    "If ticked, it will show a background overlay to improve readability in cluttered scenes."
                 ),
@@ -344,8 +355,10 @@ namespace Tayx.Graphy
             EditorGUILayout.EndHorizontal();
             GUILayout.Space(10);
 
-            m_enableHotkeys.boolValue = EditorGUILayout.Toggle(
-                new GUIContent(
+            m_enableHotkeys.boolValue = EditorGUILayout.Toggle
+            (
+                new GUIContent
+                (
                     text:       "Enable Hotkeys",
                     tooltip:    "If ticked, it will enable the hotkeys to be able to modify Graphy in runtime with custom keyboard shortcuts."
                 ),
@@ -359,9 +372,11 @@ namespace Tayx.Graphy
                 EditorGUIUtility.labelWidth = 130;
                 EditorGUIUtility.fieldWidth = 35;
 
-                EditorGUILayout.PropertyField(
+                EditorGUILayout.PropertyField
+                (
                     m_toggleModeKeyCode,
-                    new GUIContent(
+                    new GUIContent
+                    (
                         text:       "Toggle Mode Key",
                         tooltip:    "If ticked, it will require clicking this key and the other ones you have set up."
                     )
@@ -370,16 +385,20 @@ namespace Tayx.Graphy
                 EditorGUIUtility.labelWidth = 30;
                 EditorGUIUtility.fieldWidth = 35;
 
-                m_toggleModeCtrl.boolValue = EditorGUILayout.Toggle(
-                    new GUIContent(
+                m_toggleModeCtrl.boolValue = EditorGUILayout.Toggle
+                (
+                    new GUIContent
+                    (
                         text:       "Ctrl",
                         tooltip:    "If ticked, it will require clicking Ctrl and the other keys you have set up."
                     ),
                     value:          m_toggleModeCtrl.boolValue
                 );
 
-                m_toggleModeAlt.boolValue = EditorGUILayout.Toggle(
-                    new GUIContent(
+                m_toggleModeAlt.boolValue = EditorGUILayout.Toggle
+                (
+                    new GUIContent
+                    (
                         text:       "Alt",
                         tooltip:    "If ticked, it will require clicking Alt and the other keys you have set up."
                     ),
@@ -392,9 +411,11 @@ namespace Tayx.Graphy
                 EditorGUIUtility.labelWidth = 130;
                 EditorGUIUtility.fieldWidth = 35;
 
-                EditorGUILayout.PropertyField(
+                EditorGUILayout.PropertyField
+                (
                     m_toggleActiveKeyCode,
-                    new GUIContent(
+                    new GUIContent
+                    (
                         text:       "Toggle Active Key",
                         tooltip:    "If ticked, it will require clicking this key and the other ones you have set up."
                     )
@@ -403,16 +424,20 @@ namespace Tayx.Graphy
                 EditorGUIUtility.labelWidth = 30;
                 EditorGUIUtility.fieldWidth = 35;
 
-                m_toggleActiveCtrl.boolValue = EditorGUILayout.Toggle(
-                    new GUIContent(
+                m_toggleActiveCtrl.boolValue = EditorGUILayout.Toggle
+                (
+                    new GUIContent
+                    (
                         text:       "Ctrl",
                         tooltip:    "If ticked, it will require clicking Ctrl and the other keys you have set up"
                     ),
                     value:          m_toggleActiveCtrl.boolValue
                 );
 
-                m_toggleActiveAlt.boolValue = EditorGUILayout.Toggle(
-                    new GUIContent(
+                m_toggleActiveAlt.boolValue = EditorGUILayout.Toggle
+                (
+                    new GUIContent
+                    (
                         text:       "Alt",
                         tooltip:    "If ticked, it will require clicking Alt and the other keys you have set up"
                     ),
@@ -427,9 +452,11 @@ namespace Tayx.Graphy
             EditorGUIUtility.labelWidth = 155;
             EditorGUIUtility.fieldWidth = 35;
 
-            EditorGUILayout.PropertyField(
+            EditorGUILayout.PropertyField
+            (
                 m_graphModulePosition,
-                new GUIContent(
+                new GUIContent
+                (
                     text:       "Graph modules position",
                     tooltip:    "Defines in which top corner the modules will be located"
                 )
@@ -441,7 +468,8 @@ namespace Tayx.Graphy
 
             #region Section -> FPS
 
-            m_fpsModuleInspectorToggle = EditorGUILayout.Foldout(
+            m_fpsModuleInspectorToggle = EditorGUILayout.Foldout
+            (
                 m_fpsModuleInspectorToggle,
                 content:    " [ FPS ]",
                 style:      foldoutStyle
@@ -451,9 +479,11 @@ namespace Tayx.Graphy
 
             if (m_fpsModuleInspectorToggle)
             {
-                EditorGUILayout.PropertyField(
+                EditorGUILayout.PropertyField
+                (
                     m_fpsModuleState,
-                    new GUIContent(
+                    new GUIContent
+                    (
                         text:       "Module state",
                         tooltip:    "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"
                     )
@@ -466,8 +496,10 @@ namespace Tayx.Graphy
                 EditorGUI.indentLevel++;
                 EditorGUILayout.BeginHorizontal();
 
-                m_goodFpsThreshold.intValue = EditorGUILayout.IntField(
-                    new GUIContent(
+                m_goodFpsThreshold.intValue = EditorGUILayout.IntField
+                (
+                    new GUIContent
+                    (
                         text:       "- Good",
                         tooltip:    "When FPS rise above this value, this color will be used"
                     ),
@@ -489,8 +521,10 @@ namespace Tayx.Graphy
 
                 EditorGUILayout.BeginHorizontal();
 
-                m_cautionFpsThreshold.intValue = EditorGUILayout.IntField(
-                    new GUIContent(
+                m_cautionFpsThreshold.intValue = EditorGUILayout.IntField
+                (
+                    new GUIContent
+                    (
                         text:       "- Caution",
                         tooltip:    "When FPS are between this and the Good value, this color will be used"
                     ),
@@ -512,8 +546,10 @@ namespace Tayx.Graphy
 
                 EditorGUILayout.BeginHorizontal();
 
-                EditorGUILayout.IntField(
-                    new GUIContent(
+                EditorGUILayout.IntField
+                (
+                    new GUIContent
+                    (
                         text:       "- Critical",
                         tooltip:    "When FPS are below the Caution value, this color will be used. (You can't have negative FPS, so this value is just for reference, it can't be changed)."
                     ),
@@ -527,8 +563,10 @@ namespace Tayx.Graphy
 
                 if (m_fpsModuleState.intValue == 0)
                 {
-                    m_fpsGraphResolution.intValue = EditorGUILayout.IntSlider(
-                        new GUIContent(
+                    m_fpsGraphResolution.intValue = EditorGUILayout.IntSlider
+                    (
+                        new GUIContent
+                        (
                             text:       "Graph resolution",
                             tooltip:    "Defines the amount of points are in the graph"
                         ),
@@ -541,8 +579,10 @@ namespace Tayx.Graphy
                 EditorGUIUtility.labelWidth = 180;
                 EditorGUIUtility.fieldWidth = 35;
 
-                m_timeToResetMinMaxFps.intValue = EditorGUILayout.IntSlider(
-                    new GUIContent(
+                m_timeToResetMinMaxFps.intValue = EditorGUILayout.IntSlider
+                (
+                    new GUIContent
+                    (
                         text:       "Time to reset min/max values",
                         tooltip:    "If the min/max value doesn't change in the specified time, they will be reset. This allows tracking the min/max fps in a shorter interval. \n\nSet to 0 if you  don't want it to reset."
                     ),
@@ -554,8 +594,10 @@ namespace Tayx.Graphy
                 EditorGUIUtility.labelWidth = 155;
                 EditorGUIUtility.fieldWidth = 35;
 
-                m_fpsTextUpdateRate.intValue = EditorGUILayout.IntSlider(
-                    new GUIContent(
+                m_fpsTextUpdateRate.intValue = EditorGUILayout.IntSlider
+                (
+                    new GUIContent
+                    (
                         text:       "Text update rate",
                         tooltip:    "Defines the amount times the text is updated in 1 second"
                     ),
@@ -573,21 +615,20 @@ namespace Tayx.Graphy
 
             m_ramModuleInspectorToggle = EditorGUILayout.Foldout
             (
-                foldout:    m_ramModuleInspectorToggle,
+                m_ramModuleInspectorToggle,
                 content:    " [ RAM ]",
                 style:      foldoutStyle
             );
 
-            GUILayout.Space
-            (
-                pixels: 5
-            );
+            GUILayout.Space(5);
 
             if (m_ramModuleInspectorToggle)
             {
-                EditorGUILayout.PropertyField(
+                EditorGUILayout.PropertyField
+                (
                     m_ramModuleState,
-                    new GUIContent(
+                    new GUIContent
+                    (
                         text:       "Module state",
                         tooltip:    "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"
                     )
@@ -599,17 +640,20 @@ namespace Tayx.Graphy
 
                 EditorGUI.indentLevel++;
 
-                m_allocatedRamColor.colorValue = EditorGUILayout.ColorField(
+                m_allocatedRamColor.colorValue = EditorGUILayout.ColorField
+                (
                     label: "- Allocated",
                     value: m_allocatedRamColor.colorValue
                 );
 
-                m_reservedRamColor.colorValue = EditorGUILayout.ColorField(
+                m_reservedRamColor.colorValue = EditorGUILayout.ColorField
+                (
                     label: "- Reserved",
                     value: m_reservedRamColor.colorValue
                 );
 
-                m_monoRamColor.colorValue = EditorGUILayout.ColorField(
+                m_monoRamColor.colorValue = EditorGUILayout.ColorField
+                (
                     label: "- Mono",
                     value: m_monoRamColor.colorValue
                 );
@@ -619,7 +663,8 @@ namespace Tayx.Graphy
                 if (m_ramModuleState.intValue == 0)
                 {
                     m_ramGraphResolution.intValue = EditorGUILayout.IntSlider(
-                        new GUIContent(
+                        new GUIContent
+                        (
                             text:       "Graph resolution",
                             tooltip:    "Defines the amount of points are in the graph"
                         ),
@@ -629,8 +674,10 @@ namespace Tayx.Graphy
                     );
                 }
 
-                m_ramTextUpdateRate.intValue = EditorGUILayout.IntSlider(
-                    new GUIContent(
+                m_ramTextUpdateRate.intValue = EditorGUILayout.IntSlider
+                (
+                    new GUIContent
+                    (
                         text:       "Text update rate",
                         tooltip:    "Defines the amount times the text is updated in 1 second"
                     ),
@@ -646,7 +693,8 @@ namespace Tayx.Graphy
 
             #region Section -> Audio
 
-            m_audioModuleInspectorToggle = EditorGUILayout.Foldout(
+            m_audioModuleInspectorToggle = EditorGUILayout.Foldout
+            (
                 m_audioModuleInspectorToggle,
                 content:    " [ AUDIO ]",
                 style:      foldoutStyle
@@ -656,9 +704,11 @@ namespace Tayx.Graphy
 
             if (m_audioModuleInspectorToggle)
             {
-                EditorGUILayout.PropertyField(
+                EditorGUILayout.PropertyField
+                (
                     m_audioModuleState,
-                    new GUIContent(
+                    new GUIContent
+                    (
                         text:       "Module state",
                         tooltip:    "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"
                     )
@@ -666,17 +716,21 @@ namespace Tayx.Graphy
 
                 GUILayout.Space(5);
 
-                EditorGUILayout.PropertyField(
+                EditorGUILayout.PropertyField
+                (
                     m_findAudioListenerInCameraIfNull,
-                    new GUIContent(
+                    new GUIContent
+                    (
                         text:       "Find audio listener",
                         tooltip:    "Tries to find the AudioListener in the Main camera in the scene (if AudioListener is null)"
                     )
                 );
 
-                EditorGUILayout.PropertyField(
+                EditorGUILayout.PropertyField
+                (
                     m_audioListener,
-                    new GUIContent(
+                    new GUIContent
+                    (
                         text:       "Audio Listener",
                         tooltip:    "Graphy will take the data from this Listener. If none is specified, it will try to get it from the Main Camera in the scene."
                     )
@@ -684,13 +738,16 @@ namespace Tayx.Graphy
 
                 if (m_audioModuleState.intValue == 0)
                 {
-                    m_audioGraphColor.colorValue = EditorGUILayout.ColorField(
+                    m_audioGraphColor.colorValue = EditorGUILayout.ColorField
+                    (
                         label: "Graph color",
                         value: m_audioGraphColor.colorValue
                     );
 
-                    m_audioGraphResolution.intValue = EditorGUILayout.IntSlider(
-                        new GUIContent(
+                    m_audioGraphResolution.intValue = EditorGUILayout.IntSlider
+                    (
+                        new GUIContent
+                        (
                             text:       "Graph resolution",
                             tooltip:    "Defines the amount of points are in the graph. \nUse a multiple of 3 for the best results"
                         ),
@@ -707,16 +764,20 @@ namespace Tayx.Graphy
                     //TODO: Figure out why a static version of the ForceMultipleOf3 isnt used.
                 }
 
-                EditorGUILayout.PropertyField(
+                EditorGUILayout.PropertyField
+                (
                     m_FFTWindow,
-                    new GUIContent(
+                    new GUIContent
+                    (
                         text:       "FFT Window",
                         tooltip:    "Used to reduce leakage between frequency bins/bands. Note, the more complex window type, the better the quality, but reduced speed. \n\nSimplest is rectangular. Most complex is BlackmanHarris"
                     )
                 );
 
-                m_spectrumSize.intValue = EditorGUILayout.IntSlider(
-                    new GUIContent(
+                m_spectrumSize.intValue = EditorGUILayout.IntSlider
+                (
+                    new GUIContent
+                    (
                         text:       "Spectrum size",
                         tooltip:    "Has to be a power of 2 between 128-8192. The higher sample rate, the less precision but also more impact on performance. Careful with mobile devices"
                     ),
@@ -744,8 +805,10 @@ namespace Tayx.Graphy
 
                 m_spectrumSize.intValue = m_spectrumSizeValues[closestSpectrumIndex];
 
-                m_audioTextUpdateRate.intValue = EditorGUILayout.IntSlider(
-                    new GUIContent(
+                m_audioTextUpdateRate.intValue = EditorGUILayout.IntSlider
+                (
+                    new GUIContent
+                    (
                         text:       "Text update rate",
                         tooltip:    "Defines the amount times the text is updated in 1 second"
                     ),
@@ -761,7 +824,8 @@ namespace Tayx.Graphy
 
             #region Section -> Advanced Settings
 
-            m_advancedModuleInspectorToggle = EditorGUILayout.Foldout(
+            m_advancedModuleInspectorToggle = EditorGUILayout.Foldout
+            (
                 m_advancedModuleInspectorToggle,
                 content:    " [ ADVANCED DATA ]",
                 style:      foldoutStyle
@@ -771,13 +835,13 @@ namespace Tayx.Graphy
 
             if (m_advancedModuleInspectorToggle)
             {
-                EditorGUILayout.PropertyField(
-                    m_advancedModulePosition
-                );
+                EditorGUILayout.PropertyField(m_advancedModulePosition);
 
-                EditorGUILayout.PropertyField(
+                EditorGUILayout.PropertyField
+                (
                     m_advancedModuleState,
-                    new GUIContent(
+                    new GUIContent
+                    (
                         text:       "Module state",
                         tooltip:    "FULL -> Text \nOFF -> Turned off"
                     )
@@ -803,14 +867,16 @@ namespace Tayx.Graphy
             path = path.Split(separator: new string[] { "Assets" }, options: StringSplitOptions.None)[1]
                        .Split(separator: new string[] { "Tayx"   }, options: StringSplitOptions.None)[0];
 
-            m_logoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(
+            m_logoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>
+            (
                 "Assets" +
                 path +
                 "Tayx/Graphy - Ultimate Stats Monitor/Textures/Manager_Logo_" +
                 (EditorGUIUtility.isProSkin ? "White.png" : "Dark.png")
             );
 
-            m_skin = AssetDatabase.LoadAssetAtPath<GUISkin>(
+            m_skin = AssetDatabase.LoadAssetAtPath<GUISkin>
+            (
                 "Assets" +
                 path +
                 "Tayx/Graphy - Ultimate Stats Monitor/GUI/Graphy.guiskin"
@@ -821,7 +887,8 @@ namespace Tayx.Graphy
                 m_headerStyle1 = m_skin.GetStyle("Header1");
                 m_headerStyle2 = m_skin.GetStyle("Header2");
 
-                SetGuiStyleFontColor(
+                SetGuiStyleFontColor
+                (
                     guiStyle:   m_headerStyle2,
                     color:      EditorGUIUtility.isProSkin ? Color.white : Color.black
                 );
@@ -864,7 +931,8 @@ namespace Tayx.Graphy
             if (fi.Directory != null)
             {
                 filePath = fi.Directory.ToString();
-                return filePath.Replace(
+                return filePath.Replace
+                (
                     oldChar: '\\',
                     newChar: '/'
                 );
