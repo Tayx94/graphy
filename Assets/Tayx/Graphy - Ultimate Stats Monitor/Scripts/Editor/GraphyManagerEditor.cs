@@ -177,32 +177,17 @@ namespace Tayx.Graphy
 
             #region Section -> FPS
 
-            m_fpsModuleState = serObj.FindProperty
-            (
-                propertyPath: "m_fpsModuleState"
-            );
+            m_fpsModuleState        = serObj.FindProperty("m_fpsModuleState");
 
-            m_timeToResetMinMaxFps = serObj.FindProperty
-            (
-                propertyPath: "m_timeToResetMinMaxFps"
-            );
+            m_timeToResetMinMaxFps  = serObj.FindProperty("m_timeToResetMinMaxFps");
 
-            m_goodFpsColor = serObj.FindProperty
-            (
-                propertyPath: "m_goodFpsColor"
-            );
+            m_goodFpsColor          = serObj.FindProperty("m_goodFpsColor");
 
-            m_goodFpsThreshold = serObj.FindProperty
-            (
-                propertyPath: "m_goodFpsThreshold"
-            );
+            m_goodFpsThreshold      = serObj.FindProperty("m_goodFpsThreshold");
 
-            m_cautionFpsColor = serObj.FindProperty
-            (
-                propertyPath: "m_cautionFpsColor"
-            );
+            m_cautionFpsColor       = serObj.FindProperty("m_cautionFpsColor");
 
-            m_cautionFpsThreshold = serObj.FindProperty
+            m_cautionFpsThreshold   = serObj.FindProperty
             (
                 propertyPath: "m_cautionFpsThreshold"
             );
@@ -327,19 +312,14 @@ namespace Tayx.Graphy
             if (m_target == null && target == null)
             {
                 base.OnInspectorGUI();
-
                 return;
             }
 
             LoadGuiStyles();
-
             float defaultLabelWidth = EditorGUIUtility.labelWidth;
             float defaultFieldWidth = EditorGUIUtility.fieldWidth;
 
-            GUIStyle foldoutStyle = new GUIStyle
-            (
-                other:          EditorStyles.foldout
-            )
+            GUIStyle foldoutStyle = new GUIStyle(EditorStyles.foldout)
             {
                 font            = m_headerStyle2.font,
                 fontStyle       = m_headerStyle2.fontStyle,
@@ -352,9 +332,9 @@ namespace Tayx.Graphy
                 color:          EditorGUIUtility.isProSkin ? Color.white : Color.black
             );
 
-            //The content
+            //===== CONTENT REGION ========================================================================
 
-            GUILayout.Space(pixels: 20);
+            GUILayout.Space(20);
 
             #region Section -> Logo
 
@@ -394,7 +374,7 @@ namespace Tayx.Graphy
 
             #endregion
 
-            GUILayout.Space(pixels: 5); //Extra pixels added when the logo is used.
+            GUILayout.Space(5); //Extra pixels added when the logo is used.
 
             #region Section -> Settings
 
@@ -578,7 +558,7 @@ namespace Tayx.Graphy
 
             #endregion
 
-            GUILayout.Space(pixels: 20);
+            GUILayout.Space(20);
 
             #region Section -> FPS
 
@@ -735,7 +715,7 @@ namespace Tayx.Graphy
 
             #endregion
 
-            GUILayout.Space(pixels: 20);
+            GUILayout.Space(20);
 
             #region Section -> RAM
 
@@ -825,7 +805,7 @@ namespace Tayx.Graphy
 
             #endregion
 
-            GUILayout.Space(pixels: 20);
+            GUILayout.Space(20);
 
             #region Section -> Audio
 
@@ -836,41 +816,34 @@ namespace Tayx.Graphy
                 style:      foldoutStyle
             );
 
-            GUILayout.Space
-            (
-                pixels: 5
-            );
+            GUILayout.Space(5);
 
             if (m_audioModuleInspectorToggle)
             {
-                EditorGUILayout.PropertyField
-                (
-                    property:       m_audioModuleState,
-                    label:          new GUIContent
-                    (
+                EditorGUILayout.PropertyField(
+                    m_audioModuleState,
+                    new GUIContent(
                         text:       "Module state",
                         tooltip:    "FULL -> Text + Graph \nTEXT -> Just text \nOFF -> Turned off"
                     )
                 );
 
-                GUILayout.Space
-                (
-                    pixels: 5
-                );
+                GUILayout.Space(5);
 
                 EditorGUILayout.PropertyField(
-                    property:       m_findAudioListenerInCameraIfNull,
-                    label:          new GUIContent(
+                    m_findAudioListenerInCameraIfNull,
+                    new GUIContent(
                         text:       "Find audio listener",
                         tooltip:    "Tries to find the AudioListener in the Main camera in the scene (if AudioListener is null)"
                     )
                 );
 
                 EditorGUILayout.PropertyField(
-                    property:   m_audioListener,
-                    label:      new GUIContent(
-                    text:       "Audio Listener",
-                    tooltip:    "Graphy will take the data from this Listener. If none is specified, it will try to get it from the Main Camera in the scene.")
+                    m_audioListener,
+                    new GUIContent(
+                        text:       "Audio Listener",
+                        tooltip:    "Graphy will take the data from this Listener. If none is specified, it will try to get it from the Main Camera in the scene."
+                    )
                 );
 
                 if (m_audioModuleState.intValue == 0)
@@ -881,13 +854,14 @@ namespace Tayx.Graphy
                     );
 
                     m_audioGraphResolution.intValue = EditorGUILayout.IntSlider(
-                        /*label:*/      new GUIContent(
-                        text:           "Graph resolution",
-                        tooltip:        "Defines the amount of points are in the graph. \nUse a multiple of 3 for the best results"),
-                        /*value:*/      m_audioGraphResolution.intValue,
+                        new GUIContent(
+                            text:       "Graph resolution",
+                            tooltip:    "Defines the amount of points are in the graph. \nUse a multiple of 3 for the best results"
+                        ),
+                        m_audioGraphResolution.intValue,
                         leftValue:      20,
                         rightValue:     m_graphyMode.intValue == 0 ? 300 : 128
-                    ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
+                    );
 
                     // Forces the value to be a multiple of 3, this way the audio graph is painted correctly
                     if (m_audioGraphResolution.intValue % 3 != 0 && m_audioGraphResolution.intValue < 300)
@@ -897,27 +871,23 @@ namespace Tayx.Graphy
                     //TODO: Figure out why a static version of the ForceMultipleOf3 isnt used.
                 }
 
-                EditorGUILayout.PropertyField
-                (
-                    property:       m_FFTWindow,
-                    label:          new GUIContent
-                    (
+                EditorGUILayout.PropertyField(
+                    m_FFTWindow,
+                    new GUIContent(
                         text:       "FFT Window",
                         tooltip:    "Used to reduce leakage between frequency bins/bands. Note, the more complex window type, the better the quality, but reduced speed. \n\nSimplest is rectangular. Most complex is BlackmanHarris"
                     )
                 );
 
-                m_spectrumSize.intValue = EditorGUILayout.IntSlider
-                (
-                    new GUIContent
-                    (
+                m_spectrumSize.intValue = EditorGUILayout.IntSlider(
+                    new GUIContent(
                         text:       "Spectrum size",
                         tooltip:    "Has to be a power of 2 between 128-8192. The higher sample rate, the less precision but also more impact on performance. Careful with mobile devices"
                     ),
                     m_spectrumSize.intValue,
                     leftValue:      128,
                     rightValue:     8192
-                ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
+                );
 
                 int closestSpectrumIndex = 0;
                 int minDistanceToSpectrumValue = 100000;
@@ -938,22 +908,20 @@ namespace Tayx.Graphy
 
                 m_spectrumSize.intValue = m_spectrumSizeValues[closestSpectrumIndex];
 
-                m_audioTextUpdateRate.intValue = EditorGUILayout.IntSlider
-                (
-                    new GUIContent
-                    (
+                m_audioTextUpdateRate.intValue = EditorGUILayout.IntSlider(
+                    new GUIContent(
                         text:       "Text update rate",
                         tooltip:    "Defines the amount times the text is updated in 1 second"
                     ),
                     m_audioTextUpdateRate.intValue,
                     leftValue:      1,
                     rightValue:     60
-                ); //Do not give the Intslider a "label:" and a "value:" tag, as it will bug out.
+                );
             }
 
             #endregion
 
-            GUILayout.Space(pixels: 20);
+            GUILayout.Space(20);
 
             #region Section -> Advanced Settings
 
@@ -997,43 +965,30 @@ namespace Tayx.Graphy
 
         private void LoadGuiStyles()
         {
-            string path = GetMonoScriptFilePath
-            (
-                scriptableObject: this
-            );
+            string path = GetMonoScriptFilePath(this);
 
             path = path.Split(separator: new string[] { "Assets" }, options: StringSplitOptions.None)[1]
                        .Split(separator: new string[] { "Tayx"   }, options: StringSplitOptions.None)[0];
 
-            m_logoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>
-            (
-                assetPath:  "Assets" +
-                            path +
-                            "Tayx/Graphy - Ultimate Stats Monitor/Textures/Manager_Logo_" +
-                            (EditorGUIUtility.isProSkin ? "White.png" : "Dark.png")
+            m_logoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(
+                "Assets" +
+                path +
+                "Tayx/Graphy - Ultimate Stats Monitor/Textures/Manager_Logo_" +
+                (EditorGUIUtility.isProSkin ? "White.png" : "Dark.png")
             );
 
-            m_skin = AssetDatabase.LoadAssetAtPath<GUISkin>
-            (
-                assetPath:  "Assets" +
-                            path +
-                            "Tayx/Graphy - Ultimate Stats Monitor/GUI/Graphy.guiskin"
+            m_skin = AssetDatabase.LoadAssetAtPath<GUISkin>(
+                "Assets" +
+                path +
+                "Tayx/Graphy - Ultimate Stats Monitor/GUI/Graphy.guiskin"
             );
 
             if (m_skin != null)
             {
-                m_headerStyle1 = m_skin.GetStyle
-                (
-                    styleName: "Header1"
-                );
+                m_headerStyle1 = m_skin.GetStyle("Header1");
+                m_headerStyle2 = m_skin.GetStyle("Header2");
 
-                m_headerStyle2 = m_skin.GetStyle
-                (
-                    styleName: "Header2"
-                );
-
-                SetGuiStyleFontColor
-                (
+                SetGuiStyleFontColor(
                     guiStyle:   m_headerStyle2,
                     color:      EditorGUIUtility.isProSkin ? Color.white : Color.black
                 );
@@ -1068,32 +1023,18 @@ namespace Tayx.Graphy
 
         private string GetMonoScriptFilePath(ScriptableObject scriptableObject) //TODO: Perhaps add a null check.
         {
-            MonoScript ms = MonoScript.FromScriptableObject
-            (
-                scriptableObject: scriptableObject
-            );
+            MonoScript ms = MonoScript.FromScriptableObject(scriptableObject);
+            string filePath = AssetDatabase.GetAssetPath(ms);
 
-            string filePath = AssetDatabase.GetAssetPath
-            (
-                assetObject: ms
-            );
-
-            FileInfo fi = new FileInfo
-            (
-                fileName: filePath
-            );
+            FileInfo fi = new FileInfo(filePath);
 
             if (fi.Directory != null)
             {
                 filePath = fi.Directory.ToString();
-
-                filePath = filePath.Replace
-                (
+                return filePath.Replace(
                     oldChar: '\\',
                     newChar: '/'
                 );
-
-                return filePath;
             }
             return null;
         }
