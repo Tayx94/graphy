@@ -16,6 +16,7 @@ using System.Text;
 
 using Tayx.Graphy.UI;
 using Tayx.Graphy.Utils;
+using Tayx.Graphy.Utils.NumString;
 
 #if UNITY_5_5_OR_NEWER
 using UnityEngine.Profiling;

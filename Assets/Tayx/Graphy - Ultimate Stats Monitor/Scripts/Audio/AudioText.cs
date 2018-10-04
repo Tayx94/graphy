@@ -12,6 +12,7 @@ using System.Collections;
 using System.Text;
 using UnityEngine.UI;
 using Tayx.Graphy.Utils;
+using Tayx.Graphy.Utils.NumString;
 
 namespace Tayx.Graphy.Audio
 {

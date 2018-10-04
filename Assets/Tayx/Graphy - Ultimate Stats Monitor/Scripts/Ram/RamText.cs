@@ -14,6 +14,7 @@ using System.Collections;
 using System.Text;
 using UnityEngine.Events;
 using Tayx.Graphy.Utils;
+using Tayx.Graphy.Utils.NumString;
 
 namespace Tayx.Graphy.Ram
 {

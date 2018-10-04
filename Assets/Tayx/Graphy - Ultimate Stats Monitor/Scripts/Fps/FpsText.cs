@@ -13,6 +13,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Text;
 using Tayx.Graphy.Utils;
+using Tayx.Graphy.Utils.NumString;
 
 namespace Tayx.Graphy.Fps
 {
