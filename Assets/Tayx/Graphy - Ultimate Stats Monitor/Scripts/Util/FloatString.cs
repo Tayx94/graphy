@@ -17,7 +17,7 @@ namespace Tayx.Graphy.Utils.NumString
 {
     public static class FloatString
     {
-        #region Private Variables
+        #region Variables -> Private
 
         /// <summary>
         /// Float represented as a string, formatted.
@@ -41,7 +41,7 @@ namespace Tayx.Graphy.Utils.NumString
 
         #endregion
 
-        #region Properties
+        #region Properties -> Public
 
         /// <summary>
         /// Have the int buffers been initialized?
@@ -78,7 +78,7 @@ namespace Tayx.Graphy.Utils.NumString
 
         #endregion
 
-        #region Public Methods
+        #region Methods -> Public
 
         //TODO: Figure out what the negative buffer doe, why we dont have default values and why the range is so high.
         /// <summary>
@@ -202,7 +202,7 @@ namespace Tayx.Graphy.Utils.NumString
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         //TODO: Replace this with a better algorithm.
         private static int Pow(int f, int p)

@@ -31,7 +31,7 @@ namespace Tayx.Graphy.Utils.NumString
 
         #endregion
 
-        #region Properties -> Public Get | Private Set
+        #region Properties -> Public
 
         /// <summary>
         /// Have the int buffers been initialized?
