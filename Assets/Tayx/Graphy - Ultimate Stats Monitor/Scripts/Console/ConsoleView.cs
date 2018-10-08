@@ -1,4 +1,4 @@
-﻿/* ---------------------------------------
+/* ---------------------------------------
  * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
  * Project: Graphy - Ultimate Stats Monitor
  * Collaborators:  (mosthated@instance.id) (@MostHated)
