@@ -18,12 +18,15 @@ namespace Tayx.Graphy.CustomizationScene
 	public class ForceSliderToPowerOf2 : MonoBehaviour
 	{
         //TODO: Add summaries.
-
-        #region Private Variables
+        #region Variables -> Serialized Private
 
         [SerializeField] private Slider m_slider;
 
-		private int[] m_powerOf2Values =
+        #endregion
+
+        #region Variables -> Private
+
+        private int[] m_powerOf2Values =
 		{
 			128,
 			256,
@@ -38,7 +41,7 @@ namespace Tayx.Graphy.CustomizationScene
 
         #endregion
 
-        #region Unity Methods
+        #region Methods -> Unity Callbacks
 
         void Start()
 		{
@@ -47,7 +50,7 @@ namespace Tayx.Graphy.CustomizationScene
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         private void UpdateValue(float value)
 		{

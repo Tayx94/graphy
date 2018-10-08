@@ -21,9 +21,14 @@ namespace Tayx.Graphy
     //[ExecuteInEditMode]
     public class GraphyManager : Singleton<GraphyManager>
     {
+        //TODO: Figure out if we can move this below the public without breaking something, have to ask Tayx.
+        #region Variables -> Protected
+
         protected GraphyManager () { }
 
-        #region Enums
+        #endregion
+
+        #region Variables -> Public -> Enum
 
         public enum Mode
         {
@@ -84,24 +89,9 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Private Variables
-
-        private                     bool                    m_initialized = false;
-        private                     bool                    m_active = true;
-        private                     bool                    m_focused = true;
-
-        private                     FpsManager              m_fpsManager;
-        private                     RamManager              m_ramManager;
-        private                     AudioManager            m_audioManager;
-        private                     AdvancedData            m_advancedData;
-
-        private                     FpsMonitor              m_fpsMonitor;
-        private                     RamMonitor              m_ramMonitor;
-        private                     AudioMonitor            m_audioMonitor;
+        #region Variables -> Serialized Private
 
         [SerializeField] private    Mode                    m_graphyMode = Mode.FULL;
-
-        private                     ModulePreset            m_modulePresetState = ModulePreset.FPS_BASIC_ADVANCED_FULL;
 
         [SerializeField] private    bool                    m_enableOnStartup = true;
 
@@ -188,6 +178,26 @@ namespace Tayx.Graphy
 
         #endregion
 
+        #region Variables -> Private
+
+        private                     bool                    m_initialized = false;
+        private                     bool                    m_active = true;
+        private                     bool                    m_focused = true;
+
+        private                     FpsManager              m_fpsManager;
+        private                     RamManager              m_ramManager;
+        private                     AudioManager            m_audioManager;
+        private                     AdvancedData            m_advancedData;
+
+        private                     FpsMonitor              m_fpsMonitor;
+        private                     RamMonitor              m_ramMonitor;
+        private                     AudioMonitor            m_audioMonitor;
+
+        private                     ModulePreset            m_modulePresetState = ModulePreset.FPS_BASIC_ADVANCED_FULL;
+
+        #endregion
+
+        //TODO: Sort these into Get and GetSet.
         #region Properties
 
         public Mode GraphyMode                          { get { return m_graphyMode; }
@@ -331,7 +341,7 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Unity Methods
+        #region Methods -> Unity Callbacks
 
         void Start()
         {
@@ -358,7 +368,7 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Public Methods
+        #region Methods -> Public
 
         public void SetModulePosition(ModuleType moduleType, ModulePosition modulePosition)
         {
@@ -534,7 +544,7 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         private void Init()
         {

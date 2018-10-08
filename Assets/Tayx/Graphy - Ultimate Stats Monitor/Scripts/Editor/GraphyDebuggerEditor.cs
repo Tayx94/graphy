@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 02-Jan-18
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            02-Jan-18
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -20,6 +22,7 @@ namespace Tayx.Graphy
     [CustomEditor(typeof(GraphyDebugger))]
     internal class GraphyDebuggerEditor : Editor
     {
+        //TODO: Sort these out into proper spacing.
         #region Private Variables
 
         private GraphyDebugger m_target;

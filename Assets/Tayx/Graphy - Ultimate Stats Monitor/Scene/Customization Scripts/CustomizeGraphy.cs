@@ -19,7 +19,7 @@ namespace Tayx.Graphy.CustomizationScene
 {
     public class CustomizeGraphy : MonoBehaviour
     {
-        #region Private Variables
+        #region Variables -> Serialized Private
 
         [Header("Customize Graphy")]
 
@@ -102,11 +102,15 @@ namespace Tayx.Graphy.CustomizationScene
         
         [SerializeField] private List<AudioClip> m_sfxAudioClips = new List<AudioClip>();
 
+        #endregion
+
+        #region Variables -> Private
+
         private GraphyManager m_graphyManager;
 
         #endregion
 
-        #region Unity Methods
+        #region Methods -> Unity Callbacks
 
         private void Start()
         {
@@ -330,5 +334,4 @@ namespace Tayx.Graphy.CustomizationScene
 
         #endregion
     }
-
 }
