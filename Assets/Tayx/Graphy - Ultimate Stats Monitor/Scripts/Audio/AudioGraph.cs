@@ -18,29 +18,38 @@ namespace Tayx.Graphy.Audio
 {
     public class AudioGraph : Graph.Graph
     {
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we should add "private" to the Unity Callbacks.
+         * Check if we can remove "using Tayx;".
+         * --------------------------------------*/
+
         #region Variables -> Serialized Private
 
-        [SerializeField] private Image m_imageGraph;
-        [SerializeField] private Image m_imageGraphHighestValues;
+        [SerializeField] private    Image           m_imageGraph;
+        [SerializeField] private    Image           m_imageGraphHighestValues;
 
-        [SerializeField] private Shader ShaderFull;
-        [SerializeField] private Shader ShaderLight;
+        [SerializeField] private    Shader          ShaderFull;
+        [SerializeField] private    Shader          ShaderLight;
 
         #endregion
 
         #region Variables -> Private
 
-        private GraphyManager m_graphyManager;
+        private                     GraphyManager   m_graphyManager;
 
-        private AudioMonitor m_audioMonitor;
+        private                     AudioMonitor    m_audioMonitor;
 
-        private int m_resolution = 40;
+        private                     int             m_resolution                    = 40;
 
-        private ShaderGraph m_shaderGraph;
-        private ShaderGraph m_shaderGraphHighestValues;
+        private                     ShaderGraph     m_shaderGraph;
+        private                     ShaderGraph     m_shaderGraphHighestValues;
 
-        private float[] m_graphArray;
-        private float[] m_graphArrayHighestValue;
+        private                     float[]         m_graphArray;
+        private                     float[]         m_graphArrayHighestValue;
 
         #endregion
 
@@ -162,7 +171,7 @@ namespace Tayx.Graphy.Audio
                         + m_graphArrayHighestValue[i - 2]
                     ) / 3;
 
-                    m_graphArrayHighestValue[i] = value;
+                    m_graphArrayHighestValue[i]     = value;
                     m_graphArrayHighestValue[i - 1] = value;
                     m_graphArrayHighestValue[i - 2] = -1; // Always set the third one to -1 to leave gaps in the graph and improve readability
                 }
@@ -184,15 +193,15 @@ namespace Tayx.Graphy.Audio
         protected override void CreatePoints()
         {
             // Init Arrays
-            m_shaderGraph.Array = new float[m_resolution];
-            m_shaderGraphHighestValues.Array = new float[m_resolution];
+            m_shaderGraph.Array                     = new float[m_resolution];
+            m_shaderGraphHighestValues.Array        = new float[m_resolution];
 
-            m_graphArray = new float[m_resolution];
-            m_graphArrayHighestValue = new float[m_resolution];
+            m_graphArray                            = new float[m_resolution];
+            m_graphArrayHighestValue                = new float[m_resolution];
 
             for (int i = 0; i < m_resolution; i++)
             {
-                m_shaderGraph.Array[i] = 0;
+                m_shaderGraph.Array[i]              = 0;
                 m_shaderGraphHighestValues.Array[i] = 0;
             }
 

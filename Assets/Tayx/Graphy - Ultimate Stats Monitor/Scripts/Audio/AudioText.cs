@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 15-Dec-17
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            15-Dec-17
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -18,22 +20,37 @@ namespace Tayx.Graphy.Audio
 {
     public class AudioText : MonoBehaviour
     {
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we should add "private" to the Unity Callbacks.
+         * Check if we can remove "using System.Text;".
+         * Check if we can remove "using Tayx.Graphy.Utils;".
+         * Check if we should add a "RequireComponent" for "AudioMonitor".
+         * Improve the FloatString Init to come from the core instead.
+         * --------------------------------------*/
 
-        #region Private Variables
+        #region Variables -> Serialized Private
 
-        private GraphyManager m_graphyManager;
-
-        private AudioMonitor m_audioMonitor;
-
-        [SerializeField] private Text m_DBText;
-
-        private int m_updateRate = 4;
-
-        private float m_deltaTimeOffset = 0;
+        [SerializeField] private    Text            m_DBText;
 
         #endregion
 
-        #region Unity Methods
+        #region Variables -> Private
+
+        private                     GraphyManager   m_graphyManager;
+
+        private                     AudioMonitor    m_audioMonitor;
+
+        private                     int             m_updateRate        = 4;
+
+        private                     float           m_deltaTimeOffset   = 0;
+
+        #endregion
+
+        #region Methods -> Unity Callbacks
 
         void Awake()
         {
@@ -46,9 +63,9 @@ namespace Tayx.Graphy.Audio
             {
                 if (m_deltaTimeOffset > 1f / m_updateRate)
                 {
-                    m_deltaTimeOffset = 0;
+                    m_deltaTimeOffset = 0f;
 
-                    m_DBText.text = Mathf.Clamp(m_audioMonitor.MaxDB, -80, 0).ToStringNonAlloc();
+                    m_DBText.text = Mathf.Clamp(m_audioMonitor.MaxDB, -80f, 0f).ToStringNonAlloc();
                 }
                 else
                 {
@@ -59,7 +76,7 @@ namespace Tayx.Graphy.Audio
 
         #endregion
 
-        #region Public Methods
+        #region Methods -> Public
 
         public void UpdateParameters()
         {
@@ -68,7 +85,7 @@ namespace Tayx.Graphy.Audio
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         private void Init()
         {
@@ -90,6 +107,5 @@ namespace Tayx.Graphy.Audio
         }
 
         #endregion
-
     }
 }
