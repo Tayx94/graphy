@@ -19,9 +19,20 @@ namespace Tayx.Graphy.Fps
 {
     public class FpsManager : MonoBehaviour, IMovable, IModifiableState
     {
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we should add "private" to the Unity Callbacks.
+         * Check if we can remove "using System.Linq;".
+         * Check if we should add a "RequireComponent" for "FpsGraph".
+         * Check if we should add a "RequireComponent" for "FpsMonitor".
+         * Check if we should add a "RequireComponent" for "FpsText".
+         * --------------------------------------*/
 
-        #region Private Variables
-        
+        #region Variables -> Private CURRENTLY HERE WITH EDITING
+
         private GraphyManager m_graphyManager;
         
         private FpsGraph m_fpsGraph;
@@ -200,9 +211,9 @@ namespace Tayx.Graphy.Fps
             
             m_rectTransform = GetComponent<RectTransform>();
 
-            m_fpsGraph = GetComponent<FpsGraph>();
-            m_fpsMonitor = GetComponent<FpsMonitor>();
-            m_fpsText = GetComponent<FpsText>();
+            m_fpsGraph      = GetComponent<FpsGraph>();
+            m_fpsMonitor    = GetComponent<FpsMonitor>();
+            m_fpsText       = GetComponent<FpsText>();
 
             foreach (Transform child in transform)
             {

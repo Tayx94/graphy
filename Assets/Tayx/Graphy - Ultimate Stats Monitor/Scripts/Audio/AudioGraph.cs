@@ -25,6 +25,7 @@ namespace Tayx.Graphy.Audio
          * Check if we can remove "using System.Collections;".
          * Check if we should add "private" to the Unity Callbacks.
          * Check if we can remove "using Tayx;".
+         * Check if we should add a "RequireComponent" for "AudioMonitor".
          * --------------------------------------*/
 
         #region Variables -> Serialized Private
