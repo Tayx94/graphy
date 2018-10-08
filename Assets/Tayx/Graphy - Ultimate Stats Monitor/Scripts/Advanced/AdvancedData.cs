@@ -29,42 +29,50 @@ namespace Tayx.Graphy.Advanced
 {
     public class AdvancedData : MonoBehaviour, IMovable, IModifiableState
     {
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we should add "private" to the Unity Callbacks.
+         * --------------------------------------*/
+
         #region Variables -> Serialized Private
-        
-        [SerializeField] private List<Image> m_backgroundImages = new List<Image>();
 
-        [SerializeField] private Text m_graphicsDeviceVersionText;
+        [SerializeField] private    List<Image>                 m_backgroundImages              = new List<Image>();
 
-        [SerializeField] private Text m_processorTypeText;
+        [SerializeField] private    Text                        m_graphicsDeviceVersionText;
 
-        [SerializeField] private Text m_operatingSystemText;
+        [SerializeField] private    Text                        m_processorTypeText;
 
-        [SerializeField] private Text m_systemMemoryText;
+        [SerializeField] private    Text                        m_operatingSystemText;
 
-        [SerializeField] private Text m_graphicsDeviceNameText;
-        [SerializeField] private Text m_graphicsMemorySizeText;
-        [SerializeField] private Text m_screenResolutionText;
-        [SerializeField] private Text m_gameWindowResolutionText;
+        [SerializeField] private    Text                        m_systemMemoryText;
+
+        [SerializeField] private    Text                        m_graphicsDeviceNameText;
+        [SerializeField] private    Text                        m_graphicsMemorySizeText;
+        [SerializeField] private    Text                        m_screenResolutionText;
+        [SerializeField] private    Text                        m_gameWindowResolutionText;
 
         [Range(1, 60)]
-        [SerializeField] private float m_updateRate = 1f;  // 1 update per sec.
+        [SerializeField] private    float                       m_updateRate                    = 1f;  // 1 update per sec.
 
         #endregion
 
         #region Variables -> Private
 
-        private GraphyManager m_graphyManager;
+        private                     GraphyManager               m_graphyManager;
 
-        private RectTransform m_rectTransform;
+        private                     RectTransform               m_rectTransform;
 
-        private float m_deltaTime = 0.0f;
+        private                     float                       m_deltaTime                     = 0.0f;
 
-        private StringBuilder m_sb;
+        private                     StringBuilder               m_sb;
 
-        private GraphyManager.ModuleState m_previousModuleState;
-        private GraphyManager.ModuleState m_currentModuleState;
+        private                     GraphyManager.ModuleState   m_previousModuleState;
+        private                     GraphyManager.ModuleState   m_currentModuleState;
 
-        private readonly string[] m_windowStrings =
+        private readonly            string[]                    m_windowStrings =
         {
             "Window: ",
             "x",
@@ -112,8 +120,8 @@ namespace Tayx.Graphy.Advanced
 
         public void SetPosition(GraphyManager.ModulePosition newModulePosition)
         {
-            float xSideOffsetBackgroundImage = Mathf.Abs(m_backgroundImages[0].rectTransform.anchoredPosition.x);
-            float ySideOffset = Mathf.Abs(m_rectTransform.anchoredPosition.y);
+            float xSideOffsetBackgroundImage    = Mathf.Abs(m_backgroundImages[0].rectTransform.anchoredPosition.x);
+            float ySideOffset                   = Mathf.Abs(m_rectTransform.anchoredPosition.y);
 
             switch (newModulePosition)
             {
@@ -239,7 +247,9 @@ namespace Tayx.Graphy.Advanced
         private void Init()
         {
             //TODO: Replace this with one activated from the core and figure out the min value.
-            if (!FloatString.Inited || FloatString.MinValue > -1000f || FloatString.MaxValue < 16384f)
+            if (!FloatString.Inited
+                || FloatString.MinValue > -1000f
+                || FloatString.MaxValue < 16384f)
             {
                 FloatString.Init
                 (
@@ -253,6 +263,8 @@ namespace Tayx.Graphy.Advanced
             m_sb = new StringBuilder();
 
             m_rectTransform = GetComponent<RectTransform>();
+
+            #region Section -> Text
 
             m_processorTypeText.text
                 = "CPU: "
@@ -323,7 +335,11 @@ namespace Tayx.Graphy.Advanced
                     preferredWidth = text.preferredWidth;
                 }
             }
-            
+
+            #endregion
+
+            #region Section -> Background Images
+
             m_backgroundImages[0].rectTransform.SetSizeWithCurrentAnchors
             (
                 axis: RectTransform.Axis.Horizontal,
@@ -335,7 +351,9 @@ namespace Tayx.Graphy.Advanced
                 x: (preferredWidth + 15) / 2 * Mathf.Sign(m_backgroundImages[0].rectTransform.anchoredPosition.x),
                 y: m_backgroundImages[0].rectTransform.anchoredPosition.y
             );
-            
+
+            #endregion
+
             UpdateParameters();
         }
 

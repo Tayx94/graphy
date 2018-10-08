@@ -15,102 +15,120 @@ using UnityEngine.UI;
 
 using System.Collections;
 using System.Collections.Generic;
-//TODO: Figure out this namespace.
+
 using Random = UnityEngine.Random;
 
 namespace Tayx.Graphy.CustomizationScene
 {
     public class CustomizeGraphy : MonoBehaviour
     {
-        //TODO: Sort out the Callback function and other stuff.
-        #region Variables -> Serialized Private
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we can remove "using Random = UnityEngine.Random;".
+         * Check if we can remove the UnityEngine prefix on the PlayRandomSFX function
+         * --------------------------------------*/
 
+        #region Variables -> Serialized Private
+        
         [Header("Customize Graphy")]
 
-        [SerializeField] private CUIColorPicker m_colorPicker;
+        [SerializeField] private    CUIColorPicker      m_colorPicker;
         
-        [SerializeField] private Toggle m_backgroundToggle;
+        [SerializeField] private    Toggle              m_backgroundToggle;
 
-        [SerializeField] private Dropdown m_graphyModeDropdown;
+        [SerializeField] private    Dropdown            m_graphyModeDropdown;
 
-        [SerializeField] private Button m_backgroundColorButton;
+        [SerializeField] private    Button              m_backgroundColorButton;
         
-        [SerializeField] private Dropdown m_graphModulePositionDropdown;
+        [SerializeField] private    Dropdown            m_graphModulePositionDropdown;
 
-        // FPS -------------------------------------------
-        
+        #region Section -> FPS
+
         [Header("Fps")]
 
-        [SerializeField] private Dropdown m_fpsModuleStateDropdown;
+        [SerializeField] private    Dropdown            m_fpsModuleStateDropdown;
 
-        [SerializeField] private InputField m_goodInputField;
-        [SerializeField] private InputField m_cautionInputField;
+        [SerializeField] private    InputField          m_goodInputField;
+        [SerializeField] private    InputField          m_cautionInputField;
         
-        [SerializeField] private Button m_goodColorButton;
-        [SerializeField] private Button m_cautionColorButton;
-        [SerializeField] private Button m_criticalColorButton;
+        [SerializeField] private    Button              m_goodColorButton;
+        [SerializeField] private    Button              m_cautionColorButton;
+        [SerializeField] private    Button              m_criticalColorButton;
         
-        [SerializeField] private Slider m_timeToResetMinMaxSlider;
-        [SerializeField] private Slider m_fpsGraphResolutionSlider;
-        [SerializeField] private Slider m_fpsTextUpdateRateSlider;
-        
-        // MEMORY -------------------------------------------
+        [SerializeField] private    Slider              m_timeToResetMinMaxSlider;
+        [SerializeField] private    Slider              m_fpsGraphResolutionSlider;
+        [SerializeField] private    Slider              m_fpsTextUpdateRateSlider;
+
+        #endregion
+
+        #region Section -> RAM
 
         [Header("Memory")]
 
-        [SerializeField] private Dropdown m_ramModuleStateDropdown;
+        [SerializeField] private    Dropdown            m_ramModuleStateDropdown;
         
-        [SerializeField] private Button m_reservedColorButton;
-        [SerializeField] private Button m_allocatedColorButton;
-        [SerializeField] private Button m_monoColorButton;
+        [SerializeField] private    Button              m_reservedColorButton;
+        [SerializeField] private    Button              m_allocatedColorButton;
+        [SerializeField] private    Button              m_monoColorButton;
 
-        [SerializeField] private Slider m_ramGraphResolutionSlider;
-        [SerializeField] private Slider m_ramTextUpdateRateSlider;
-        
-        // AUDIO -------------------------------------------
+        [SerializeField] private    Slider              m_ramGraphResolutionSlider;
+        [SerializeField] private    Slider              m_ramTextUpdateRateSlider;
+
+        #endregion
+
+        #region Section -> Audio
 
         [Header("Audio")]
         
-        [SerializeField] private Dropdown m_audioModuleStateDropdown;
+        [SerializeField] private    Dropdown            m_audioModuleStateDropdown;
         
-        [SerializeField] private Button m_audioGraphColorButton;
+        [SerializeField] private    Button              m_audioGraphColorButton;
         
-        [SerializeField] private Dropdown m_findAudioListenerDropdown;
-        [SerializeField] private Dropdown m_fttWindowDropdown;
+        [SerializeField] private    Dropdown            m_findAudioListenerDropdown;
+        [SerializeField] private    Dropdown            m_fttWindowDropdown;
         
-        [SerializeField] private Slider m_spectrumSizeSlider;
-        [SerializeField] private Slider m_audioGraphResolutionSlider;
-        [SerializeField] private Slider m_audioTextUpdateRateSlider;
-        
-        // ADVANCED -------------------------------------------
+        [SerializeField] private    Slider              m_spectrumSizeSlider;
+        [SerializeField] private    Slider              m_audioGraphResolutionSlider;
+        [SerializeField] private    Slider              m_audioTextUpdateRateSlider;
+
+        #endregion
+
+        #region Section -> Advanced
 
         [Header("Advanced")]
 
-        [SerializeField] private Dropdown m_advancedModulePositionDropdown;
+        [SerializeField] private    Dropdown            m_advancedModulePositionDropdown;
 
-        [SerializeField] private Toggle m_advancedModuleToggle;
-        
-        // OTHER ---------------------------------------------
+        [SerializeField] private    Toggle              m_advancedModuleToggle;
+
+        #endregion
+
+        #region Section -> Other
 
         [Header("Other")]
         
-        [SerializeField] private Button m_musicButton;
-        [SerializeField] private Button m_sfxButton;
+        [SerializeField] private    Button              m_musicButton;
+        [SerializeField] private    Button              m_sfxButton;
         
-        [SerializeField] private Slider m_musicVolumeSlider;
-        [SerializeField] private Slider m_sfxVolumeSlider;
+        [SerializeField] private    Slider              m_musicVolumeSlider;
+        [SerializeField] private    Slider              m_sfxVolumeSlider;
 
 
-        [SerializeField] private AudioSource m_musicAudioSource;
-        [SerializeField] private AudioSource m_sfxAudioSource;
+        [SerializeField] private    AudioSource         m_musicAudioSource;
+        [SerializeField] private    AudioSource         m_sfxAudioSource;
         
-        [SerializeField] private List<AudioClip> m_sfxAudioClips = new List<AudioClip>();
+        [SerializeField] private    List<AudioClip>     m_sfxAudioClips = new List<AudioClip>();
+
+        #endregion
 
         #endregion
 
         #region Variables -> Private
 
-        private GraphyManager m_graphyManager;
+        private GraphyManager       m_graphyManager;
 
         #endregion
 
@@ -129,7 +147,8 @@ namespace Tayx.Graphy.CustomizationScene
 
         private void SetupCallbacks()
         {
-            m_backgroundToggle.onValueChanged.AddListener(value => m_graphyManager.Background = value);
+            m_backgroundToggle.onValueChanged.AddListener(
+                value => m_graphyManager.Background = value);
             
             m_backgroundColorButton.onClick.AddListener(() =>
             {
@@ -142,36 +161,31 @@ namespace Tayx.Graphy.CustomizationScene
                 });
             });
 
-            m_graphyModeDropdown.onValueChanged.AddListener
-            (
-                value => 
+            m_graphyModeDropdown.onValueChanged.AddListener(value => 
+            {
+                switch ((GraphyManager.Mode)value)
                 {
-                    switch ((GraphyManager.Mode)value)
-                    {
-                        case GraphyManager.Mode.FULL:
-                            m_fpsGraphResolutionSlider.maxValue = 300f;
-                            m_ramGraphResolutionSlider.maxValue = 300f;
-                            m_audioGraphResolutionSlider.maxValue = 300f;
-                            break;
+                    case GraphyManager.Mode.FULL:
+                        m_fpsGraphResolutionSlider.maxValue     = 300f;
+                        m_ramGraphResolutionSlider.maxValue     = 300f;
+                        m_audioGraphResolutionSlider.maxValue   = 300f;
+                        break;
 
-                        case GraphyManager.Mode.LIGHT:
-                            m_fpsGraphResolutionSlider.maxValue = 128f;
-                            m_ramGraphResolutionSlider.maxValue = 128f;
-                            m_audioGraphResolutionSlider.maxValue = 128f;
-                            break;
-                    }
-
-                    m_graphyManager.GraphyMode = (GraphyManager.Mode)value;                    
+                    case GraphyManager.Mode.LIGHT:
+                        m_fpsGraphResolutionSlider.maxValue     = 128f;
+                        m_ramGraphResolutionSlider.maxValue     = 128f;
+                        m_audioGraphResolutionSlider.maxValue   = 128f;
+                        break;
                 }
-               
-            );
 
+                m_graphyManager.GraphyMode = (GraphyManager.Mode)value;                    
+            });
 
             m_graphModulePositionDropdown.onValueChanged.AddListener(
                 value => m_graphyManager.GraphModulePosition = (GraphyManager.ModulePosition)value);
-            
-            // FPS
-            
+
+            #region Section -> FPS
+
             m_fpsModuleStateDropdown.onValueChanged.AddListener(
                 value => m_graphyManager.FpsModuleState = (GraphyManager.ModuleState)value);
 
@@ -183,6 +197,7 @@ namespace Tayx.Graphy.CustomizationScene
                     m_graphyManager.GoodFPSThreshold = threshold;
                 }
             });
+
             m_cautionInputField.onValueChanged.AddListener(value =>
             {
                 int threshold;
@@ -225,15 +240,21 @@ namespace Tayx.Graphy.CustomizationScene
                 });
             });
             
-            m_timeToResetMinMaxSlider.onValueChanged.AddListener(value => m_graphyManager.TimeToResetMinMaxFps = (int)value);
-            m_fpsGraphResolutionSlider.onValueChanged.AddListener(value => m_graphyManager.FpsGraphResolution = (int)value);
-            m_fpsTextUpdateRateSlider.onValueChanged.AddListener(value => m_graphyManager.FpsTextUpdateRate = (int)value);
-            
-            // RAM
-            
+            m_timeToResetMinMaxSlider.onValueChanged.AddListener(
+                value => m_graphyManager.TimeToResetMinMaxFps = (int)value);
+
+            m_fpsGraphResolutionSlider.onValueChanged.AddListener(
+                value => m_graphyManager.FpsGraphResolution = (int)value);
+
+            m_fpsTextUpdateRateSlider.onValueChanged.AddListener(
+                value => m_graphyManager.FpsTextUpdateRate = (int)value);
+
+            #endregion
+
+            #region Section -> RAM
+
             m_ramModuleStateDropdown.onValueChanged.AddListener(
                 value => m_graphyManager.RamModuleState = (GraphyManager.ModuleState)value);
-
            
             m_reservedColorButton.onClick.AddListener(() =>
             {
@@ -268,14 +289,18 @@ namespace Tayx.Graphy.CustomizationScene
                 });
             });
             
-            m_ramGraphResolutionSlider.onValueChanged.AddListener(value => m_graphyManager.RamGraphResolution = (int)value);
-            m_ramTextUpdateRateSlider.onValueChanged.AddListener(value => m_graphyManager.RamTextUpdateRate = (int)value);
-            
-            // AUDIO
-            
+            m_ramGraphResolutionSlider.onValueChanged.AddListener(
+                value => m_graphyManager.RamGraphResolution = (int)value);
+
+            m_ramTextUpdateRateSlider.onValueChanged.AddListener(
+                value => m_graphyManager.RamTextUpdateRate = (int)value);
+
+            #endregion
+
+            #region Section -> Audio
+
             m_audioModuleStateDropdown.onValueChanged.AddListener(
                 value => m_graphyManager.AudioModuleState = (GraphyManager.ModuleState)value);
-
            
             m_audioGraphColorButton.onClick.AddListener(() =>
             {
@@ -294,25 +319,39 @@ namespace Tayx.Graphy.CustomizationScene
             m_fttWindowDropdown.onValueChanged.AddListener(
                 value => m_graphyManager.FftWindow = (FFTWindow)value);
             
-            m_spectrumSizeSlider.onValueChanged.AddListener(value => m_graphyManager.SpectrumSize = (int)value);           
-            m_audioGraphResolutionSlider.onValueChanged.AddListener(value => m_graphyManager.AudioGraphResolution = (int)value);
-            m_audioTextUpdateRateSlider.onValueChanged.AddListener(value => m_graphyManager.AudioTextUpdateRate = (int)value);
+            m_spectrumSizeSlider.onValueChanged.AddListener(
+                value => m_graphyManager.SpectrumSize = (int)value);
             
-            // ADVANCED
-            
+            m_audioGraphResolutionSlider.onValueChanged.AddListener(
+                value => m_graphyManager.AudioGraphResolution = (int)value);
+
+            m_audioTextUpdateRateSlider.onValueChanged.AddListener(
+                value => m_graphyManager.AudioTextUpdateRate = (int)value);
+
+            #endregion
+
+            #region Section -> Advanced
+
             m_advancedModulePositionDropdown.onValueChanged.AddListener(
                 value => m_graphyManager.AdvancedModulePosition = (GraphyManager.ModulePosition)value);
             
             m_advancedModuleToggle.onValueChanged.AddListener(
                 value => m_graphyManager.AdvancedModuleState = value ? GraphyManager.ModuleState.FULL : GraphyManager.ModuleState.OFF);
-            
-            // OTHER
-            
+
+            #endregion
+
+            #region Section -> Other
+
             m_musicButton.onClick.AddListener(ToggleMusic);
             m_sfxButton.onClick.AddListener(PlayRandomSFX);
             
-            m_musicVolumeSlider.onValueChanged.AddListener(value => m_musicAudioSource.volume = value / 100f);
-            m_sfxVolumeSlider.onValueChanged.AddListener(value =>  m_sfxAudioSource.volume = value / 100f);
+            m_musicVolumeSlider.onValueChanged.AddListener(
+                value => m_musicAudioSource.volume = value / 100f);
+
+            m_sfxVolumeSlider.onValueChanged.AddListener(
+                value =>  m_sfxAudioSource.volume = value / 100f);
+
+            #endregion
         }
 
         private void ToggleMusic()
@@ -331,7 +370,12 @@ namespace Tayx.Graphy.CustomizationScene
         {
             if (m_sfxAudioClips.Count > 0)
             {
-                m_sfxAudioSource.clip = m_sfxAudioClips[UnityEngine.Random.Range(0, m_sfxAudioClips.Count)];
+                m_sfxAudioSource.clip = m_sfxAudioClips[UnityEngine.Random.Range
+                (
+                    min: 0,
+                    max: m_sfxAudioClips.Count
+                )];
+
                 m_sfxAudioSource.Play();
             }
         }

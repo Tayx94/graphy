@@ -16,10 +16,17 @@ using System.Collections;
 
 namespace Tayx.Graphy.CustomizationScene
 {
-    //TODO: Check if we can seal the class.
 	public class ForceSliderToPowerOf2 : MonoBehaviour
 	{
-        //TODO: Add summaries.
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we could make the "m_powerOf2Values" constant.
+         * Check if we should add "private" to the Unity Callbacks.
+         * --------------------------------------*/
+
         #region Variables -> Serialized Private
 
         [SerializeField] private Slider m_slider;

@@ -68,9 +68,9 @@ namespace Tayx.Graphy
 
         public enum ModulePreset
         {
-            FPS_BASIC = 0,
-            FPS_TEXT = 1,
-            FPS_FULL = 2,
+            FPS_BASIC   = 0,
+            FPS_TEXT    = 1,
+            FPS_FULL    = 2,
 
             FPS_TEXT_RAM_TEXT = 3,
             FPS_FULL_RAM_TEXT = 4,
