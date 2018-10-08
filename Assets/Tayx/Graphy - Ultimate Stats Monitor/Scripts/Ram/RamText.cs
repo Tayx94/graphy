@@ -68,7 +68,7 @@ namespace Tayx.Graphy.Ram
 
         #endregion
         
-        #region Methods -> public
+        #region Methods -> Public
         
         public void UpdateParameters()
         {
