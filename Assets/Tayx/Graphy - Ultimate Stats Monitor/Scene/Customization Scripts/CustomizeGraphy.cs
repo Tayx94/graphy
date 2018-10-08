@@ -128,7 +128,7 @@ namespace Tayx.Graphy.CustomizationScene
 
         #region Variables -> Private
 
-        private GraphyManager       m_graphyManager;
+        private GraphyManager m_graphyManager;
 
         #endregion
 

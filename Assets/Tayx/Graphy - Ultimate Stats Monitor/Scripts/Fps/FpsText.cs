@@ -19,28 +19,28 @@ namespace Tayx.Graphy.Fps
 {
     public class FpsText : MonoBehaviour
     {
-        #region Private Variables
+        #region Private Variables CURRENTLY HERE WITH EDITING
 
         private GraphyManager m_graphyManager;
 
         private FpsMonitor m_fpsMonitor;
 
-        [SerializeField] private Text m_fpsText;
-        [SerializeField] private Text m_msText;
+        [SerializeField] private    Text m_fpsText;
+        [SerializeField] private    Text m_msText;
 
-        [SerializeField] private Text m_avgFpsText;
-        [SerializeField] private Text m_minFpsText;
-        [SerializeField] private Text m_maxFpsText;
+        [SerializeField] private    Text m_avgFpsText;
+        [SerializeField] private    Text m_minFpsText;
+        [SerializeField] private    Text m_maxFpsText;
 
-        private int m_updateRate = 4;  // 4 updates per sec.
+        private                     int m_updateRate = 4;  // 4 updates per sec.
 
-        private int m_frameCount = 0;
+        private                     int m_frameCount = 0;
 
-        private float m_deltaTime = 0;
+        private                     float m_deltaTime = 0f;
 
-        private float m_fps = 0;
+        private                     float m_fps = 0f;
 
-        private const string m_msStringFormat = "0.0";
+        private const               string m_msStringFormat = "0.0";
 
         #endregion
 
@@ -59,7 +59,7 @@ namespace Tayx.Graphy.Fps
 
             // Only update texts 'm_updateRate' times per second
 
-            if (m_deltaTime > 1.0 / m_updateRate)
+            if (m_deltaTime > 1f / m_updateRate)
             {
                 m_fps = m_frameCount / m_deltaTime;
 
@@ -88,7 +88,7 @@ namespace Tayx.Graphy.Fps
 
                 // Reset variables
 
-                m_deltaTime = 0;
+                m_deltaTime = 0f;
                 m_frameCount = 0;
             }
         }

@@ -411,9 +411,20 @@ namespace Tayx.Graphy
             path = path.Split(new string[] { "Assets" }, StringSplitOptions.None)[1]
                        .Split(new string[] { "Tayx"   }, StringSplitOptions.None)[0];
 
-            m_logoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets" + path + "Tayx/Graphy - Ultimate Stats Monitor/Textures/Debugger_Logo_" + (EditorGUIUtility.isProSkin ? "White.png" : "Dark.png"));
+            m_logoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>
+            (
+                "Assets" +
+                path +
+                "Tayx/Graphy - Ultimate Stats Monitor/Textures/Debugger_Logo_" +
+                (EditorGUIUtility.isProSkin ? "White.png" : "Dark.png")
+            );
 
-            m_skin = AssetDatabase.LoadAssetAtPath<GUISkin>("Assets" + path + "Tayx/Graphy - Ultimate Stats Monitor/GUI/Graphy.guiskin");
+            m_skin = AssetDatabase.LoadAssetAtPath<GUISkin>
+            (
+                "Assets" +
+                path +
+                "Tayx/Graphy - Ultimate Stats Monitor/GUI/Graphy.guiskin"
+            );
 
             if (m_skin != null)
             {
@@ -431,14 +442,14 @@ namespace Tayx.Graphy
 
         private void SetGuiStyleFontColor(GUIStyle guiStyle, Color color)
         {
-            guiStyle.normal.textColor = color;
-            guiStyle.hover.textColor = color;
-            guiStyle.active.textColor = color;
-            guiStyle.focused.textColor = color;
-            guiStyle.onNormal.textColor = color;
-            guiStyle.onHover.textColor = color;
-            guiStyle.onActive.textColor = color;
-            guiStyle.onFocused.textColor = color;
+            guiStyle.normal     .textColor = color;
+            guiStyle.hover      .textColor = color;
+            guiStyle.active     .textColor = color;
+            guiStyle.focused    .textColor = color;
+            guiStyle.onNormal   .textColor = color;
+            guiStyle.onHover    .textColor = color;
+            guiStyle.onActive   .textColor = color;
+            guiStyle.onFocused  .textColor = color;
         }
 
         private string GetMonoScriptFilePath(ScriptableObject scriptableObject)
