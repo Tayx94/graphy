@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 28-Feb-18
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            28-Feb-18
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -13,12 +15,14 @@ using UnityEngine.UI;
 
 using System.Collections;
 using System.Collections.Generic;
+//TODO: Figure out this namespace.
 using Random = UnityEngine.Random;
 
 namespace Tayx.Graphy.CustomizationScene
 {
     public class CustomizeGraphy : MonoBehaviour
     {
+        //TODO: Sort out the Callback function and other stuff.
         #region Variables -> Serialized Private
 
         [Header("Customize Graphy")]
@@ -121,7 +125,7 @@ namespace Tayx.Graphy.CustomizationScene
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         private void SetupCallbacks()
         {

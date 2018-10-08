@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 05-Mar-18
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            05-Mar-18
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -17,15 +19,19 @@ namespace Tayx.Graphy.CustomizationScene
     [RequireComponent(typeof(Text))]
 	public class UpdateTextWithSliderValue : MonoBehaviour
 	{
-        #region Private Variables
+        #region Variables -> Serialized Private
 
         [SerializeField] private Slider m_slider;
 
-		private Text m_text;
+        #endregion
+
+        #region Variables -> Private
+
+        private Text m_text;
 
         #endregion
 
-        #region Unity Methods
+        #region Methods -> Unity Callbacks
 
         void Start()
 		{
@@ -36,7 +42,7 @@ namespace Tayx.Graphy.CustomizationScene
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         private void UpdateText(float value)
 		{
