@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 15-Dec-17
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            15-Dec-17
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -16,29 +18,33 @@ namespace Tayx.Graphy.Audio
 {
     public class AudioGraph : Graph.Graph
     {
-        #region Private Variables
+        #region Variables -> Serialized Private
+
+        [SerializeField] private Image m_imageGraph;
+        [SerializeField] private Image m_imageGraphHighestValues;
+
+        [SerializeField] private Shader ShaderFull;
+        [SerializeField] private Shader ShaderLight;
+
+        #endregion
+
+        #region Variables -> Private
 
         private GraphyManager m_graphyManager;
 
         private AudioMonitor m_audioMonitor;
-
-        [SerializeField] private Image m_imageGraph;
-        [SerializeField] private Image m_imageGraphHighestValues;
 
         private int m_resolution = 40;
 
         private ShaderGraph m_shaderGraph;
         private ShaderGraph m_shaderGraphHighestValues;
 
-        [SerializeField] private Shader ShaderFull;
-        [SerializeField] private Shader ShaderLight;
-
         private float[] m_graphArray;
         private float[] m_graphArrayHighestValue;
 
         #endregion
 
-        #region Unity Methods
+        #region Methods -> Unity Callbacks
 
         void Awake()
         {
@@ -55,26 +61,26 @@ namespace Tayx.Graphy.Audio
 
         #endregion
 
-        #region Public Methods
+        #region Methods -> Public
 
         public void UpdateParameters()
         {
             switch (m_graphyManager.GraphyMode)
             {
                 case GraphyManager.Mode.FULL:
-                    m_shaderGraph.ArrayMaxSize = ShaderGraph.ArrayMaxSizeFull;
-                    m_shaderGraph.Image.material = new Material(ShaderFull);
+                    m_shaderGraph.ArrayMaxSize                  = ShaderGraph.ArrayMaxSizeFull;
+                    m_shaderGraph.Image.material                = new Material(ShaderFull);
 
-                    m_shaderGraphHighestValues.ArrayMaxSize = ShaderGraph.ArrayMaxSizeFull;
-                    m_shaderGraphHighestValues.Image.material = new Material(ShaderFull);
+                    m_shaderGraphHighestValues.ArrayMaxSize     = ShaderGraph.ArrayMaxSizeFull;
+                    m_shaderGraphHighestValues.Image.material   = new Material(ShaderFull);
                     break;
 
                 case GraphyManager.Mode.LIGHT:
-                    m_shaderGraph.ArrayMaxSize = ShaderGraph.ArrayMaxSizeLight;
-                    m_shaderGraph.Image.material = new Material(ShaderLight);
+                    m_shaderGraph.ArrayMaxSize                  = ShaderGraph.ArrayMaxSizeLight;
+                    m_shaderGraph.Image.material                = new Material(ShaderLight);
 
-                    m_shaderGraphHighestValues.ArrayMaxSize = ShaderGraph.ArrayMaxSizeLight;
-                    m_shaderGraphHighestValues.Image.material = new Material(ShaderLight);
+                    m_shaderGraphHighestValues.ArrayMaxSize     = ShaderGraph.ArrayMaxSizeLight;
+                    m_shaderGraphHighestValues.Image.material   = new Material(ShaderLight);
                     break;
             }
 
@@ -88,7 +94,7 @@ namespace Tayx.Graphy.Audio
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Protected Override
 
         protected override void UpdateGraph()
         {
@@ -178,7 +184,6 @@ namespace Tayx.Graphy.Audio
         protected override void CreatePoints()
         {
             // Init Arrays
-
             m_shaderGraph.Array = new float[m_resolution];
             m_shaderGraphHighestValues.Array = new float[m_resolution];
 
@@ -192,67 +197,60 @@ namespace Tayx.Graphy.Audio
             }
 
             // Color
-
-            m_shaderGraph.GoodColor     = m_graphyManager.AudioGraphColor;
-            m_shaderGraph.CautionColor  = m_graphyManager.AudioGraphColor;
-            m_shaderGraph.CriticalColor = m_graphyManager.AudioGraphColor;
-
+            m_shaderGraph.GoodColor                         = m_graphyManager.AudioGraphColor;
+            m_shaderGraph.CautionColor                      = m_graphyManager.AudioGraphColor;
+            m_shaderGraph.CriticalColor                     = m_graphyManager.AudioGraphColor;
             m_shaderGraph.UpdateColors();
 
-            m_shaderGraphHighestValues.GoodColor = m_graphyManager.AudioGraphColor;
-            m_shaderGraphHighestValues.CautionColor = m_graphyManager.AudioGraphColor;
-            m_shaderGraphHighestValues.CriticalColor = m_graphyManager.AudioGraphColor;
-                        
+            m_shaderGraphHighestValues.GoodColor            = m_graphyManager.AudioGraphColor;
+            m_shaderGraphHighestValues.CautionColor         = m_graphyManager.AudioGraphColor;
+            m_shaderGraphHighestValues.CriticalColor        = m_graphyManager.AudioGraphColor;
             m_shaderGraphHighestValues.UpdateColors();
 
             // Threshold
-
-            m_shaderGraph.GoodThreshold = 0;
-            m_shaderGraph.CautionThreshold = 0;
-            
+            m_shaderGraph.GoodThreshold                     = 0;
+            m_shaderGraph.CautionThreshold                  = 0;
             m_shaderGraph.UpdateThresholds();
 
-            m_shaderGraphHighestValues.GoodThreshold = 0;
-            m_shaderGraphHighestValues.CautionThreshold = 0;
-
+            m_shaderGraphHighestValues.GoodThreshold        = 0;
+            m_shaderGraphHighestValues.CautionThreshold     = 0;
             m_shaderGraphHighestValues.UpdateThresholds();
 
             // Update Array
-
             m_shaderGraph.UpdateArray();
-
             m_shaderGraphHighestValues.UpdateArray();
 
             // Average
-
-            m_shaderGraph.Average = 0;
-
+            m_shaderGraph.Average                           = 0;
             m_shaderGraph.UpdateAverage();
             
-            m_shaderGraphHighestValues.Average = 0;
-
+            m_shaderGraphHighestValues.Average              = 0;
             m_shaderGraphHighestValues.UpdateAverage();
         }
 
+        #endregion
+
+        #region Methods -> Private
 
         private void Init()
         {
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
             m_audioMonitor = GetComponent<AudioMonitor>();
-            
-            m_shaderGraph = new ShaderGraph();
 
-            m_shaderGraph.Image = m_imageGraph;
+            m_shaderGraph = new ShaderGraph
+            {
+                Image = m_imageGraph
+            };
 
-            m_shaderGraphHighestValues = new ShaderGraph();
-
-            m_shaderGraphHighestValues.Image = m_imageGraphHighestValues;
+            m_shaderGraphHighestValues = new ShaderGraph
+            {
+                Image = m_imageGraphHighestValues
+            };
 
             UpdateParameters();
         }
 
         #endregion
-
     }
 }

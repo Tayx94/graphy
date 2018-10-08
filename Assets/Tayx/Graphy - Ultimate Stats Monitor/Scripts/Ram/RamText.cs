@@ -94,6 +94,5 @@ namespace Tayx.Graphy.Ram
         }
 
         #endregion
-
     }
 }

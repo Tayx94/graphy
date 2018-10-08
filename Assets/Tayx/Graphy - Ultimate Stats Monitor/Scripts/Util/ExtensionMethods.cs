@@ -1,8 +1,9 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 04-Jan-18
- * Studio: Tayx
+ * Author:      Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Project:     Graphy - Ultimate Stats Monitor
+ * Date:        04-Jan-18
+ * Studio:      Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -19,9 +20,14 @@ namespace Tayx.Graphy.Utils
         /// <summary>
         /// Functions as the SetActive function in the GameObject class, but for a list of them.
         /// </summary>
-        /// <param name="gameObjects">List of GameObjects.</param>
-        /// <param name="active">Wether to turn them on or off.</param>
-        /// <returns></returns>
+        /// <param name="gameObjects">
+        /// List of GameObjects.
+        /// </param>
+        /// <param name="active">
+        /// Wether to turn them on or off.
+        /// </param>
+        /// <returns>
+        /// </returns>
         public static List<GameObject> SetAllActive(this List<GameObject> gameObjects, bool active)
         {
             foreach (var gameObj in gameObjects)
@@ -53,6 +59,4 @@ namespace Tayx.Graphy.Utils
             return images;
         }
     }
-
-
 }
