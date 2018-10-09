@@ -20,10 +20,14 @@ namespace Tayx.Graphy
     [CustomEditor(typeof(GraphyManager))]
     internal sealed class GraphyManagerEditor : Editor
     {
-
+        /* ----- TODO: ----------------------------
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * --------------------------------------*/
 
         #region Variables -> Private
-        
+
         private GraphyManager       m_target;
 
         private GUISkin             m_skin;
