@@ -23,6 +23,14 @@ namespace Tayx.Graphy
     //[ExecuteInEditMode]
     public class GraphyManager : Singleton<GraphyManager>
     {
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we should add "private" to the Unity Callbacks.
+         * --------------------------------------*/
+
         protected GraphyManager () { }
 
         //Enums
