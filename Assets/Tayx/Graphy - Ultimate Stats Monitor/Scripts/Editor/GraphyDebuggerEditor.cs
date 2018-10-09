@@ -22,33 +22,45 @@ namespace Tayx.Graphy
     [CustomEditor(typeof(GraphyDebugger))]
     internal class GraphyDebuggerEditor : Editor
     {
-        //TODO: Sort these out into proper spacing.
-        #region Private Variables
+        /* ----- TODO: ----------------------------
+         * Check why we're using public for the Unity Callbacks when we dont in GraphyManagerEditor
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we can remove "using UnityEngine.SocialPlatforms.Impl;".
+         * Check if we can seal this class.
+         * --------------------------------------*/
+        
+        #region Variables -> Private
 
-        private GraphyDebugger m_target;
+        private GraphyDebugger  m_target;
 
-        private int m_newDebugPacketListSize = 0;
+        private int             m_newDebugPacketListSize                = 0;
 
-        private int m_previouslySelectedDebugPacketIndex = 0;
-        private int m_currentlySelectedDebugPacketIndex = 0;
+        private int             m_previouslySelectedDebugPacketIndex    = 0;
+        private int             m_currentlySelectedDebugPacketIndex     = 0;
 
-        private int m_selectedDebugPacketCondition = 0;
+        private int             m_selectedDebugPacketCondition          = 0;
 
-        private GUISkin m_skin;
+        private GUISkin         m_skin;
 
-        private GUIStyle m_headerStyle1;
-        private GUIStyle m_headerStyle2;
+        private GUIStyle        m_headerStyle1;
+        private GUIStyle        m_headerStyle2;
 
-        private Texture2D m_logoTexture;
+        private Texture2D       m_logoTexture;
 
         #endregion
 
-        #region Unity Editor Methods
+        #region Methods -> Unity Callbacks
 
         public void OnEnable()
         {
             m_target = (GraphyDebugger) target;
         }
+
+        #endregion
+
+        #region Methods -> Public Override
 
         public override void OnInspectorGUI()
         {
@@ -65,10 +77,12 @@ namespace Tayx.Graphy
 
             if (m_logoTexture != null)
             {
-                var centeredStyle = new GUIStyle(GUI.skin.GetStyle("Label"));
-                centeredStyle.alignment = TextAnchor.UpperCenter;
+                var centeredStyle = new GUIStyle(GUI.skin.GetStyle("Label"))
+                {
+                    alignment = TextAnchor.UpperCenter
+                };
 
-                GUILayout.Label(m_logoTexture, centeredStyle);
+                GUILayout.Label(image: m_logoTexture, style: centeredStyle);
             }
             else
             {
@@ -148,7 +162,18 @@ namespace Tayx.Graphy
                 SerializedProperty listItem = debugPacketList.GetArrayElementAtIndex(i);
                 // NOTE: If the Popup detects two equal strings, it just paints 1, that's why I always add the "i"
                 char checkMark = listItem.FindPropertyRelative("Active").boolValue ? '\u2714' : '\u2718';
-                debugPacketNames.Add((i + 1)+ " (" + checkMark + ") " + " - ID: " + listItem.FindPropertyRelative("Id").intValue + " (Conditions: " + listItem.FindPropertyRelative("DebugConditions").arraySize + ")");
+                debugPacketNames.Add
+                (
+                    (i + 1) +
+                    " (" +
+                    checkMark +
+                    ") " +
+                    " - ID: " +
+                    listItem.FindPropertyRelative("Id").intValue +
+                    " (Conditions: " +
+                    listItem.FindPropertyRelative("DebugConditions").arraySize +
+                    ")"
+                );
             }
 
             m_currentlySelectedDebugPacketIndex = EditorGUILayout.Popup(m_currentlySelectedDebugPacketIndex, debugPacketNames.ToArray());
@@ -402,7 +427,7 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         private void LoadGuiStyles()
         {
@@ -464,7 +489,11 @@ namespace Tayx.Graphy
             {
                 filePath = fi.Directory.ToString();
 
-                filePath = filePath.Replace('\\', '/');
+                filePath = filePath.Replace
+                (
+                    oldChar: '\\',
+                    newChar: '/'
+                );
 
                 return filePath;
             }
@@ -479,11 +508,25 @@ namespace Tayx.Graphy
         {
             GraphyDebugger.DebugPacket debugPacket = new GraphyDebugger.DebugPacket();
 
-            debugPacketSerializedProperty.GetArrayElementAtIndex(debugPacketSerializedProperty.arraySize - 1).FindPropertyRelative("Active").boolValue = debugPacket.Active;
-            debugPacketSerializedProperty.GetArrayElementAtIndex(debugPacketSerializedProperty.arraySize - 1).FindPropertyRelative("Id").intValue = debugPacketSerializedProperty.arraySize;
-            debugPacketSerializedProperty.GetArrayElementAtIndex(debugPacketSerializedProperty.arraySize - 1).FindPropertyRelative("ExecuteOnce").boolValue = debugPacket.ExecuteOnce;
-            debugPacketSerializedProperty.GetArrayElementAtIndex(debugPacketSerializedProperty.arraySize - 1).FindPropertyRelative("InitSleepTime").floatValue = debugPacket.InitSleepTime;
-            debugPacketSerializedProperty.GetArrayElementAtIndex(debugPacketSerializedProperty.arraySize - 1).FindPropertyRelative("ExecuteSleepTime").floatValue = debugPacket.ExecuteSleepTime;
+            debugPacketSerializedProperty.GetArrayElementAtIndex(debugPacketSerializedProperty.arraySize - 1)
+                .FindPropertyRelative("Active")
+                .boolValue  = debugPacket.Active;
+
+            debugPacketSerializedProperty.GetArrayElementAtIndex(debugPacketSerializedProperty.arraySize - 1)
+                .FindPropertyRelative("Id")
+                .intValue   = debugPacketSerializedProperty.arraySize;
+
+            debugPacketSerializedProperty.GetArrayElementAtIndex(debugPacketSerializedProperty.arraySize - 1)
+                .FindPropertyRelative("ExecuteOnce")
+                .boolValue  = debugPacket.ExecuteOnce;
+
+            debugPacketSerializedProperty.GetArrayElementAtIndex(debugPacketSerializedProperty.arraySize - 1)
+                .FindPropertyRelative("InitSleepTime")
+                .floatValue = debugPacket.InitSleepTime;
+
+            debugPacketSerializedProperty.GetArrayElementAtIndex(debugPacketSerializedProperty.arraySize - 1)
+                .FindPropertyRelative("ExecuteSleepTime")
+                .floatValue = debugPacket.ExecuteSleepTime;
         }
 
         private string GetComparerStringFromDebugVariable(GraphyDebugger.DebugVariable debugVariable)

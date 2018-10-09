@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 23-Dec-17
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            23-Dec-17
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -25,9 +27,21 @@ namespace Tayx.Graphy
 {
     public class GraphyDebugger : Singleton<GraphyDebugger>
     {
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we can remove "using System.ComponentModel;".
+         * Check if we should add "private" to the Unity Callbacks.
+         * Ask why we're not using System.Serializable instead for the helper class.
+         * Simplify the initializers of the DebugPackets, but check wether we should as some wont work with certain lists.
+         * --------------------------------------*/
+
         protected GraphyDebugger () { }
 
-        #region Enums
+        //Enums
+        #region Variables -> Public
 
         public enum DebugVariable
         {
@@ -66,7 +80,7 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Structs
+        #region Structs -> Public
 
         [Serializable]
         public struct DebugCondition
@@ -147,18 +161,21 @@ namespace Tayx.Graphy
 
         #endregion
 
+        #region Variables -> Serialized Private
 
-        #region Private Variables
-
-        private FpsMonitor m_fpsMonitor;
-        private RamMonitor m_ramMonitor;
-        private AudioMonitor m_audioMonitor;
-
-        [SerializeField] private List<DebugPacket> m_debugPackets;
+        [SerializeField] private    List<DebugPacket>   m_debugPackets;
 
         #endregion
 
-        #region Unity Methods
+        #region Variables -> Private
+
+        private                     FpsMonitor          m_fpsMonitor;
+        private                     RamMonitor          m_ramMonitor;
+        private                     AudioMonitor        m_audioMonitor;
+
+        #endregion
+
+        #region Methods -> Unity Callbacks
 
         void Start()
         {
@@ -367,7 +384,7 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         /// <summary>
         /// Checks all the Debug Packets to see if they have to be executed.
