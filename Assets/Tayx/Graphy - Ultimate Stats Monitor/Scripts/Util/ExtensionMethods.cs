@@ -1,5 +1,6 @@
 ﻿/* ---------------------------------------
  * Author:      Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
  * Project:     Graphy - Ultimate Stats Monitor
  * Date:        04-Jan-18
  * Studio:      Tayx
@@ -17,6 +18,14 @@ namespace Tayx.Graphy.Utils
 {
     public static class ExtensionMethods
     {
+        /* ----- TODO: ----------------------------
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Figure out why we're returning something on a "this" with reference elements.
+         * --------------------------------------*/
+
+        #region Methods -> Public
+
         /// <summary>
         /// Functions as the SetActive function in the GameObject class, but for a list of them.
         /// </summary>
@@ -27,6 +36,7 @@ namespace Tayx.Graphy.Utils
         /// Wether to turn them on or off.
         /// </param>
         /// <returns>
+        /// 
         /// </returns>
         public static List<GameObject> SetAllActive(this List<GameObject> gameObjects, bool active)
         {
@@ -37,7 +47,6 @@ namespace Tayx.Graphy.Utils
 
             return gameObjects;
         }
-        
 
         public static List<Image> SetOneActive(this List<Image> images, int active)
         {
@@ -58,5 +67,7 @@ namespace Tayx.Graphy.Utils
 
             return images;
         }
+
+        #endregion
     }
 }

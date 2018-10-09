@@ -17,27 +17,34 @@ namespace Tayx.Graphy.Utils.NumString
 {
     public static class FloatString
     {
+        /* ----- TODO: ----------------------------
+         * Check if we can remove "using System.Collections;".
+         * Check if we can remove "using System.Collections.Generic;".
+         * Try and move the Init to a core method.
+         * Try and replace the Pow function with a better algorithm.
+         * --------------------------------------*/
+
         #region Variables -> Private
 
         /// <summary>
         /// Float represented as a string, formatted.
         /// </summary>
-        private const string floatFormat = "0.0";
+        private const   string      floatFormat         = "0.0";
 
         /// <summary>
         /// The currently defined, globally used decimal multiplier.
         /// </summary>
-        private static float decimalMultiplier = 1f;
+        private static  float       decimalMultiplier   = 1f;
 
         /// <summary>
         /// List of negative floats casted to strings.
         /// </summary>
-        private static string[] negativeBuffer = new string[0];
+        private static  string[]    negativeBuffer      = new string[0];
 
         /// <summary>
         /// List of positive floats casted to strings.
         /// </summary>
-        private static string[] positiveBuffer = new string[0];
+        private static  string[]    positiveBuffer      = new string[0];
 
         #endregion
 
