@@ -29,6 +29,9 @@ namespace Tayx.Graphy
          * Check if we can remove "using System.Collections;".
          * Check if we can remove "using UnityEngine.SocialPlatforms.Impl;".
          * Check if we can seal this class.
+         * Finish spacing on "OnInspectorGUI".
+         * Add sections to "OnInspectorGUI".
+         * Fix the use of Space to be consistent with "GraphyManagerEditor".
          * --------------------------------------*/
         
         #region Variables -> Private
@@ -72,24 +75,43 @@ namespace Tayx.Graphy
             }
 
             LoadGuiStyles();
-            
+
+            float defaultLabelWidth = EditorGUIUtility.labelWidth;
+            float defaultFieldWidth = EditorGUIUtility.fieldWidth;
+
+            //===== CONTENT REGION ========================================================================
+
             GUILayout.Space(20);
+
+            #region Section -> Logo
 
             if (m_logoTexture != null)
             {
-                var centeredStyle = new GUIStyle(GUI.skin.GetStyle("Label"))
-                {
-                    alignment = TextAnchor.UpperCenter
-                };
+                GUILayout.Label
+                (
+                    image: m_logoTexture,
+                    style: new GUIStyle(GUI.skin.GetStyle("Label"))
+                    {
+                        alignment = TextAnchor.UpperCenter
+                    }
+                );
 
-                GUILayout.Label(image: m_logoTexture, style: centeredStyle);
+                GUILayout.Space(10);
             }
             else
             {
-                EditorGUILayout.LabelField("[ GRAPHY - DEBUGGER ]", m_headerStyle1);
+                EditorGUILayout.LabelField
+                (
+                    label: "[ GRAPHY - DEBUGGER ]",
+                    style: m_headerStyle1
+                );
             }
-            
-            GUILayout.Space(10);
+
+            #endregion
+
+            GUILayout.Space(5); //Extra pixels added when the logo is used.
+
+            #region Section -> Settings
 
             SerializedObject serObj = serializedObject;
 
@@ -105,16 +127,35 @@ namespace Tayx.Graphy
 
             
 
-            m_newDebugPacketListSize = EditorGUILayout.IntField("Define a new list size", m_newDebugPacketListSize);
+            m_newDebugPacketListSize = EditorGUILayout.IntField
+            (
+                label: "Define a new list size",
+                value: m_newDebugPacketListSize
+            );
             
             if (GUILayout.Button("Resize List"))
             {
-                if (EditorUtility.DisplayDialog("Resize List",
+                if (EditorUtility.DisplayDialog
+                (
+                    title:
+                    "Resize List",
+
+                    message:
                     "Are you sure you want to resize the entire List?\n\n" +
-                    "Current List Size -> " + debugPacketList.arraySize + "\n" +
-                    "New List Size -> " + m_newDebugPacketListSize + "\n" +
+                    "Current List Size -> " +
+                    debugPacketList.arraySize +
+                    "\n" +
+                    "New List Size -> " +
+                    m_newDebugPacketListSize +
+                    "\n" +
                     "This will add default entries if the value is greater than the list size, or erase the bottom values until the new size specified.",
-                    "Resize", "Cancel"))
+
+                    ok:
+                    "Resize",
+
+                    cancel:
+                    "Cancel")
+                )
                 {
                     m_currentlySelectedDebugPacketIndex = 0;
 
@@ -242,42 +283,71 @@ namespace Tayx.Graphy
             SerializedProperty DebugBreak           = listItemSelected.FindPropertyRelative("DebugBreak");
             SerializedProperty UnityEvents          = listItemSelected.FindPropertyRelative("UnityEvents");
 
-            EditorGUILayout.LabelField("[ PACKET ] - ID: " + Id.intValue + " (Conditions: " + DebugConditions.arraySize + ")", m_headerStyle2);
+            #endregion
 
-            float defaultLabelWidth = EditorGUIUtility.labelWidth;
-            float defaultFieldWidth = EditorGUIUtility.fieldWidth;
+            EditorGUILayout.LabelField
+            (
+                label:
+                "[ PACKET ] - ID: " +
+                Id.intValue +
+                " (Conditions: " +
+                DebugConditions.arraySize +
+                ")",
+
+                style: m_headerStyle2
+            );
 
             EditorGUIUtility.labelWidth = 150;
             EditorGUIUtility.fieldWidth = 35;
 
             Active.boolValue = EditorGUILayout.Toggle
             (
-                new GUIContent("Active", "If false, it will not be checked"),
-                Active.boolValue
+                new GUIContent
+                (
+                    text:       "Active",
+                    tooltip:    "If false, it will not be checked"
+                ),
+                value:          Active.boolValue
             );
 
             Id.intValue = EditorGUILayout.IntField
             (
-                new GUIContent("ID", "Optional Id. It's used to get or remove DebugPackets in runtime"), 
-                Id.intValue
+                new GUIContent
+                (
+                    text:       "ID",
+                    tooltip:    "Optional Id. It's used to get or remove DebugPackets in runtime"
+                ),
+                value:          Id.intValue
             );
 
             ExecuteOnce.boolValue = EditorGUILayout.Toggle
             (
-                new GUIContent("Execute once", "If true, once the actions are executed, this DebugPacket will delete itself"), 
-                ExecuteOnce.boolValue
+                new GUIContent
+                (
+                    text:       "Execute once",
+                    tooltip:    "If true, once the actions are executed, this DebugPacket will delete itself"
+                ),
+                value:          ExecuteOnce.boolValue
             );
 
             InitSleepTime.floatValue = EditorGUILayout.FloatField
             (
-                new GUIContent("Init sleep time", "Time to wait before checking if conditions are met (use this to avoid low fps drops triggering the conditions when loading the game)"),
-                InitSleepTime.floatValue
+                new GUIContent
+                (
+                    text:       "Init sleep time",
+                    tooltip:    "Time to wait before checking if conditions are met (use this to avoid low fps drops triggering the conditions when loading the game)"
+                ),
+                value:          InitSleepTime.floatValue
             );
 
             ExecuteSleepTime.floatValue = EditorGUILayout.FloatField
             (
-                new GUIContent("Sleep time after execute", "Time to wait before checking if conditions are met again (once they have already been met and if ExecuteOnce is false)"),
-                ExecuteSleepTime.floatValue
+                new GUIContent
+                (
+                    text:       "Sleep time after execute",
+                    tooltip:    "Time to wait before checking if conditions are met again (once they have already been met and if ExecuteOnce is false)"
+                ),
+                value:          ExecuteSleepTime.floatValue
             );
 
             
@@ -397,8 +467,12 @@ namespace Tayx.Graphy
 
             TakeScreenshot.boolValue = EditorGUILayout.Toggle
             (
-                new GUIContent("Take screenshot", "If true, it takes a screenshot and stores it. The location where the image is written to can include a directory/folder list. With no directory/folder list the image will be written into the Project folder. On mobile platforms the filename is appended to the persistent data path."),
-                TakeScreenshot.boolValue
+                new GUIContent
+                (
+                    text:       "Take screenshot",
+                    tooltip:    "If true, it takes a screenshot and stores it. The location where the image is written to can include a directory/folder list. With no directory/folder list the image will be written into the Project folder. On mobile platforms the filename is appended to the persistent data path."
+                ),
+                value:          TakeScreenshot.boolValue
             );
 
             if (TakeScreenshot.boolValue)
@@ -406,13 +480,21 @@ namespace Tayx.Graphy
                 EditorGUILayout.PropertyField
                 (
                     ScreenshotFileName,
-                    new GUIContent("Screenshot file name", "Avoid this characters: * . \" / \\ [ ] : ; | = , \n\nIt will have the date appended at the end to avoid overwriting.")
+                    new GUIContent
+                    (
+                        text: "Screenshot file name",
+                        tooltip: "Avoid this characters: * . \" / \\ [ ] : ; | = , \n\nIt will have the date appended at the end to avoid overwriting."
+                    )
                 );
             }
 
             DebugBreak.boolValue = EditorGUILayout.Toggle
             (
-                new GUIContent("Debug Break", "If true, it pauses the editor"),
+                new GUIContent
+                (
+                    text: "Debug Break",
+                    tooltip: "If true, it pauses the editor"
+                ),
                 DebugBreak.boolValue
             );
             
@@ -456,7 +538,11 @@ namespace Tayx.Graphy
                 m_headerStyle1 = m_skin.GetStyle("Header1");
                 m_headerStyle2 = m_skin.GetStyle("Header2");
 
-                SetGuiStyleFontColor(m_headerStyle2, EditorGUIUtility.isProSkin ? Color.white : Color.black);
+                SetGuiStyleFontColor
+                (
+                    guiStyle: m_headerStyle2,
+                    color: EditorGUIUtility.isProSkin ? Color.white : Color.black
+                );
             }
             else
             {
@@ -479,28 +565,23 @@ namespace Tayx.Graphy
 
         private string GetMonoScriptFilePath(ScriptableObject scriptableObject)
         {
-            MonoScript ms = MonoScript.FromScriptableObject(scriptableObject);
+            MonoScript ms   = MonoScript.FromScriptableObject(scriptableObject);
 
             string filePath = AssetDatabase.GetAssetPath(ms);
 
-            FileInfo fi = new FileInfo(filePath);
+            FileInfo fi     = new FileInfo(filePath);
 
             if (fi.Directory != null)
             {
                 filePath = fi.Directory.ToString();
 
-                filePath = filePath.Replace
+                return filePath.Replace
                 (
                     oldChar: '\\',
                     newChar: '/'
                 );
-
-                return filePath;
             }
-            else
-            {
-                return null;
-            }
+            return null;
             
         }
 
