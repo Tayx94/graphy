@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 03-Jan-18
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            03-Jan-18
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -26,7 +28,6 @@ namespace Tayx.Graphy.Ram
          * Add summaries to the functions.
          * Check if we can remove "using System.Collections;".
          * Check if we should add "private" to the Unity Callbacks.
-         * Check if we can remove "using System.Linq;".
          * Check if we should add a "RequireComponent" for "RectTransform".
          * Check if we should add a "RequireComponent" for "RamGraph".
          * Check why this manager doesnt use FpsMonitor, as all the other managers have a monitor script.

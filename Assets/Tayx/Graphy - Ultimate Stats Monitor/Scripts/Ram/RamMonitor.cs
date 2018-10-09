@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 15-Dec-17
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            15-Dec-17
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -18,7 +20,15 @@ namespace Tayx.Graphy.Ram
 {
     public class RamMonitor : MonoBehaviour
     {
-        #region Private Variables
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we should add "private" to the Unity Callbacks.
+         * --------------------------------------*/
+
+        #region Variables -> Private
 
         private float m_allocatedRam;
         private float m_reservedRam;
@@ -26,7 +36,7 @@ namespace Tayx.Graphy.Ram
 
         #endregion
 
-        #region Properties
+        #region Properties -> Public
 
         public float AllocatedRam   { get { return m_allocatedRam; } }
         public float ReservedRam    { get { return m_reservedRam; } }
@@ -34,7 +44,7 @@ namespace Tayx.Graphy.Ram
         
         #endregion
 
-        #region Unity Methods
+        #region Methods -> Unity Callbacks
 
         void Update()
         {
