@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 15-Dec-17
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            15-Dec-17
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -16,52 +18,61 @@ namespace Tayx.Graphy.Audio
 {
     public class AudioMonitor : MonoBehaviour
     {
-        #region Private Variables
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we should add "private" to the Unity Callbacks.
+         * Make the "FindAudioListener" not constantly use "Camera.main".
+         * --------------------------------------*/
 
-        private const float m_refValue = 1f;
+        #region Variables -> Private
 
-        private GraphyManager m_graphyManager;
+        private const   float                               m_refValue                          = 1f;
 
-        private AudioListener m_audioListener;
+        private         GraphyManager                       m_graphyManager;
 
-        private GraphyManager.LookForAudioListener m_findAudioListenerInCameraIfNull = GraphyManager.LookForAudioListener.ON_SCENE_LOAD;
+        private         AudioListener                       m_audioListener;
 
-        private FFTWindow m_FFTWindow = FFTWindow.Blackman;
+        private         GraphyManager.LookForAudioListener  m_findAudioListenerInCameraIfNull   = GraphyManager.LookForAudioListener.ON_SCENE_LOAD;
 
-        private int m_spectrumSize = 512;
+        private         FFTWindow                           m_FFTWindow                         = FFTWindow.Blackman;
 
-        private float[] m_spectrum;
-        private float[] m_spectrumHighestValues;
+        private         int                                 m_spectrumSize                      = 512;
 
-        private float m_maxDB;
+        private         float[]                             m_spectrum;
+        private         float[]                             m_spectrumHighestValues;
+
+        private         float                               m_maxDB;
 
         #endregion
 
-        #region Properties
+        #region Properties -> Public
 
         /// <summary>
         /// Current audio spectrum from the specified AudioListener.
         /// </summary>
-        public float[] Spectrum { get { return m_spectrum; } }
+        public float[] Spectrum                 { get { return m_spectrum; } }
 
         /// <summary>
         /// Highest audio spectrum from the specified AudioListener in the last few seconds.
         /// </summary>
-        public float[] SpectrumHighestValues { get { return m_spectrumHighestValues; } }
+        public float[] SpectrumHighestValues    { get { return m_spectrumHighestValues; } }
 
         /// <summary>
         /// Maximum DB registered in the current spectrum.
         /// </summary>
-        public float MaxDB { get { return m_maxDB; } }
+        public float MaxDB                      { get { return m_maxDB; } }
 
         /// <summary>
         /// Returns true if there is a reference to the audio listener.
         /// </summary>
-        public bool SpectrumDataAvailable {  get { return m_audioListener != null;} }
+        public bool SpectrumDataAvailable       {  get { return m_audioListener != null;} }
 
         #endregion
 
-        #region Unity Methods
+        #region Methods -> Unity Callbacks
 
         void Awake()
         {
@@ -104,7 +115,12 @@ namespace Tayx.Graphy.Audio
                     // Slowly lower the value 
                     else
                     {
-                        m_spectrumHighestValues[i] = Mathf.Clamp(m_spectrumHighestValues[i] - m_spectrumHighestValues[i] * Time.deltaTime * 2, 0, 1);
+                        m_spectrumHighestValues[i] = Mathf.Clamp
+                        (
+                            value: m_spectrumHighestValues[i] - m_spectrumHighestValues[i] * Time.deltaTime * 2,
+                            min: 0,
+                            max: 1
+                        );
                     }
                 }
             }
@@ -117,15 +133,15 @@ namespace Tayx.Graphy.Audio
 
         #endregion
 
-        #region Public Methods
+        #region Methods -> Public
 
         public void UpdateParameters()
         {
-            m_findAudioListenerInCameraIfNull = m_graphyManager.FindAudioListenerInCameraIfNull;
+            m_findAudioListenerInCameraIfNull   = m_graphyManager.FindAudioListenerInCameraIfNull;
 
-            m_audioListener = m_graphyManager.AudioListener;
-            m_FFTWindow = m_graphyManager.FftWindow;
-            m_spectrumSize = m_graphyManager.SpectrumSize;
+            m_audioListener                     = m_graphyManager.AudioListener;
+            m_FFTWindow                         = m_graphyManager.FftWindow;
+            m_spectrumSize                      = m_graphyManager.SpectrumSize;
 
             if (m_audioListener == null
                     && m_findAudioListenerInCameraIfNull != GraphyManager.LookForAudioListener.NEVER)
@@ -133,7 +149,7 @@ namespace Tayx.Graphy.Audio
                 FindAudioListener();
             }
 
-            m_spectrum = new float[m_spectrumSize];
+            m_spectrum              = new float[m_spectrumSize];
             m_spectrumHighestValues = new float[m_spectrumSize];
         }
 
@@ -154,12 +170,12 @@ namespace Tayx.Graphy.Audio
         /// <returns></returns>
         public float dBNormalized(float db)
         {
-            return (db + 160) / 160f;
+            return (db + 160f) / 160f;
         }
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         /// <summary>
         /// Tries to find an audio listener in the main camera.
@@ -185,7 +201,5 @@ namespace Tayx.Graphy.Audio
         }
 
         #endregion
-
-
     }
 }

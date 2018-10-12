@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 22-Nov-17
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            22-Nov-17
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -13,37 +15,55 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Text;
 using Tayx.Graphy.Utils;
+using Tayx.Graphy.Utils.NumString;
 
 namespace Tayx.Graphy.Fps
 {
     public class FpsText : MonoBehaviour
     {
-        #region Private Variables
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we should add "private" to the Unity Callbacks.
+         * Check if we can remove "using System.Text;".
+         * Check if we can remove "using Tayx.Graphy.Utils;".
+         * Check if we should add a "RequireComponent" for "FpsMonitor".
+         * Improve the FloatString Init to come from the core instead.
+         * Figure out why we dont Init the IntString.
+         * --------------------------------------*/
 
-        private GraphyManager m_graphyManager;
+        #region Variables -> Serialized Private
 
-        private FpsMonitor m_fpsMonitor;
+        [SerializeField] private    Text            m_fpsText;
+        [SerializeField] private    Text            m_msText;
 
-        [SerializeField] private Text m_fpsText;
-        [SerializeField] private Text m_msText;
-
-        [SerializeField] private Text m_avgFpsText;
-        [SerializeField] private Text m_minFpsText;
-        [SerializeField] private Text m_maxFpsText;
-
-        private int m_updateRate = 4;  // 4 updates per sec.
-
-        private int m_frameCount = 0;
-
-        private float m_deltaTime = 0;
-
-        private float m_fps = 0;
-
-        private const string m_msStringFormat = "0.0";
+        [SerializeField] private    Text            m_avgFpsText;
+        [SerializeField] private    Text            m_minFpsText;
+        [SerializeField] private    Text            m_maxFpsText;
 
         #endregion
 
-        #region Unity Methods
+        #region Variables -> Private
+
+        private                     GraphyManager   m_graphyManager;
+
+        private                     FpsMonitor      m_fpsMonitor;
+
+        private                     int             m_updateRate        = 4;  // 4 updates per sec.
+
+        private                     int             m_frameCount        = 0;
+
+        private                     float           m_deltaTime         = 0f;
+
+        private                     float           m_fps               = 0f;
+
+        private const               string          m_msStringFormat    = "0.0";
+
+        #endregion
+
+        #region Methods -> Unity Callbacks
 
         void Awake()
         {
@@ -58,7 +78,7 @@ namespace Tayx.Graphy.Fps
 
             // Only update texts 'm_updateRate' times per second
 
-            if (m_deltaTime > 1.0 / m_updateRate)
+            if (m_deltaTime > 1f / m_updateRate)
             {
                 m_fps = m_frameCount / m_deltaTime;
 
@@ -87,14 +107,14 @@ namespace Tayx.Graphy.Fps
 
                 // Reset variables
 
-                m_deltaTime = 0;
+                m_deltaTime = 0f;
                 m_frameCount = 0;
             }
         }
 
         #endregion
         
-        #region Public Methods
+        #region Methods -> Public
 
         public void UpdateParameters()
         {
@@ -103,7 +123,7 @@ namespace Tayx.Graphy.Fps
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         /// <summary>
         /// Assigns color to a text according to their fps numeric value and
@@ -132,7 +152,11 @@ namespace Tayx.Graphy.Fps
             //TODO: Replace this with one activated from the core and figure out the min value.
             if (!FloatString.Inited || FloatString.MinValue > -1000f || FloatString.MaxValue < 16384f)
             {
-                FloatString.Init(-1001f, 16386f);
+                FloatString.Init
+                (
+                    minNegativeValue: -1001f,
+                    maxPositiveValue: 16386f
+                );
             }
 
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();

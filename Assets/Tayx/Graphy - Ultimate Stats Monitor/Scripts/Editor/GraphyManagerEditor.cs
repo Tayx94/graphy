@@ -20,8 +20,14 @@ namespace Tayx.Graphy
     [CustomEditor(typeof(GraphyManager))]
     internal sealed class GraphyManagerEditor : Editor
     {
-        #region Variables -> Private -> Style
-        
+        /* ----- TODO: ----------------------------
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * --------------------------------------*/
+
+        #region Variables -> Private
+
         private GraphyManager       m_target;
 
         private GUISkin             m_skin;
@@ -42,9 +48,7 @@ namespace Tayx.Graphy
             8192
         };
 
-        #endregion
-
-        #region Variables -> Private -> Settings
+        #region Section -> Settings
 
         private SerializedProperty  m_graphyMode;
 
@@ -70,9 +74,9 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Variables -> Private -> FPS
+        #region Section -> FPS
 
-        private bool                m_fpsModuleInspectorToggle = true;
+        private bool                m_fpsModuleInspectorToggle          = true;
             
         private SerializedProperty  m_fpsModuleState;
 
@@ -92,9 +96,9 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Variables -> Private -> RAM
+        #region Section -> RAM
 
-        private bool                m_ramModuleInspectorToggle = true;
+        private bool                m_ramModuleInspectorToggle          = true;
 
         private SerializedProperty  m_ramModuleState;
             
@@ -108,9 +112,9 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Variables -> Private -> Audio
+        #region Section -> Audio
 
-        private bool                m_audioModuleInspectorToggle = true;
+        private bool                m_audioModuleInspectorToggle        = true;
             
         private SerializedProperty  m_findAudioListenerInCameraIfNull;
 
@@ -130,13 +134,15 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Variables -> Private -> Advanced Settings
+        #region Section -> Advanced Settings
 
-        private bool                m_advancedModuleInspectorToggle = true;
+        private bool                m_advancedModuleInspectorToggle     = true;
             
         private SerializedProperty  m_advancedModulePosition;
 
         private SerializedProperty  m_advancedModuleState;
+
+        #endregion
 
         #endregion
 
@@ -241,7 +247,7 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Methods -> Override
+        #region Methods -> Public Override
 
         public override void OnInspectorGUI()
         {

@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 15-Dec-17
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            15-Dec-17
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -21,9 +23,18 @@ namespace Tayx.Graphy
     //[ExecuteInEditMode]
     public class GraphyManager : Singleton<GraphyManager>
     {
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we should add "private" to the Unity Callbacks.
+         * --------------------------------------*/
+
         protected GraphyManager () { }
 
-        #region Enums
+        //Enums
+        #region Variables -> Public
 
         public enum Mode
         {
@@ -65,9 +76,9 @@ namespace Tayx.Graphy
 
         public enum ModulePreset
         {
-            FPS_BASIC = 0,
-            FPS_TEXT = 1,
-            FPS_FULL = 2,
+            FPS_BASIC   = 0,
+            FPS_TEXT    = 1,
+            FPS_FULL    = 2,
 
             FPS_TEXT_RAM_TEXT = 3,
             FPS_FULL_RAM_TEXT = 4,
@@ -84,11 +95,100 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Private Variables
+        #region Variables -> Serialized Private
 
-        private                     bool                    m_initialized = false;
-        private                     bool                    m_active = true;
-        private                     bool                    m_focused = true;
+        [SerializeField] private    Mode                    m_graphyMode                        = Mode.FULL;
+
+        [SerializeField] private    bool                    m_enableOnStartup                   = true;
+
+        [SerializeField] private    bool                    m_keepAlive                         = true;
+        
+        [SerializeField] private    bool                    m_background                        = true;
+        [SerializeField] private    Color                   m_backgroundColor                   = new Color(0, 0, 0, 0.3f);
+
+        [SerializeField] private    bool                    m_enableHotkeys                     = true;
+
+        [SerializeField] private    KeyCode                 m_toggleModeKeyCode                 = KeyCode.G;
+        [SerializeField] private    bool                    m_toggleModeCtrl                    = true;
+        [SerializeField] private    bool                    m_toggleModeAlt                     = false;
+
+        [SerializeField] private    KeyCode                 m_toggleActiveKeyCode               = KeyCode.H;
+        [SerializeField] private    bool                    m_toggleActiveCtrl                  = true;
+        [SerializeField] private    bool                    m_toggleActiveAlt                   = false;
+        
+        [SerializeField] private    ModulePosition          m_graphModulePosition               = ModulePosition.TOP_RIGHT;
+        
+        // Fps ---------------------------------------------------------------------------
+
+        [SerializeField] private    ModuleState             m_fpsModuleState                    = ModuleState.FULL;
+
+        [Range(0, 200)]
+        [Tooltip("Time (in seconds) to reset the minimum and maximum framerates if they don't change in the specified time. Set to 0 if you don't want it to reset.")]
+        [SerializeField] private    int                     m_timeToResetMinMaxFps              = 10;
+
+        [SerializeField] private    Color                   m_goodFpsColor                      = new Color32(118, 212, 58, 255);
+        [SerializeField] private    int                     m_goodFpsThreshold                  = 60;
+
+        [SerializeField] private    Color                   m_cautionFpsColor                   = new Color32(243, 232, 0, 255);
+        [SerializeField] private    int                     m_cautionFpsThreshold               = 30;
+
+        [SerializeField] private    Color                   m_criticalFpsColor                  = new Color32(220, 41, 30, 255);
+
+        [Range(10, 300)]
+        [SerializeField] private    int                     m_fpsGraphResolution                = 150;
+
+        [Range(1, 200)]
+        [SerializeField] private    int                     m_fpsTextUpdateRate                 = 3;  // 3 updates per sec.
+
+        // Ram ---------------------------------------------------------------------------
+
+        [SerializeField] private    ModuleState             m_ramModuleState                    = ModuleState.FULL;
+
+        [SerializeField] private    Color                   m_allocatedRamColor                 = new Color32(255, 190, 60, 255);
+        [SerializeField] private    Color                   m_reservedRamColor                  = new Color32(205, 84, 229, 255);
+        [SerializeField] private    Color                   m_monoRamColor                      = new Color(0.3f, 0.65f, 1f, 1);
+
+        [Range(10, 300)]
+        [SerializeField] private    int                     m_ramGraphResolution                = 150;
+
+
+        [Range(1, 200)]
+        [SerializeField] private    int                     m_ramTextUpdateRate                 = 3;  // 3 updates per sec.
+
+        // Audio -------------------------------------------------------------------------
+
+        [SerializeField] private    ModuleState             m_audioModuleState                  = ModuleState.FULL;
+
+        [SerializeField] private    LookForAudioListener    m_findAudioListenerInCameraIfNull   = LookForAudioListener.ON_SCENE_LOAD;
+
+        [SerializeField] private    AudioListener           m_audioListener;
+        
+        [SerializeField] private    Color                   m_audioGraphColor                   = Color.white;
+
+        [Range(10, 300)]
+        [SerializeField] private    int                     m_audioGraphResolution              = 81;
+        
+        [Range(1, 200)]
+        [SerializeField] private    int                     m_audioTextUpdateRate               = 3;  // 3 updates per sec.
+        
+        [SerializeField] private    FFTWindow               m_FFTWindow                         = FFTWindow.Blackman;
+
+        [Tooltip("Must be a power of 2 and between 64-8192")]
+        [SerializeField] private    int                     m_spectrumSize                      = 512;
+
+        // Advanced ----------------------------------------------------------------------
+
+        [SerializeField] private    ModulePosition          m_advancedModulePosition            = ModulePosition.BOTTOM_LEFT;
+
+        [SerializeField] private    ModuleState             m_advancedModuleState               = ModuleState.FULL;
+
+        #endregion
+
+        #region Variables -> Private
+
+        private                     bool                    m_initialized                       = false;
+        private                     bool                    m_active                            = true;
+        private                     bool                    m_focused                           = true;
 
         private                     FpsManager              m_fpsManager;
         private                     RamManager              m_ramManager;
@@ -99,96 +199,12 @@ namespace Tayx.Graphy
         private                     RamMonitor              m_ramMonitor;
         private                     AudioMonitor            m_audioMonitor;
 
-        [SerializeField] private    Mode                    m_graphyMode = Mode.FULL;
-
-        private                     ModulePreset            m_modulePresetState = ModulePreset.FPS_BASIC_ADVANCED_FULL;
-
-        [SerializeField] private    bool                    m_enableOnStartup = true;
-
-        [SerializeField] private    bool                    m_keepAlive = true;
-        
-        [SerializeField] private    bool                    m_background = true;
-        [SerializeField] private    Color                   m_backgroundColor = new Color(0, 0, 0, 0.3f);
-
-        [SerializeField] private    bool                    m_enableHotkeys = true;
-
-        [SerializeField] private    KeyCode                 m_toggleModeKeyCode = KeyCode.G;
-        [SerializeField] private    bool                    m_toggleModeCtrl = true;
-        [SerializeField] private    bool                    m_toggleModeAlt = false;
-
-        [SerializeField] private    KeyCode                 m_toggleActiveKeyCode = KeyCode.H;
-        [SerializeField] private    bool                    m_toggleActiveCtrl = true;
-        [SerializeField] private    bool                    m_toggleActiveAlt = false;
-        
-        [SerializeField] private    ModulePosition          m_graphModulePosition = ModulePosition.TOP_RIGHT;
-        
-        // Fps ---------------------------------------------------------------------------
-
-        [SerializeField] private    ModuleState             m_fpsModuleState = ModuleState.FULL;
-
-        [Range(0, 200)]
-        [Tooltip("Time (in seconds) to reset the minimum and maximum framerates if they don't change in the specified time. Set to 0 if you don't want it to reset.")]
-        [SerializeField] private    int                     m_timeToResetMinMaxFps = 10;
-
-        [SerializeField] private    Color                   m_goodFpsColor = new Color32(118, 212, 58, 255);
-        [SerializeField] private    int                     m_goodFpsThreshold = 60;
-
-        [SerializeField] private    Color                   m_cautionFpsColor = new Color32(243, 232, 0, 255);
-        [SerializeField] private    int                     m_cautionFpsThreshold = 30;
-
-        [SerializeField] private    Color                   m_criticalFpsColor = new Color32(220, 41, 30, 255);
-
-        [Range(10, 300)]
-        [SerializeField] private    int                     m_fpsGraphResolution = 150;
-
-        [Range(1, 200)]
-        [SerializeField] private    int                     m_fpsTextUpdateRate = 3;  // 3 updates per sec.
-
-        // Ram ---------------------------------------------------------------------------
-
-        [SerializeField] private    ModuleState             m_ramModuleState = ModuleState.FULL;
-
-        [SerializeField] private    Color                   m_allocatedRamColor = new Color32(255, 190, 60, 255);
-        [SerializeField] private    Color                   m_reservedRamColor = new Color32(205, 84, 229, 255);
-        [SerializeField] private    Color                   m_monoRamColor = new Color(0.3f, 0.65f, 1f, 1);
-
-        [Range(10, 300)]
-        [SerializeField] private    int                     m_ramGraphResolution = 150;
-
-
-        [Range(1, 200)]
-        [SerializeField] private    int                     m_ramTextUpdateRate = 3;  // 3 updates per sec.
-
-        // Audio -------------------------------------------------------------------------
-
-        [SerializeField] private    ModuleState             m_audioModuleState = ModuleState.FULL;
-
-        [SerializeField] private    LookForAudioListener    m_findAudioListenerInCameraIfNull = LookForAudioListener.ON_SCENE_LOAD;
-
-        [SerializeField] private    AudioListener           m_audioListener;
-        
-        [SerializeField] private    Color                   m_audioGraphColor = Color.white;
-
-        [Range(10, 300)]
-        [SerializeField] private    int                     m_audioGraphResolution = 81;
-        
-        [Range(1, 200)]
-        [SerializeField] private    int                     m_audioTextUpdateRate = 3;  // 3 updates per sec.
-        
-        [SerializeField] private    FFTWindow               m_FFTWindow = FFTWindow.Blackman;
-
-        [Tooltip("Must be a power of 2 and between 64-8192")]
-        [SerializeField] private    int                     m_spectrumSize = 512;
-
-        // Advanced ----------------------------------------------------------------------
-
-        [SerializeField] private    ModulePosition          m_advancedModulePosition = ModulePosition.BOTTOM_LEFT;
-
-        [SerializeField] private    ModuleState             m_advancedModuleState = ModuleState.FULL;
+        private                     ModulePreset            m_modulePresetState                 = ModulePreset.FPS_BASIC_ADVANCED_FULL;
 
         #endregion
 
-        #region Properties
+        //TODO: Maybe sort these into Get and GetSet sections.
+        #region Properties -> Public
 
         public Mode GraphyMode                          { get { return m_graphyMode; }
                                                           set { m_graphyMode = value; UpdateAllParameters(); } }
@@ -331,7 +347,7 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Unity Methods
+        #region Methods -> Unity Callbacks
 
         void Start()
         {
@@ -358,7 +374,7 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Public Methods
+        #region Methods -> Public
 
         public void SetModulePosition(ModuleType moduleType, ModulePosition modulePosition)
         {
@@ -546,7 +562,7 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         private void Init()
         {
