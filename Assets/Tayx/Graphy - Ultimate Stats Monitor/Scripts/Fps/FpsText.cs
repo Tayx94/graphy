@@ -58,8 +58,8 @@ namespace Tayx.Graphy.Fps
 
         private                     float           m_fps               = 0f;
 
-        private                     int             m_minFps            = 0;
-        private                     int             m_maxFps            = 10000;
+        private const               int             m_minFps            = 0;
+        private const               int             m_maxFps            = 10000;
 
         private const               string          m_msStringFormat    = "0.0";
 
