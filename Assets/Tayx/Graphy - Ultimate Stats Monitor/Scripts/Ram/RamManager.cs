@@ -115,9 +115,13 @@ namespace Tayx.Graphy.Ram
             }
         }
 
-        public void SetState(GraphyManager.ModuleState state)
+        public void SetState(GraphyManager.ModuleState state, bool silentUpdate = false)
         {
-            m_previousModuleState = m_currentModuleState;
+            if (!silentUpdate)
+            {
+                m_previousModuleState = m_currentModuleState;
+            }
+
             m_currentModuleState = state;
 
             switch (state)
@@ -198,7 +202,7 @@ namespace Tayx.Graphy.Ram
             m_ramGraph  .UpdateParameters();
             m_ramText   .UpdateParameters();
 
-            SetState(m_currentModuleState);
+            SetState(m_currentModuleState, true);
         }
 
         #endregion
