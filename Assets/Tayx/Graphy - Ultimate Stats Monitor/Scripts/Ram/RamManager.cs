@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 03-Jan-18
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            03-Jan-18
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -20,29 +22,43 @@ namespace Tayx.Graphy.Ram
 {
     public class RamManager : MonoBehaviour, IMovable, IModifiableState
     {
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we should add "private" to the Unity Callbacks.
+         * Check if we should add a "RequireComponent" for "RectTransform".
+         * Check if we should add a "RequireComponent" for "RamGraph".
+         * Check why this manager doesnt use FpsMonitor, as all the other managers have a monitor script.
+         * Check if we should add a "RequireComponent" for "RamText".
+         * --------------------------------------*/
 
-        #region Private Variables
+        #region Variables -> Serialized Private
 
-        private GraphyManager m_graphyManager;
+        [SerializeField] private    GameObject              m_ramGraphGameObject;
+
+        [SerializeField] private    List<Image>             m_backgroundImages          = new List<Image>();
+
+        #endregion
+
+        #region Variables -> Private
+
+        private                 GraphyManager               m_graphyManager;
         
-        private RamGraph m_ramGraph;
-        private RamText m_ramText;
+        private                 RamGraph                    m_ramGraph;
+        private                 RamText                     m_ramText;
 
-        private RectTransform m_rectTransform;
+        private                 RectTransform               m_rectTransform;
 
+        private                 List<GameObject>            m_childrenGameObjects       = new List<GameObject>();
 
-        [SerializeField] private GameObject m_ramGraphGameObject;
-
-        private List<GameObject> m_childrenGameObjects = new List<GameObject>();
-        
-        [SerializeField] private List<Image> m_backgroundImages = new List<Image>();
-
-        private GraphyManager.ModuleState m_previousModuleState;
-        private GraphyManager.ModuleState m_currentModuleState;
+        private                 GraphyManager.ModuleState   m_previousModuleState;
+        private                 GraphyManager.ModuleState   m_currentModuleState;
         
         #endregion
 
-        #region Unity Methods
+        #region Methods -> Unity Callbacks
 
         void Awake()
         {
@@ -56,7 +72,7 @@ namespace Tayx.Graphy.Ram
 
         #endregion
 
-        #region Public Methods
+        #region Methods -> Public
 
         public void SetPosition(GraphyManager.ModulePosition newModulePosition)
         {
@@ -67,33 +83,33 @@ namespace Tayx.Graphy.Ram
             {
                 case GraphyManager.ModulePosition.TOP_LEFT:
 
-                    m_rectTransform.anchorMax = Vector2.up;
-                    m_rectTransform.anchorMin = Vector2.up;
-                    m_rectTransform.anchoredPosition = new Vector2(xSideOffset, -ySideOffset);
+                    m_rectTransform.anchorMax           = Vector2.up;
+                    m_rectTransform.anchorMin           = Vector2.up;
+                    m_rectTransform.anchoredPosition    = new Vector2(xSideOffset, -ySideOffset);
 
                     break;
 
                 case GraphyManager.ModulePosition.TOP_RIGHT:
 
-                    m_rectTransform.anchorMax = Vector2.one;
-                    m_rectTransform.anchorMin = Vector2.one;
-                    m_rectTransform.anchoredPosition = new Vector2(-xSideOffset, -ySideOffset);
+                    m_rectTransform.anchorMax           = Vector2.one;
+                    m_rectTransform.anchorMin           = Vector2.one;
+                    m_rectTransform.anchoredPosition    = new Vector2(-xSideOffset, -ySideOffset);
 
                     break;
 
                 case GraphyManager.ModulePosition.BOTTOM_LEFT:
 
-                    m_rectTransform.anchorMax = Vector2.zero;
-                    m_rectTransform.anchorMin = Vector2.zero;
-                    m_rectTransform.anchoredPosition = new Vector2(xSideOffset, ySideOffset);
+                    m_rectTransform.anchorMax           = Vector2.zero;
+                    m_rectTransform.anchorMin           = Vector2.zero;
+                    m_rectTransform.anchoredPosition    = new Vector2(xSideOffset, ySideOffset);
 
                     break;
 
                 case GraphyManager.ModulePosition.BOTTOM_RIGHT:
 
-                    m_rectTransform.anchorMax = Vector2.right;
-                    m_rectTransform.anchorMin = Vector2.right;
-                    m_rectTransform.anchoredPosition = new Vector2(-xSideOffset, ySideOffset);
+                    m_rectTransform.anchorMax           = Vector2.right;
+                    m_rectTransform.anchorMin           = Vector2.right;
+                    m_rectTransform.anchoredPosition    = new Vector2(-xSideOffset, ySideOffset);
 
                     break;
             }
@@ -142,8 +158,8 @@ namespace Tayx.Graphy.Ram
                 case GraphyManager.ModuleState.BACKGROUND:
                     gameObject.SetActive(true);
                     SetGraphActive(false);
+
                     m_childrenGameObjects.SetAllActive(false);
-                    
                     m_backgroundImages.SetAllActive(false);
 
                     break;
@@ -166,22 +182,22 @@ namespace Tayx.Graphy.Ram
                 image.color = m_graphyManager.BackgroundColor;
             }
             
-            m_ramGraph.UpdateParameters();
-            m_ramText.UpdateParameters();
+            m_ramGraph  .UpdateParameters();
+            m_ramText   .UpdateParameters();
             
             SetState(m_graphyManager.RamModuleState);
         }
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         private void Init()
         {
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
-            m_ramGraph = GetComponent<RamGraph>();
-            m_ramText = GetComponent<RamText>();
+            m_ramGraph      = GetComponent<RamGraph>();
+            m_ramText       = GetComponent<RamText>();
 
             m_rectTransform = GetComponent<RectTransform>();
             

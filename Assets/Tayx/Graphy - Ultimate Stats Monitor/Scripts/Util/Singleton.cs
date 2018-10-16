@@ -1,4 +1,15 @@
-﻿using UnityEngine;
+﻿/* ---------------------------------------
+ * Author:          ?
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            ?
+ * Studio:          Tayx
+ * 
+ * This project is released under the MIT license.
+ * Attribution is not required, but it is always welcomed!
+ * -------------------------------------*/
+
+using UnityEngine;
 
 namespace Tayx.Graphy.Utils
 {
@@ -11,9 +22,23 @@ namespace Tayx.Graphy.Utils
     /// </summary>
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        private static T _instance;
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we should add "private" to the Unity Callbacks.
+         * Fill in the missing date and author.
+         * --------------------------------------*/
 
-        private static object _lock = new object();
+        #region Variables -> Private
+
+        private static  T       _instance;
+
+        private static  object  _lock       = new object();
+
+        #endregion
+
+        #region Properties -> Public
 
         public static T Instance
         {
@@ -74,6 +99,10 @@ namespace Tayx.Graphy.Utils
             }
         }
 
+        #endregion
+
+        #region Methods -> Unity Callbacks
+
         void Awake()
         {
             if (_instance != null)
@@ -100,5 +129,6 @@ namespace Tayx.Graphy.Utils
             _applicationIsQuitting = true;
         }
 
+        #endregion
     }
 }

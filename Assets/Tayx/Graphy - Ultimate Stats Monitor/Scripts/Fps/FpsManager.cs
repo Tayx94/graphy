@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 03-Jan-18
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            03-Jan-18
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -19,32 +21,47 @@ namespace Tayx.Graphy.Fps
 {
     public class FpsManager : MonoBehaviour, IMovable, IModifiableState
     {
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we should add "private" to the Unity Callbacks.
+         * Check if we can remove "using System.Linq;".
+         * Check if we should add a "RequireComponent" for "RectTransform".
+         * Check if we should add a "RequireComponent" for "FpsGraph".
+         * Check if we should add a "RequireComponent" for "FpsMonitor".
+         * Check if we should add a "RequireComponent" for "FpsText".
+         * --------------------------------------*/
 
-        #region Private Variables
+        #region Variables -> Serialized Private
+
+        [SerializeField] private    GameObject                  m_fpsGraphGameObject;
+
+        [SerializeField] private    List<GameObject>            m_nonBasicTextGameObjects   = new List<GameObject>();
+
+        [SerializeField] private    List<Image>                 m_backgroundImages          = new List<Image>();
+
+        #endregion
+
+        #region Variables -> Private
+
+        private                     GraphyManager               m_graphyManager;
         
-        private GraphyManager m_graphyManager;
-        
-        private FpsGraph m_fpsGraph;
-        private FpsMonitor m_fpsMonitor;
-        private FpsText m_fpsText;
+        private                     FpsGraph                    m_fpsGraph;
+        private                     FpsMonitor                  m_fpsMonitor;
+        private                     FpsText                     m_fpsText;
 
-        private RectTransform m_rectTransform;
+        private                     RectTransform               m_rectTransform;
 
+        private                     List<GameObject>            m_childrenGameObjects       = new List<GameObject>();
 
-        [SerializeField] private GameObject m_fpsGraphGameObject;
-
-        [SerializeField] private List<GameObject> m_nonBasicTextGameObjects = new List<GameObject>();
-
-        [SerializeField] private List<Image> m_backgroundImages = new List<Image>();
-
-        private List<GameObject> m_childrenGameObjects = new List<GameObject>();
-
-        private GraphyManager.ModuleState m_previousModuleState;
-        private GraphyManager.ModuleState m_currentModuleState;
+        private                     GraphyManager.ModuleState   m_previousModuleState;
+        private                     GraphyManager.ModuleState   m_currentModuleState;
         
         #endregion
 
-        #region Unity Methods
+        #region Methods -> Unity Callbacks
 
         void Awake()
         {
@@ -58,7 +75,7 @@ namespace Tayx.Graphy.Fps
 
         #endregion
 
-        #region Public Methods
+        #region Methods -> Public
 
         public void SetPosition(GraphyManager.ModulePosition newModulePosition)
         {
@@ -69,33 +86,33 @@ namespace Tayx.Graphy.Fps
             {
                 case GraphyManager.ModulePosition.TOP_LEFT:
 
-                    m_rectTransform.anchorMax = Vector2.up;
-                    m_rectTransform.anchorMin = Vector2.up;
-                    m_rectTransform.anchoredPosition = new Vector2(xSideOffset, -ySideOffset);
+                    m_rectTransform.anchorMax           = Vector2.up;
+                    m_rectTransform.anchorMin           = Vector2.up;
+                    m_rectTransform.anchoredPosition    = new Vector2(xSideOffset, -ySideOffset);
 
                     break;
 
                 case GraphyManager.ModulePosition.TOP_RIGHT:
 
-                    m_rectTransform.anchorMax = Vector2.one;
-                    m_rectTransform.anchorMin = Vector2.one;
-                    m_rectTransform.anchoredPosition = new Vector2(-xSideOffset, -ySideOffset);
+                    m_rectTransform.anchorMax           = Vector2.one;
+                    m_rectTransform.anchorMin           = Vector2.one;
+                    m_rectTransform.anchoredPosition    = new Vector2(-xSideOffset, -ySideOffset);
 
                     break;
 
                 case GraphyManager.ModulePosition.BOTTOM_LEFT:
 
-                    m_rectTransform.anchorMax = Vector2.zero;
-                    m_rectTransform.anchorMin = Vector2.zero;
-                    m_rectTransform.anchoredPosition = new Vector2(xSideOffset, ySideOffset);
+                    m_rectTransform.anchorMax           = Vector2.zero;
+                    m_rectTransform.anchorMin           = Vector2.zero;
+                    m_rectTransform.anchoredPosition    = new Vector2(xSideOffset, ySideOffset);
 
                     break;
 
                 case GraphyManager.ModulePosition.BOTTOM_RIGHT:
 
-                    m_rectTransform.anchorMax = Vector2.right;
-                    m_rectTransform.anchorMin = Vector2.right;
-                    m_rectTransform.anchoredPosition = new Vector2(-xSideOffset, ySideOffset);
+                    m_rectTransform.anchorMax           = Vector2.right;
+                    m_rectTransform.anchorMin           = Vector2.right;
+                    m_rectTransform.anchoredPosition    = new Vector2(-xSideOffset, ySideOffset);
 
                     break;
             }
@@ -103,8 +120,8 @@ namespace Tayx.Graphy.Fps
 
         public void SetState(GraphyManager.ModuleState state)
         {
-            m_previousModuleState = m_currentModuleState;
-            m_currentModuleState = state;
+            m_previousModuleState   = m_currentModuleState;
+            m_currentModuleState    = state;
 
             switch (state)
             {
@@ -192,7 +209,7 @@ namespace Tayx.Graphy.Fps
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         private void Init()
         {
@@ -200,9 +217,9 @@ namespace Tayx.Graphy.Fps
             
             m_rectTransform = GetComponent<RectTransform>();
 
-            m_fpsGraph = GetComponent<FpsGraph>();
-            m_fpsMonitor = GetComponent<FpsMonitor>();
-            m_fpsText = GetComponent<FpsText>();
+            m_fpsGraph      = GetComponent<FpsGraph>();
+            m_fpsMonitor    = GetComponent<FpsMonitor>();
+            m_fpsText       = GetComponent<FpsText>();
 
             foreach (Transform child in transform)
             {

@@ -1,8 +1,10 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 05-Mar-18
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            05-Mar-18
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
@@ -14,16 +16,26 @@ using System.Collections;
 
 namespace Tayx.Graphy.CustomizationScene
 {
-    //TODO: Check if we can seal the class.
 	public class ForceSliderToPowerOf2 : MonoBehaviour
 	{
-        //TODO: Add summaries.
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we could make the "m_powerOf2Values" constant.
+         * Check if we should add "private" to the Unity Callbacks.
+         * --------------------------------------*/
 
-        #region Private Variables
+        #region Variables -> Serialized Private
 
         [SerializeField] private Slider m_slider;
 
-		private int[] m_powerOf2Values =
+        #endregion
+
+        #region Variables -> Private
+
+        private int[] m_powerOf2Values =
 		{
 			128,
 			256,
@@ -38,7 +50,7 @@ namespace Tayx.Graphy.CustomizationScene
 
         #endregion
 
-        #region Unity Methods
+        #region Methods -> Unity Callbacks
 
         void Start()
 		{
@@ -47,7 +59,7 @@ namespace Tayx.Graphy.CustomizationScene
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Private
 
         private void UpdateValue(float value)
 		{
