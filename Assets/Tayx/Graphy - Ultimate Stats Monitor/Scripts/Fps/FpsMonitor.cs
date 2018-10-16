@@ -158,6 +158,5 @@ namespace Tayx.Graphy.Fps
         }
 
         #endregion
-
     }
 }
