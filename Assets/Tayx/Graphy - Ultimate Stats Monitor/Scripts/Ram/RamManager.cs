@@ -188,6 +188,19 @@ namespace Tayx.Graphy.Ram
             SetState(m_graphyManager.RamModuleState);
         }
 
+        public void RefreshParameters()
+        {
+            foreach (var image in m_backgroundImages)
+            {
+                image.color = m_graphyManager.BackgroundColor;
+            }
+
+            m_ramGraph  .UpdateParameters();
+            m_ramText   .UpdateParameters();
+
+            SetState(m_currentModuleState);
+        }
+
         #endregion
 
         #region Methods -> Private

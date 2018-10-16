@@ -192,18 +192,32 @@ namespace Tayx.Graphy.Audio
                 image.color = m_graphyManager.BackgroundColor;
             }
             
-            m_audioGraph.UpdateParameters();
-            m_audioMonitor.UpdateParameters();
-            m_audioText.UpdateParameters();
+            m_audioGraph    .UpdateParameters();
+            m_audioMonitor  .UpdateParameters();
+            m_audioText     .UpdateParameters();
             
             SetState(m_graphyManager.AudioModuleState);
         }
-        
-        #endregion
 
-        #region Methods -> Private
+        public void RefreshParameters()
+        {
+            foreach (var image in m_backgroundImages)
+            {
+                image.color = m_graphyManager.BackgroundColor;
+            }
 
-        private void Init()
+            m_audioGraph    .UpdateParameters();
+            m_audioMonitor  .UpdateParameters();
+            m_audioText     .UpdateParameters();
+
+            SetState(m_currentModuleState);
+        }
+
+            #endregion
+
+            #region Methods -> Private
+
+            private void Init()
         {
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
