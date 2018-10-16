@@ -240,6 +240,17 @@ namespace Tayx.Graphy.Advanced
             SetState(m_graphyManager.AdvancedModuleState);
         }
 
+        public void RefreshParameters()
+        {
+            foreach (var image in m_backgroundImages)
+            {
+                image.color = m_graphyManager.BackgroundColor;
+            }
+
+            SetPosition(m_graphyManager.AdvancedModulePosition);
+            SetState(m_currentModuleState);
+        }
+
         #endregion
 
         #region Methods -> Private

@@ -356,6 +356,7 @@ namespace Tayx.Graphy
 
         void Update()
         {
+            Debug.Log(m_fpsModuleState);
             if (m_focused && m_enableHotkeys)
             {
                 CheckForHotkeyPresses();
@@ -368,7 +369,7 @@ namespace Tayx.Graphy
 
             if (m_initialized && isFocused)
             {
-                UpdateAllParameters();
+                RefreshAllParameters();
             }
         }
 
@@ -694,10 +695,18 @@ namespace Tayx.Graphy
 
         private void UpdateAllParameters()
         {
-            m_fpsManager.UpdateParameters();
-            m_ramManager.UpdateParameters();
-            m_audioManager.UpdateParameters();
-            m_advancedData.UpdateParameters();
+            m_fpsManager    .UpdateParameters();
+            m_ramManager    .UpdateParameters();
+            m_audioManager  .UpdateParameters();
+            m_advancedData  .UpdateParameters();
+        }
+
+        private void RefreshAllParameters()
+        {
+            m_fpsManager    .RefreshParameters();
+            m_ramManager    .RefreshParameters();
+            m_audioManager  .RefreshParameters();
+            m_advancedData  .RefreshParameters();
         }
         
         #endregion

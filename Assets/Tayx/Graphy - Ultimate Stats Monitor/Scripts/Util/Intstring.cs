@@ -21,7 +21,6 @@ namespace Tayx.Graphy.Utils.NumString
          * Check if we can remove "using System.Collections;".
          * Check if we can remove "using System.Collections.Generic;".
          * Try and move the Init to a core method.
-         * Figure out why this isnt being inited for the FPS manager.
          * --------------------------------------*/
 
         #region Variables -> Private
