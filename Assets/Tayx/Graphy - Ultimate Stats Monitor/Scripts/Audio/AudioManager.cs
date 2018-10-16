@@ -217,7 +217,7 @@ namespace Tayx.Graphy.Audio
 
             #region Methods -> Private
 
-            private void Init()
+        private void Init()
         {
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
