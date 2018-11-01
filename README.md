@@ -46,7 +46,7 @@ Maintainer and main developer: **Martín Pane**
 
 Let's make Graphy the go-to for stats monitoring in Unity!
 
-I would really appreciate any contributions! Below you can find a roadmap for future planned features and optimisations that you might be able to help out with. If you want to make a pull request, please do it on the "dev" branch.
+I would really appreciate any contributions! Below you can find a roadmap for future planned features and optimisations that you might be able to help out with. If you want to make a big pull request, please do it on the "dev" branch.
 
 Create a GitHub issue if you want to start a discussion or request a feature, and please label appropriately.
 
