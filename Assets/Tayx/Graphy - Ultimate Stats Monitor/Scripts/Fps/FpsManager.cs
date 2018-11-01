@@ -118,9 +118,13 @@ namespace Tayx.Graphy.Fps
             }
         }
 
-        public void SetState(GraphyManager.ModuleState state)
+        public void SetState(GraphyManager.ModuleState state, bool silentUpdate = false)
         {
-            m_previousModuleState   = m_currentModuleState;
+            if (!silentUpdate)
+            {
+                m_previousModuleState = m_currentModuleState;
+            }
+
             m_currentModuleState    = state;
 
             switch (state)
@@ -200,11 +204,25 @@ namespace Tayx.Graphy.Fps
                 image.color = m_graphyManager.BackgroundColor;
             }
             
-            m_fpsGraph.UpdateParameters();
-            m_fpsMonitor.UpdateParameters();
-            m_fpsText.UpdateParameters();
+            m_fpsGraph      .UpdateParameters();
+            m_fpsMonitor    .UpdateParameters();
+            m_fpsText       .UpdateParameters();
             
             SetState(m_graphyManager.FpsModuleState);
+        }
+
+        public void RefreshParameters()
+        {
+            foreach (var image in m_backgroundImages)
+            {
+                image.color = m_graphyManager.BackgroundColor;
+            }
+
+            m_fpsGraph      .UpdateParameters();
+            m_fpsMonitor    .UpdateParameters();
+            m_fpsText       .UpdateParameters();
+
+            SetState(m_currentModuleState, true);
         }
 
         #endregion

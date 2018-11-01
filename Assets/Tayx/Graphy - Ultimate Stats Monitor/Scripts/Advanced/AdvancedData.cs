@@ -207,9 +207,13 @@ namespace Tayx.Graphy.Advanced
             }
         }
 
-        public void SetState(GraphyManager.ModuleState state)
+        public void SetState(GraphyManager.ModuleState state, bool silentUpdate = false)
         {
-            m_previousModuleState = m_currentModuleState;
+            if (!silentUpdate)
+            {
+                m_previousModuleState = m_currentModuleState;
+            }
+
             m_currentModuleState = state;
 
             bool active = state == GraphyManager.ModuleState.FULL
@@ -238,6 +242,17 @@ namespace Tayx.Graphy.Advanced
             
             SetPosition(m_graphyManager.AdvancedModulePosition);
             SetState(m_graphyManager.AdvancedModuleState);
+        }
+
+        public void RefreshParameters()
+        {
+            foreach (var image in m_backgroundImages)
+            {
+                image.color = m_graphyManager.BackgroundColor;
+            }
+
+            SetPosition(m_graphyManager.AdvancedModulePosition);
+            SetState(m_currentModuleState, true);
         }
 
         #endregion

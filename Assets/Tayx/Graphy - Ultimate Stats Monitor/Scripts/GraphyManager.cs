@@ -368,7 +368,7 @@ namespace Tayx.Graphy
 
             if (m_initialized && isFocused)
             {
-                UpdateAllParameters();
+                RefreshAllParameters();
             }
         }
 
@@ -542,20 +542,20 @@ namespace Tayx.Graphy
 
         public void Enable()
         {
-            m_fpsManager.RestorePreviousState();
-            m_ramManager.RestorePreviousState();
-            m_audioManager.RestorePreviousState();
-            m_advancedData.RestorePreviousState();
+            m_fpsManager    .RestorePreviousState();
+            m_ramManager    .RestorePreviousState();
+            m_audioManager  .RestorePreviousState();
+            m_advancedData  .RestorePreviousState();
 
             m_active = true;
         }
 
         public void Disable()
         {
-            m_fpsManager.SetState(ModuleState.OFF);
-            m_ramManager.SetState(ModuleState.OFF);
-            m_audioManager.SetState(ModuleState.OFF);
-            m_advancedData.SetState(ModuleState.OFF);
+            m_fpsManager    .SetState(ModuleState.OFF);
+            m_ramManager    .SetState(ModuleState.OFF);
+            m_audioManager  .SetState(ModuleState.OFF);
+            m_advancedData  .SetState(ModuleState.OFF);
 
             m_active = false;
         }
@@ -694,10 +694,18 @@ namespace Tayx.Graphy
 
         private void UpdateAllParameters()
         {
-            m_fpsManager.UpdateParameters();
-            m_ramManager.UpdateParameters();
-            m_audioManager.UpdateParameters();
-            m_advancedData.UpdateParameters();
+            m_fpsManager    .UpdateParameters();
+            m_ramManager    .UpdateParameters();
+            m_audioManager  .UpdateParameters();
+            m_advancedData  .UpdateParameters();
+        }
+
+        private void RefreshAllParameters()
+        {
+            m_fpsManager    .RefreshParameters();
+            m_ramManager    .RefreshParameters();
+            m_audioManager  .RefreshParameters();
+            m_advancedData  .RefreshParameters();
         }
         
         #endregion

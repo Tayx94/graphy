@@ -27,7 +27,7 @@ namespace Tayx.Graphy.UI
         /// <param name="newState">
         /// The new state.
         /// </param>
-        void SetState(GraphyManager.ModuleState newState);
+        void SetState(GraphyManager.ModuleState newState, bool silentUpdate);
     }
 
 }

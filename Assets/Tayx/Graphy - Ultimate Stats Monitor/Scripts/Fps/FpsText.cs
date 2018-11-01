@@ -30,8 +30,7 @@ namespace Tayx.Graphy.Fps
          * Check if we can remove "using System.Text;".
          * Check if we can remove "using Tayx.Graphy.Utils;".
          * Check if we should add a "RequireComponent" for "FpsMonitor".
-         * Improve the FloatString Init to come from the core instead.
-         * Figure out why we dont Init the IntString.
+         * Improve the IntString Init to come from the core instead.
          * --------------------------------------*/
 
         #region Variables -> Serialized Private
@@ -58,6 +57,9 @@ namespace Tayx.Graphy.Fps
         private                     float           m_deltaTime         = 0f;
 
         private                     float           m_fps               = 0f;
+
+        private const               int             m_minFps            = 0;
+        private const               int             m_maxFps            = 10000;
 
         private const               string          m_msStringFormat    = "0.0";
 
@@ -129,8 +131,14 @@ namespace Tayx.Graphy.Fps
         /// Assigns color to a text according to their fps numeric value and
         /// the colors specified in the 3 categories (Good, Caution, Critical).
         /// </summary>
-        /// <param name="text">UI Text component to change its color</param>
-        /// <param name="fps">Numeric fps value</param>
+        /// 
+        /// <param name="text">
+        /// UI Text component to change its color
+        /// </param>
+        /// 
+        /// <param name="fps">
+        /// Numeric fps value
+        /// </param>
         private void SetFpsRelatedTextColor(Text text, float fps)
         {
             if (fps > m_graphyManager.GoodFPSThreshold)
@@ -150,12 +158,12 @@ namespace Tayx.Graphy.Fps
         private void Init()
         {
             //TODO: Replace this with one activated from the core and figure out the min value.
-            if (!FloatString.Inited || FloatString.MinValue > -1000f || FloatString.MaxValue < 16384f)
+            if (!IntString.Inited || IntString.MinValue > m_minFps || IntString.MaxValue < m_maxFps)
             {
-                FloatString.Init
+                IntString.Init
                 (
-                    minNegativeValue: -1001f,
-                    maxPositiveValue: 16386f
+                    minNegativeValue: m_minFps,
+                    maxPositiveValue: m_maxFps
                 );
             }
 
