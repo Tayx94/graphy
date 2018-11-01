@@ -366,7 +366,7 @@ namespace Tayx.Graphy
         {
             m_focused = isFocused;
 
-            if (m_initialized && isFocused)
+            if (m_initialized && isFocused && m_active)
             {
                 UpdateAllParameters();
             }
