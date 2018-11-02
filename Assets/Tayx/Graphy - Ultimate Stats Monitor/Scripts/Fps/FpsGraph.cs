@@ -58,7 +58,7 @@ namespace Tayx.Graphy.Fps
 
         #region Methods -> Unity Callbacks
 
-        void Awake()
+        void OnEnable()
         {
             Init();
         }

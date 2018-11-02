@@ -66,9 +66,8 @@ namespace Tayx.Graphy.Ram
 
         #region Methods -> Unity Callbacks
 
-        void Awake()
-        {
-           Init();
+        void OnEnable() {
+            Init();
         }
 
         void Update()
@@ -82,6 +81,10 @@ namespace Tayx.Graphy.Ram
 
         public void UpdateParameters()
         {
+            if (m_shaderGraphAllocated == null) {
+                Init();
+            }
+
             switch (m_graphyManager.GraphyMode)
             {
                 case GraphyManager.Mode.FULL:
