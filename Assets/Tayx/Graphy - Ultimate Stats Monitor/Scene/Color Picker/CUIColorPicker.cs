@@ -240,9 +240,9 @@ namespace Tayx.Graphy.CustomizationScene
 
         void Update()
         {
-            _update();
+            if (_update != null) { _update(); }
         }
-    }
+    } 
 }
 
 

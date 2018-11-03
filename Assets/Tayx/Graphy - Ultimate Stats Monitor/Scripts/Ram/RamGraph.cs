@@ -88,7 +88,7 @@ namespace Tayx.Graphy.Ram
             {
                 Init();
             }
-
+             
             switch (m_graphyManager.GraphyMode)
             {
                 case GraphyManager.Mode.FULL:
