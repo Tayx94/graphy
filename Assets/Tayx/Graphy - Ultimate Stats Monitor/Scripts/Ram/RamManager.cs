@@ -112,6 +112,9 @@ namespace Tayx.Graphy.Ram
                     m_rectTransform.anchoredPosition    = new Vector2(-xSideOffset, ySideOffset);
 
                     break;
+
+                case GraphyManager.ModulePosition.FREE:
+                    break;
             }
         }
 
