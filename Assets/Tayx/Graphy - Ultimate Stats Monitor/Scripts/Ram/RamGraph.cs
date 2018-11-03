@@ -66,7 +66,8 @@ namespace Tayx.Graphy.Ram
 
         #region Methods -> Unity Callbacks
 
-        void OnEnable() {
+        void OnEnable()
+        {
             Init();
         }
 
@@ -81,7 +82,10 @@ namespace Tayx.Graphy.Ram
 
         public void UpdateParameters()
         {
-            if (m_shaderGraphAllocated == null) {
+            if (    m_shaderGraphAllocated  == null
+                ||  m_shaderGraphReserved   == null
+                ||  m_shaderGraphMono       == null)
+            {
                 Init();
             }
 
