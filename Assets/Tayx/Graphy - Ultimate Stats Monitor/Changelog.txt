@@ -1,4 +1,12 @@
 -----------------------------
+v1.4.2
+
+- Added the option to disable hotkeys.
+- Disabled hotkey check when Editor is not focused (thanks @Rockylars).
+- Refatored and cleaned up code (thanks @Rockylars).
+- Fixed a bug where if the app was defocused and focused back, it would reset Graphy's module active values (thanks @Rockylars).
+
+-----------------------------
 v1.4.1
 
 - Introduced plenty of safety checks to avoid some null reference errors.
