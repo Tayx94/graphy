@@ -122,6 +122,9 @@ namespace Tayx.Graphy.Audio
                     m_audioDbText.alignment             = TextAnchor.UpperRight;
 
                     break;
+
+                case GraphyManager.ModulePosition.FREE:
+                    break;
             }
         }
 

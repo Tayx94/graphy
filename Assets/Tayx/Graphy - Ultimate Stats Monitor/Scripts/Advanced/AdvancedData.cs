@@ -173,6 +173,9 @@ namespace Tayx.Graphy.Advanced
                     m_backgroundImages[0].rectTransform.anchoredPosition    = new Vector2(-xSideOffsetBackgroundImage, 0);
                     
                     break;
+
+                case GraphyManager.ModulePosition.FREE:
+                    break;
             }
 
             switch (newModulePosition)
@@ -203,6 +206,9 @@ namespace Tayx.Graphy.Advanced
                     m_gameWindowResolutionText      .alignment = TextAnchor.UpperRight;
                     m_operatingSystemText           .alignment = TextAnchor.UpperRight;
                     
+                    break;
+
+                case GraphyManager.ModulePosition.FREE:
                     break;
             }
         }

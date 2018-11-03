@@ -84,9 +84,6 @@ namespace Tayx.Graphy.Fps
 
             switch (newModulePosition)
             {
-                case GraphyManager.ModulePosition.FREE:
-                    break;
-
                 case GraphyManager.ModulePosition.TOP_LEFT:
 
                     m_rectTransform.anchorMax           = Vector2.up;
@@ -117,6 +114,9 @@ namespace Tayx.Graphy.Fps
                     m_rectTransform.anchorMin           = Vector2.right;
                     m_rectTransform.anchoredPosition    = new Vector2(-xSideOffset, ySideOffset);
 
+                    break;
+
+                case GraphyManager.ModulePosition.FREE:
                     break;
             }
         }
