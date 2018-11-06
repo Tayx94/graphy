@@ -46,9 +46,9 @@ namespace Tayx.Graphy.Ram
 
         private                     int             m_resolution                = 150;
 
-        private                     ShaderGraph     m_shaderGraphAllocated;
-        private                     ShaderGraph     m_shaderGraphReserved;
-        private                     ShaderGraph     m_shaderGraphMono;
+        private                     G_GraphShader     m_shaderGraphAllocated;
+        private                     G_GraphShader     m_shaderGraphReserved;
+        private                     G_GraphShader     m_shaderGraphMono;
 
         private                     float[]         m_allocatedArray;
         private                     float[]         m_reservedArray;
@@ -86,9 +86,9 @@ namespace Tayx.Graphy.Ram
             switch (m_graphyManager.GraphyMode)
             {
                 case GraphyManager.Mode.FULL:
-                    m_shaderGraphAllocated  .ArrayMaxSize = ShaderGraph.ArrayMaxSizeFull;
-                    m_shaderGraphReserved   .ArrayMaxSize = ShaderGraph.ArrayMaxSizeFull;
-                    m_shaderGraphMono       .ArrayMaxSize = ShaderGraph.ArrayMaxSizeFull;
+                    m_shaderGraphAllocated  .ArrayMaxSize = G_GraphShader.ArrayMaxSizeFull;
+                    m_shaderGraphReserved   .ArrayMaxSize = G_GraphShader.ArrayMaxSizeFull;
+                    m_shaderGraphMono       .ArrayMaxSize = G_GraphShader.ArrayMaxSizeFull;
 
                     m_shaderGraphAllocated  .Image.material = new Material(ShaderFull);
                     m_shaderGraphReserved   .Image.material = new Material(ShaderFull);
@@ -96,9 +96,9 @@ namespace Tayx.Graphy.Ram
                     break;
 
                 case GraphyManager.Mode.LIGHT:
-                    m_shaderGraphAllocated  .ArrayMaxSize = ShaderGraph.ArrayMaxSizeLight;
-                    m_shaderGraphReserved   .ArrayMaxSize = ShaderGraph.ArrayMaxSizeLight;
-                    m_shaderGraphMono       .ArrayMaxSize = ShaderGraph.ArrayMaxSizeLight;
+                    m_shaderGraphAllocated  .ArrayMaxSize = G_GraphShader.ArrayMaxSizeLight;
+                    m_shaderGraphReserved   .ArrayMaxSize = G_GraphShader.ArrayMaxSizeLight;
+                    m_shaderGraphMono       .ArrayMaxSize = G_GraphShader.ArrayMaxSizeLight;
 
                     m_shaderGraphAllocated  .Image.material = new Material(ShaderLight);
                     m_shaderGraphReserved   .Image.material = new Material(ShaderLight);
@@ -241,9 +241,9 @@ namespace Tayx.Graphy.Ram
 
             m_ramMonitor = GetComponent<G_RamMonitor>();
             
-            m_shaderGraphAllocated  = new ShaderGraph();
-            m_shaderGraphReserved   = new ShaderGraph();
-            m_shaderGraphMono       = new ShaderGraph();
+            m_shaderGraphAllocated  = new G_GraphShader();
+            m_shaderGraphReserved   = new G_GraphShader();
+            m_shaderGraphMono       = new G_GraphShader();
 
             m_shaderGraphAllocated  .Image = m_imageAllocated;
             m_shaderGraphReserved   .Image = m_imageReserved;

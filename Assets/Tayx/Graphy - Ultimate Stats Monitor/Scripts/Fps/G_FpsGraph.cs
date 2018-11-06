@@ -40,7 +40,7 @@ namespace Tayx.Graphy.Fps
 
         private                     int             m_resolution        = 150;
 
-        private                     ShaderGraph     m_shaderGraph;
+        private                     G_GraphShader     m_shaderGraph;
 
         private                     int[]           m_fpsArray;
 
@@ -69,12 +69,12 @@ namespace Tayx.Graphy.Fps
             switch (m_graphyManager.GraphyMode)
             {
                 case GraphyManager.Mode.FULL:
-                    m_shaderGraph.ArrayMaxSize      = ShaderGraph.ArrayMaxSizeFull;
+                    m_shaderGraph.ArrayMaxSize      = G_GraphShader.ArrayMaxSizeFull;
                     m_shaderGraph.Image.material    = new Material(ShaderFull);
                     break;
 
                 case GraphyManager.Mode.LIGHT:
-                    m_shaderGraph.ArrayMaxSize      = ShaderGraph.ArrayMaxSizeLight;
+                    m_shaderGraph.ArrayMaxSize      = G_GraphShader.ArrayMaxSizeLight;
                     m_shaderGraph.Image.material    = new Material(ShaderLight);
                     break;
             }
@@ -165,7 +165,7 @@ namespace Tayx.Graphy.Fps
 
             m_fpsMonitor    = GetComponent<G_FpsMonitor>();
 
-            m_shaderGraph   = new ShaderGraph
+            m_shaderGraph   = new G_GraphShader
             {
                 Image       = m_imageGraph
             };

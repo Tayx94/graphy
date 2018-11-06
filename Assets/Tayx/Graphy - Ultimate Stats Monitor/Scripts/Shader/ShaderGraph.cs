@@ -14,12 +14,12 @@ using System.Text;
 
 namespace Tayx.Graphy
 {
-    public class ShaderGraph
+    public class G_GraphShader
     {
-        public const int ArrayMaxSizeFull  = 512;
-        public const int ArrayMaxSizeLight = 128;
+        public const int ArrayMaxSizeFull   = 512;
+        public const int ArrayMaxSizeLight  = 128;
 
-        public int ArrayMaxSize = 128;
+        public int ArrayMaxSize             = 128;
 
         public Image Image;
      

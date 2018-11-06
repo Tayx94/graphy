@@ -41,8 +41,8 @@ namespace Tayx.Graphy.Audio
 
         private                     int             m_resolution                    = 40;
 
-        private                     ShaderGraph     m_shaderGraph;
-        private                     ShaderGraph     m_shaderGraphHighestValues;
+        private                     G_GraphShader     m_shaderGraph;
+        private                     G_GraphShader     m_shaderGraphHighestValues;
 
         private                     float[]         m_graphArray;
         private                     float[]         m_graphArrayHighestValue;
@@ -73,18 +73,18 @@ namespace Tayx.Graphy.Audio
             switch (m_graphyManager.GraphyMode)
             {
                 case GraphyManager.Mode.FULL:
-                    m_shaderGraph.ArrayMaxSize                  = ShaderGraph.ArrayMaxSizeFull;
+                    m_shaderGraph.ArrayMaxSize                  = G_GraphShader.ArrayMaxSizeFull;
                     m_shaderGraph.Image.material                = new Material(ShaderFull);
 
-                    m_shaderGraphHighestValues.ArrayMaxSize     = ShaderGraph.ArrayMaxSizeFull;
+                    m_shaderGraphHighestValues.ArrayMaxSize     = G_GraphShader.ArrayMaxSizeFull;
                     m_shaderGraphHighestValues.Image.material   = new Material(ShaderFull);
                     break;
 
                 case GraphyManager.Mode.LIGHT:
-                    m_shaderGraph.ArrayMaxSize                  = ShaderGraph.ArrayMaxSizeLight;
+                    m_shaderGraph.ArrayMaxSize                  = G_GraphShader.ArrayMaxSizeLight;
                     m_shaderGraph.Image.material                = new Material(ShaderLight);
 
-                    m_shaderGraphHighestValues.ArrayMaxSize     = ShaderGraph.ArrayMaxSizeLight;
+                    m_shaderGraphHighestValues.ArrayMaxSize     = G_GraphShader.ArrayMaxSizeLight;
                     m_shaderGraphHighestValues.Image.material   = new Material(ShaderLight);
                     break;
             }
@@ -243,12 +243,12 @@ namespace Tayx.Graphy.Audio
 
             m_audioMonitor = GetComponent<G_AudioMonitor>();
 
-            m_shaderGraph = new ShaderGraph
+            m_shaderGraph = new G_GraphShader
             {
                 Image = m_imageGraph
             };
 
-            m_shaderGraphHighestValues = new ShaderGraph
+            m_shaderGraphHighestValues = new G_GraphShader
             {
                 Image = m_imageGraphHighestValues
             };
