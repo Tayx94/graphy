@@ -46,7 +46,7 @@ Maintainer and main developer: **Martín Pane**
 
 Let's make Graphy the go-to for stats monitoring in Unity!
 
-I would really appreciate any contributions! Below you can find a roadmap for future planned features and optimisations that you might be able to help out with.
+I would really appreciate any contributions! Below you can find a roadmap for future planned features and optimisations that you might be able to help out with. If you want to make a big pull request, please do it on the "dev" branch.
 
 Create a GitHub issue if you want to start a discussion or request a feature, and please label appropriately.
 
@@ -56,8 +56,11 @@ You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussi
 
 **Planned features (DEFINITELY YES):**
 
-  - Show all Debug.Log from Unity in a UI.Text in the scene.
-  - Log Graphy messages to UI.Text in the scene as well as the console.
+  - Console Module: (developed in the [console-module](https://github.com/Tayx94/graphy/tree/console-module) branch)
+    - Show Debug.Log messages from Unity in this module.
+    - Log Graphy messages to this module.
+    - Integrate Graphy commands into it.
+    - Allow custom commands from user.
   - Prewarm framerates: X seconds where min/max fps are not registered to avoid loading spikes registering.
   - Scale Canvas (GetComponent<Canvas>().scaleFactor *= multiplier;) -> If it changes, set again.
   - Make UI layout adapt on the fly to compact it when not showing graphs.
@@ -74,7 +77,6 @@ You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussi
 	- Send to server
 	- Send mail
   - Add a preprocessor key #GRAPHY to avoid adding the asset in builds
-  - Option to hide Graphy when not in Play Mode
   
 ## License
 

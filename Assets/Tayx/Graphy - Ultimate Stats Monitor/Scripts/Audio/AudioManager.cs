@@ -122,12 +122,19 @@ namespace Tayx.Graphy.Audio
                     m_audioDbText.alignment             = TextAnchor.UpperRight;
 
                     break;
+
+                case GraphyManager.ModulePosition.FREE:
+                    break;
             }
         }
 
-        public void SetState(GraphyManager.ModuleState state)
+        public void SetState(GraphyManager.ModuleState state, bool silentUpdate = false)
         {
-            m_previousModuleState   = m_currentModuleState;
+            if (!silentUpdate)
+            {
+                m_previousModuleState = m_currentModuleState;
+            }
+
             m_currentModuleState    = state;
 
             switch (state)
@@ -210,7 +217,7 @@ namespace Tayx.Graphy.Audio
             m_audioMonitor  .UpdateParameters();
             m_audioText     .UpdateParameters();
 
-            SetState(m_currentModuleState);
+            SetState(m_currentModuleState, true);
         }
 
             #endregion

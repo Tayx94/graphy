@@ -64,7 +64,8 @@ namespace Tayx.Graphy
             TOP_RIGHT       = 0,
             TOP_LEFT        = 1,
             BOTTOM_RIGHT    = 2,
-            BOTTOM_LEFT     = 3
+            BOTTOM_LEFT     = 3,
+            FREE            = 4
         }
 
         public enum LookForAudioListener
@@ -356,7 +357,6 @@ namespace Tayx.Graphy
 
         void Update()
         {
-            Debug.Log(m_fpsModuleState);
             if (m_focused && m_enableHotkeys)
             {
                 CheckForHotkeyPresses();
@@ -543,20 +543,20 @@ namespace Tayx.Graphy
 
         public void Enable()
         {
-            m_fpsManager.RestorePreviousState();
-            m_ramManager.RestorePreviousState();
-            m_audioManager.RestorePreviousState();
-            m_advancedData.RestorePreviousState();
+            m_fpsManager    .RestorePreviousState();
+            m_ramManager    .RestorePreviousState();
+            m_audioManager  .RestorePreviousState();
+            m_advancedData  .RestorePreviousState();
 
             m_active = true;
         }
 
         public void Disable()
         {
-            m_fpsManager.SetState(ModuleState.OFF);
-            m_ramManager.SetState(ModuleState.OFF);
-            m_audioManager.SetState(ModuleState.OFF);
-            m_advancedData.SetState(ModuleState.OFF);
+            m_fpsManager    .SetState(ModuleState.OFF);
+            m_ramManager    .SetState(ModuleState.OFF);
+            m_audioManager  .SetState(ModuleState.OFF);
+            m_advancedData  .SetState(ModuleState.OFF);
 
             m_active = false;
         }

@@ -56,7 +56,7 @@ namespace Tayx.Graphy.Audio
 
         #region Methods -> Unity Callbacks
 
-        void Awake()
+        void OnEnable()
         {
             Init();
         }

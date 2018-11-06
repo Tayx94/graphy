@@ -134,11 +134,11 @@ namespace Tayx.Graphy.CustomizationScene
 
         #region Methods -> Unity Callbacks
 
-        private void Start()
+        private void OnEnable()
         {
             m_graphyManager = GraphyManager.Instance;
             
-            SetupCallbacks();
+            SetupCallbacks(); 
         }
 
         #endregion
@@ -147,6 +147,93 @@ namespace Tayx.Graphy.CustomizationScene
 
         private void SetupCallbacks()
         {
+            // Remove all listeners first --------------------------------
+
+            m_backgroundToggle.onValueChanged.RemoveAllListeners();
+
+            m_backgroundColorButton.onClick.RemoveAllListeners();
+            m_graphyModeDropdown.onValueChanged.RemoveAllListeners();
+            m_graphModulePositionDropdown.onValueChanged.RemoveAllListeners();
+
+            #region Section -> FPS
+            m_fpsModuleStateDropdown.onValueChanged.RemoveAllListeners();
+
+            m_goodInputField.onValueChanged.RemoveAllListeners();
+
+            m_cautionInputField.onValueChanged.RemoveAllListeners();
+
+            m_goodColorButton.onClick.RemoveAllListeners();
+
+            m_cautionColorButton.onClick.RemoveAllListeners();
+
+            m_criticalColorButton.onClick.RemoveAllListeners();
+
+            m_timeToResetMinMaxSlider.onValueChanged.RemoveAllListeners();
+
+            m_fpsGraphResolutionSlider.onValueChanged.RemoveAllListeners();
+
+            m_fpsTextUpdateRateSlider.onValueChanged.RemoveAllListeners();
+
+            #endregion
+
+
+            #region Section -> RAM
+
+            m_ramModuleStateDropdown.onValueChanged.RemoveAllListeners();
+
+            m_reservedColorButton.onClick.RemoveAllListeners();
+
+            m_allocatedColorButton.onClick.RemoveAllListeners();
+
+            m_monoColorButton.onClick.RemoveAllListeners();
+
+            m_ramGraphResolutionSlider.onValueChanged.RemoveAllListeners();
+
+            m_ramTextUpdateRateSlider.onValueChanged.RemoveAllListeners();
+
+            #endregion
+
+            #region Section -> Audio
+
+            m_audioModuleStateDropdown.onValueChanged.RemoveAllListeners();
+
+            m_audioGraphColorButton.onClick.RemoveAllListeners();
+
+            m_findAudioListenerDropdown.onValueChanged.RemoveAllListeners();
+
+            m_fttWindowDropdown.onValueChanged.RemoveAllListeners();
+
+            m_spectrumSizeSlider.onValueChanged.RemoveAllListeners();
+
+            m_audioGraphResolutionSlider.onValueChanged.RemoveAllListeners();
+
+            m_audioTextUpdateRateSlider.onValueChanged.RemoveAllListeners();
+
+            #endregion
+
+            #region Section -> Advanced
+
+            m_advancedModulePositionDropdown.onValueChanged.RemoveAllListeners();
+
+            m_advancedModuleToggle.onValueChanged.RemoveAllListeners();
+
+            #endregion
+
+            #region Section -> Other
+
+            m_musicButton.onClick.RemoveAllListeners();
+
+            m_sfxButton.onClick.RemoveAllListeners();
+
+            m_musicVolumeSlider.onValueChanged.RemoveAllListeners();
+
+            m_sfxVolumeSlider.onValueChanged.RemoveAllListeners();
+
+            #endregion
+
+
+            // Add listeners --------------------------------
+
             m_backgroundToggle.onValueChanged.AddListener(
                 value => m_graphyManager.Background = value);
             
