@@ -23,7 +23,6 @@ namespace Tayx.Graphy
     public class GraphyManager : G_Singleton<GraphyManager>
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
          * --------------------------------------*/

@@ -24,7 +24,6 @@ namespace Tayx.Graphy
     public class GraphyDebugger : G_Singleton<GraphyDebugger>
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
          * Ask why we're not using System.Serializable instead for the helper class.
