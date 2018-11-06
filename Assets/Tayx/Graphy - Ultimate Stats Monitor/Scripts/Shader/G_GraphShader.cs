@@ -1,21 +1,27 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 22-Nov-17
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            22-Nov-17
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Text;
 
 namespace Tayx.Graphy
 {
     public class G_GraphShader
     {
+        /* ----- TODO: ----------------------------
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * CLEAN UP THE CLASS!!! IMPORTANT!
+         * --------------------------------------*/
+
         public const int ArrayMaxSizeFull   = 512;
         public const int ArrayMaxSizeLight  = 128;
 

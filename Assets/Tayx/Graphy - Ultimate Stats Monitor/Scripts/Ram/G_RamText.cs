@@ -18,7 +18,6 @@ namespace Tayx.Graphy.Ram
     public class G_RamText : MonoBehaviour
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
          * Check if we should add a "RequireComponent" for "RamMonitor".
