@@ -18,7 +18,7 @@ using UnityEditor;
 namespace Tayx.Graphy
 {
     [CustomEditor(typeof(GraphyManager))]
-    internal sealed class GraphyManagerEditor : Editor
+    internal class GraphyManagerEditor : Editor
     {
         /* ----- TODO: ----------------------------
          * Add summaries to the variables.
