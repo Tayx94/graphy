@@ -11,7 +11,6 @@
 
 using System;
 using UnityEngine;
-using System.Collections;
 using Tayx.Graphy.Audio;
 using Tayx.Graphy.Fps;
 using Tayx.Graphy.Ram;
@@ -27,8 +26,6 @@ namespace Tayx.Graphy
          * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
          * --------------------------------------*/
 
         protected GraphyManager () { }
@@ -350,12 +347,12 @@ namespace Tayx.Graphy
 
         #region Methods -> Unity Callbacks
 
-        void Start()
+        private void Start()
         {
             Init();
         }
 
-        void Update()
+        private void Update()
         {
             if (m_focused && m_enableHotkeys)
             {
@@ -363,7 +360,7 @@ namespace Tayx.Graphy
             }
         }
 
-        void OnApplicationFocus(bool isFocused)
+        private void OnApplicationFocus(bool isFocused)
         {
             m_focused = isFocused;
 

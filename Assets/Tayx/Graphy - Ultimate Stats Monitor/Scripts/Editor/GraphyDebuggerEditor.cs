@@ -11,11 +11,9 @@
 
 using System;
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
-using UnityEngine.SocialPlatforms.Impl;
 
 namespace Tayx.Graphy
 {
@@ -23,12 +21,8 @@ namespace Tayx.Graphy
     internal class GraphyDebuggerEditor : Editor
     {
         /* ----- TODO: ----------------------------
-         * Check why we're using public for the Unity Callbacks when we dont in GraphyManagerEditor
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we can remove "using UnityEngine.SocialPlatforms.Impl;".
-         * Check if we can seal this class.
          * Finish spacing on "OnInspectorGUI".
          * Add sections to "OnInspectorGUI".
          * Fix the use of Space to be consistent with "GraphyManagerEditor".
@@ -56,7 +50,7 @@ namespace Tayx.Graphy
 
         #region Methods -> Unity Callbacks
 
-        public void OnEnable()
+        private void OnEnable()
         {
             m_target = (GraphyDebugger) target;
         }
