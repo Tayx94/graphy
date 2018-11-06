@@ -11,7 +11,6 @@
 
 using System;
 using UnityEngine;
-using System.Collections;
 using System.IO;
 using UnityEditor;
 
@@ -23,7 +22,6 @@ namespace Tayx.Graphy
         /* ----- TODO: ----------------------------
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
          * --------------------------------------*/
 
         #region Variables -> Private
