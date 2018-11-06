@@ -10,24 +10,19 @@
  * -------------------------------------*/
 
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Tayx.Graphy.UI;
 using Tayx.Graphy.Utils;
 using UnityEngine.UI;
 
 namespace Tayx.Graphy.Fps
 {
-    public class FpsManager : MonoBehaviour, IMovable, IModifiableState
+    public class G_FpsManager : MonoBehaviour, IMovable, IModifiableState
     {
         /* ----- TODO: ----------------------------
          * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
-         * Check if we can remove "using System.Linq;".
          * Check if we should add a "RequireComponent" for "RectTransform".
          * Check if we should add a "RequireComponent" for "FpsGraph".
          * Check if we should add a "RequireComponent" for "FpsMonitor".
@@ -48,9 +43,9 @@ namespace Tayx.Graphy.Fps
 
         private                     GraphyManager               m_graphyManager;
         
-        private                     FpsGraph                    m_fpsGraph;
-        private                     FpsMonitor                  m_fpsMonitor;
-        private                     FpsText                     m_fpsText;
+        private                     G_FpsGraph                    m_fpsGraph;
+        private                     G_FpsMonitor                  m_fpsMonitor;
+        private                     G_FpsText                     m_fpsText;
 
         private                     RectTransform               m_rectTransform;
 
@@ -63,12 +58,12 @@ namespace Tayx.Graphy.Fps
 
         #region Methods -> Unity Callbacks
 
-        void Awake()
+        private void Awake()
         {
             Init();
         }
-        
-        void Start()
+
+        private void Start()
         {
             UpdateParameters();
         }
@@ -238,9 +233,9 @@ namespace Tayx.Graphy.Fps
             
             m_rectTransform = GetComponent<RectTransform>();
 
-            m_fpsGraph      = GetComponent<FpsGraph>();
-            m_fpsMonitor    = GetComponent<FpsMonitor>();
-            m_fpsText       = GetComponent<FpsText>();
+            m_fpsGraph      = GetComponent<G_FpsGraph>();
+            m_fpsMonitor    = GetComponent<G_FpsMonitor>();
+            m_fpsText       = GetComponent<G_FpsText>();
 
             foreach (Transform child in transform)
             {

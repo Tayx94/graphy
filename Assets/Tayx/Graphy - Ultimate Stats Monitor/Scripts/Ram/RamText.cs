@@ -11,26 +11,16 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-
-using System.Collections;
-using System.Text;
-using UnityEngine.Events;
-using Tayx.Graphy.Utils;
 using Tayx.Graphy.Utils.NumString;
 
 namespace Tayx.Graphy.Ram
 {
-    public class RamText : MonoBehaviour
+    public class G_RamText : MonoBehaviour
     {
         /* ----- TODO: ----------------------------
          * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
-         * Check if we can remove "using System.Text;".
-         * Check if we can remove "using Tayx.Graphy.Utils;".
-         * Check if we can remove "UnityEngine.Events;".
          * Check if we should add a "RequireComponent" for "RamMonitor".
          * Improve the FloatString Init to come from the core instead.
          * --------------------------------------*/
@@ -47,7 +37,7 @@ namespace Tayx.Graphy.Ram
 
         private                     GraphyManager   m_graphyManager;
 
-        private                     RamMonitor      m_ramMonitor;
+        private                     G_RamMonitor      m_ramMonitor;
 
         private                     float           m_updateRate                            = 4f;  // 4 updates per sec.
 
@@ -59,12 +49,12 @@ namespace Tayx.Graphy.Ram
 
         #region Methods -> Unity Callbacks
 
-        void Awake()
+        private void Awake()
         {
             Init();
         }
 
-        void Update()
+        private void Update()
         {
             m_deltaTime += Time.unscaledDeltaTime;
 
@@ -99,9 +89,9 @@ namespace Tayx.Graphy.Ram
         private void Init()
         {
             //TODO: Replace this with one activated from the core and figure out the min value.
-            if (!FloatString.Inited || FloatString.MinValue > -1000f || FloatString.MaxValue < 16384f)
+            if (!G_FloatString.Inited || G_FloatString.MinValue > -1000f || G_FloatString.MaxValue < 16384f)
             {
-                FloatString.Init
+                G_FloatString.Init
                 (
                     minNegativeValue: -1001f,
                     maxPositiveValue: 16386f
@@ -110,7 +100,7 @@ namespace Tayx.Graphy.Ram
 
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
-            m_ramMonitor = GetComponent<RamMonitor>();
+            m_ramMonitor = GetComponent<G_RamMonitor>();
            
             UpdateParameters();
         }

@@ -25,7 +25,7 @@ using Tayx.Graphy.Utils;
 
 namespace Tayx.Graphy
 {
-    public class GraphyDebugger : Singleton<GraphyDebugger>
+    public class GraphyDebugger : G_Singleton<GraphyDebugger>
     {
         /* ----- TODO: ----------------------------
          * Check if we can seal this class.
@@ -169,9 +169,9 @@ namespace Tayx.Graphy
 
         #region Variables -> Private
 
-        private                     FpsMonitor          m_fpsMonitor;
-        private                     RamMonitor          m_ramMonitor;
-        private                     AudioMonitor        m_audioMonitor;
+        private                     G_FpsMonitor          m_fpsMonitor;
+        private                     G_RamMonitor          m_ramMonitor;
+        private                     G_AudioMonitor        m_audioMonitor;
 
         #endregion
 
@@ -179,9 +179,9 @@ namespace Tayx.Graphy
 
         void Start()
         {
-            m_fpsMonitor    = GetComponentInChildren<FpsMonitor>();
-            m_ramMonitor    = GetComponentInChildren<RamMonitor>();
-            m_audioMonitor  = GetComponentInChildren<AudioMonitor>();
+            m_fpsMonitor    = GetComponentInChildren<G_FpsMonitor>();
+            m_ramMonitor    = GetComponentInChildren<G_RamMonitor>();
+            m_audioMonitor  = GetComponentInChildren<G_AudioMonitor>();
         }
 
         void Update()

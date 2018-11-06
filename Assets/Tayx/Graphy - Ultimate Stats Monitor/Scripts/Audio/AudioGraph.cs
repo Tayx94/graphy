@@ -9,22 +9,17 @@
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
+using Tayx.Graphy.Graph;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using Tayx;
 
 namespace Tayx.Graphy.Audio
 {
-    public class AudioGraph : Graph.Graph
+    public class G_AudioGraph : G_Graph
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
-         * Check if we can remove "using Tayx;".
          * Check if we should add a "RequireComponent" for "AudioMonitor".
          * --------------------------------------*/
 
@@ -42,7 +37,7 @@ namespace Tayx.Graphy.Audio
 
         private                     GraphyManager   m_graphyManager;
 
-        private                     AudioMonitor    m_audioMonitor;
+        private                     G_AudioMonitor    m_audioMonitor;
 
         private                     int             m_resolution                    = 40;
 
@@ -56,12 +51,12 @@ namespace Tayx.Graphy.Audio
 
         #region Methods -> Unity Callbacks
 
-        void OnEnable()
+        private void OnEnable()
         {
             Init();
         }
 
-        void Update()
+        private void Update()
         {
             if (m_audioMonitor.SpectrumDataAvailable)
             {
@@ -246,7 +241,7 @@ namespace Tayx.Graphy.Audio
         {
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
-            m_audioMonitor = GetComponent<AudioMonitor>();
+            m_audioMonitor = GetComponent<G_AudioMonitor>();
 
             m_shaderGraph = new ShaderGraph
             {

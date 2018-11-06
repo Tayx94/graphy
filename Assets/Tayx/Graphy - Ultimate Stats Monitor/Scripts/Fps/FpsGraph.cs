@@ -9,25 +9,17 @@
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
+using Tayx.Graphy.Graph;
 using UnityEngine;
 using UnityEngine.UI;
 
-using System.Collections;
-using System.Runtime.CompilerServices;
-using Tayx;
-
 namespace Tayx.Graphy.Fps
 {
-    public class FpsGraph : Graph.Graph
+    public class G_FpsGraph : G_Graph
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
-         * Check if we can remove "using System.Runtime.CompilerServices;".
-         * Check if we can remove "using Tayx;".
          * Check if we should add a "RequireComponent" for "FpsMonitor".
          * --------------------------------------*/
 
@@ -44,7 +36,7 @@ namespace Tayx.Graphy.Fps
 
         private GraphyManager   m_graphyManager;
 
-        private                     FpsMonitor      m_fpsMonitor;
+        private                     G_FpsMonitor      m_fpsMonitor;
 
         private                     int             m_resolution        = 150;
 
@@ -58,12 +50,12 @@ namespace Tayx.Graphy.Fps
 
         #region Methods -> Unity Callbacks
 
-        void OnEnable()
+        private void OnEnable()
         {
             Init();
         }
 
-        void Update()
+        private void Update()
         {
             UpdateGraph();
         }
@@ -171,7 +163,7 @@ namespace Tayx.Graphy.Fps
         {
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
-            m_fpsMonitor    = GetComponent<FpsMonitor>();
+            m_fpsMonitor    = GetComponent<G_FpsMonitor>();
 
             m_shaderGraph   = new ShaderGraph
             {

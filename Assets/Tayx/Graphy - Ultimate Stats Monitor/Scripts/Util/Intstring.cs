@@ -9,17 +9,13 @@
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Tayx.Graphy.Utils.NumString
 {
-    public static class IntString
+    public static class G_IntString
     {
         /* ----- TODO: ----------------------------
-         * Check if we can remove "using System.Collections;".
-         * Check if we can remove "using System.Collections.Generic;".
          * Try and move the Init to a core method.
          * --------------------------------------*/
 

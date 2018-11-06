@@ -9,6 +9,7 @@
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
+using Tayx.Graphy.Graph;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,20 +17,13 @@ using UnityEngine.UI;
 using UnityEngine.Profiling;
 #endif
 
-using System.Collections;
-using Tayx;
-
 namespace Tayx.Graphy.Ram
 {
-    public class RamGraph : Graph.Graph
+    public class G_RamGraph : G_Graph
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
-         * Check if we can remove "using Tayx;".
          * Check if we should add a "RequireComponent" for "RamMonitor".
          * --------------------------------------*/
 
@@ -48,7 +42,7 @@ namespace Tayx.Graphy.Ram
 
         private                     GraphyManager   m_graphyManager;
 
-        private                     RamMonitor      m_ramMonitor;
+        private                     G_RamMonitor      m_ramMonitor;
 
         private                     int             m_resolution                = 150;
 
@@ -66,12 +60,12 @@ namespace Tayx.Graphy.Ram
 
         #region Methods -> Unity Callbacks
 
-        void OnEnable()
+        private void OnEnable()
         {
             Init();
         }
 
-        void Update()
+        private void Update()
         {
             UpdateGraph();
         }
@@ -245,7 +239,7 @@ namespace Tayx.Graphy.Ram
         {
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
-            m_ramMonitor = GetComponent<RamMonitor>();
+            m_ramMonitor = GetComponent<G_RamMonitor>();
             
             m_shaderGraphAllocated  = new ShaderGraph();
             m_shaderGraphReserved   = new ShaderGraph();

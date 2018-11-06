@@ -10,27 +10,21 @@
  * -------------------------------------*/
 
 using UnityEngine;
-
-using System.Collections;
 using System.Collections.Generic;
-
 using Tayx.Graphy.UI;
 using Tayx.Graphy.Utils;
 using UnityEngine.UI;
 
 namespace Tayx.Graphy.Ram
 {
-    public class RamManager : MonoBehaviour, IMovable, IModifiableState
+    public class G_RamManager : MonoBehaviour, IMovable, IModifiableState
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
          * Check if we should add a "RequireComponent" for "RectTransform".
          * Check if we should add a "RequireComponent" for "RamGraph".
-         * Check why this manager doesnt use FpsMonitor, as all the other managers have a monitor script.
+         * Check why this manager doesnt use RamMonitor, as all the other managers have a monitor script.
          * Check if we should add a "RequireComponent" for "RamText".
          * --------------------------------------*/
 
@@ -46,8 +40,8 @@ namespace Tayx.Graphy.Ram
 
         private                 GraphyManager               m_graphyManager;
         
-        private                 RamGraph                    m_ramGraph;
-        private                 RamText                     m_ramText;
+        private                 G_RamGraph                    m_ramGraph;
+        private                 G_RamText                     m_ramText;
 
         private                 RectTransform               m_rectTransform;
 
@@ -60,12 +54,12 @@ namespace Tayx.Graphy.Ram
 
         #region Methods -> Unity Callbacks
 
-        void Awake()
+        private void Awake()
         {
             Init();
         }
-        
-        void Start()
+
+        private void Start()
         {
             UpdateParameters();
         }
@@ -216,8 +210,8 @@ namespace Tayx.Graphy.Ram
         {
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
-            m_ramGraph      = GetComponent<RamGraph>();
-            m_ramText       = GetComponent<RamText>();
+            m_ramGraph      = GetComponent<G_RamGraph>();
+            m_ramText       = GetComponent<G_RamText>();
 
             m_rectTransform = GetComponent<RectTransform>();
             

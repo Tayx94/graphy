@@ -35,7 +35,7 @@ namespace Tayx.Graphy.CustomizationScene
         
         [Header("Customize Graphy")]
 
-        [SerializeField] private    CUIColorPicker      m_colorPicker;
+        [SerializeField] private    G_CUIColorPicker      m_colorPicker;
         
         [SerializeField] private    Toggle              m_backgroundToggle;
 

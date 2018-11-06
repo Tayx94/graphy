@@ -10,20 +10,15 @@
  * -------------------------------------*/
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
-
 
 namespace Tayx.Graphy.Audio
 {
-    public class AudioMonitor : MonoBehaviour
+    public class G_AudioMonitor : MonoBehaviour
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
          * Make the "FindAudioListener" not constantly use "Camera.main".
          * --------------------------------------*/
 
@@ -74,12 +69,12 @@ namespace Tayx.Graphy.Audio
 
         #region Methods -> Unity Callbacks
 
-        void Awake()
+        private void Awake()
         {
             Init();
         }
 
-        void Update()
+        private void Update()
         {
             if (m_audioListener != null)
             {

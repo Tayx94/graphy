@@ -10,17 +10,15 @@
  * -------------------------------------*/
 
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
 namespace Tayx.Graphy.Utils
 {
-    public static class ExtensionMethods
+    public static class G_ExtensionMethods
     {
         /* ----- TODO: ----------------------------
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
          * Figure out why we're returning something on a "this" with reference elements.
          * --------------------------------------*/
 

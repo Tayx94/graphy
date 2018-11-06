@@ -11,24 +11,15 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-
-using System.Collections;
-using System.Text;
-using Tayx.Graphy.Utils;
 using Tayx.Graphy.Utils.NumString;
 
 namespace Tayx.Graphy.Fps
 {
-    public class FpsText : MonoBehaviour
+    public class G_FpsText : MonoBehaviour
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
-         * Check if we can remove "using System.Text;".
-         * Check if we can remove "using Tayx.Graphy.Utils;".
          * Check if we should add a "RequireComponent" for "FpsMonitor".
          * Improve the IntString Init to come from the core instead.
          * --------------------------------------*/
@@ -48,7 +39,7 @@ namespace Tayx.Graphy.Fps
 
         private                     GraphyManager   m_graphyManager;
 
-        private                     FpsMonitor      m_fpsMonitor;
+        private                     G_FpsMonitor      m_fpsMonitor;
 
         private                     int             m_updateRate        = 4;  // 4 updates per sec.
 
@@ -67,12 +58,12 @@ namespace Tayx.Graphy.Fps
 
         #region Methods -> Unity Callbacks
 
-        void Awake()
+        private void Awake()
         {
             Init();
         }
 
-        void Update()
+        private void Update()
         {
             m_deltaTime += Time.unscaledDeltaTime;
 
@@ -158,9 +149,9 @@ namespace Tayx.Graphy.Fps
         private void Init()
         {
             //TODO: Replace this with one activated from the core and figure out the min value.
-            if (!IntString.Inited || IntString.MinValue > m_minFps || IntString.MaxValue < m_maxFps)
+            if (!G_IntString.Inited || G_IntString.MinValue > m_minFps || G_IntString.MaxValue < m_maxFps)
             {
-                IntString.Init
+                G_IntString.Init
                 (
                     minNegativeValue: m_minFps,
                     maxPositiveValue: m_maxFps
@@ -169,7 +160,7 @@ namespace Tayx.Graphy.Fps
 
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
-            m_fpsMonitor = GetComponent<FpsMonitor>();
+            m_fpsMonitor = GetComponent<G_FpsMonitor>();
             
             UpdateParameters();
         }
