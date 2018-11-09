@@ -61,6 +61,7 @@ You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussi
     - Log Graphy messages to this module.
     - Integrate Graphy commands into it.
     - Allow custom commands from user.
+  - Add GfxDriver stats to the RAM module.
   - Prewarm framerates: X seconds where min/max fps are not registered to avoid loading spikes registering.
   - Scale Canvas (GetComponent<Canvas>().scaleFactor *= multiplier;) -> If it changes, set again.
   - Make UI layout adapt on the fly to compact it when not showing graphs.
