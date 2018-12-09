@@ -40,8 +40,8 @@ namespace Tayx.Graphy.Ram
 
         private                 GraphyManager               m_graphyManager;
         
-        private                 G_RamGraph                    m_ramGraph;
-        private                 G_RamText                     m_ramText;
+        private                 G_RamGraph                  m_ramGraph;
+        private                 G_RamText                   m_ramText;
 
         private                 RectTransform               m_rectTransform;
 

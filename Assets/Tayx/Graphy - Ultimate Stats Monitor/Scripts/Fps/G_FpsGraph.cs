@@ -36,11 +36,11 @@ namespace Tayx.Graphy.Fps
 
         private GraphyManager   m_graphyManager;
 
-        private                     G_FpsMonitor      m_fpsMonitor;
+        private                     G_FpsMonitor    m_fpsMonitor;
 
         private                     int             m_resolution        = 150;
 
-        private                     G_GraphShader     m_shaderGraph;
+        private                     G_GraphShader   m_shaderGraph;
 
         private                     int[]           m_fpsArray;
 

@@ -14,47 +14,70 @@ using UnityEngine.UI;
 
 namespace Tayx.Graphy
 {
+    /// <summary>
+    /// This class communicates directly with the shader to draw the graphs. Performance here is of upmost importance
+    /// to reduce as much overhead as possible, as we are updating hundreds of values every frame.
+    /// </summary>
     public class G_GraphShader
     {
         /* ----- TODO: ----------------------------
          * Add summaries to the variables.
-         * Add summaries to the functions.
-         * CLEAN UP THE CLASS!!! IMPORTANT!
          * --------------------------------------*/
+
+        #region Variables -> Array
 
         public const int ArrayMaxSizeFull   = 512;
         public const int ArrayMaxSizeLight  = 128;
 
         public int ArrayMaxSize             = 128;
 
-        public Image Image;
-     
-        private string Name = "GraphValues";                  // The name of the array
-        private string Name_Length = "GraphValues_Length";    
-
         public float[] Array;                                 // The values
 
-        // Average
-        
+        #endregion
+
+        #region Variables -> Image
+
+        public Image Image;
+
+        #endregion
+
+        #region Variables -> Name
+
+        private string Name = "GraphValues";                  // The name of the array
+        private string Name_Length = "GraphValues_Length";
+
+        #endregion
+
+        #region Variables -> Average
+
         public float Average;
         private int averagePropertyId;
 
-        // Thresholds
-        
+        #endregion
+
+        #region Variables -> Thresholds
+
         public float GoodThreshold;
         public float CautionThreshold;
+
         private int goodThresholdPropertyId;
         private int cautionThresholdPropertyId;
 
-        // Color
-        
+        #endregion
+
+        #region Variables -> Color
+
         public Color GoodColor;
         public Color CautionColor;
         public Color CriticalColor;
+
         private int goodColorPropertyId;
         private int cautionColorPropertyId;
         private int criticalColorPropertyId;
-        
+
+        #endregion
+
+        #region Methods -> Public
 
         /// <summary>
         /// This is done to avoid a design problem that arrays in shaders have, 
@@ -124,6 +147,8 @@ namespace Tayx.Graphy
 
             Image.material.SetFloatArray(Name, Array);
          }
+
+        #endregion
     }
 }
 

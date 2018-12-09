@@ -41,9 +41,9 @@ namespace Tayx.Graphy.Audio
 
         private                     GraphyManager               m_graphyManager;
 
-        private                     G_AudioGraph                  m_audioGraph;
-        private                     G_AudioMonitor                m_audioMonitor;
-        private                     G_AudioText                   m_audioText;
+        private                     G_AudioGraph                m_audioGraph;
+        private                     G_AudioMonitor              m_audioMonitor;
+        private                     G_AudioText                 m_audioText;
 
         private                     RectTransform               m_rectTransform;
 

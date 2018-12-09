@@ -42,13 +42,13 @@ namespace Tayx.Graphy.Ram
 
         private                     GraphyManager   m_graphyManager;
 
-        private                     G_RamMonitor      m_ramMonitor;
+        private                     G_RamMonitor    m_ramMonitor;
 
         private                     int             m_resolution                = 150;
 
-        private                     G_GraphShader     m_shaderGraphAllocated;
-        private                     G_GraphShader     m_shaderGraphReserved;
-        private                     G_GraphShader     m_shaderGraphMono;
+        private                     G_GraphShader   m_shaderGraphAllocated;
+        private                     G_GraphShader   m_shaderGraphReserved;
+        private                     G_GraphShader   m_shaderGraphMono;
 
         private                     float[]         m_allocatedArray;
         private                     float[]         m_reservedArray;

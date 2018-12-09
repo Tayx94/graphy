@@ -43,9 +43,9 @@ namespace Tayx.Graphy.Fps
 
         private                     GraphyManager               m_graphyManager;
         
-        private                     G_FpsGraph                    m_fpsGraph;
-        private                     G_FpsMonitor                  m_fpsMonitor;
-        private                     G_FpsText                     m_fpsText;
+        private                     G_FpsGraph                  m_fpsGraph;
+        private                     G_FpsMonitor                m_fpsMonitor;
+        private                     G_FpsText                   m_fpsText;
 
         private                     RectTransform               m_rectTransform;
 

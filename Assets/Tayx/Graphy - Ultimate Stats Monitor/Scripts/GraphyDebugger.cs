@@ -11,9 +11,11 @@
 
 using UnityEngine;
 using UnityEngine.Events;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Tayx.Graphy.Audio;
 using Tayx.Graphy.Fps;
 using Tayx.Graphy.Ram;
@@ -32,8 +34,7 @@ namespace Tayx.Graphy
 
         protected GraphyDebugger () { }
 
-        //Enums
-        #region Variables -> Public
+        #region Enums -> Public
 
         public enum DebugVariable
         {
@@ -87,7 +88,7 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Helper Class
+        #region Helper Classes
 
         [Serializable]
         public class DebugPacket

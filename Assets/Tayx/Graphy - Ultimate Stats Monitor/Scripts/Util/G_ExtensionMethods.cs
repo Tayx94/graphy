@@ -19,10 +19,9 @@ namespace Tayx.Graphy.Utils
     {
         /* ----- TODO: ----------------------------
          * Add summaries to the functions.
-         * Figure out why we're returning something on a "this" with reference elements.
          * --------------------------------------*/
 
-        #region Methods -> Public
+        #region Methods -> Extension Methods
 
         /// <summary>
         /// Functions as the SetActive function in the GameObject class, but for a list of them.
@@ -33,9 +32,6 @@ namespace Tayx.Graphy.Utils
         /// <param name="active">
         /// Wether to turn them on or off.
         /// </param>
-        /// <returns>
-        /// 
-        /// </returns>
         public static List<GameObject> SetAllActive(this List<GameObject> gameObjects, bool active)
         {
             foreach (var gameObj in gameObjects)

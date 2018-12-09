@@ -34,7 +34,7 @@ namespace Tayx.Graphy.Audio
 
         private                     GraphyManager   m_graphyManager;
 
-        private                     G_AudioMonitor    m_audioMonitor;
+        private                     G_AudioMonitor  m_audioMonitor;
 
         private                     int             m_updateRate        = 4;
 

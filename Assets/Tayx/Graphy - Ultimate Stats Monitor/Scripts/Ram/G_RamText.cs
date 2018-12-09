@@ -36,7 +36,7 @@ namespace Tayx.Graphy.Ram
 
         private                     GraphyManager   m_graphyManager;
 
-        private                     G_RamMonitor      m_ramMonitor;
+        private                     G_RamMonitor    m_ramMonitor;
 
         private                     float           m_updateRate                            = 4f;  // 4 updates per sec.
 

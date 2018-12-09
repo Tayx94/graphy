@@ -30,7 +30,7 @@ namespace Tayx.Graphy
         protected GraphyManager () { }
 
         //Enums
-        #region Variables -> Public
+        #region Enums -> Public
 
         public enum Mode
         {
@@ -187,14 +187,14 @@ namespace Tayx.Graphy
         private                     bool                    m_active                            = true;
         private                     bool                    m_focused                           = true;
 
-        private                     G_FpsManager              m_fpsManager;
-        private                     G_RamManager              m_ramManager;
-        private                     G_AudioManager            m_audioManager;
-        private                     G_AdvancedData            m_advancedData;
+        private                     G_FpsManager            m_fpsManager;
+        private                     G_RamManager            m_ramManager;
+        private                     G_AudioManager          m_audioManager;
+        private                     G_AdvancedData          m_advancedData;
 
-        private                     G_FpsMonitor              m_fpsMonitor;
-        private                     G_RamMonitor              m_ramMonitor;
-        private                     G_AudioMonitor            m_audioMonitor;
+        private                     G_FpsMonitor            m_fpsMonitor;
+        private                     G_RamMonitor            m_ramMonitor;
+        private                     G_AudioMonitor          m_audioMonitor;
 
         private                     ModulePreset            m_modulePresetState                 = ModulePreset.FPS_BASIC_ADVANCED_FULL;
 

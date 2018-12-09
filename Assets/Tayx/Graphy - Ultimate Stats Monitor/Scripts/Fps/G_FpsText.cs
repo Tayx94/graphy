@@ -39,7 +39,7 @@ namespace Tayx.Graphy.Fps
 
         private                     GraphyManager   m_graphyManager;
 
-        private                     G_FpsMonitor      m_fpsMonitor;
+        private                     G_FpsMonitor    m_fpsMonitor;
 
         private                     int             m_updateRate        = 4;  // 4 updates per sec.
 
