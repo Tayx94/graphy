@@ -8,17 +8,12 @@
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
-
-using UnityEngine;
-using System.Collections;
-
+ 
 namespace Tayx.Graphy.UI
 {
     public interface IModifiableState
     {
         /* ----- TODO: ----------------------------
-         * Check if we can remove "using UnityEngine".
-         * Check if we can remove "using System.Collections;".
          * --------------------------------------*/
 
         /// <summary>

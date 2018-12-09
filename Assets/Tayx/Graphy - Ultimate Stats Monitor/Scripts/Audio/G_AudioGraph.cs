@@ -9,22 +9,17 @@
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
+using Tayx.Graphy.Graph;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using Tayx;
 
 namespace Tayx.Graphy.Audio
 {
-    public class AudioGraph : Graph.Graph
+    public class G_AudioGraph : G_Graph
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
-         * Check if we can remove "using Tayx;".
          * Check if we should add a "RequireComponent" for "AudioMonitor".
          * --------------------------------------*/
 
@@ -42,12 +37,12 @@ namespace Tayx.Graphy.Audio
 
         private                     GraphyManager   m_graphyManager;
 
-        private                     AudioMonitor    m_audioMonitor;
+        private                     G_AudioMonitor  m_audioMonitor;
 
         private                     int             m_resolution                    = 40;
 
-        private                     ShaderGraph     m_shaderGraph;
-        private                     ShaderGraph     m_shaderGraphHighestValues;
+        private                     G_GraphShader   m_shaderGraph;
+        private                     G_GraphShader   m_shaderGraphHighestValues;
 
         private                     float[]         m_graphArray;
         private                     float[]         m_graphArrayHighestValue;
@@ -56,12 +51,12 @@ namespace Tayx.Graphy.Audio
 
         #region Methods -> Unity Callbacks
 
-        void OnEnable()
+        private void OnEnable()
         {
             Init();
         }
 
-        void Update()
+        private void Update()
         {
             if (m_audioMonitor.SpectrumDataAvailable)
             {
@@ -78,18 +73,18 @@ namespace Tayx.Graphy.Audio
             switch (m_graphyManager.GraphyMode)
             {
                 case GraphyManager.Mode.FULL:
-                    m_shaderGraph.ArrayMaxSize                  = ShaderGraph.ArrayMaxSizeFull;
+                    m_shaderGraph.ArrayMaxSize                  = G_GraphShader.ArrayMaxSizeFull;
                     m_shaderGraph.Image.material                = new Material(ShaderFull);
 
-                    m_shaderGraphHighestValues.ArrayMaxSize     = ShaderGraph.ArrayMaxSizeFull;
+                    m_shaderGraphHighestValues.ArrayMaxSize     = G_GraphShader.ArrayMaxSizeFull;
                     m_shaderGraphHighestValues.Image.material   = new Material(ShaderFull);
                     break;
 
                 case GraphyManager.Mode.LIGHT:
-                    m_shaderGraph.ArrayMaxSize                  = ShaderGraph.ArrayMaxSizeLight;
+                    m_shaderGraph.ArrayMaxSize                  = G_GraphShader.ArrayMaxSizeLight;
                     m_shaderGraph.Image.material                = new Material(ShaderLight);
 
-                    m_shaderGraphHighestValues.ArrayMaxSize     = ShaderGraph.ArrayMaxSizeLight;
+                    m_shaderGraphHighestValues.ArrayMaxSize     = G_GraphShader.ArrayMaxSizeLight;
                     m_shaderGraphHighestValues.Image.material   = new Material(ShaderLight);
                     break;
             }
@@ -246,14 +241,14 @@ namespace Tayx.Graphy.Audio
         {
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
-            m_audioMonitor = GetComponent<AudioMonitor>();
+            m_audioMonitor = GetComponent<G_AudioMonitor>();
 
-            m_shaderGraph = new ShaderGraph
+            m_shaderGraph = new G_GraphShader
             {
                 Image = m_imageGraph
             };
 
-            m_shaderGraphHighestValues = new ShaderGraph
+            m_shaderGraphHighestValues = new G_GraphShader
             {
                 Image = m_imageGraphHighestValues
             };

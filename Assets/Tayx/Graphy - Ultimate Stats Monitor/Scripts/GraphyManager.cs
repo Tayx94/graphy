@@ -11,7 +11,6 @@
 
 using System;
 using UnityEngine;
-using System.Collections;
 using Tayx.Graphy.Audio;
 using Tayx.Graphy.Fps;
 using Tayx.Graphy.Ram;
@@ -21,20 +20,17 @@ using Tayx.Graphy.Advanced;
 namespace Tayx.Graphy
 {
     //[ExecuteInEditMode]
-    public class GraphyManager : Singleton<GraphyManager>
+    public class GraphyManager : G_Singleton<GraphyManager>
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
          * --------------------------------------*/
 
         protected GraphyManager () { }
 
         //Enums
-        #region Variables -> Public
+        #region Enums -> Public
 
         public enum Mode
         {
@@ -191,14 +187,14 @@ namespace Tayx.Graphy
         private                     bool                    m_active                            = true;
         private                     bool                    m_focused                           = true;
 
-        private                     FpsManager              m_fpsManager;
-        private                     RamManager              m_ramManager;
-        private                     AudioManager            m_audioManager;
-        private                     AdvancedData            m_advancedData;
+        private                     G_FpsManager            m_fpsManager;
+        private                     G_RamManager            m_ramManager;
+        private                     G_AudioManager          m_audioManager;
+        private                     G_AdvancedData          m_advancedData;
 
-        private                     FpsMonitor              m_fpsMonitor;
-        private                     RamMonitor              m_ramMonitor;
-        private                     AudioMonitor            m_audioMonitor;
+        private                     G_FpsMonitor            m_fpsMonitor;
+        private                     G_RamMonitor            m_ramMonitor;
+        private                     G_AudioMonitor          m_audioMonitor;
 
         private                     ModulePreset            m_modulePresetState                 = ModulePreset.FPS_BASIC_ADVANCED_FULL;
 
@@ -350,12 +346,12 @@ namespace Tayx.Graphy
 
         #region Methods -> Unity Callbacks
 
-        void Start()
+        private void Start()
         {
             Init();
         }
 
-        void Update()
+        private void Update()
         {
             if (m_focused && m_enableHotkeys)
             {
@@ -363,7 +359,7 @@ namespace Tayx.Graphy
             }
         }
 
-        void OnApplicationFocus(bool isFocused)
+        private void OnApplicationFocus(bool isFocused)
         {
             m_focused = isFocused;
 
@@ -572,14 +568,14 @@ namespace Tayx.Graphy
                 DontDestroyOnLoad(transform.root.gameObject);
             }
             
-            m_fpsMonitor    = GetComponentInChildren(typeof(FpsMonitor),    true) as FpsMonitor;
-            m_ramMonitor    = GetComponentInChildren(typeof(RamMonitor),    true) as RamMonitor;
-            m_audioMonitor  = GetComponentInChildren(typeof(AudioMonitor),  true) as AudioMonitor;
+            m_fpsMonitor    = GetComponentInChildren(typeof(G_FpsMonitor),    true) as G_FpsMonitor;
+            m_ramMonitor    = GetComponentInChildren(typeof(G_RamMonitor),    true) as G_RamMonitor;
+            m_audioMonitor  = GetComponentInChildren(typeof(G_AudioMonitor),  true) as G_AudioMonitor;
             
-            m_fpsManager    = GetComponentInChildren(typeof(FpsManager),    true) as FpsManager;
-            m_ramManager    = GetComponentInChildren(typeof(RamManager),    true) as RamManager;
-            m_audioManager  = GetComponentInChildren(typeof(AudioManager),  true) as AudioManager;
-            m_advancedData  = GetComponentInChildren(typeof(AdvancedData),  true) as AdvancedData;
+            m_fpsManager    = GetComponentInChildren(typeof(G_FpsManager),    true) as G_FpsManager;
+            m_ramManager    = GetComponentInChildren(typeof(G_RamManager),    true) as G_RamManager;
+            m_audioManager  = GetComponentInChildren(typeof(G_AudioManager),  true) as G_AudioManager;
+            m_advancedData  = GetComponentInChildren(typeof(G_AdvancedData),  true) as G_AdvancedData;
 
             m_fpsManager    .SetPosition(m_graphModulePosition);
             m_ramManager    .SetPosition(m_graphModulePosition);
