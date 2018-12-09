@@ -1,4 +1,11 @@
 -----------------------------
+v1.4.3
+
+- Renamed all the classes with the "G_" prefix to avoid namespace issues with external code (thanks @Rockylars).
+- Refactored some code and added explanations and regions in the G_ShaderGraph class.
+- Assigned all the variables in their declaration to avoid a new NET framework warning.
+
+-----------------------------
 v1.4.2
 
 - Added the option to disable hotkeys.
