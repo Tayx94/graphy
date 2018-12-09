@@ -156,15 +156,15 @@ namespace Tayx.Graphy
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    List<DebugPacket>   m_debugPackets;
+        [SerializeField] private    List<DebugPacket>   m_debugPackets = new List<DebugPacket>();
 
         #endregion
 
         #region Variables -> Private
 
-        private                     G_FpsMonitor          m_fpsMonitor;
-        private                     G_RamMonitor          m_ramMonitor;
-        private                     G_AudioMonitor        m_audioMonitor;
+        private                     G_FpsMonitor          m_fpsMonitor = null;
+        private                     G_RamMonitor          m_ramMonitor = null;
+        private                     G_AudioMonitor        m_audioMonitor = null;
 
         #endregion
 

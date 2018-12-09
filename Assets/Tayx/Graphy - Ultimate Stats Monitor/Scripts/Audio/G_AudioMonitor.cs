@@ -26,9 +26,9 @@ namespace Tayx.Graphy.Audio
 
         private const   float                               m_refValue                          = 1f;
 
-        private         GraphyManager                       m_graphyManager;
+        private         GraphyManager                       m_graphyManager                     = null;
 
-        private         AudioListener                       m_audioListener;
+        private         AudioListener                       m_audioListener                     = null;
 
         private         GraphyManager.LookForAudioListener  m_findAudioListenerInCameraIfNull   = GraphyManager.LookForAudioListener.ON_SCENE_LOAD;
 

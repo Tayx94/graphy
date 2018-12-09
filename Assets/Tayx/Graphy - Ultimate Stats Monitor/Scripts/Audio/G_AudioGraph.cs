@@ -25,24 +25,24 @@ namespace Tayx.Graphy.Audio
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    Image           m_imageGraph;
-        [SerializeField] private    Image           m_imageGraphHighestValues;
+        [SerializeField] private    Image           m_imageGraph = null;
+        [SerializeField] private    Image           m_imageGraphHighestValues = null;
 
-        [SerializeField] private    Shader          ShaderFull;
-        [SerializeField] private    Shader          ShaderLight;
+        [SerializeField] private    Shader          ShaderFull = null;
+        [SerializeField] private    Shader          ShaderLight = null;
 
         #endregion
 
         #region Variables -> Private
 
-        private                     GraphyManager   m_graphyManager;
+        private                     GraphyManager   m_graphyManager = null;
 
-        private                     G_AudioMonitor  m_audioMonitor;
+        private                     G_AudioMonitor  m_audioMonitor = null;
 
         private                     int             m_resolution                    = 40;
 
-        private                     G_GraphShader   m_shaderGraph;
-        private                     G_GraphShader   m_shaderGraphHighestValues;
+        private                     G_GraphShader   m_shaderGraph = null;
+        private                     G_GraphShader   m_shaderGraphHighestValues = null;
 
         private                     float[]         m_graphArray;
         private                     float[]         m_graphArrayHighestValue;

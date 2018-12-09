@@ -31,7 +31,7 @@ namespace Tayx.Graphy.Fps
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    GameObject                  m_fpsGraphGameObject;
+        [SerializeField] private    GameObject                  m_fpsGraphGameObject = null;
 
         [SerializeField] private    List<GameObject>            m_nonBasicTextGameObjects   = new List<GameObject>();
 
@@ -41,18 +41,18 @@ namespace Tayx.Graphy.Fps
 
         #region Variables -> Private
 
-        private                     GraphyManager               m_graphyManager;
+        private                     GraphyManager               m_graphyManager = null;
         
-        private                     G_FpsGraph                  m_fpsGraph;
-        private                     G_FpsMonitor                m_fpsMonitor;
-        private                     G_FpsText                   m_fpsText;
+        private                     G_FpsGraph                  m_fpsGraph = null;
+        private                     G_FpsMonitor                m_fpsMonitor = null;
+        private                     G_FpsText                   m_fpsText = null;
 
-        private                     RectTransform               m_rectTransform;
+        private                     RectTransform               m_rectTransform = null;
 
         private                     List<GameObject>            m_childrenGameObjects       = new List<GameObject>();
 
-        private                     GraphyManager.ModuleState   m_previousModuleState;
-        private                     GraphyManager.ModuleState   m_currentModuleState;
+        private                     GraphyManager.ModuleState   m_previousModuleState = GraphyManager.ModuleState.FULL;
+        private                     GraphyManager.ModuleState   m_currentModuleState = GraphyManager.ModuleState.FULL;
         
         #endregion
 

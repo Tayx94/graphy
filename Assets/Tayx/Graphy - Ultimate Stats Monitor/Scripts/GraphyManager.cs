@@ -158,7 +158,7 @@ namespace Tayx.Graphy
 
         [SerializeField] private    LookForAudioListener    m_findAudioListenerInCameraIfNull   = LookForAudioListener.ON_SCENE_LOAD;
 
-        [SerializeField] private    AudioListener           m_audioListener;
+        [SerializeField] private    AudioListener           m_audioListener                     = null;
         
         [SerializeField] private    Color                   m_audioGraphColor                   = Color.white;
 
@@ -187,14 +187,14 @@ namespace Tayx.Graphy
         private                     bool                    m_active                            = true;
         private                     bool                    m_focused                           = true;
 
-        private                     G_FpsManager            m_fpsManager;
-        private                     G_RamManager            m_ramManager;
-        private                     G_AudioManager          m_audioManager;
-        private                     G_AdvancedData          m_advancedData;
+        private                     G_FpsManager            m_fpsManager                        = null;
+        private                     G_RamManager            m_ramManager                        = null;
+        private                     G_AudioManager          m_audioManager                      = null;
+        private                     G_AdvancedData          m_advancedData                      = null;
 
-        private                     G_FpsMonitor            m_fpsMonitor;
-        private                     G_RamMonitor            m_ramMonitor;
-        private                     G_AudioMonitor          m_audioMonitor;
+        private                     G_FpsMonitor            m_fpsMonitor                        = null;
+        private                     G_RamMonitor            m_ramMonitor                        = null;
+        private                     G_AudioMonitor          m_audioMonitor                      = null;
 
         private                     ModulePreset            m_modulePresetState                 = ModulePreset.FPS_BASIC_ADVANCED_FULL;
 

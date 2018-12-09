@@ -30,7 +30,7 @@ namespace Tayx.Graphy.Ram
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    GameObject              m_ramGraphGameObject;
+        [SerializeField] private    GameObject              m_ramGraphGameObject = null;
 
         [SerializeField] private    List<Image>             m_backgroundImages          = new List<Image>();
 
@@ -38,17 +38,17 @@ namespace Tayx.Graphy.Ram
 
         #region Variables -> Private
 
-        private                 GraphyManager               m_graphyManager;
+        private                 GraphyManager               m_graphyManager = null;
         
-        private                 G_RamGraph                  m_ramGraph;
-        private                 G_RamText                   m_ramText;
+        private                 G_RamGraph                  m_ramGraph = null;
+        private                 G_RamText                   m_ramText = null;
 
-        private                 RectTransform               m_rectTransform;
+        private                 RectTransform               m_rectTransform = null;
 
         private                 List<GameObject>            m_childrenGameObjects       = new List<GameObject>();
 
-        private                 GraphyManager.ModuleState   m_previousModuleState;
-        private                 GraphyManager.ModuleState   m_currentModuleState;
+        private                 GraphyManager.ModuleState   m_previousModuleState = GraphyManager.ModuleState.FULL;
+        private                 GraphyManager.ModuleState   m_currentModuleState = GraphyManager.ModuleState.FULL;
         
         #endregion
 

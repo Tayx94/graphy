@@ -26,20 +26,20 @@ namespace Tayx.Graphy.Fps
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    Text            m_fpsText;
-        [SerializeField] private    Text            m_msText;
+        [SerializeField] private    Text            m_fpsText           = null;
+        [SerializeField] private    Text            m_msText            = null;
 
-        [SerializeField] private    Text            m_avgFpsText;
-        [SerializeField] private    Text            m_minFpsText;
-        [SerializeField] private    Text            m_maxFpsText;
+        [SerializeField] private    Text            m_avgFpsText        = null;
+        [SerializeField] private    Text            m_minFpsText        = null;
+        [SerializeField] private    Text            m_maxFpsText        = null;
 
         #endregion
 
         #region Variables -> Private
 
-        private                     GraphyManager   m_graphyManager;
+        private                     GraphyManager   m_graphyManager     = null;
 
-        private                     G_FpsMonitor    m_fpsMonitor;
+        private                     G_FpsMonitor    m_fpsMonitor        = null;
 
         private                     int             m_updateRate        = 4;  // 4 updates per sec.
 

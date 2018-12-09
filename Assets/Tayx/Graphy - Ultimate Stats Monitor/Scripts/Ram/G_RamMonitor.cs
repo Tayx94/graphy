@@ -26,9 +26,9 @@ namespace Tayx.Graphy.Ram
 
         #region Variables -> Private
 
-        private float m_allocatedRam;
-        private float m_reservedRam;
-        private float m_monoRam;
+        private float m_allocatedRam    = 0;
+        private float m_reservedRam     = 0;
+        private float m_monoRam         = 0;
 
         #endregion
 

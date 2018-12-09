@@ -26,17 +26,17 @@ namespace Tayx.Graphy.Ram
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    Text            m_allocatedSystemMemorySizeText;
-        [SerializeField] private    Text            m_reservedSystemMemorySizeText;
-        [SerializeField] private    Text            m_monoSystemMemorySizeText;
+        [SerializeField] private    Text            m_allocatedSystemMemorySizeText         = null;
+        [SerializeField] private    Text            m_reservedSystemMemorySizeText          = null;
+        [SerializeField] private    Text            m_monoSystemMemorySizeText              = null;
 
         #endregion
 
         #region Variables -> Private
 
-        private                     GraphyManager   m_graphyManager;
+        private                     GraphyManager   m_graphyManager                         = null;
 
-        private                     G_RamMonitor    m_ramMonitor;
+        private                     G_RamMonitor    m_ramMonitor                            = null;
 
         private                     float           m_updateRate                            = 4f;  // 4 updates per sec.
 

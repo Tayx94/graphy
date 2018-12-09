@@ -25,22 +25,22 @@ namespace Tayx.Graphy.Fps
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    Image           m_imageGraph;
+        [SerializeField] private    Image           m_imageGraph = null;
 
-        [SerializeField] private    Shader          ShaderFull;
-        [SerializeField] private    Shader          ShaderLight;
+        [SerializeField] private    Shader          ShaderFull = null;
+        [SerializeField] private    Shader          ShaderLight = null;
 
         #endregion
 
         #region Variables -> Private
 
-        private GraphyManager   m_graphyManager;
+        private                     GraphyManager   m_graphyManager = null;
 
-        private                     G_FpsMonitor    m_fpsMonitor;
+        private                     G_FpsMonitor    m_fpsMonitor = null;
 
         private                     int             m_resolution        = 150;
 
-        private                     G_GraphShader   m_shaderGraph;
+        private                     G_GraphShader   m_shaderGraph = null;
 
         private                     int[]           m_fpsArray;
 

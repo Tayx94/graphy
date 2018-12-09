@@ -29,32 +29,32 @@ namespace Tayx.Graphy.Ram
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    Image           m_imageAllocated;
-        [SerializeField] private    Image           m_imageReserved;
-        [SerializeField] private    Image           m_imageMono;
+        [SerializeField] private    Image           m_imageAllocated = null;
+        [SerializeField] private    Image           m_imageReserved = null;
+        [SerializeField] private    Image           m_imageMono = null;
 
-        [SerializeField] private    Shader          ShaderFull;
-        [SerializeField] private    Shader          ShaderLight;
+        [SerializeField] private    Shader          ShaderFull = null;
+        [SerializeField] private    Shader          ShaderLight = null;
 
         #endregion
 
         #region Variables -> Private
 
-        private                     GraphyManager   m_graphyManager;
+        private                     GraphyManager   m_graphyManager = null;
 
-        private                     G_RamMonitor    m_ramMonitor;
+        private                     G_RamMonitor    m_ramMonitor = null;
 
         private                     int             m_resolution                = 150;
 
-        private                     G_GraphShader   m_shaderGraphAllocated;
-        private                     G_GraphShader   m_shaderGraphReserved;
-        private                     G_GraphShader   m_shaderGraphMono;
+        private                     G_GraphShader   m_shaderGraphAllocated = null;
+        private                     G_GraphShader   m_shaderGraphReserved = null;
+        private                     G_GraphShader   m_shaderGraphMono = null;
 
         private                     float[]         m_allocatedArray;
         private                     float[]         m_reservedArray;
         private                     float[]         m_monoArray;
 
-        private                     float           m_highestMemory;
+        private                     float           m_highestMemory = 0;
 
         #endregion
 

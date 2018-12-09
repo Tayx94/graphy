@@ -30,8 +30,8 @@ namespace Tayx.Graphy.Audio
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    GameObject                  m_audioGraphGameObject;
-        [SerializeField] private    Text                        m_audioDbText;
+        [SerializeField] private    GameObject                  m_audioGraphGameObject = null;
+        [SerializeField] private    Text                        m_audioDbText = null;
 
         [SerializeField] private    List<Image>                 m_backgroundImages      = new List<Image>();
 
@@ -39,18 +39,18 @@ namespace Tayx.Graphy.Audio
 
         #region Variables -> Private
 
-        private                     GraphyManager               m_graphyManager;
+        private                     GraphyManager               m_graphyManager = null;
 
-        private                     G_AudioGraph                m_audioGraph;
-        private                     G_AudioMonitor              m_audioMonitor;
-        private                     G_AudioText                 m_audioText;
+        private                     G_AudioGraph                m_audioGraph = null;
+        private                     G_AudioMonitor              m_audioMonitor = null;
+        private                     G_AudioText                 m_audioText = null;
 
-        private                     RectTransform               m_rectTransform;
+        private                     RectTransform               m_rectTransform = null;
 
         private                     List<GameObject>            m_childrenGameObjects   = new List<GameObject>();
 
-        private                     GraphyManager.ModuleState   m_previousModuleState;
-        private                     GraphyManager.ModuleState   m_currentModuleState;
+        private                     GraphyManager.ModuleState   m_previousModuleState = GraphyManager.ModuleState.FULL;
+        private                     GraphyManager.ModuleState   m_currentModuleState = GraphyManager.ModuleState.FULL;
         
         #endregion
 

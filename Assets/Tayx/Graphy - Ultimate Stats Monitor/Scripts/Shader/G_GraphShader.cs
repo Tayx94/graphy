@@ -26,54 +26,54 @@ namespace Tayx.Graphy
 
         #region Variables -> Array
 
-        public const int ArrayMaxSizeFull   = 512;
-        public const int ArrayMaxSizeLight  = 128;
+        public const int    ArrayMaxSizeFull            = 512;
+        public const int    ArrayMaxSizeLight           = 128;
 
-        public int ArrayMaxSize             = 128;
+        public int          ArrayMaxSize                = 128;
 
-        public float[] Array;                                 // The values
+        public float[]      Array;                                              // The values
 
         #endregion
 
         #region Variables -> Image
 
-        public Image Image;
+        public Image        Image                       = null;
 
         #endregion
 
         #region Variables -> Name
 
-        private string Name = "GraphValues";                  // The name of the array
-        private string Name_Length = "GraphValues_Length";
+        private string      Name                        = "GraphValues";        // The name of the array
+        private string      Name_Length                 = "GraphValues_Length";
 
         #endregion
 
         #region Variables -> Average
 
-        public float Average;
-        private int averagePropertyId;
+        public float        Average                     = 0;
+        private int         averagePropertyId           = 0;
 
         #endregion
 
         #region Variables -> Thresholds
 
-        public float GoodThreshold;
-        public float CautionThreshold;
+        public float        GoodThreshold               = 0;
+        public float        CautionThreshold            = 0;
 
-        private int goodThresholdPropertyId;
-        private int cautionThresholdPropertyId;
+        private int         goodThresholdPropertyId     = 0;
+        private int         cautionThresholdPropertyId  = 0;
 
         #endregion
 
         #region Variables -> Color
 
-        public Color GoodColor;
-        public Color CautionColor;
-        public Color CriticalColor;
+        public Color        GoodColor                   = Color.white;
+        public Color        CautionColor                = Color.white;
+        public Color        CriticalColor               = Color.white;
 
-        private int goodColorPropertyId;
-        private int cautionColorPropertyId;
-        private int criticalColorPropertyId;
+        private int         goodColorPropertyId         = 0;
+        private int         cautionColorPropertyId      = 0;
+        private int         criticalColorPropertyId     = 0;
 
         #endregion
 

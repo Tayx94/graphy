@@ -34,18 +34,18 @@ namespace Tayx.Graphy.Advanced
 
         [SerializeField] private    List<Image>                 m_backgroundImages              = new List<Image>();
 
-        [SerializeField] private    Text                        m_graphicsDeviceVersionText;
+        [SerializeField] private    Text                        m_graphicsDeviceVersionText = null;
 
-        [SerializeField] private    Text                        m_processorTypeText;
+        [SerializeField] private    Text                        m_processorTypeText = null;
 
-        [SerializeField] private    Text                        m_operatingSystemText;
+        [SerializeField] private    Text                        m_operatingSystemText = null;
 
-        [SerializeField] private    Text                        m_systemMemoryText;
+        [SerializeField] private    Text                        m_systemMemoryText = null;
 
-        [SerializeField] private    Text                        m_graphicsDeviceNameText;
-        [SerializeField] private    Text                        m_graphicsMemorySizeText;
-        [SerializeField] private    Text                        m_screenResolutionText;
-        [SerializeField] private    Text                        m_gameWindowResolutionText;
+        [SerializeField] private    Text                        m_graphicsDeviceNameText = null;
+        [SerializeField] private    Text                        m_graphicsMemorySizeText = null;
+        [SerializeField] private    Text                        m_screenResolutionText = null;
+        [SerializeField] private    Text                        m_gameWindowResolutionText = null;
 
         [Range(1, 60)]
         [SerializeField] private    float                       m_updateRate                    = 1f;  // 1 update per sec.
@@ -54,16 +54,16 @@ namespace Tayx.Graphy.Advanced
 
         #region Variables -> Private
 
-        private                     GraphyManager               m_graphyManager;
+        private                     GraphyManager               m_graphyManager = null;
 
-        private                     RectTransform               m_rectTransform;
+        private                     RectTransform               m_rectTransform = null;
 
         private                     float                       m_deltaTime                     = 0.0f;
 
-        private                     StringBuilder               m_sb;
+        private                     StringBuilder               m_sb = null;
 
-        private                     GraphyManager.ModuleState   m_previousModuleState;
-        private                     GraphyManager.ModuleState   m_currentModuleState;
+        private                     GraphyManager.ModuleState   m_previousModuleState = GraphyManager.ModuleState.FULL;
+        private                     GraphyManager.ModuleState   m_currentModuleState = GraphyManager.ModuleState.FULL;
 
         private readonly            string[]                    m_windowStrings =
         {
