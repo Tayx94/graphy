@@ -1,10 +1,12 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 05-Mar-18
- * Studio: Tayx
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            05-Mar-18
+ * Studio:          Tayx
+ * 
+ * This project is released under the MIT license.
+ * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
 using UnityEngine;
@@ -16,19 +18,36 @@ namespace Tayx.Graphy.CustomizationScene
 {
 	public class ForceSliderToMultipleOf3 : MonoBehaviour
 	{
-		[SerializeField] private Slider m_slider;
-		
-		void Start()
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we can remove "using System.Collections;".
+         * Check if we should add "private" to the Unity Callbacks.
+         * --------------------------------------*/
+
+        #region Variables -> Serialized Private
+
+        [SerializeField] private Slider m_slider;
+
+        #endregion
+
+        #region Methods -> Unity Callbacks
+
+        void Start()
 		{
 			m_slider.onValueChanged.AddListener(UpdateValue);
 		}
 
-		private void UpdateValue(float value)
+        #endregion
+
+        #region Methods -> Private
+
+        private void UpdateValue(float value)
 		{
 			int roundedValue = (int)value;
 			
 			// Forces the value to be a multiple of 3, this way the audio graph is painted correctly
-
 			if (roundedValue % 3 != 0 && roundedValue < 300)
 			{
 				roundedValue += 3 - roundedValue % 3;
@@ -36,5 +55,7 @@ namespace Tayx.Graphy.CustomizationScene
 
 			m_slider.value = roundedValue;
 		}
-	}
+
+        #endregion
+    }
 }

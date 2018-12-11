@@ -1,14 +1,15 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 15-Dec-17
- * Studio: Tayx
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            15-Dec-17
+ * Studio:          Tayx
+ * 
+ * This project is released under the MIT license.
+ * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
 using UnityEngine;
-using System.Collections;
 
 #if UNITY_5_5_OR_NEWER
 using UnityEngine.Profiling;
@@ -16,17 +17,22 @@ using UnityEngine.Profiling;
 
 namespace Tayx.Graphy.Ram
 {
-    public class RamMonitor : MonoBehaviour
+    public class G_RamMonitor : MonoBehaviour
     {
-        #region Private Variables
+        /* ----- TODO: ----------------------------
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * --------------------------------------*/
 
-        private float m_allocatedRam;
-        private float m_reservedRam;
-        private float m_monoRam;
+        #region Variables -> Private
+
+        private float m_allocatedRam    = 0;
+        private float m_reservedRam     = 0;
+        private float m_monoRam         = 0;
 
         #endregion
 
-        #region Properties
+        #region Properties -> Public
 
         public float AllocatedRam   { get { return m_allocatedRam; } }
         public float ReservedRam    { get { return m_reservedRam; } }
@@ -34,9 +40,9 @@ namespace Tayx.Graphy.Ram
         
         #endregion
 
-        #region Unity Methods
+        #region Methods -> Unity Callbacks
 
-        void Update()
+        private void Update()
         {
 #if UNITY_5_6_OR_NEWER
             m_allocatedRam  = Profiler.GetTotalAllocatedMemoryLong()/ 1048576f;
@@ -49,7 +55,6 @@ namespace Tayx.Graphy.Ram
 #endif
         }
 
-        #endregion
-        
+        #endregion 
     }
 }

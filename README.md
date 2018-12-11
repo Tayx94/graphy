@@ -1,8 +1,8 @@
-# Graphy - Ultimate Stats Monitor & Debugger (Unity)
+# Graphy - Ultimate FPS Counter - Stats Monitor & Debugger (Unity)
 
-![Graphy Image](https://image.ibb.co/cR3vo7/Graphy_Runtime_4_3_GIF.gif)
+![Graphy Image](https://image.ibb.co/dbcDu8/2018_07_15_15_10_05.gif)
 
-Graphy is the ultimate, easy to use, feature packed stats monitor and debugger for your Unity project.
+Graphy is the ultimate, easy to use, feature packed FPS Counter, stats monitor and debugger for your Unity project.
 
 **Main Features:**
 - Graph & Text:
@@ -30,6 +30,8 @@ The debugger allows you to set one or more conditions, that if met will have the
 **Links:**
   - [Asset store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778)
   - [Forum post](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/)
+  
+  - [Video Teaser](https://youtu.be/2X3vXxLANk0)
 
 **Contact:**
 - [Mail](martintayx@gmail.com)
@@ -38,11 +40,13 @@ The debugger allows you to set one or more conditions, that if met will have the
 
 ## Development of Graphy
 
+Maintainer and main developer: **Martín Pane**
+
 ### Contributing
 
 Let's make Graphy the go-to for stats monitoring in Unity!
 
-I would really appreciate any contributions! Below you can find a roadmap for future planned features and optimisations that you might be able to help out with.
+I would really appreciate any contributions! Below you can find a roadmap for future planned features and optimisations that you might be able to help out with. If you want to make a big pull request, please do it on the "dev" branch.
 
 Create a GitHub issue if you want to start a discussion or request a feature, and please label appropriately.
 
@@ -52,23 +56,28 @@ You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussi
 
 **Planned features (DEFINITELY YES):**
 
-  - ~~Add toggle from code API.~~
+  - Console Module: (developed in the [console-module](https://github.com/Tayx94/graphy/tree/console-module) branch)
+    - Show Debug.Log messages from Unity in this module.
+    - Log Graphy messages to this module.
+    - Integrate Graphy commands into it.
+    - Allow custom commands from user.
+  - Add GfxDriver stats to the RAM module.
+  - Prewarm framerates: X seconds where min/max fps are not registered to avoid loading spikes registering.
   - Scale Canvas (GetComponent<Canvas>().scaleFactor *= multiplier;) -> If it changes, set again.
-  - Log Graphy messages to UI.Text in the scene as well as the console.
   - Make UI layout adapt on the fly to compact it when not showing graphs.
-  - ~~Add a second graph to the Audio that shows the highest spectrum value in the last X samples~~
     
 **Other features (DEFINITELY MAYBE):** 
 
-  - Network stats
-  - Show all Debug.Log from Unity in a UI.Text in the scene.
+  - Network Stats Module
+  - Audio Module:
+  	- Average of the whole sound
+	- Indicator for LUFS
   - Allow storing FPS for a predetermined time to allow benchmarks.
   - Dump all Graphy Data as a string to:
   	- File
 	- Send to server
 	- Send mail
   - Add a preprocessor key #GRAPHY to avoid adding the asset in builds
-  - Option to hide Graphy when not in Play Mode
   
 ## License
 

@@ -1,4 +1,16 @@
-﻿using UnityEngine;
+﻿/* ---------------------------------------
+ * Sourced from:    https://wiki.unity3d.com/index.php/Singleton
+ * Modified by:     Martín Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            07-Jul-17
+ * Studio:          Tayx
+ * 
+ * This project is released under the MIT license.
+ * Attribution is not required, but it is always welcomed!
+ * -------------------------------------*/
+
+using UnityEngine;
 
 namespace Tayx.Graphy.Utils
 {
@@ -9,11 +21,25 @@ namespace Tayx.Graphy.Utils
     /// 
     /// As a note, this is made as MonoBehaviour because we need Coroutines.
     /// </summary>
-    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+    public class G_Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        private static T _instance;
+        /* ----- TODO: ----------------------------
+         * Check if we can seal this class.
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we should add "private" to the Unity Callbacks.
+         * Fill in the missing date and author.
+         * --------------------------------------*/
 
-        private static object _lock = new object();
+        #region Variables -> Private
+
+        private static  T       _instance;
+
+        private static  object  _lock       = new object();
+
+        #endregion
+
+        #region Properties -> Public
 
         public static T Instance
         {
@@ -74,6 +100,10 @@ namespace Tayx.Graphy.Utils
             }
         }
 
+        #endregion
+
+        #region Methods -> Unity Callbacks
+
         void Awake()
         {
             if (_instance != null)
@@ -95,10 +125,11 @@ namespace Tayx.Graphy.Utils
         ///   even after stopping playing the Application. Really bad!
         /// So, this was made to be sure we're not creating that buggy ghost object.
         /// </summary>
-        public void OnDestroy()
+        void OnDestroy()
         {
             _applicationIsQuitting = true;
         }
 
+        #endregion
     }
 }

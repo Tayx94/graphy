@@ -1,12 +1,15 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 15-Dec-17
- * Studio: Tayx
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            15-Dec-17
+ * Studio:          Tayx
+ * 
+ * This project is released under the MIT license.
+ * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
+using Tayx.Graphy.Graph;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,78 +17,92 @@ using UnityEngine.UI;
 using UnityEngine.Profiling;
 #endif
 
-using System.Collections;
-using Tayx;
-
 namespace Tayx.Graphy.Ram
 {
-    public class RamGraph : Graph.Graph
+    public class G_RamGraph : G_Graph
     {
-        #region Private Variables
+        /* ----- TODO: ----------------------------
+         * Add summaries to the variables.
+         * Add summaries to the functions.
+         * Check if we should add a "RequireComponent" for "RamMonitor".
+         * --------------------------------------*/
 
-        private GraphyManager m_graphyManager;
+        #region Variables -> Serialized Private
 
-        private RamMonitor m_ramMonitor;
+        [SerializeField] private    Image           m_imageAllocated = null;
+        [SerializeField] private    Image           m_imageReserved = null;
+        [SerializeField] private    Image           m_imageMono = null;
 
-        [SerializeField] private Image m_imageAllocated;
-        [SerializeField] private Image m_imageReserved;
-        [SerializeField] private Image m_imageMono;
-
-        private int m_resolution = 150;
-
-        private ShaderGraph m_shaderGraphAllocated;
-        private ShaderGraph m_shaderGraphReserved;
-        private ShaderGraph m_shaderGraphMono;
-
-        public Shader ShaderFull;
-        public Shader ShaderLight;
-
-        private float[] m_allocatedArray;
-        private float[] m_reservedArray;
-        private float[] m_monoArray;
-
-        private float m_highestMemory;
+        [SerializeField] private    Shader          ShaderFull = null;
+        [SerializeField] private    Shader          ShaderLight = null;
 
         #endregion
 
-        #region Unity Methods
+        #region Variables -> Private
 
-        void Awake()
+        private                     GraphyManager   m_graphyManager = null;
+
+        private                     G_RamMonitor    m_ramMonitor = null;
+
+        private                     int             m_resolution                = 150;
+
+        private                     G_GraphShader   m_shaderGraphAllocated = null;
+        private                     G_GraphShader   m_shaderGraphReserved = null;
+        private                     G_GraphShader   m_shaderGraphMono = null;
+
+        private                     float[]         m_allocatedArray;
+        private                     float[]         m_reservedArray;
+        private                     float[]         m_monoArray;
+
+        private                     float           m_highestMemory = 0;
+
+        #endregion
+
+        #region Methods -> Unity Callbacks
+
+        private void OnEnable()
         {
-           Init();
+            Init();
         }
 
-        void Update()
+        private void Update()
         {
             UpdateGraph();
         }
 
         #endregion
         
-        #region Public Methods
+        #region Methods -> Public
 
         public void UpdateParameters()
         {
+            if (    m_shaderGraphAllocated  == null
+                ||  m_shaderGraphReserved   == null
+                ||  m_shaderGraphMono       == null)
+            {
+                Init();
+            }
+             
             switch (m_graphyManager.GraphyMode)
             {
                 case GraphyManager.Mode.FULL:
-                    m_shaderGraphAllocated.ArrayMaxSize = ShaderGraph.ArrayMaxSizeFull;
-                    m_shaderGraphReserved.ArrayMaxSize = ShaderGraph.ArrayMaxSizeFull;
-                    m_shaderGraphMono.ArrayMaxSize = ShaderGraph.ArrayMaxSizeFull;
+                    m_shaderGraphAllocated  .ArrayMaxSize = G_GraphShader.ArrayMaxSizeFull;
+                    m_shaderGraphReserved   .ArrayMaxSize = G_GraphShader.ArrayMaxSizeFull;
+                    m_shaderGraphMono       .ArrayMaxSize = G_GraphShader.ArrayMaxSizeFull;
 
-                    m_shaderGraphAllocated.Image.material = new Material(ShaderFull);
-                    m_shaderGraphReserved.Image.material = new Material(ShaderFull);
-                    m_shaderGraphMono.Image.material = new Material(ShaderFull);
+                    m_shaderGraphAllocated  .Image.material = new Material(ShaderFull);
+                    m_shaderGraphReserved   .Image.material = new Material(ShaderFull);
+                    m_shaderGraphMono       .Image.material = new Material(ShaderFull);
                     break;
 
                 case GraphyManager.Mode.LIGHT:
-                    m_shaderGraphAllocated.ArrayMaxSize = ShaderGraph.ArrayMaxSizeLight;
-                    m_shaderGraphReserved.ArrayMaxSize = ShaderGraph.ArrayMaxSizeLight;
-                    m_shaderGraphMono.ArrayMaxSize = ShaderGraph.ArrayMaxSizeLight;
+                    m_shaderGraphAllocated  .ArrayMaxSize = G_GraphShader.ArrayMaxSizeLight;
+                    m_shaderGraphReserved   .ArrayMaxSize = G_GraphShader.ArrayMaxSizeLight;
+                    m_shaderGraphMono       .ArrayMaxSize = G_GraphShader.ArrayMaxSizeLight;
 
-                    m_shaderGraphAllocated.Image.material = new Material(ShaderLight);
-                    m_shaderGraphReserved.Image.material = new Material(ShaderLight);
-                    m_shaderGraphMono.Image.material = new Material(ShaderLight);
+                    m_shaderGraphAllocated  .Image.material = new Material(ShaderLight);
+                    m_shaderGraphReserved   .Image.material = new Material(ShaderLight);
+                    m_shaderGraphMono       .Image.material = new Material(ShaderLight);
                     break;
             }
 
@@ -100,13 +117,13 @@ namespace Tayx.Graphy.Ram
 
         #endregion
 
-        #region Private Methods
+        #region Methods -> Protected Override
 
         protected override void UpdateGraph()
         {
-            float allocatedMemory = m_ramMonitor.AllocatedRam;
-            float reservedMemory = m_ramMonitor.ReservedRam;
-            float monoMemory = m_ramMonitor.MonoRam;
+            float allocatedMemory   = m_ramMonitor.AllocatedRam;
+            float reservedMemory    = m_ramMonitor.ReservedRam;
+            float monoMemory        = m_ramMonitor.MonoRam;
 
             m_highestMemory = 0;
 
@@ -187,19 +204,16 @@ namespace Tayx.Graphy.Ram
 
             // Thresholds
             
-            m_shaderGraphAllocated.GoodThreshold = 0;
+            m_shaderGraphAllocated.GoodThreshold    = 0;
             m_shaderGraphAllocated.CautionThreshold = 0;
-            
             m_shaderGraphAllocated.UpdateThresholds();
             
-            m_shaderGraphReserved.GoodThreshold = 0;
-            m_shaderGraphReserved.CautionThreshold = 0;
-            
+            m_shaderGraphReserved.GoodThreshold     = 0;
+            m_shaderGraphReserved.CautionThreshold  = 0;
             m_shaderGraphReserved.UpdateThresholds();
             
-            m_shaderGraphMono.GoodThreshold = 0;
-            m_shaderGraphMono.CautionThreshold = 0;
-            
+            m_shaderGraphMono.GoodThreshold         = 0;
+            m_shaderGraphMono.CautionThreshold      = 0;
             m_shaderGraphMono.UpdateThresholds();
 
             m_shaderGraphAllocated.UpdateArray();
@@ -208,28 +222,32 @@ namespace Tayx.Graphy.Ram
             
             // Average
             
-            m_shaderGraphAllocated.Average = 0;
-            m_shaderGraphReserved.Average = 0;
-            m_shaderGraphMono.Average = 0;
+            m_shaderGraphAllocated.Average  = 0;
+            m_shaderGraphReserved.Average   = 0;
+            m_shaderGraphMono.Average       = 0;
 
             m_shaderGraphAllocated.UpdateAverage();
             m_shaderGraphReserved.UpdateAverage();
             m_shaderGraphMono.UpdateAverage();
         }
 
+        #endregion
+
+        #region Methods -> Private
+
         private void Init()
         {
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
-            m_ramMonitor = GetComponent<RamMonitor>();
+            m_ramMonitor = GetComponent<G_RamMonitor>();
             
-            m_shaderGraphAllocated = new ShaderGraph();
-            m_shaderGraphReserved = new ShaderGraph();
-            m_shaderGraphMono = new ShaderGraph();
+            m_shaderGraphAllocated  = new G_GraphShader();
+            m_shaderGraphReserved   = new G_GraphShader();
+            m_shaderGraphMono       = new G_GraphShader();
 
-            m_shaderGraphAllocated.Image = m_imageAllocated;
-            m_shaderGraphReserved.Image = m_imageReserved;
-            m_shaderGraphMono.Image = m_imageMono;
+            m_shaderGraphAllocated  .Image = m_imageAllocated;
+            m_shaderGraphReserved   .Image = m_imageReserved;
+            m_shaderGraphMono       .Image = m_imageMono;
             
             UpdateParameters();
         }

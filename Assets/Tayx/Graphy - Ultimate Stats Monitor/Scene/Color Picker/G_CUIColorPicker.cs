@@ -30,7 +30,7 @@ using UnityEngine.UI;
 
 namespace Tayx.Graphy.CustomizationScene
 {
-    public class CUIColorPicker : MonoBehaviour
+    public class G_CUIColorPicker : MonoBehaviour
     {
         public Color Color { get { return _color; } set { Setup( value ); } }
         
@@ -240,9 +240,9 @@ namespace Tayx.Graphy.CustomizationScene
 
         void Update()
         {
-            _update();
+            if (_update != null) { _update(); }
         }
-    }
+    } 
 }
 
 
