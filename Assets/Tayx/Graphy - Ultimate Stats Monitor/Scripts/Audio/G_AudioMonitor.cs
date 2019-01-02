@@ -188,7 +188,8 @@ namespace Tayx.Graphy.Audio
 
             SceneManager.sceneLoaded += (scene, loadMode) =>
             {
-                if (m_findAudioListenerInCameraIfNull == GraphyManager.LookForAudioListener.ON_SCENE_LOAD)
+                if (m_audioListener == null
+                    && m_findAudioListenerInCameraIfNull == GraphyManager.LookForAudioListener.ON_SCENE_LOAD)
                 {
                     FindAudioListener();
                 }
