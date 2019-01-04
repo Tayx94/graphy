@@ -9,6 +9,7 @@
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
+using Tayx.Graphy.Graph;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,62 +17,55 @@ using UnityEngine.UI;
 using UnityEngine.Profiling;
 #endif
 
-using System.Collections;
-using Tayx;
-
 namespace Tayx.Graphy.Ram
 {
-    public class RamGraph : Graph.Graph
+    public class G_RamGraph : G_Graph
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
-         * Check if we can remove "using Tayx;".
          * Check if we should add a "RequireComponent" for "RamMonitor".
          * --------------------------------------*/
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    Image           m_imageAllocated;
-        [SerializeField] private    Image           m_imageReserved;
-        [SerializeField] private    Image           m_imageMono;
+        [SerializeField] private    Image           m_imageAllocated = null;
+        [SerializeField] private    Image           m_imageReserved = null;
+        [SerializeField] private    Image           m_imageMono = null;
 
-        [SerializeField] private    Shader          ShaderFull;
-        [SerializeField] private    Shader          ShaderLight;
+        [SerializeField] private    Shader          ShaderFull = null;
+        [SerializeField] private    Shader          ShaderLight = null;
 
         #endregion
 
         #region Variables -> Private
 
-        private                     GraphyManager   m_graphyManager;
+        private                     GraphyManager   m_graphyManager = null;
 
-        private                     RamMonitor      m_ramMonitor;
+        private                     G_RamMonitor    m_ramMonitor = null;
 
         private                     int             m_resolution                = 150;
 
-        private                     ShaderGraph     m_shaderGraphAllocated;
-        private                     ShaderGraph     m_shaderGraphReserved;
-        private                     ShaderGraph     m_shaderGraphMono;
+        private                     G_GraphShader   m_shaderGraphAllocated = null;
+        private                     G_GraphShader   m_shaderGraphReserved = null;
+        private                     G_GraphShader   m_shaderGraphMono = null;
 
         private                     float[]         m_allocatedArray;
         private                     float[]         m_reservedArray;
         private                     float[]         m_monoArray;
 
-        private                     float           m_highestMemory;
+        private                     float           m_highestMemory = 0;
 
         #endregion
 
         #region Methods -> Unity Callbacks
 
-        void OnEnable()
+        private void OnEnable()
         {
             Init();
         }
 
-        void Update()
+        private void Update()
         {
             UpdateGraph();
         }
@@ -92,9 +86,9 @@ namespace Tayx.Graphy.Ram
             switch (m_graphyManager.GraphyMode)
             {
                 case GraphyManager.Mode.FULL:
-                    m_shaderGraphAllocated  .ArrayMaxSize = ShaderGraph.ArrayMaxSizeFull;
-                    m_shaderGraphReserved   .ArrayMaxSize = ShaderGraph.ArrayMaxSizeFull;
-                    m_shaderGraphMono       .ArrayMaxSize = ShaderGraph.ArrayMaxSizeFull;
+                    m_shaderGraphAllocated  .ArrayMaxSize = G_GraphShader.ArrayMaxSizeFull;
+                    m_shaderGraphReserved   .ArrayMaxSize = G_GraphShader.ArrayMaxSizeFull;
+                    m_shaderGraphMono       .ArrayMaxSize = G_GraphShader.ArrayMaxSizeFull;
 
                     m_shaderGraphAllocated  .Image.material = new Material(ShaderFull);
                     m_shaderGraphReserved   .Image.material = new Material(ShaderFull);
@@ -102,9 +96,9 @@ namespace Tayx.Graphy.Ram
                     break;
 
                 case GraphyManager.Mode.LIGHT:
-                    m_shaderGraphAllocated  .ArrayMaxSize = ShaderGraph.ArrayMaxSizeLight;
-                    m_shaderGraphReserved   .ArrayMaxSize = ShaderGraph.ArrayMaxSizeLight;
-                    m_shaderGraphMono       .ArrayMaxSize = ShaderGraph.ArrayMaxSizeLight;
+                    m_shaderGraphAllocated  .ArrayMaxSize = G_GraphShader.ArrayMaxSizeLight;
+                    m_shaderGraphReserved   .ArrayMaxSize = G_GraphShader.ArrayMaxSizeLight;
+                    m_shaderGraphMono       .ArrayMaxSize = G_GraphShader.ArrayMaxSizeLight;
 
                     m_shaderGraphAllocated  .Image.material = new Material(ShaderLight);
                     m_shaderGraphReserved   .Image.material = new Material(ShaderLight);
@@ -245,11 +239,11 @@ namespace Tayx.Graphy.Ram
         {
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
-            m_ramMonitor = GetComponent<RamMonitor>();
+            m_ramMonitor = GetComponent<G_RamMonitor>();
             
-            m_shaderGraphAllocated  = new ShaderGraph();
-            m_shaderGraphReserved   = new ShaderGraph();
-            m_shaderGraphMono       = new ShaderGraph();
+            m_shaderGraphAllocated  = new G_GraphShader();
+            m_shaderGraphReserved   = new G_GraphShader();
+            m_shaderGraphMono       = new G_GraphShader();
 
             m_shaderGraphAllocated  .Image = m_imageAllocated;
             m_shaderGraphReserved   .Image = m_imageReserved;

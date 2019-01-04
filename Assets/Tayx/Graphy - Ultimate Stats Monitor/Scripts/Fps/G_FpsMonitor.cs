@@ -10,19 +10,15 @@
  * -------------------------------------*/
 
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Tayx.Graphy.Fps
 {
-    public class FpsMonitor : MonoBehaviour
+    public class G_FpsMonitor : MonoBehaviour
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
          * --------------------------------------*/
 
         #region Variables -> Serialized Private
@@ -63,12 +59,12 @@ namespace Tayx.Graphy.Fps
 
         #region Methods -> Unity Callbacks
 
-        void Awake()
+        private void Awake()
         {
             Init();
         }
 
-        void Update()
+        private void Update()
         {
             unscaledDeltaTime = Time.unscaledDeltaTime;
 

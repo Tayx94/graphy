@@ -1,8 +1,9 @@
 ﻿/* ---------------------------------------
- * Author:          ?
+ * Sourced from:    https://wiki.unity3d.com/index.php/Singleton
+ * Modified by:     Martín Pane (martintayx@gmail.com) (@tayx94)
  * Collaborators:   Lars Aalbertsen (@Rockylars)
  * Project:         Graphy - Ultimate Stats Monitor
- * Date:            ?
+ * Date:            07-Jul-17
  * Studio:          Tayx
  * 
  * This project is released under the MIT license.
@@ -20,7 +21,7 @@ namespace Tayx.Graphy.Utils
     /// 
     /// As a note, this is made as MonoBehaviour because we need Coroutines.
     /// </summary>
-    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+    public class G_Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         /* ----- TODO: ----------------------------
          * Check if we can seal this class.

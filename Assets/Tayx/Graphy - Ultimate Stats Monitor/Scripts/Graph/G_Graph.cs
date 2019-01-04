@@ -10,16 +10,13 @@
  * -------------------------------------*/
 
 using UnityEngine;
-using System.Collections;
-using System.Runtime.CompilerServices;
 
 namespace Tayx.Graphy.Graph
 {
-    public abstract class Graph : MonoBehaviour
+    public abstract class G_Graph : MonoBehaviour
     {
         /* ----- TODO: ----------------------------
-         * Check if we can remove "using System.Collections;".
-         * Check if we can remove "using System.Runtime.CompilerServices".
+         * 
          * --------------------------------------*/
 
         #region Methods -> Protected

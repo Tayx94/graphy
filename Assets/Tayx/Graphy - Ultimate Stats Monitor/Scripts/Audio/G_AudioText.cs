@@ -10,39 +10,31 @@
  * -------------------------------------*/
 
 using UnityEngine;
-using System.Collections;
-using System.Text;
 using UnityEngine.UI;
-using Tayx.Graphy.Utils;
 using Tayx.Graphy.Utils.NumString;
 
 namespace Tayx.Graphy.Audio
 {
-    public class AudioText : MonoBehaviour
+    public class G_AudioText : MonoBehaviour
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
-         * Check if we can remove "using System.Text;".
-         * Check if we can remove "using Tayx.Graphy.Utils;".
          * Check if we should add a "RequireComponent" for "AudioMonitor".
          * Improve the FloatString Init to come from the core instead.
          * --------------------------------------*/
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    Text            m_DBText;
+        [SerializeField] private    Text            m_DBText            = null;
 
         #endregion
 
         #region Variables -> Private
 
-        private                     GraphyManager   m_graphyManager;
+        private                     GraphyManager   m_graphyManager     = null;
 
-        private                     AudioMonitor    m_audioMonitor;
+        private                     G_AudioMonitor  m_audioMonitor      = null;
 
         private                     int             m_updateRate        = 4;
 
@@ -52,12 +44,12 @@ namespace Tayx.Graphy.Audio
 
         #region Methods -> Unity Callbacks
 
-        void Awake()
+        private void Awake()
         {
             Init();
         }
 
-        void Update()
+        private void Update()
         {
             if (m_audioMonitor.SpectrumDataAvailable)
             {
@@ -90,9 +82,9 @@ namespace Tayx.Graphy.Audio
         private void Init()
         {
             //TODO: Replace this with one activated from the core and figure out the min value.
-            if (!FloatString.Inited || FloatString.MinValue > -1000f || FloatString.MaxValue < 16384f)
+            if (!G_FloatString.Inited || G_FloatString.MinValue > -1000f || G_FloatString.MaxValue < 16384f)
             {
-                FloatString.Init
+                G_FloatString.Init
                 (
                     minNegativeValue: -1001f,
                     maxPositiveValue: 16386f
@@ -101,7 +93,7 @@ namespace Tayx.Graphy.Audio
 
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
-            m_audioMonitor = GetComponent<AudioMonitor>();
+            m_audioMonitor = GetComponent<G_AudioMonitor>();
                        
             UpdateParameters();
         }

@@ -1,54 +1,83 @@
 ﻿/* ---------------------------------------
- * Author: Martin Pane (martintayx@gmail.com) (@tayx94)
- * Project: Graphy - Ultimate Stats Monitor
- * Date: 22-Nov-17
- * Studio: Tayx
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Collaborators:   Lars Aalbertsen (@Rockylars)
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            22-Nov-17
+ * Studio:          Tayx
+ * 
  * This project is released under the MIT license.
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Text;
 
 namespace Tayx.Graphy
 {
-    public class ShaderGraph
+    /// <summary>
+    /// This class communicates directly with the shader to draw the graphs. Performance here is of upmost importance
+    /// to reduce as much overhead as possible, as we are updating hundreds of values every frame.
+    /// </summary>
+    public class G_GraphShader
     {
-        public const int ArrayMaxSizeFull  = 512;
-        public const int ArrayMaxSizeLight = 128;
+        /* ----- TODO: ----------------------------
+         * Add summaries to the variables.
+         * --------------------------------------*/
 
-        public int ArrayMaxSize = 128;
+        #region Variables -> Array
 
-        public Image Image;
-     
-        private string Name = "GraphValues";                  // The name of the array
-        private string Name_Length = "GraphValues_Length";    
+        public const int    ArrayMaxSizeFull            = 512;
+        public const int    ArrayMaxSizeLight           = 128;
 
-        public float[] Array;                                 // The values
+        public int          ArrayMaxSize                = 128;
 
-        // Average
-        
-        public float Average;
-        private int averagePropertyId;
+        public float[]      Array;                                              // The values
 
-        // Thresholds
-        
-        public float GoodThreshold;
-        public float CautionThreshold;
-        private int goodThresholdPropertyId;
-        private int cautionThresholdPropertyId;
+        #endregion
 
-        // Color
-        
-        public Color GoodColor;
-        public Color CautionColor;
-        public Color CriticalColor;
-        private int goodColorPropertyId;
-        private int cautionColorPropertyId;
-        private int criticalColorPropertyId;
-        
+        #region Variables -> Image
+
+        public Image        Image                       = null;
+
+        #endregion
+
+        #region Variables -> Name
+
+        private string      Name                        = "GraphValues";        // The name of the array
+        private string      Name_Length                 = "GraphValues_Length";
+
+        #endregion
+
+        #region Variables -> Average
+
+        public float        Average                     = 0;
+        private int         averagePropertyId           = 0;
+
+        #endregion
+
+        #region Variables -> Thresholds
+
+        public float        GoodThreshold               = 0;
+        public float        CautionThreshold            = 0;
+
+        private int         goodThresholdPropertyId     = 0;
+        private int         cautionThresholdPropertyId  = 0;
+
+        #endregion
+
+        #region Variables -> Color
+
+        public Color        GoodColor                   = Color.white;
+        public Color        CautionColor                = Color.white;
+        public Color        CriticalColor               = Color.white;
+
+        private int         goodColorPropertyId         = 0;
+        private int         cautionColorPropertyId      = 0;
+        private int         criticalColorPropertyId     = 0;
+
+        #endregion
+
+        #region Methods -> Public
 
         /// <summary>
         /// This is done to avoid a design problem that arrays in shaders have, 
@@ -118,6 +147,8 @@ namespace Tayx.Graphy
 
             Image.material.SetFloatArray(Name, Array);
          }
+
+        #endregion
     }
 }
 

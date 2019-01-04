@@ -11,11 +11,8 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-
 using Tayx.Graphy.UI;
 using Tayx.Graphy.Utils;
 using Tayx.Graphy.Utils.NumString;
@@ -24,35 +21,31 @@ using Tayx.Graphy.Utils.NumString;
 using UnityEngine.Profiling;
 #endif
 
-
 namespace Tayx.Graphy.Advanced
 {
-    public class AdvancedData : MonoBehaviour, IMovable, IModifiableState
+    public class G_AdvancedData : MonoBehaviour, IMovable, IModifiableState
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
          * --------------------------------------*/
 
         #region Variables -> Serialized Private
 
         [SerializeField] private    List<Image>                 m_backgroundImages              = new List<Image>();
 
-        [SerializeField] private    Text                        m_graphicsDeviceVersionText;
+        [SerializeField] private    Text                        m_graphicsDeviceVersionText = null;
 
-        [SerializeField] private    Text                        m_processorTypeText;
+        [SerializeField] private    Text                        m_processorTypeText = null;
 
-        [SerializeField] private    Text                        m_operatingSystemText;
+        [SerializeField] private    Text                        m_operatingSystemText = null;
 
-        [SerializeField] private    Text                        m_systemMemoryText;
+        [SerializeField] private    Text                        m_systemMemoryText = null;
 
-        [SerializeField] private    Text                        m_graphicsDeviceNameText;
-        [SerializeField] private    Text                        m_graphicsMemorySizeText;
-        [SerializeField] private    Text                        m_screenResolutionText;
-        [SerializeField] private    Text                        m_gameWindowResolutionText;
+        [SerializeField] private    Text                        m_graphicsDeviceNameText = null;
+        [SerializeField] private    Text                        m_graphicsMemorySizeText = null;
+        [SerializeField] private    Text                        m_screenResolutionText = null;
+        [SerializeField] private    Text                        m_gameWindowResolutionText = null;
 
         [Range(1, 60)]
         [SerializeField] private    float                       m_updateRate                    = 1f;  // 1 update per sec.
@@ -61,16 +54,16 @@ namespace Tayx.Graphy.Advanced
 
         #region Variables -> Private
 
-        private                     GraphyManager               m_graphyManager;
+        private                     GraphyManager               m_graphyManager = null;
 
-        private                     RectTransform               m_rectTransform;
+        private                     RectTransform               m_rectTransform = null;
 
         private                     float                       m_deltaTime                     = 0.0f;
 
-        private                     StringBuilder               m_sb;
+        private                     StringBuilder               m_sb = null;
 
-        private                     GraphyManager.ModuleState   m_previousModuleState;
-        private                     GraphyManager.ModuleState   m_currentModuleState;
+        private                     GraphyManager.ModuleState   m_previousModuleState = GraphyManager.ModuleState.FULL;
+        private                     GraphyManager.ModuleState   m_currentModuleState = GraphyManager.ModuleState.FULL;
 
         private readonly            string[]                    m_windowStrings =
         {
@@ -86,12 +79,12 @@ namespace Tayx.Graphy.Advanced
 
         #region Methods -> Unity Callbacks
 
-        void OnEnable()
+        private void OnEnable()
         {
             Init();
         }
 
-        void Update()
+        private void Update()
         {
             m_deltaTime += Time.unscaledDeltaTime;
 
@@ -268,11 +261,11 @@ namespace Tayx.Graphy.Advanced
         private void Init()
         {
             //TODO: Replace this with one activated from the core and figure out the min value.
-            if (!FloatString.Inited
-                || FloatString.MinValue > -1000f
-                || FloatString.MaxValue < 16384f)
+            if (!G_FloatString.Inited
+                || G_FloatString.MinValue > -1000f
+                || G_FloatString.MaxValue < 16384f)
             {
-                FloatString.Init
+                G_FloatString.Init
                 (
                     minNegativeValue: -1001f,
                     maxPositiveValue: 16386f

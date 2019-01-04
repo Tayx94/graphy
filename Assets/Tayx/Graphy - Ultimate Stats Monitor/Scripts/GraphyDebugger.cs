@@ -13,9 +13,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
 using Tayx.Graphy.Audio;
@@ -25,23 +23,18 @@ using Tayx.Graphy.Utils;
 
 namespace Tayx.Graphy
 {
-    public class GraphyDebugger : Singleton<GraphyDebugger>
+    public class GraphyDebugger : G_Singleton<GraphyDebugger>
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we can remove "using System.ComponentModel;".
-         * Check if we should add "private" to the Unity Callbacks.
          * Ask why we're not using System.Serializable instead for the helper class.
          * Simplify the initializers of the DebugPackets, but check wether we should as some wont work with certain lists.
          * --------------------------------------*/
 
         protected GraphyDebugger () { }
 
-        //Enums
-        #region Variables -> Public
+        #region Enums -> Public
 
         public enum DebugVariable
         {
@@ -95,7 +88,7 @@ namespace Tayx.Graphy
 
         #endregion
 
-        #region Helper Class
+        #region Helper Classes
 
         [Serializable]
         public class DebugPacket
@@ -163,28 +156,28 @@ namespace Tayx.Graphy
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    List<DebugPacket>   m_debugPackets;
+        [SerializeField] private    List<DebugPacket>   m_debugPackets = new List<DebugPacket>();
 
         #endregion
 
         #region Variables -> Private
 
-        private                     FpsMonitor          m_fpsMonitor;
-        private                     RamMonitor          m_ramMonitor;
-        private                     AudioMonitor        m_audioMonitor;
+        private                     G_FpsMonitor          m_fpsMonitor = null;
+        private                     G_RamMonitor          m_ramMonitor = null;
+        private                     G_AudioMonitor        m_audioMonitor = null;
 
         #endregion
 
         #region Methods -> Unity Callbacks
 
-        void Start()
+        private void Start()
         {
-            m_fpsMonitor    = GetComponentInChildren<FpsMonitor>();
-            m_ramMonitor    = GetComponentInChildren<RamMonitor>();
-            m_audioMonitor  = GetComponentInChildren<AudioMonitor>();
+            m_fpsMonitor    = GetComponentInChildren<G_FpsMonitor>();
+            m_ramMonitor    = GetComponentInChildren<G_RamMonitor>();
+            m_audioMonitor  = GetComponentInChildren<G_AudioMonitor>();
         }
 
-        void Update()
+        private void Update()
         {
             CheckDebugPackets();
         }

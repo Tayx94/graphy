@@ -11,23 +11,17 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-
-using System.Collections;
 using System.Collections.Generic;
-
 using Tayx.Graphy.UI;
 using Tayx.Graphy.Utils;
 
 namespace Tayx.Graphy.Audio
 {
-    public class AudioManager : MonoBehaviour, IMovable, IModifiableState
+    public class G_AudioManager : MonoBehaviour, IMovable, IModifiableState
     {
         /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
          * Add summaries to the variables.
          * Add summaries to the functions.
-         * Check if we can remove "using System.Collections;".
-         * Check if we should add "private" to the Unity Callbacks.
          * Check if we should add a "RequireComponent" for "RectTransform".
          * Check if we should add a "RequireComponent" for "AudioGraph".
          * Check if we should add a "RequireComponent" for "AudioMonitor".
@@ -36,8 +30,8 @@ namespace Tayx.Graphy.Audio
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    GameObject                  m_audioGraphGameObject;
-        [SerializeField] private    Text                        m_audioDbText;
+        [SerializeField] private    GameObject                  m_audioGraphGameObject = null;
+        [SerializeField] private    Text                        m_audioDbText = null;
 
         [SerializeField] private    List<Image>                 m_backgroundImages      = new List<Image>();
 
@@ -45,29 +39,29 @@ namespace Tayx.Graphy.Audio
 
         #region Variables -> Private
 
-        private                     GraphyManager               m_graphyManager;
+        private                     GraphyManager               m_graphyManager = null;
 
-        private                     AudioGraph                  m_audioGraph;
-        private                     AudioMonitor                m_audioMonitor;
-        private                     AudioText                   m_audioText;
+        private                     G_AudioGraph                m_audioGraph = null;
+        private                     G_AudioMonitor              m_audioMonitor = null;
+        private                     G_AudioText                 m_audioText = null;
 
-        private                     RectTransform               m_rectTransform;
+        private                     RectTransform               m_rectTransform = null;
 
         private                     List<GameObject>            m_childrenGameObjects   = new List<GameObject>();
 
-        private                     GraphyManager.ModuleState   m_previousModuleState;
-        private                     GraphyManager.ModuleState   m_currentModuleState;
+        private                     GraphyManager.ModuleState   m_previousModuleState = GraphyManager.ModuleState.FULL;
+        private                     GraphyManager.ModuleState   m_currentModuleState = GraphyManager.ModuleState.FULL;
         
         #endregion
 
         #region Methods -> Unity Callbacks
 
-        void Awake()
+        private void Awake()
         {
             Init();
         }
 
-        void Start()
+        private void Start()
         {
             UpdateParameters();
         }
@@ -222,7 +216,7 @@ namespace Tayx.Graphy.Audio
 
             #endregion
 
-            #region Methods -> Private
+        #region Methods -> Private
 
         private void Init()
         {
@@ -230,9 +224,9 @@ namespace Tayx.Graphy.Audio
 
             m_rectTransform = GetComponent<RectTransform>();
 
-            m_audioGraph    = GetComponent<AudioGraph>();
-            m_audioMonitor  = GetComponent<AudioMonitor>();
-            m_audioText     = GetComponent<AudioText>();
+            m_audioGraph    = GetComponent<G_AudioGraph>();
+            m_audioMonitor  = GetComponent<G_AudioMonitor>();
+            m_audioText     = GetComponent<G_AudioText>();
             
             foreach (Transform child in transform)
             {
