@@ -13,9 +13,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using Tayx.Graphy.Utils.NumString;
 
-using U_Mathf
-    = UnityEngine.Mathf;
-
 namespace Tayx.Graphy.Fps
 {
     public class G_FpsText : MonoBehaviour
@@ -80,7 +77,7 @@ namespace Tayx.Graphy.Fps
 
                 // Update fps and ms
 
-                m_fpsText.text = U_Mathf.RoundToInt(m_fps).ToStringNonAlloc();
+                m_fpsText.text = Mathf.RoundToInt(m_fps).ToStringNonAlloc();
                 m_msText.text = (m_deltaTime / m_frameCount * 1000f).ToStringNonAlloc(m_msStringFormat);
 
                 // Update min fps
