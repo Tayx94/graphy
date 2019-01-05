@@ -77,7 +77,7 @@ namespace Tayx.Graphy.Fps
 
                 // Update fps and ms
 
-                m_fpsText.text = m_fps.ToInt().ToStringNonAlloc();
+                m_fpsText.text = Mathf.RoundToInt(m_fps).ToStringNonAlloc();
                 m_msText.text = (m_deltaTime / m_frameCount * 1000f).ToStringNonAlloc(m_msStringFormat);
 
                 // Update min fps
