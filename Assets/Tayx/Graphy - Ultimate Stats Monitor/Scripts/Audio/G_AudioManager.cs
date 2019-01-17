@@ -74,6 +74,8 @@ namespace Tayx.Graphy.Audio
         {
             float xSideOffset = Mathf.Abs(m_rectTransform.anchoredPosition.x);
             float ySideOffset = Mathf.Abs(m_rectTransform.anchoredPosition.y);
+            
+            m_audioDbText.alignment = TextAnchor.UpperRight;
 
             switch (newModulePosition)
             {
@@ -83,8 +85,6 @@ namespace Tayx.Graphy.Audio
                     m_rectTransform.anchorMin           = Vector2.up;
                     m_rectTransform.anchoredPosition    = new Vector2(xSideOffset, -ySideOffset);
 
-                    m_audioDbText.alignment             = TextAnchor.UpperLeft;
-                    
                     break;
 
                 case GraphyManager.ModulePosition.TOP_RIGHT:
@@ -93,8 +93,6 @@ namespace Tayx.Graphy.Audio
                     m_rectTransform.anchorMin           = Vector2.one;
                     m_rectTransform.anchoredPosition    = new Vector2(-xSideOffset, -ySideOffset);
 
-                    m_audioDbText.alignment             = TextAnchor.UpperRight;
-                    
                     break;
 
                 case GraphyManager.ModulePosition.BOTTOM_LEFT:
@@ -103,8 +101,6 @@ namespace Tayx.Graphy.Audio
                     m_rectTransform.anchorMin           = Vector2.zero;
                     m_rectTransform.anchoredPosition    = new Vector2(xSideOffset, ySideOffset);
 
-                    m_audioDbText.alignment             = TextAnchor.UpperLeft;
-
                     break;
 
                 case GraphyManager.ModulePosition.BOTTOM_RIGHT:
@@ -112,8 +108,6 @@ namespace Tayx.Graphy.Audio
                     m_rectTransform.anchorMax           = Vector2.right;
                     m_rectTransform.anchorMin           = Vector2.right;
                     m_rectTransform.anchoredPosition    = new Vector2(-xSideOffset, ySideOffset);
-
-                    m_audioDbText.alignment             = TextAnchor.UpperRight;
 
                     break;
 
