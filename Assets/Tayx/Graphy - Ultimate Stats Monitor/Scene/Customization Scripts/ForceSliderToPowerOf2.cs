@@ -29,7 +29,7 @@ namespace Tayx.Graphy.CustomizationScene
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private Slider m_slider;
+        [SerializeField] private Slider m_slider = null;
 
         #endregion
 

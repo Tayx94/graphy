@@ -39,13 +39,13 @@ namespace Tayx.Graphy.CustomizationScene
             _onValueChange = onValueChange;
         }
         
-        [SerializeField] private Slider alphaSlider;
+        [SerializeField] private Slider alphaSlider             = null;
                 
-        [SerializeField] private Image alphaSliderBGImage;
+        [SerializeField] private Image alphaSliderBGImage       = null;
 
-        private Color _color = new Color32(255, 0, 0, 128);
-        private Action<Color> _onValueChange;
-        private Action _update;
+        private Color _color                                    = new Color32(255, 0, 0, 128);
+        private Action<Color> _onValueChange                    = null;
+        private Action _update                                  = null;
     
         private static void RGBToHSV( Color color, out float h, out float s, out float v )
         {

@@ -35,32 +35,32 @@ namespace Tayx.Graphy.CustomizationScene
         
         [Header("Customize Graphy")]
 
-        [SerializeField] private    G_CUIColorPicker      m_colorPicker;
+        [SerializeField] private    G_CUIColorPicker      m_colorPicker = null;
         
-        [SerializeField] private    Toggle              m_backgroundToggle;
+        [SerializeField] private    Toggle              m_backgroundToggle = null;
 
-        [SerializeField] private    Dropdown            m_graphyModeDropdown;
+        [SerializeField] private    Dropdown            m_graphyModeDropdown = null;
 
-        [SerializeField] private    Button              m_backgroundColorButton;
+        [SerializeField] private    Button              m_backgroundColorButton = null;
         
-        [SerializeField] private    Dropdown            m_graphModulePositionDropdown;
+        [SerializeField] private    Dropdown            m_graphModulePositionDropdown = null;
 
         #region Section -> FPS
 
         [Header("Fps")]
 
-        [SerializeField] private    Dropdown            m_fpsModuleStateDropdown;
+        [SerializeField] private    Dropdown            m_fpsModuleStateDropdown = null;
 
-        [SerializeField] private    InputField          m_goodInputField;
-        [SerializeField] private    InputField          m_cautionInputField;
+        [SerializeField] private    InputField          m_goodInputField = null;
+        [SerializeField] private    InputField          m_cautionInputField = null;
         
-        [SerializeField] private    Button              m_goodColorButton;
-        [SerializeField] private    Button              m_cautionColorButton;
-        [SerializeField] private    Button              m_criticalColorButton;
+        [SerializeField] private    Button              m_goodColorButton = null;
+        [SerializeField] private    Button              m_cautionColorButton = null;
+        [SerializeField] private    Button              m_criticalColorButton = null;
         
-        [SerializeField] private    Slider              m_timeToResetMinMaxSlider;
-        [SerializeField] private    Slider              m_fpsGraphResolutionSlider;
-        [SerializeField] private    Slider              m_fpsTextUpdateRateSlider;
+        [SerializeField] private    Slider              m_timeToResetMinMaxSlider = null;
+        [SerializeField] private    Slider              m_fpsGraphResolutionSlider = null;
+        [SerializeField] private    Slider              m_fpsTextUpdateRateSlider = null;
 
         #endregion
 
@@ -68,14 +68,14 @@ namespace Tayx.Graphy.CustomizationScene
 
         [Header("Memory")]
 
-        [SerializeField] private    Dropdown            m_ramModuleStateDropdown;
+        [SerializeField] private    Dropdown            m_ramModuleStateDropdown = null;
         
-        [SerializeField] private    Button              m_reservedColorButton;
-        [SerializeField] private    Button              m_allocatedColorButton;
-        [SerializeField] private    Button              m_monoColorButton;
+        [SerializeField] private    Button              m_reservedColorButton = null;
+        [SerializeField] private    Button              m_allocatedColorButton = null;
+        [SerializeField] private    Button              m_monoColorButton = null;
 
-        [SerializeField] private    Slider              m_ramGraphResolutionSlider;
-        [SerializeField] private    Slider              m_ramTextUpdateRateSlider;
+        [SerializeField] private    Slider              m_ramGraphResolutionSlider = null;
+        [SerializeField] private    Slider              m_ramTextUpdateRateSlider = null;
 
         #endregion
 
@@ -83,16 +83,16 @@ namespace Tayx.Graphy.CustomizationScene
 
         [Header("Audio")]
         
-        [SerializeField] private    Dropdown            m_audioModuleStateDropdown;
+        [SerializeField] private    Dropdown            m_audioModuleStateDropdown = null;
         
-        [SerializeField] private    Button              m_audioGraphColorButton;
+        [SerializeField] private    Button              m_audioGraphColorButton = null;
         
-        [SerializeField] private    Dropdown            m_findAudioListenerDropdown;
-        [SerializeField] private    Dropdown            m_fttWindowDropdown;
+        [SerializeField] private    Dropdown            m_findAudioListenerDropdown = null;
+        [SerializeField] private    Dropdown            m_fttWindowDropdown = null;
         
-        [SerializeField] private    Slider              m_spectrumSizeSlider;
-        [SerializeField] private    Slider              m_audioGraphResolutionSlider;
-        [SerializeField] private    Slider              m_audioTextUpdateRateSlider;
+        [SerializeField] private    Slider              m_spectrumSizeSlider = null;
+        [SerializeField] private    Slider              m_audioGraphResolutionSlider = null;
+        [SerializeField] private    Slider              m_audioTextUpdateRateSlider = null;
 
         #endregion
 
@@ -100,9 +100,9 @@ namespace Tayx.Graphy.CustomizationScene
 
         [Header("Advanced")]
 
-        [SerializeField] private    Dropdown            m_advancedModulePositionDropdown;
+        [SerializeField] private    Dropdown            m_advancedModulePositionDropdown = null;
 
-        [SerializeField] private    Toggle              m_advancedModuleToggle;
+        [SerializeField] private    Toggle              m_advancedModuleToggle = null;
 
         #endregion
 
@@ -110,15 +110,15 @@ namespace Tayx.Graphy.CustomizationScene
 
         [Header("Other")]
         
-        [SerializeField] private    Button              m_musicButton;
-        [SerializeField] private    Button              m_sfxButton;
+        [SerializeField] private    Button              m_musicButton = null;
+        [SerializeField] private    Button              m_sfxButton = null;
         
-        [SerializeField] private    Slider              m_musicVolumeSlider;
-        [SerializeField] private    Slider              m_sfxVolumeSlider;
+        [SerializeField] private    Slider              m_musicVolumeSlider = null;
+        [SerializeField] private    Slider              m_sfxVolumeSlider = null;
 
 
-        [SerializeField] private    AudioSource         m_musicAudioSource;
-        [SerializeField] private    AudioSource         m_sfxAudioSource;
+        [SerializeField] private    AudioSource         m_musicAudioSource = null;
+        [SerializeField] private    AudioSource         m_sfxAudioSource = null;
         
         [SerializeField] private    List<AudioClip>     m_sfxAudioClips = new List<AudioClip>();
 
@@ -128,7 +128,7 @@ namespace Tayx.Graphy.CustomizationScene
 
         #region Variables -> Private
 
-        private GraphyManager m_graphyManager;
+        private GraphyManager m_graphyManager = null;
 
         #endregion
 
