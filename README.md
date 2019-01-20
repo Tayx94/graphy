@@ -1,6 +1,6 @@
 # Graphy - Ultimate FPS Counter - Stats Monitor & Debugger (Unity)
 
-**Links:** [Discord](https://discord.gg/2KgNEHK?) | [Mail](martintayx@gmail.com) | [Twitter](https://twitter.com/tayx94?) | [Asset store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778) | [Forum post](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/)
+**Links:** [Discord](https://discord.gg/2KgNEHK?) | [Mail](martintayx@gmail.com) | [Twitter](https://twitter.com/tayx94?) | [Asset store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778) | [Forum post](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/) | [Donations](https://www.paypal.me/MartinPaneUK)
 
 **WINNER** of the **BEST DEVELOPMENT ASSET** in the **Unity Awards 2018**.
 
@@ -32,10 +32,9 @@ The debugger allows you to set one or more conditions, that if met will have the
 - Well documented C# and Shader code included 
 
 **Links:**
-  - [Asset store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778)
-  - [Forum post](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/)
-  
-  - [Video Teaser](https://youtu.be/2X3vXxLANk0)
+- [Asset store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778)
+- [Forum post](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/)
+- [Video Teaser](https://youtu.be/2X3vXxLANk0)
 
 **Contact:**
 - [Mail](martintayx@gmail.com)
@@ -45,6 +44,10 @@ The debugger allows you to set one or more conditions, that if met will have the
 ## Development of Graphy
 
 Maintainer and main developer: **Martín Pane**
+
+Graphy is **FREE** to use, but if it helped you and you want to contribute to its development, feel free to leave a donation! 
+
+- [Donation Link](https://www.paypal.me/MartinPaneUK)
 
 ### Contributing
 
