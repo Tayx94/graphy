@@ -15,15 +15,15 @@
     }
 
         SubShader
-        {
-//			Tags
-//			{
-//				"Queue" = "Overlay"
-//				"IgnoreProjector" = "True"
-//				"RenderType" = "Transparent"
-//				"PreviewType" = "Plane"
-//				"CanUseSpriteAtlas" = "True"
-//			}
+        {           
+            Tags
+            { 
+                "Queue"="Transparent" 
+                "IgnoreProjector"="True" 
+                "RenderType"="Transparent" 
+                "PreviewType"="Plane"
+                "CanUseSpriteAtlas"="True"
+            }
 
             Cull Off
             Lighting Off
@@ -33,11 +33,13 @@
 
             Pass
             {
+                Name "Default"
                 CGPROGRAM
 
                 #pragma vertex vert
                 #pragma fragment frag
                 #pragma multi_compile _ PIXELSNAP_ON
+                
                 #include "UnityCG.cginc"
 
                 struct appdata_t
@@ -50,7 +52,7 @@
                 struct v2f
                 {
                     float4 vertex    : SV_POSITION;
-                    fixed4 color	 : COLOR;
+                    fixed4 color     : COLOR;
                     float2 texcoord  : TEXCOORD0;
                 };
 
@@ -112,12 +114,6 @@
 
                     // Define the width of each element of the graph
                     float increment = 1.0f / (GraphValues_Length - 1);
-
-                    // Set as transparent the part on top of the current point value
-                    if (yCoord > graphValue)
-                    {
-                        color.a = 0;
-                    }
                     
                     // Assign the corresponding color
                     if (graphValue > _GoodThreshold)
@@ -138,6 +134,12 @@
                     {
                         //color.a = yCoord * graphValue * 0.3;
                         color.a *= yCoord * 0.3 / graphValue;
+                    }
+
+                    // Set as transparent the part on top of the current point value
+                    if (yCoord > graphValue)
+                    {
+                        color.a = 0;
                     }
 
                     // Average white bar

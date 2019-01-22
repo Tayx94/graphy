@@ -15,15 +15,15 @@
 	}
 
 		SubShader
-		{
-//			Tags
-//			{
-//				"Queue" = "Overlay"
-//				"IgnoreProjector" = "True"
-//				"RenderType" = "Transparent"
-//				"PreviewType" = "Plane"
-//				"CanUseSpriteAtlas" = "True"
-//			}
+		{			
+			Tags
+			{ 
+				"Queue"="Transparent" 
+				"IgnoreProjector"="True" 
+				"RenderType"="Transparent" 
+				"PreviewType"="Plane"
+				"CanUseSpriteAtlas"="True"
+			}
 
 			Cull Off
 			Lighting Off
@@ -33,11 +33,13 @@
 
 			Pass
 			{
+				Name "Default"
 				CGPROGRAM
 
 				#pragma vertex vert
 				#pragma fragment frag
 				#pragma multi_compile _ PIXELSNAP_ON
+				
 				#include "UnityCG.cginc"
 
 				struct appdata_t
