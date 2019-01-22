@@ -384,66 +384,69 @@ namespace Tayx.Graphy
         /// </summary>
         private void CheckDebugPackets()
         {
-            if (m_debugPackets != null && m_debugPackets.Count > 0)
+            if (m_debugPackets == null)
             {
-                foreach (DebugPacket packet in m_debugPackets)
+                return;
+            }
+
+            for (var i = 0; i < m_debugPackets.Count; i++)
+            {
+                DebugPacket packet = m_debugPackets[i];
+
+                if (packet != null && packet.Active)
                 {
-                    if (packet != null && packet.Active)
+                    packet.Update();
+
+                    if (packet.Check)
                     {
-                        packet.Update();
-
-                        if (packet.Check)
+                        switch (packet.ConditionEvaluation)
                         {
-                            switch (packet.ConditionEvaluation)
-                            {
-                                case ConditionEvaluation.All_conditions_must_be_met:
-                                    int count = 0;
+                            case ConditionEvaluation.All_conditions_must_be_met:
+                                int count = 0;
 
-                                    foreach (var packetDebugCondition in packet.DebugConditions)
+                                foreach (var packetDebugCondition in packet.DebugConditions)
+                                {
+                                    if (CheckIfConditionIsMet(packetDebugCondition))
                                     {
-                                        if (CheckIfConditionIsMet(packetDebugCondition))
-                                        {
-                                            count++;
-                                        }
+                                        count++;
                                     }
+                                }
 
-                                    if (count >= packet.DebugConditions.Count)
+                                if (count >= packet.DebugConditions.Count)
+                                {
+                                    ExecuteOperationsInDebugPacket(packet);
+
+                                    if (packet.ExecuteOnce)
+                                    {
+                                        m_debugPackets[i] = null;
+                                    }
+                                }
+
+                                break;
+
+                            case ConditionEvaluation.Only_one_condition_has_to_be_met:
+                                foreach (var packetDebugCondition in packet.DebugConditions)
+                                {
+                                    if (CheckIfConditionIsMet(packetDebugCondition))
                                     {
                                         ExecuteOperationsInDebugPacket(packet);
 
                                         if (packet.ExecuteOnce)
                                         {
-                                            m_debugPackets[m_debugPackets.IndexOf(packet)] = null;
+                                            m_debugPackets[i] = null;
                                         }
+
+                                        break;
                                     }
-                                    break;
+                                }
 
-                                case ConditionEvaluation.Only_one_condition_has_to_be_met:
-                                    foreach (var packetDebugCondition in packet.DebugConditions)
-                                    {
-                                        if (CheckIfConditionIsMet(packetDebugCondition))
-                                        {
-                                            ExecuteOperationsInDebugPacket(packet);
-
-                                            if (packet.ExecuteOnce)
-                                            {
-                                                m_debugPackets[m_debugPackets.IndexOf(packet)] = null;
-                                            }
-
-                                            break;
-                                        }
-                                    }
-                                    break;
-                            }
+                                break;
                         }
                     }
                 }
             }
 
-            if (m_debugPackets != null)
-            {
-                m_debugPackets.RemoveAll((packet) => packet == null);
-            }
+            m_debugPackets.RemoveAll((packet) => packet == null);
         }
 
         /// <summary>
