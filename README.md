@@ -76,16 +76,18 @@ You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussi
     
 **Other features (DEFINITELY MAYBE):** 
 
-  - Network Stats Module
+  - Network Stats Module.
   - Audio Module:
-  	- Average of the whole sound
-	- Indicator for LUFS
+  	- Average of the whole sound.
+	- Indicator for LUFS.
   - Allow storing FPS for a predetermined time to allow benchmarks.
   - Dump all Graphy Data as a string to:
-  	- File
-	- Send to server
-	- Send mail
-  - Add a preprocessor key #GRAPHY to avoid adding the asset in builds
+  	- File.
+	- Send to server.
+	- Send mail.
+  - Add a preprocessor key #GRAPHY to avoid adding the asset in builds.
+  - Click on the graph to change to a minimalised version.
+  - Be able to only show one type of ram in the graph (mostly to be able to see the "mono" ram value spikes with more ease).
   
 ## License
 
