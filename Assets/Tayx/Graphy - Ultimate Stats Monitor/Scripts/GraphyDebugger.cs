@@ -119,7 +119,7 @@ namespace Tayx.Graphy
             [Tooltip("If true, it pauses the editor")]
             public bool                 DebugBreak              = false;
             public UnityEvent           UnityEvents;
-            public List<Action>         Callbacks               = new List<Action>();
+            public List<System.Action>  Callbacks               = new List<System.Action>();
 
 
             private bool canBeChecked = false;
@@ -207,7 +207,7 @@ namespace Tayx.Graphy
             MessageType newMessageType,
             string newMessage,
             bool newDebugBreak,
-            Action newCallback
+            System.Action newCallback
         )
         {
             DebugPacket newDebugPacket = new DebugPacket();
@@ -232,7 +232,7 @@ namespace Tayx.Graphy
             MessageType newMessageType,
             string newMessage,
             bool newDebugBreak,
-            Action newCallback
+            System.Action newCallback
         )
         {
             DebugPacket newDebugPacket = new DebugPacket();
@@ -257,7 +257,7 @@ namespace Tayx.Graphy
             MessageType newMessageType,
             string newMessage,
             bool newDebugBreak,
-            List<Action> newCallbacks
+            List<System.Action> newCallbacks
         )
         {
             DebugPacket newDebugPacket = new DebugPacket();
@@ -282,7 +282,7 @@ namespace Tayx.Graphy
             MessageType newMessageType,
             string newMessage,
             bool newDebugBreak,
-            List<Action> newCallbacks
+            List<System.Action> newCallbacks
         )
         {
             DebugPacket newDebugPacket = new DebugPacket();
@@ -348,7 +348,7 @@ namespace Tayx.Graphy
         /// </summary>
         /// <param name="callback"></param>
         /// <param name="id"></param>
-        public void AddCallbackToFirstDebugPacketWithId(Action callback, int id)
+        public void AddCallbackToFirstDebugPacketWithId(System.Action callback, int id)
         {
             if (GetFirstDebugPacketWithId(id) != null)
             {
@@ -361,7 +361,7 @@ namespace Tayx.Graphy
         /// </summary>
         /// <param name="callback"></param>
         /// <param name="id"></param>
-        public void AddCallbackToAllDebugPacketWithId(Action callback, int id)
+        public void AddCallbackToAllDebugPacketWithId(System.Action callback, int id)
         {
             if (GetAllDebugPacketsWithId(id) != null)
             {
