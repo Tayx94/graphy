@@ -34,7 +34,7 @@ namespace Tayx.Graphy.CustomizationScene
     {
         public Color Color { get { return _color; } set { Setup( value ); } }
         
-        public void SetOnValueChangeCallback( Action<Color> onValueChange )
+        public void SetOnValueChangeCallback( System.Action<Color> onValueChange )
         {
             _onValueChange = onValueChange;
         }
@@ -44,8 +44,8 @@ namespace Tayx.Graphy.CustomizationScene
         [SerializeField] private Image alphaSliderBGImage       = null;
 
         private Color _color                                    = new Color32(255, 0, 0, 128);
-        private Action<Color> _onValueChange                    = null;
-        private Action _update                                  = null;
+        private System.Action<Color> _onValueChange             = null;
+        private System.Action _update                           = null;
     
         private static void RGBToHSV( Color color, out float h, out float s, out float v )
         {
@@ -124,8 +124,8 @@ namespace Tayx.Graphy.CustomizationScene
             var hueSz = GetWidgetSize( hueGO );
             var satvalTex = new Texture2D(2,2);
             satvalGO.GetComponent<Image>().sprite = Sprite.Create( satvalTex, new Rect( 0.5f, 0.5f, 1, 1 ), new Vector2( 0.5f, 0.5f ) );
-            
-            Action resetSatValTexture = () => {
+
+            System.Action resetSatValTexture = () => {
                 for ( int j = 0; j < 2; j++ ) {
                     for ( int i = 0; i < 2; i++ ) {
                         satvalTex.SetPixel( i, j, satvalColors[i + j * 2] );
@@ -137,8 +137,8 @@ namespace Tayx.Graphy.CustomizationScene
             var satvalSz = GetWidgetSize( satvalGO );
             float Hue, Saturation, Value;
             RGBToHSV( inputColor, out Hue, out Saturation, out Value );
-            
-            Action applyHue = () => 
+
+            System.Action applyHue = () => 
             {
                 var i0 = Mathf.Clamp( ( int )Hue, 0, 5 );
                 var i1 = ( i0 + 1 ) % 6;
@@ -146,8 +146,8 @@ namespace Tayx.Graphy.CustomizationScene
                 satvalColors[3] = resultColor;
                 resetSatValTexture();
             };
-            
-            Action applySaturationValue = () => 
+
+            System.Action applySaturationValue = () => 
             {
                 var sv = new Vector2( Saturation, Value );
                 var isv = new Vector2( 1 - sv.x, 1 - sv.y );
@@ -175,9 +175,9 @@ namespace Tayx.Graphy.CustomizationScene
             applySaturationValue();
             satvalKnob.transform.localPosition = new Vector2( Saturation * satvalSz.x, Value * satvalSz.y );
             hueKnob.transform.localPosition = new Vector2( hueKnob.transform.localPosition.x, Hue / 6 * satvalSz.y );
-            Action dragH = null;
-            Action dragSV = null;
-            Action idle = () => {
+            System.Action dragH = null;
+            System.Action dragSV = null;
+            System.Action idle = () => {
                 if ( Input.GetMouseButtonDown( 0 ) ) {
                     Vector2 mp;
                     if ( GetLocalMouse( hueGO, out mp ) ) {
