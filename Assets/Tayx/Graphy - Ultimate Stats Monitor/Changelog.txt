@@ -7,6 +7,7 @@ v1.5
 - Fixed a possible Null Reference Error in the debugger (thanks @strawlink).
 - Fixed import settings in 2 textures (thanks @strawlink).
 - Renamed all Action into System.Action to avoid possible namespace conflicts.
+- Fixed the int rounding to prevent 59.99999FPS from turning into 59FPS (thanks @Rockylars).
 
 -----------------------------
 v1.4.3
