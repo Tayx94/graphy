@@ -1,4 +1,14 @@
 -----------------------------
+v1.5
+
+- Fixed a number alignment in the audio module (thanks @SuperPenguin).
+- Refactored some code to avoid warnings with the new NET framework 4.0.
+- Shader sorting fix for Screen Space - Camera.
+- Fixed a possible Null Reference Error in the debugger (thanks @strawlink).
+- Fixed import settings in 2 textures (thanks @strawlink).
+- Renamed all Action into System.Action to avoid possible namespace conflicts.
+
+-----------------------------
 v1.4.3
 
 - Renamed all the classes with the "G_" prefix to avoid namespace issues with external code (thanks @Rockylars).
