@@ -1,6 +1,6 @@
 # Graphy - Ultimate FPS Counter - Stats Monitor & Debugger (Unity)
 
-**Links:** [Discord](https://discord.gg/2KgNEHK?) | [Mail](martintayx@gmail.com) | [Twitter](https://twitter.com/tayx94?) | [Asset store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778) | [Forum post](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/) | [Donations](https://www.paypal.me/MartinPaneUK)
+**Links:** [Discord](https://discord.gg/2KgNEHK?) | [Mail](martintayx@gmail.com) | [Twitter](https://twitter.com/martinTayx) | [Asset store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778) | [Forum post](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/) | [Donations](https://www.paypal.me/MartinPaneUK)
 
 **WINNER** of the **BEST DEVELOPMENT ASSET** in the **Unity Awards 2018**.
 
@@ -38,7 +38,7 @@ The debugger allows you to set one or more conditions, that if met will have the
 
 **Contact:**
 - [Mail](martintayx@gmail.com)
-- [Twitter](https://twitter.com/tayx94?)
+- [Twitter](https://twitter.com/martinTayx)
 - [Discord](https://discord.gg/2KgNEHK?)
 
 ## Development of Graphy
@@ -91,4 +91,4 @@ You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussi
   
 ## License
 
-Graphy is released under the [MIT license](https://github.com/Tayx94/graphy/blob/master/LICENSE). Although I don't require attribution, I would love to know if you decide to use it in a project! Let me know on [Twitter](https://twitter.com/tayx94?) or by [email](martintayx@gmail.com).
+Graphy is released under the [MIT license](https://github.com/Tayx94/graphy/blob/master/LICENSE). Although I don't require attribution, I would love to know if you decide to use it in a project! Let me know on [Twitter](https://twitter.com/martinTayx) or by [email](martintayx@gmail.com).
