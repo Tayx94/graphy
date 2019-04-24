@@ -1,0 +1,16 @@
+{
+    "name": "Tayx.Graphy.Editor",
+    "references": [
+        "Tayx.Graphy"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
