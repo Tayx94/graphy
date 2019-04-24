@@ -122,8 +122,13 @@ namespace Tayx.Graphy.Audio
             else if(     m_audioListener == null 
                      &&  m_findAudioListenerInCameraIfNull == GraphyManager.LookForAudioListener.ALWAYS)
             {
-                FindAudioListener();
+                m_audioListener = FindAudioListener();
             }
+        }
+
+        private void OnDestroy()
+        {
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         #endregion
@@ -141,7 +146,7 @@ namespace Tayx.Graphy.Audio
             if (m_audioListener == null
                     && m_findAudioListenerInCameraIfNull != GraphyManager.LookForAudioListener.NEVER)
             {
-                FindAudioListener();
+                m_audioListener = FindAudioListener();
             }
 
             m_spectrum              = new float[m_spectrumSize];
@@ -175,9 +180,26 @@ namespace Tayx.Graphy.Audio
         /// <summary>
         /// Tries to find an audio listener in the main camera.
         /// </summary>
-        private void FindAudioListener()
+        private AudioListener FindAudioListener()
         {
-            m_audioListener = Camera.main.GetComponent<AudioListener>();
+            Camera mainCamera = Camera.main;
+
+            if (mainCamera != null)
+            {
+                return mainCamera.GetComponent<AudioListener>();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+        {
+            if (m_findAudioListenerInCameraIfNull == GraphyManager.LookForAudioListener.ON_SCENE_LOAD)
+            {
+                m_audioListener = FindAudioListener();
+            }
         }
 
         private void Init()
@@ -186,13 +208,7 @@ namespace Tayx.Graphy.Audio
             
             UpdateParameters();
 
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadMode) =>
-            {
-                if (m_findAudioListenerInCameraIfNull == GraphyManager.LookForAudioListener.ON_SCENE_LOAD)
-                {
-                    FindAudioListener();
-                }
-            };
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         #endregion
