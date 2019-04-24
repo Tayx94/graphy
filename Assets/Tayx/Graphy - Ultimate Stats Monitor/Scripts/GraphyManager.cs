@@ -590,6 +590,9 @@ namespace Tayx.Graphy
             if (!m_enableOnStartup)
             {
                 ToggleActive();
+
+                // We need to enable this on startup because we disable it in GraphyManagerEditor
+                GetComponent<Canvas>().enabled = true;
             }
 
             m_initialized = true;
