@@ -186,7 +186,7 @@ namespace Tayx.Graphy.Audio
             
             UpdateParameters();
 
-            SceneManager.sceneLoaded += (scene, loadMode) =>
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadMode) =>
             {
                 if (m_findAudioListenerInCameraIfNull == GraphyManager.LookForAudioListener.ON_SCENE_LOAD)
                 {
