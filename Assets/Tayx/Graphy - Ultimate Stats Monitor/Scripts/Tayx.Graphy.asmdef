@@ -1,6 +1,7 @@
 ﻿{
 	"name": "Tayx.Graphy",
-	"references": [
-        "Unity.ugui"
-    ]
+	"references":
+	[
+		"Unity.ugui"
+    	]
 }
