@@ -29,7 +29,7 @@ namespace Tayx.Graphy.Fps
 
         #region Variables -> Private
 
-        private GraphyManager m_graphyManager;
+        private GraphyManager                       m_graphyManager;
 
         private                     float           m_currentFps                = 0f;
         private                     float           m_avgFps                    = 0f;
@@ -83,7 +83,7 @@ namespace Tayx.Graphy.Fps
             m_avgFps = 0;
 
             m_averageFpsSamples[ToBufferIndex(m_avgFpsSamplesCount)] = m_currentFps;
-            m_avgFpsSamplesOffset = ToBufferIndex(m_avgFpsSamplesOffset+1);
+            m_avgFpsSamplesOffset = ToBufferIndex(m_avgFpsSamplesOffset + 1);
             
             if (m_avgFpsSamplesCount < m_avgFpsSamplesCapacity)
             {
