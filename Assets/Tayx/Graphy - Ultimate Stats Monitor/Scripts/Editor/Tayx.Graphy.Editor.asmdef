@@ -1,6 +1,7 @@
 {
     "name": "Tayx.Graphy.Editor",
-    "references": [
+    "references": 
+    [
         "Tayx.Graphy"
     ],
     "optionalUnityReferences": [],
