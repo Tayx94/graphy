@@ -1,6 +1,7 @@
 -----------------------------
 v1.5.1
 
+
 - Hide Graphy in Game view when it's be disabled on startup.
 - Fixed error if no camera is present in the scene.
 - Added SceneManager namespace so to avoid possible conflicts.

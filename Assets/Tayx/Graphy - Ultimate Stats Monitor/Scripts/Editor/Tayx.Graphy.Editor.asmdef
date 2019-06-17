@@ -1,10 +1,12 @@
 {
     "name": "Tayx.Graphy.Editor",
-    "references": [
+    "references": 
+    [
         "Tayx.Graphy"
     ],
     "optionalUnityReferences": [],
-    "includePlatforms": [
+    "includePlatforms": 
+    [
         "Editor"
     ],
     "excludePlatforms": [],
