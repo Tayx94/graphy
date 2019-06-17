@@ -5,7 +5,8 @@
         "Tayx.Graphy"
     ],
     "optionalUnityReferences": [],
-    "includePlatforms": [
+    "includePlatforms": 
+    [
         "Editor"
     ],
     "excludePlatforms": [],

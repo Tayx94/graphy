@@ -10,7 +10,7 @@
  * -------------------------------------*/
 
 using UnityEngine;
-using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Tayx.Graphy.Fps
 {
@@ -29,15 +29,18 @@ namespace Tayx.Graphy.Fps
 
         #region Variables -> Private
 
-        private GraphyManager m_graphyManager;
+        private GraphyManager                       m_graphyManager;
 
         private                     float           m_currentFps                = 0f;
         private                     float           m_avgFps                    = 0f;
         private                     float           m_minFps                    = 0f;
         private                     float           m_maxFps                    = 0f;
 
-        private                     List<float>     m_averageFpsSamples;
-
+        private                     float[]         m_averageFpsSamples;
+        private                     int             m_avgFpsSamplesOffset       = 0;
+        private                     int             m_indexMask                 = 0;
+        private                     int             m_avgFpsSamplesCapacity     = 0;
+        private                     int             m_avgFpsSamplesCount        = 0;
         private                     int             m_timeToResetMinMaxFps      = 10;
 
         private                     float           m_timeToResetMinFpsPassed   = 0f;
@@ -79,22 +82,20 @@ namespace Tayx.Graphy.Fps
 
             m_avgFps = 0;
 
-            if (m_averageFpsSamples.Count >= m_averageSamples)
+            m_averageFpsSamples[ToBufferIndex(m_avgFpsSamplesCount)] = m_currentFps;
+            m_avgFpsSamplesOffset = ToBufferIndex(m_avgFpsSamplesOffset + 1);
+            
+            if (m_avgFpsSamplesCount < m_avgFpsSamplesCapacity)
             {
-                m_averageFpsSamples.Add(m_currentFps);
-                m_averageFpsSamples.RemoveAt(0);
-            }
-            else
-            {
-                m_averageFpsSamples.Add(m_currentFps);
+                m_avgFpsSamplesCount++;
             }
 
-            for (int i = 0; i < m_averageFpsSamples.Count; i++)
+            for (int i = 0; i < m_avgFpsSamplesCount; i++)
             {
                 m_avgFps += m_averageFpsSamples[i];
             }
 
-            m_avgFps /= m_averageSamples;
+            m_avgFps /= m_avgFpsSamplesCount;
 
             // Checks to reset min and max fps
 
@@ -148,11 +149,30 @@ namespace Tayx.Graphy.Fps
         {
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
-            m_averageFpsSamples = new List<float>();
+            ResizeSamplesBuffer(m_averageSamples);
             
             UpdateParameters();
         }
 
+        
+        private void ResizeSamplesBuffer(int size)
+        {
+            m_avgFpsSamplesCapacity = Mathf.NextPowerOfTwo(size);
+
+            m_averageFpsSamples = new float[m_avgFpsSamplesCapacity];
+            
+            m_indexMask = m_avgFpsSamplesCapacity - 1;
+            m_avgFpsSamplesOffset = 0;
+        }
+        
+#if NET_4_6 || NET_STANDARD_2_0
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
+        private int ToBufferIndex(int index)
+        {
+            return (index + m_avgFpsSamplesOffset) & m_indexMask;
+        }
+        
         #endregion
     }
 }
