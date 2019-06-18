@@ -1,7 +1,7 @@
 -----------------------------
 v1.5.2
 
-- Fixed a reference issue in newer Alpha versions (thanks @Mrgove10).
+- Removed asmdefs to avoid missing reference issues in new Unity alpha versions.
 - Improvements avgFps calculation, changed list to array (thanks @Kaladrius2trip).
 
 -----------------------------
