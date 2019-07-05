@@ -30,8 +30,7 @@ namespace Tayx.Graphy.Audio
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    GameObject                  m_audioGraphGameObject = null;
-        [SerializeField] private    Text                        m_audioDbText = null;
+        [SerializeField] private    GameObject                  m_audioGraphGameObject  = null;
 
         [SerializeField] private    List<Image>                 m_backgroundImages      = new List<Image>();
 
@@ -72,11 +71,11 @@ namespace Tayx.Graphy.Audio
 
         public void SetPosition(GraphyManager.ModulePosition newModulePosition)
         {
+            // commented for now
+            /*
             float xSideOffset = Mathf.Abs(m_rectTransform.anchoredPosition.x);
             float ySideOffset = Mathf.Abs(m_rectTransform.anchoredPosition.y);
             
-            m_audioDbText.alignment = TextAnchor.UpperRight;
-
             switch (newModulePosition)
             {
                 case GraphyManager.ModulePosition.TOP_LEFT:
@@ -114,6 +113,7 @@ namespace Tayx.Graphy.Audio
                 case GraphyManager.ModulePosition.FREE:
                     break;
             }
+            */
         }
 
         public void SetState(GraphyManager.ModuleState state, bool silentUpdate = false)
@@ -134,12 +134,18 @@ namespace Tayx.Graphy.Audio
                     
                     if (m_graphyManager.Background)
                     {
-                        m_backgroundImages.SetOneActive(0);
+                        m_backgroundImages.SetAllActive(true);
                     }
                     else
                     {
                         m_backgroundImages.SetAllActive(false);
                     }
+
+                    m_rectTransform.sizeDelta = new Vector2
+                    (
+                        x: 350,
+                        y: 145
+                    );
                     
                     break;
                 
@@ -151,13 +157,19 @@ namespace Tayx.Graphy.Audio
                     
                     if (m_graphyManager.Background)
                     {
-                        m_backgroundImages.SetOneActive(1);
+                        m_backgroundImages.SetAllActive(true);
                     }
                     else
                     {
                         m_backgroundImages.SetAllActive(false);
                     }
-                    
+
+                    m_rectTransform.sizeDelta = new Vector2
+                    (
+                        x: 160,
+                        y: 45
+                    );
+
                     break;
 
                 case GraphyManager.ModuleState.BACKGROUND:

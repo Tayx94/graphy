@@ -30,7 +30,7 @@ namespace Tayx.Graphy.Ram
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    GameObject              m_ramGraphGameObject = null;
+        [SerializeField] private    GameObject              m_ramGraphGameObject        = null;
 
         [SerializeField] private    List<Image>             m_backgroundImages          = new List<Image>();
 
@@ -38,17 +38,17 @@ namespace Tayx.Graphy.Ram
 
         #region Variables -> Private
 
-        private                 GraphyManager               m_graphyManager = null;
+        private                 GraphyManager               m_graphyManager             = null;
         
-        private                 G_RamGraph                  m_ramGraph = null;
-        private                 G_RamText                   m_ramText = null;
+        private                 G_RamGraph                  m_ramGraph                  = null;
+        private                 G_RamText                   m_ramText                   = null;
 
-        private                 RectTransform               m_rectTransform = null;
+        private                 RectTransform               m_rectTransform             = null;
 
         private                 List<GameObject>            m_childrenGameObjects       = new List<GameObject>();
 
-        private                 GraphyManager.ModuleState   m_previousModuleState = GraphyManager.ModuleState.FULL;
-        private                 GraphyManager.ModuleState   m_currentModuleState = GraphyManager.ModuleState.FULL;
+        private                 GraphyManager.ModuleState   m_previousModuleState       = GraphyManager.ModuleState.FULL;
+        private                 GraphyManager.ModuleState   m_currentModuleState        = GraphyManager.ModuleState.FULL;
         
         #endregion
 
@@ -70,6 +70,8 @@ namespace Tayx.Graphy.Ram
 
         public void SetPosition(GraphyManager.ModulePosition newModulePosition)
         {
+            // commented for now
+            /*
             float xSideOffset = Mathf.Abs(m_rectTransform.anchoredPosition.x);
             float ySideOffset = Mathf.Abs(m_rectTransform.anchoredPosition.y);
 
@@ -110,6 +112,7 @@ namespace Tayx.Graphy.Ram
                 case GraphyManager.ModulePosition.FREE:
                     break;
             }
+            */
         }
 
         public void SetState(GraphyManager.ModuleState state, bool silentUpdate = false)
@@ -130,13 +133,20 @@ namespace Tayx.Graphy.Ram
                     
                     if (m_graphyManager.Background)
                     {
-                        m_backgroundImages.SetOneActive(0);
+                        m_backgroundImages.SetAllActive(true);
                     }
                     else
                     {
                         m_backgroundImages.SetAllActive(false);
                     }
-                    
+
+                    m_rectTransform.sizeDelta = new Vector2
+                    (
+                        x: 350,
+                        y: 195
+                    );
+
+
                     break;
 
                 case GraphyManager.ModuleState.TEXT:
@@ -147,13 +157,19 @@ namespace Tayx.Graphy.Ram
                     
                     if (m_graphyManager.Background)
                     {
-                        m_backgroundImages.SetOneActive(1);
+                        m_backgroundImages.SetAllActive(true);
                     }
                     else
                     {
                         m_backgroundImages.SetAllActive(false);
                     }
-                    
+
+                    m_rectTransform.sizeDelta = new Vector2
+                    (
+                        x: 350,
+                        y: 95
+                    );
+
                     break;
 
                 case GraphyManager.ModuleState.BACKGROUND:

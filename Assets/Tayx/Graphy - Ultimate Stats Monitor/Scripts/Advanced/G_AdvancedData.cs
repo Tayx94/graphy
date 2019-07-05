@@ -16,6 +16,7 @@ using System.Text;
 using Tayx.Graphy.UI;
 using Tayx.Graphy.Utils;
 using Tayx.Graphy.Utils.NumString;
+using TMPro;
 
 #if UNITY_5_5_OR_NEWER
 using UnityEngine.Profiling;
@@ -34,18 +35,19 @@ namespace Tayx.Graphy.Advanced
 
         [SerializeField] private    List<Image>                 m_backgroundImages              = new List<Image>();
 
-        [SerializeField] private    Text                        m_graphicsDeviceVersionText = null;
+        [SerializeField] private    TMP_Text                    m_screenResolutionText          = null;
+        [SerializeField] private    TMP_Text                    m_windowResolutionText          = null;
+        [SerializeField] private    TMP_Text                    m_operatingSystemText           = null;
+        [SerializeField] private    TMP_Text                    m_graphicsDeviceVersionText         = null;
+        [SerializeField] private    TMP_Text                    m_processorTypeText             = null;
+        [SerializeField] private    TMP_Text                    m_systemMemoryText              = null;
+        [SerializeField] private    TMP_Text                    m_graphicsDeviceNameText        = null;
+        [SerializeField] private    TMP_Text                    m_graphicsMemorySizeText        = null;
+        [SerializeField] private    TMP_Text                    m_maxTextureSizeText            = null;
+        [SerializeField] private    TMP_Text                    m_graphicsShaderLevelText       = null;
 
-        [SerializeField] private    Text                        m_processorTypeText = null;
-
-        [SerializeField] private    Text                        m_operatingSystemText = null;
-
-        [SerializeField] private    Text                        m_systemMemoryText = null;
-
-        [SerializeField] private    Text                        m_graphicsDeviceNameText = null;
-        [SerializeField] private    Text                        m_graphicsMemorySizeText = null;
-        [SerializeField] private    Text                        m_screenResolutionText = null;
-        [SerializeField] private    Text                        m_gameWindowResolutionText = null;
+        [SerializeField] private    RectTransform               m_labelRectTransform            = null;
+        [SerializeField] private    RectTransform               m_valueRectTransform            = null;
 
         [Range(1, 60)]
         [SerializeField] private    float                       m_updateRate                    = 1f;  // 1 update per sec.
@@ -54,26 +56,30 @@ namespace Tayx.Graphy.Advanced
 
         #region Variables -> Private
 
-        private                     GraphyManager               m_graphyManager = null;
+        private                     GraphyManager               m_graphyManager                 = null;
 
-        private                     RectTransform               m_rectTransform = null;
+        private                     RectTransform               m_rectTransform                 = null;
 
         private                     float                       m_deltaTime                     = 0.0f;
 
-        private                     StringBuilder               m_sb = null;
+        private                     StringBuilder               m_sb                            = null;
 
-        private                     GraphyManager.ModuleState   m_previousModuleState = GraphyManager.ModuleState.FULL;
-        private                     GraphyManager.ModuleState   m_currentModuleState = GraphyManager.ModuleState.FULL;
+        private                     GraphyManager.ModuleState   m_previousModuleState           = GraphyManager.ModuleState.FULL;
+        private                     GraphyManager.ModuleState   m_currentModuleState            = GraphyManager.ModuleState.FULL;
 
-        private readonly            string[]                    m_windowStrings =
+        private readonly            string[]                    m_windowStrings                 =
         {
-            "Window: ",
             "x",
             "@",
             "Hz",
             "[",
             "dpi]"
         };
+
+        private                     int                         m_previousScreenWidth           = 0;
+        private                     int                         m_previousScreenHeight          = 0;
+        private                     int                         m_previousScreenRefreshrate     = 0;
+        private                     float                       m_previousScreenDPI             = 0f;
 
         #endregion
 
@@ -90,20 +96,24 @@ namespace Tayx.Graphy.Advanced
 
             if (m_deltaTime > 1f / m_updateRate)
             {
-                // Update screen window resolution
-                m_sb.Length = 0;
+                // Check if anything changed
+                if (   m_previousScreenWidth != Screen.width
+                    || m_previousScreenHeight != Screen.height
+                    || m_previousScreenRefreshrate != Screen.currentResolution.refreshRate
+                    || !Mathf.Approximately(m_previousScreenDPI, Screen.dpi))
+                {
+                    // Update screen window resolution
+                    m_sb.Length = 0;
 
-                m_sb.Append(m_windowStrings[0]).Append(Screen.width.ToStringNonAlloc())
-                    .Append(m_windowStrings[1]).Append(Screen.height.ToStringNonAlloc())
-                    .Append(m_windowStrings[2]).Append(Screen.currentResolution.refreshRate.ToStringNonAlloc())
-                    .Append(m_windowStrings[3])
-                    .Append(m_windowStrings[4]).Append(Screen.dpi.ToStringNonAlloc())
-                    .Append(m_windowStrings[5]);
+                    m_sb.Append(Screen.width).Append(m_windowStrings[0]).Append(Screen.height)                              // ####x####
+                        .Append(m_windowStrings[1]).Append(Screen.currentResolution.refreshRate).Append(m_windowStrings[2]) // @##Hz
+                        .Append(m_windowStrings[3]).Append(Screen.dpi).Append(m_windowStrings[4]);                          // [##.##]
 
-                m_gameWindowResolutionText.text = m_sb.ToString();
+                    m_windowResolutionText.SetText(m_sb);
 
-                // Reset variables
-                m_deltaTime = 0f;
+                    // Reset variables
+                    m_deltaTime = 0f;
+                }
             }
         }
 
@@ -113,6 +123,8 @@ namespace Tayx.Graphy.Advanced
 
         public void SetPosition(GraphyManager.ModulePosition newModulePosition)
         {
+            // commented for now
+            /*
             float xSideOffsetBackgroundImage    = Mathf.Abs(m_backgroundImages[0].rectTransform.anchoredPosition.x);
             float ySideOffset                   = Mathf.Abs(m_rectTransform.anchoredPosition.y);
 
@@ -179,10 +191,10 @@ namespace Tayx.Graphy.Advanced
                     m_processorTypeText             .alignment = TextAnchor.UpperLeft;
                     m_systemMemoryText              .alignment = TextAnchor.UpperLeft;
                     m_graphicsDeviceNameText        .alignment = TextAnchor.UpperLeft;
-                    m_graphicsDeviceVersionText     .alignment = TextAnchor.UpperLeft;
+                    m_graphicsDeviceVersion     .alignment = TextAnchor.UpperLeft;
                     m_graphicsMemorySizeText        .alignment = TextAnchor.UpperLeft;
                     m_screenResolutionText          .alignment = TextAnchor.UpperLeft;
-                    m_gameWindowResolutionText      .alignment = TextAnchor.UpperLeft;
+                    m_windowResolutionText      .alignment = TextAnchor.UpperLeft;
                     m_operatingSystemText           .alignment = TextAnchor.UpperLeft;
 
                     break;
@@ -193,10 +205,10 @@ namespace Tayx.Graphy.Advanced
                     m_processorTypeText             .alignment = TextAnchor.UpperRight;
                     m_systemMemoryText              .alignment = TextAnchor.UpperRight;
                     m_graphicsDeviceNameText        .alignment = TextAnchor.UpperRight;
-                    m_graphicsDeviceVersionText     .alignment = TextAnchor.UpperRight;
+                    m_graphicsDeviceVersion     .alignment = TextAnchor.UpperRight;
                     m_graphicsMemorySizeText        .alignment = TextAnchor.UpperRight;
                     m_screenResolutionText          .alignment = TextAnchor.UpperRight;
-                    m_gameWindowResolutionText      .alignment = TextAnchor.UpperRight;
+                    m_windowResolutionText      .alignment = TextAnchor.UpperRight;
                     m_operatingSystemText           .alignment = TextAnchor.UpperRight;
                     
                     break;
@@ -204,6 +216,7 @@ namespace Tayx.Graphy.Advanced
                 case GraphyManager.ModulePosition.FREE:
                     break;
             }
+            */
         }
 
         public void SetState(GraphyManager.ModuleState state, bool silentUpdate = false)
@@ -261,7 +274,9 @@ namespace Tayx.Graphy.Advanced
         private void Init()
         {
             //TODO: Replace this with one activated from the core and figure out the min value.
-            if (!G_FloatString.Inited
+            // commented for now
+            /*
+            if (  !G_FloatString.Inited
                 || G_FloatString.MinValue > -1000f
                 || G_FloatString.MaxValue < 16384f)
             {
@@ -271,6 +286,7 @@ namespace Tayx.Graphy.Advanced
                     maxPositiveValue: 16386f
                 );
             }
+            */
 
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
@@ -280,57 +296,21 @@ namespace Tayx.Graphy.Advanced
 
             #region Section -> Text
 
-            m_processorTypeText.text
-                = "CPU: "
-                + SystemInfo.processorType
-                + " ["
-                + SystemInfo.processorCount
-                + " cores]";
-
-            m_systemMemoryText.text
-                = "RAM: "
-                + SystemInfo.systemMemorySize
-                + " MB";
-
-            m_graphicsDeviceVersionText.text
-                = "Graphics API: "
-                + SystemInfo.graphicsDeviceVersion;
-
-            m_graphicsDeviceNameText.text
-                = "GPU: "
-                + SystemInfo.graphicsDeviceName;
-
-            m_graphicsMemorySizeText.text
-                = "VRAM: "
-                + SystemInfo.graphicsMemorySize
-                + "MB. Max texture size: "
-                + SystemInfo.maxTextureSize
-                + "px. Shader level: "
-                + SystemInfo.graphicsShaderLevel;
-
-            Resolution res = Screen.currentResolution;
-
-            m_screenResolutionText.text
-                = "Screen: "
-                + res.width
-                + "x"
-                + res.height
-                + "@"
-                + res.refreshRate
-                + "Hz";
-
-            m_operatingSystemText.text
-                = "OS: "
-                + SystemInfo.operatingSystem
-                + " ["
-                + SystemInfo.deviceType
-                + "]";
+            m_screenResolutionText      .SetText("{0}x{1}@{2}Hz", Screen.currentResolution.width, Screen.currentResolution.height, Screen.currentResolution.refreshRate);
+            m_operatingSystemText       .SetText(SystemInfo.operatingSystem + " [" + SystemInfo.deviceType + "]");
+            m_graphicsDeviceVersionText .SetText(SystemInfo.graphicsDeviceVersion);
+            m_processorTypeText         .SetText(SystemInfo.processorType + " [" + SystemInfo.processorCount + " cores]");
+            m_systemMemoryText          .SetText("{0} MB", SystemInfo.systemMemorySize);
+            m_graphicsDeviceNameText    .SetText(SystemInfo.graphicsDeviceName);
+            m_graphicsMemorySizeText    .SetText("{0} MB", SystemInfo.graphicsMemorySize);
+            m_maxTextureSizeText            .SetText("{0} px", SystemInfo.maxTextureSize);
+            m_graphicsShaderLevelText       .SetText("{0}", SystemInfo.graphicsShaderLevel);
 
             float preferredWidth = 0;
             
             // Resize the background overlay
             
-            List<Text> texts = new List<Text>()
+            List<TMP_Text> texts = new List<TMP_Text>()
             {
                 m_graphicsDeviceVersionText,
                 m_processorTypeText,
@@ -338,7 +318,7 @@ namespace Tayx.Graphy.Advanced
                 m_graphicsDeviceNameText,
                 m_graphicsMemorySizeText,
                 m_screenResolutionText,
-                m_gameWindowResolutionText,
+                m_windowResolutionText,
                 m_operatingSystemText
             };
 
@@ -352,18 +332,18 @@ namespace Tayx.Graphy.Advanced
 
             #endregion
 
-            #region Section -> Background Images
+            #region Section -> Rect Transform Resize
 
-            m_backgroundImages[0].rectTransform.SetSizeWithCurrentAnchors
+            m_valueRectTransform.sizeDelta = new Vector2
             (
-                axis: RectTransform.Axis.Horizontal,
-                size: preferredWidth + 10
+                x: preferredWidth,
+                y: 270
             );
 
-            m_backgroundImages[0].rectTransform.anchoredPosition = new Vector2
+            m_rectTransform.sizeDelta = new Vector2
             (
-                x: (preferredWidth + 15) / 2 * Mathf.Sign(m_backgroundImages[0].rectTransform.anchoredPosition.x),
-                y: m_backgroundImages[0].rectTransform.anchoredPosition.y
+                x: m_labelRectTransform.sizeDelta.x + preferredWidth + 20,
+                y: 290
             );
 
             #endregion

@@ -12,6 +12,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Tayx.Graphy.Utils.NumString;
+using TMPro;
 
 namespace Tayx.Graphy.Fps
 {
@@ -26,33 +27,33 @@ namespace Tayx.Graphy.Fps
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    Text            m_fpsText           = null;
-        [SerializeField] private    Text            m_msText            = null;
-
-        [SerializeField] private    Text            m_avgFpsText        = null;
-        [SerializeField] private    Text            m_minFpsText        = null;
-        [SerializeField] private    Text            m_maxFpsText        = null;
+        [SerializeField] private    TMP_Text            m_fpsText           = null;
+        [SerializeField] private    TMP_Text            m_msText            = null;
+        [SerializeField] private    TMP_Text            m_avgFpsText        = null;
+        [SerializeField] private    TMP_Text            m_minFpsText        = null;
+        [SerializeField] private    TMP_Text            m_maxFpsText        = null;
 
         #endregion
 
         #region Variables -> Private
 
-        private                     GraphyManager   m_graphyManager     = null;
+        private                     GraphyManager   m_graphyManager         = null;
 
-        private                     G_FpsMonitor    m_fpsMonitor        = null;
+        private                     G_FpsMonitor    m_fpsMonitor            = null;
 
-        private                     int             m_updateRate        = 4;  // 4 updates per sec.
+        private                     int             m_updateRate            = 4;  // 4 updates per sec.
 
-        private                     int             m_frameCount        = 0;
+        private                     int             m_frameCount            = 0;
 
-        private                     float           m_deltaTime         = 0f;
+        private                     float           m_deltaTime             = 0f;
 
-        private                     float           m_fps               = 0f;
+        private                     float           m_fps                   = 0f;
 
-        private const               int             m_minFps            = 0;
-        private const               int             m_maxFps            = 10000;
+        private const               int             m_minFps                = 0;
+        private const               int             m_maxFps                = 10000;
 
-        private const               string          m_msStringFormat    = "0.0";
+        private readonly            string          m_zeroPrecisionFormat   = "{0:0}";
+        private readonly            string          m_twoPrecisionFormat    = "{0:2}";
 
         #endregion
 
@@ -77,25 +78,22 @@ namespace Tayx.Graphy.Fps
 
                 // Update fps and ms
 
-                m_fpsText.text = Mathf.RoundToInt(m_fps).ToStringNonAlloc();
-                m_msText.text = (m_deltaTime / m_frameCount * 1000f).ToStringNonAlloc(m_msStringFormat);
+                m_fpsText.SetText(m_zeroPrecisionFormat, m_fps);
+                m_msText.SetText(m_twoPrecisionFormat, m_deltaTime / m_frameCount * 1000f);
 
                 // Update min fps
 
-                m_minFpsText.text = m_fpsMonitor.MinFPS.ToInt().ToStringNonAlloc();
-
+                m_minFpsText.SetText(m_zeroPrecisionFormat, m_fpsMonitor.MinFPS);
                 SetFpsRelatedTextColor(m_minFpsText, m_fpsMonitor.MinFPS);
 
                 // Update max fps
 
-                m_maxFpsText.text = m_fpsMonitor.MaxFPS.ToInt().ToStringNonAlloc();
-
+                m_maxFpsText.SetText(m_zeroPrecisionFormat, m_fpsMonitor.MaxFPS);
                 SetFpsRelatedTextColor(m_maxFpsText, m_fpsMonitor.MaxFPS);
 
                 // Update avg fps
 
-                m_avgFpsText.text = m_fpsMonitor.AverageFPS.ToInt().ToStringNonAlloc();
-
+                m_avgFpsText.SetText(m_zeroPrecisionFormat, m_fpsMonitor.AverageFPS);
                 SetFpsRelatedTextColor(m_avgFpsText, m_fpsMonitor.AverageFPS);
 
                 // Reset variables
@@ -130,7 +128,7 @@ namespace Tayx.Graphy.Fps
         /// <param name="fps">
         /// Numeric fps value
         /// </param>
-        private void SetFpsRelatedTextColor(Text text, float fps)
+        private void SetFpsRelatedTextColor(TMP_Text text, float fps)
         {
             if (fps > m_graphyManager.GoodFPSThreshold)
             {
@@ -149,6 +147,8 @@ namespace Tayx.Graphy.Fps
         private void Init()
         {
             //TODO: Replace this with one activated from the core and figure out the min value.
+            // commented for now
+            /*
             if (!G_IntString.Inited || G_IntString.MinValue > m_minFps || G_IntString.MaxValue < m_maxFps)
             {
                 G_IntString.Init
@@ -157,7 +157,7 @@ namespace Tayx.Graphy.Fps
                     maxPositiveValue: m_maxFps
                 );
             }
-
+            */
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
             m_fpsMonitor = GetComponent<G_FpsMonitor>();

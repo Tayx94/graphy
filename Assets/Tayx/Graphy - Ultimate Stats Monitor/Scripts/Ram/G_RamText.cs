@@ -12,6 +12,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Tayx.Graphy.Utils.NumString;
+using TMPro;
 
 namespace Tayx.Graphy.Ram
 {
@@ -26,9 +27,9 @@ namespace Tayx.Graphy.Ram
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    Text            m_allocatedSystemMemorySizeText         = null;
-        [SerializeField] private    Text            m_reservedSystemMemorySizeText          = null;
-        [SerializeField] private    Text            m_monoSystemMemorySizeText              = null;
+        [SerializeField] private    TMP_Text        m_allocatedSystemMemorySizeText         = null;
+        [SerializeField] private    TMP_Text        m_reservedSystemMemorySizeText          = null;
+        [SerializeField] private    TMP_Text        m_monoSystemMemorySizeText              = null;
 
         #endregion
 
@@ -42,7 +43,7 @@ namespace Tayx.Graphy.Ram
 
         private                     float           m_deltaTime                             = 0.0f;
 
-        private readonly            string          m_memoryStringFormat                    = "0.0";
+        private readonly            string          m_twoPrecisionFormat                    = "{0:2}";
 
         #endregion
 
@@ -60,9 +61,9 @@ namespace Tayx.Graphy.Ram
             if (m_deltaTime > 1f / m_updateRate)
             {
                 // Update allocated, mono and reserved memory
-                m_allocatedSystemMemorySizeText .text = m_ramMonitor.AllocatedRam.ToStringNonAlloc(m_memoryStringFormat);
-                m_reservedSystemMemorySizeText  .text = m_ramMonitor.ReservedRam.ToStringNonAlloc(m_memoryStringFormat);
-                m_monoSystemMemorySizeText      .text = m_ramMonitor.MonoRam.ToStringNonAlloc(m_memoryStringFormat);
+                m_allocatedSystemMemorySizeText .SetText(m_twoPrecisionFormat, m_ramMonitor.AllocatedRam);
+                m_reservedSystemMemorySizeText  .SetText(m_twoPrecisionFormat, m_ramMonitor.ReservedRam);
+                m_monoSystemMemorySizeText      .SetText(m_twoPrecisionFormat, m_ramMonitor.MonoRam);
 
                 m_deltaTime                     = 0f;
             }
@@ -88,6 +89,8 @@ namespace Tayx.Graphy.Ram
         private void Init()
         {
             //TODO: Replace this with one activated from the core and figure out the min value.
+            // commented this for now
+            /*
             if (!G_FloatString.Inited || G_FloatString.MinValue > -1000f || G_FloatString.MaxValue < 16384f)
             {
                 G_FloatString.Init
@@ -96,6 +99,7 @@ namespace Tayx.Graphy.Ram
                     maxPositiveValue: 16386f
                 );
             }
+            */
 
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 

@@ -31,7 +31,7 @@ namespace Tayx.Graphy.Fps
 
         #region Variables -> Serialized Private
 
-        [SerializeField] private    GameObject                  m_fpsGraphGameObject = null;
+        [SerializeField] private    GameObject                  m_fpsGraphGameObject        = null;
 
         [SerializeField] private    List<GameObject>            m_nonBasicTextGameObjects   = new List<GameObject>();
 
@@ -41,18 +41,18 @@ namespace Tayx.Graphy.Fps
 
         #region Variables -> Private
 
-        private                     GraphyManager               m_graphyManager = null;
+        private                     GraphyManager               m_graphyManager             = null;
         
-        private                     G_FpsGraph                  m_fpsGraph = null;
-        private                     G_FpsMonitor                m_fpsMonitor = null;
-        private                     G_FpsText                   m_fpsText = null;
+        private                     G_FpsGraph                  m_fpsGraph                  = null;
+        private                     G_FpsMonitor                m_fpsMonitor                = null;
+        private                     G_FpsText                   m_fpsText                   = null;
 
-        private                     RectTransform               m_rectTransform = null;
+        private                     RectTransform               m_rectTransform             = null;
 
         private                     List<GameObject>            m_childrenGameObjects       = new List<GameObject>();
 
-        private                     GraphyManager.ModuleState   m_previousModuleState = GraphyManager.ModuleState.FULL;
-        private                     GraphyManager.ModuleState   m_currentModuleState = GraphyManager.ModuleState.FULL;
+        private                     GraphyManager.ModuleState   m_previousModuleState       = GraphyManager.ModuleState.FULL;
+        private                     GraphyManager.ModuleState   m_currentModuleState        = GraphyManager.ModuleState.FULL;
         
         #endregion
 
@@ -74,6 +74,8 @@ namespace Tayx.Graphy.Fps
 
         public void SetPosition(GraphyManager.ModulePosition newModulePosition)
         {
+            // commented for now
+            /*
             float xSideOffset = Mathf.Abs(m_rectTransform.anchoredPosition.x);
             float ySideOffset = Mathf.Abs(m_rectTransform.anchoredPosition.y);
 
@@ -114,6 +116,7 @@ namespace Tayx.Graphy.Fps
                 case GraphyManager.ModulePosition.FREE:
                     break;
             }
+            */
         }
 
         public void SetState(GraphyManager.ModuleState state, bool silentUpdate = false)
@@ -134,12 +137,18 @@ namespace Tayx.Graphy.Fps
 
                     if (m_graphyManager.Background)
                     {
-                        m_backgroundImages.SetOneActive(0);
+                        m_backgroundImages.SetAllActive(true);
                     }
                     else
                     {
                         m_backgroundImages.SetAllActive(false);
                     }
+
+                    m_rectTransform.sizeDelta = new Vector2
+                    (
+                        x: 350,
+                        y: 180
+                    );
                     
                     break;
 
@@ -150,13 +159,19 @@ namespace Tayx.Graphy.Fps
                     
                     if (m_graphyManager.Background)
                     {
-                        m_backgroundImages.SetOneActive(1);
+                        m_backgroundImages.SetAllActive(true);
                     }
                     else
                     {
                         m_backgroundImages.SetAllActive(false);
                     }
-                    
+
+                    m_rectTransform.sizeDelta = new Vector2
+                    (
+                        x: 350,
+                        y: 80
+                    );
+
                     break;
 
                 case GraphyManager.ModuleState.BASIC:
@@ -167,12 +182,18 @@ namespace Tayx.Graphy.Fps
                     
                     if (m_graphyManager.Background)
                     {
-                        m_backgroundImages.SetOneActive(2);
+                        m_backgroundImages.SetAllActive(true);
                     }
                     else
                     {
                         m_backgroundImages.SetAllActive(false);
                     }
+
+                    m_rectTransform.sizeDelta = new Vector2
+                    (
+                        x: 170,
+                        y: 80
+                    );
 
                     break;
 
