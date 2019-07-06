@@ -38,8 +38,9 @@ namespace Tayx.Graphy.Advanced
         [SerializeField] private    TMP_Text                    m_screenResolutionText          = null;
         [SerializeField] private    TMP_Text                    m_windowResolutionText          = null;
         [SerializeField] private    TMP_Text                    m_operatingSystemText           = null;
-        [SerializeField] private    TMP_Text                    m_graphicsDeviceVersionText         = null;
+        [SerializeField] private    TMP_Text                    m_graphicsDeviceVersionText     = null;
         [SerializeField] private    TMP_Text                    m_processorTypeText             = null;
+        [SerializeField] private    TMP_Text                    m_threadCountText               = null;
         [SerializeField] private    TMP_Text                    m_systemMemoryText              = null;
         [SerializeField] private    TMP_Text                    m_graphicsDeviceNameText        = null;
         [SerializeField] private    TMP_Text                    m_graphicsMemorySizeText        = null;
@@ -69,10 +70,10 @@ namespace Tayx.Graphy.Advanced
 
         private readonly            string[]                    m_windowStrings                 =
         {
-            "x",
-            "@",
+            " x ",
+            " @ ",
             "Hz",
-            "[",
+            " [",
             "dpi]"
         };
 
@@ -296,15 +297,16 @@ namespace Tayx.Graphy.Advanced
 
             #region Section -> Text
 
-            m_screenResolutionText      .SetText("{0}x{1}@{2}Hz", Screen.currentResolution.width, Screen.currentResolution.height, Screen.currentResolution.refreshRate);
+            m_screenResolutionText      .SetText("{0} x {1} @ {2}Hz", Screen.currentResolution.width, Screen.currentResolution.height, Screen.currentResolution.refreshRate);
             m_operatingSystemText       .SetText(SystemInfo.operatingSystem + " [" + SystemInfo.deviceType + "]");
             m_graphicsDeviceVersionText .SetText(SystemInfo.graphicsDeviceVersion);
-            m_processorTypeText         .SetText(SystemInfo.processorType + " [" + SystemInfo.processorCount + " cores]");
+            m_processorTypeText         .SetText(SystemInfo.processorType);
+            m_threadCountText           .SetText(SystemInfo.processorCount + " threads");
             m_systemMemoryText          .SetText("{0} MB", SystemInfo.systemMemorySize);
             m_graphicsDeviceNameText    .SetText(SystemInfo.graphicsDeviceName);
             m_graphicsMemorySizeText    .SetText("{0} MB", SystemInfo.graphicsMemorySize);
-            m_maxTextureSizeText            .SetText("{0} px", SystemInfo.maxTextureSize);
-            m_graphicsShaderLevelText       .SetText("{0}", SystemInfo.graphicsShaderLevel);
+            m_maxTextureSizeText        .SetText("{0} px", SystemInfo.maxTextureSize);
+            m_graphicsShaderLevelText   .SetText("{0}", SystemInfo.graphicsShaderLevel);
 
             float preferredWidth = 0;
             
@@ -312,14 +314,16 @@ namespace Tayx.Graphy.Advanced
             
             List<TMP_Text> texts = new List<TMP_Text>()
             {
+                m_screenResolutionText,
+                m_operatingSystemText,
                 m_graphicsDeviceVersionText,
                 m_processorTypeText,
+                m_threadCountText,
                 m_systemMemoryText,
                 m_graphicsDeviceNameText,
                 m_graphicsMemorySizeText,
-                m_screenResolutionText,
-                m_windowResolutionText,
-                m_operatingSystemText
+                m_maxTextureSizeText,
+                m_graphicsShaderLevelText
             };
 
             foreach (var text in texts)
@@ -337,13 +341,13 @@ namespace Tayx.Graphy.Advanced
             m_valueRectTransform.sizeDelta = new Vector2
             (
                 x: preferredWidth,
-                y: 270
+                y: 295
             );
 
             m_rectTransform.sizeDelta = new Vector2
             (
                 x: m_labelRectTransform.sizeDelta.x + preferredWidth + 20,
-                y: 290
+                y: 315
             );
 
             #endregion
