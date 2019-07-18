@@ -1,4 +1,4 @@
-﻿/* ---------------------------------------
+/* ---------------------------------------
  * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
  * Collaborators:   Lars Aalbertsen (@Rockylars)
  * Project:         Graphy - Ultimate Stats Monitor
@@ -37,11 +37,10 @@ namespace Tayx.Graphy.Fps
         private                     float           m_maxFps                    = 0f;
 
         private                     float[]         m_averageFpsSamples;
-        private                     int             m_avgFpsSamplesOffset       = 0;
-        private                     int             m_indexMask                 = 0;
         private                     int             m_avgFpsSamplesCapacity     = 0;
         private                     int             m_avgFpsSamplesCount        = 0;
         private                     int             m_timeToResetMinMaxFps      = 10;
+        private                     int             m_indexSample               = 0;
 
         private                     float           m_timeToResetMinFpsPassed   = 0f;
         private                     float           m_timeToResetMaxFpsPassed   = 0f;
@@ -82,8 +81,8 @@ namespace Tayx.Graphy.Fps
 
             m_avgFps = 0;
 
-            m_averageFpsSamples[ToBufferIndex(m_avgFpsSamplesCount)] = m_currentFps;
-            m_avgFpsSamplesOffset = ToBufferIndex(m_avgFpsSamplesOffset + 1);
+            m_averageFpsSamples[m_indexSample++] = m_currentFps;
+            if (m_indexSample == m_avgFpsSamplesCapacity) m_indexSample = 0;
             
             if (m_avgFpsSamplesCount < m_avgFpsSamplesCapacity)
             {
@@ -160,17 +159,6 @@ namespace Tayx.Graphy.Fps
             m_avgFpsSamplesCapacity = Mathf.NextPowerOfTwo(size);
 
             m_averageFpsSamples = new float[m_avgFpsSamplesCapacity];
-            
-            m_indexMask = m_avgFpsSamplesCapacity - 1;
-            m_avgFpsSamplesOffset = 0;
-        }
-        
-#if NET_4_6 || NET_STANDARD_2_0
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
-        private int ToBufferIndex(int index)
-        {
-            return (index + m_avgFpsSamplesOffset) & m_indexMask;
         }
         
         #endregion
