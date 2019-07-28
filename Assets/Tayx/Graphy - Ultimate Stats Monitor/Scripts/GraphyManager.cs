@@ -539,22 +539,35 @@ namespace Tayx.Graphy
 
         public void Enable()
         {
-            m_fpsManager    .RestorePreviousState();
-            m_ramManager    .RestorePreviousState();
-            m_audioManager  .RestorePreviousState();
-            m_advancedData  .RestorePreviousState();
+            if (!m_active)
+            {
+                if (m_initialized)
+                {
+                    m_fpsManager.RestorePreviousState();
+                    m_ramManager.RestorePreviousState();
+                    m_audioManager.RestorePreviousState();
+                    m_advancedData.RestorePreviousState();
 
-            m_active = true;
+                    m_active = true;
+                }
+                else
+                {
+                    Init();
+                }
+            }
         }
 
         public void Disable()
         {
-            m_fpsManager    .SetState(ModuleState.OFF);
-            m_ramManager    .SetState(ModuleState.OFF);
-            m_audioManager  .SetState(ModuleState.OFF);
-            m_advancedData  .SetState(ModuleState.OFF);
+            if (m_active)
+            {
+                m_fpsManager.SetState(ModuleState.OFF);
+                m_ramManager.SetState(ModuleState.OFF);
+                m_audioManager.SetState(ModuleState.OFF);
+                m_advancedData.SetState(ModuleState.OFF);
 
-            m_active = false;
+                m_active = false;
+            }
         }
 
         #endregion
