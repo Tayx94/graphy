@@ -19,13 +19,13 @@ namespace Tayx.Graphy
         {
             path = GetPath();
             path = path.Split(new string[] { "Assets" },StringSplitOptions.None)[1]
-                       .Split(new string[] { "Tayx" },  StringSplitOptions.None)[0];
+                       .Split(new string[] { "Graphy" },StringSplitOptions.None)[0];
 
             m_logoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>
             (
                 "Assets" + 
                 path +
-                "Tayx/Graphy - Ultimate Stats Monitor/Textures/Manager_Logo_" +
+                "Graphy - Ultimate Stats Monitor/Textures/Manager_Logo_" +
                 (EditorGUIUtility.isProSkin ? "White.png" : "Dark.png")
             );
 
@@ -33,7 +33,7 @@ namespace Tayx.Graphy
             (
                 "Assets" + 
                 path +
-                "Tayx/Graphy - Ultimate Stats Monitor/GUI/Graphy.guiskin"
+                "Graphy - Ultimate Stats Monitor/GUI/Graphy.guiskin"
             );
 
             if (m_skin != null)
