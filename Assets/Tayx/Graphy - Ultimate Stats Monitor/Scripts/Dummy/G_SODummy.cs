@@ -2,7 +2,7 @@
 
 namespace Tayx.Graphy
 {
-    public class SODummy : ScriptableObject
+    public class G_SODummy : ScriptableObject
     {
 
     }

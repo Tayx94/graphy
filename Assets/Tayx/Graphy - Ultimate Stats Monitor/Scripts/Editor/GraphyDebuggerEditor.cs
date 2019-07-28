@@ -70,11 +70,11 @@ namespace Tayx.Graphy
 
             #region Section -> Logo
 
-            if (GraphyEditorStyle.m_logoTexture != null)
+            if (GraphyEditorStyle.LogoTexture != null)
             {
                 GUILayout.Label
                 (
-                    image: GraphyEditorStyle.m_logoTexture,
+                    image: GraphyEditorStyle.LogoTexture,
                     style: new GUIStyle(GUI.skin.GetStyle("Label"))
                     {
                         alignment = TextAnchor.UpperCenter
@@ -88,7 +88,7 @@ namespace Tayx.Graphy
                 EditorGUILayout.LabelField
                 (
                     label: "[ GRAPHY - DEBUGGER ]",
-                    style: GraphyEditorStyle.m_headerStyle1
+                    style: GraphyEditorStyle.HeaderStyle1
                 );
             }
 
@@ -176,7 +176,7 @@ namespace Tayx.Graphy
                 return;
             }
 
-            GraphyEditorStyle.m_headerStyle2.contentOffset = Vector2.down * 3f;
+            GraphyEditorStyle.HeaderStyle2.contentOffset = Vector2.down * 3f;
 
             EditorGUILayout.LabelField("Selected debug packet:");
 
@@ -279,7 +279,7 @@ namespace Tayx.Graphy
                 DebugConditions.arraySize +
                 ")",
 
-                style: GraphyEditorStyle.m_headerStyle2
+                style: GraphyEditorStyle.HeaderStyle2
             );
 
             EditorGUIUtility.labelWidth = 150;
@@ -343,7 +343,7 @@ namespace Tayx.Graphy
             EditorGUILayout.Space();
             EditorGUILayout.Space();
 
-            EditorGUILayout.LabelField("[ CONDITIONS ] (" + DebugConditions.arraySize + ")", GraphyEditorStyle.m_headerStyle2);
+            EditorGUILayout.LabelField("[ CONDITIONS ] (" + DebugConditions.arraySize + ")", GraphyEditorStyle.HeaderStyle2);
 
             EditorGUILayout.PropertyField
             (
@@ -437,7 +437,7 @@ namespace Tayx.Graphy
             EditorGUILayout.Space();
             EditorGUILayout.Space();
 
-            EditorGUILayout.LabelField("[ ACTIONS ]", GraphyEditorStyle.m_headerStyle2);
+            EditorGUILayout.LabelField("[ ACTIONS ]", GraphyEditorStyle.HeaderStyle2);
 
             EditorGUIUtility.labelWidth = 140;
             EditorGUIUtility.fieldWidth = 35;

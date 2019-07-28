@@ -257,11 +257,11 @@ namespace Tayx.Graphy
 
             #region Section -> Logo
 
-            if (GraphyEditorStyle.m_logoTexture != null)
+            if (GraphyEditorStyle.LogoTexture != null)
             {
                 GUILayout.Label
                 (
-                    image: GraphyEditorStyle.m_logoTexture,
+                    image: GraphyEditorStyle.LogoTexture,
                     style: new GUIStyle(GUI.skin.GetStyle("Label"))
                     {
                         alignment = TextAnchor.UpperCenter
@@ -275,7 +275,7 @@ namespace Tayx.Graphy
                 EditorGUILayout.LabelField
                 (
                     label: "[ GRAPHY - MANAGER ]",
-                    style: GraphyEditorStyle.m_headerStyle1
+                    style: GraphyEditorStyle.HeaderStyle1
                 );
             }
 
@@ -464,7 +464,7 @@ namespace Tayx.Graphy
             (
                 m_fpsModuleInspectorToggle,
                 content: " [ FPS ]",
-                style: GraphyEditorStyle.foldoutStyle
+                style: GraphyEditorStyle.FoldoutStyle
             );
 
             GUILayout.Space(5);
@@ -611,7 +611,7 @@ namespace Tayx.Graphy
             (
                 m_ramModuleInspectorToggle,
                 content: " [ RAM ]",
-                style: GraphyEditorStyle.foldoutStyle
+                style: GraphyEditorStyle.FoldoutStyle
             );
 
             GUILayout.Space(5);
@@ -691,7 +691,7 @@ namespace Tayx.Graphy
             (
                 m_audioModuleInspectorToggle,
                 content: " [ AUDIO ]",
-                style: GraphyEditorStyle.foldoutStyle
+                style: GraphyEditorStyle.FoldoutStyle
             );
 
             GUILayout.Space(5);
@@ -822,7 +822,7 @@ namespace Tayx.Graphy
             (
                 m_advancedModuleInspectorToggle,
                 content: " [ ADVANCED DATA ]",
-                style: GraphyEditorStyle.foldoutStyle
+                style: GraphyEditorStyle.FoldoutStyle
             );
 
             GUILayout.Space(5);

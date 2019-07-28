@@ -7,13 +7,28 @@ namespace Tayx.Graphy
 {
     internal static class GraphyEditorStyle
     {
-        public static Texture2D m_logoTexture = null;
-        public static GUISkin m_skin = null;
-        public static GUIStyle m_headerStyle1 = null;
-        public static GUIStyle m_headerStyle2 = null;
-        public static GUIStyle foldoutStyle = null;
+        #region Variables -> Private
 
+        private static Texture2D m_logoTexture = null;
+        private static GUISkin m_skin = null;
+        private static GUIStyle m_headerStyle1 = null;
+        private static GUIStyle m_headerStyle2 = null;
+        private static GUIStyle m_foldoutStyle = null;
         private static string path;
+
+        #endregion
+
+        #region Properties -> Public
+
+        public static Texture2D LogoTexture { get { return m_logoTexture; } }
+        public static GUISkin Skin { get { return m_skin;  } }
+        public static GUIStyle HeaderStyle1 { get { return m_headerStyle1; } }
+        public static GUIStyle HeaderStyle2 { get { return m_headerStyle2; } }
+        public static GUIStyle FoldoutStyle { get { return m_foldoutStyle; } }
+
+        #endregion
+
+        #region Static Constructor
 
         static GraphyEditorStyle()
         {
@@ -53,7 +68,7 @@ namespace Tayx.Graphy
                 m_headerStyle2 = EditorStyles.boldLabel;
             }
 
-            foldoutStyle = new GUIStyle(EditorStyles.foldout)
+            m_foldoutStyle = new GUIStyle(EditorStyles.foldout)
             {
                 font = m_headerStyle2.font,
                 fontStyle = m_headerStyle2.fontStyle,
@@ -62,10 +77,14 @@ namespace Tayx.Graphy
 
             SetGuiStyleFontColor
             (
-                guiStyle: foldoutStyle,
+                guiStyle: m_foldoutStyle,
                 color: EditorGUIUtility.isProSkin ? Color.white : Color.black
             );
         }
+
+        #endregion
+
+        #region Methods -> Private
 
         private static void SetGuiStyleFontColor(GUIStyle guiStyle, Color color)
         {
@@ -81,7 +100,7 @@ namespace Tayx.Graphy
 
         private static string GetPath()
         {
-            ScriptableObject dummy = ScriptableObject.CreateInstance<SODummy>();
+            ScriptableObject dummy = ScriptableObject.CreateInstance<G_SODummy>();
             MonoScript ms = MonoScript.FromScriptableObject(dummy);
 
             string filePath = AssetDatabase.GetAssetPath(ms);
@@ -99,5 +118,7 @@ namespace Tayx.Graphy
             }
             return null;
         }
+
+        #endregion
     }
 }
