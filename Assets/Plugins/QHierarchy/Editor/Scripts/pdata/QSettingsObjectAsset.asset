@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9eba1ecab4c43c41869985e270bbe09, type: 3}
+  m_Name: QSettingsObjectAsset
+  m_EditorClassIdentifier: 
+  settingStringNames:
+  - QTools.QHierarchy_Dark_TreeMapColor
+  - QTools.QHierarchy_MonoBehaviourIconColor
+  - QTools.QHierarchy_Dark_SeparatorColor
+  - QTools.QHierarchy_Dark_SeparatorEvenRowShadingColor
+  - QTools.QHierarchy_Dark_SeparatorOddRowShadingColor
+  - QTools.QHierarchy_ErrorIgnoreString
+  - QTools.QHierarchy_Dark_TagAndLayerTagLabelColor
+  - QTools.QHierarchy_Dark_TagAndLayerLayerLabelColor
+  - QTools.QHierarchy_TagIconList
+  - QTools.QHierarchy_LayerIconList
+  - QTools.QHierarchy_Dark_ChildrenCountLabelColor
+  - QTools.QHierarchy_Dark_VerticesAndTrianglesVerticesLabelColor
+  - QTools.QHierarchy_Dark_VerticesAndTrianglesTrianglesLabelColor
+  - QTools.QHierarchy_ComponentsIgnore
+  - QTools.QHierarchy_ComponentsOrder
+  - QTools.QHierarchy_Dark_AdditionalBackgroundColor
+  - QTools.QHierarchy_Dark_AdditionalActiveColor
+  - QTools.QHierarchy_Dark_AdditionalInactiveColor
+  - QTools.QHierarchy_Dark_AdditionalSpecialColor
+  settingStringValues:
+  - 39FFFFFF
+  - FF1B6DBB
+  - FF303030
+  - 13000000
+  - 00000000
+  - 
+  - FFCCCCCC
+  - FFCCCCCC
+  - 
+  - 
+  - FFCCCCCC
+  - FFCCCCCC
+  - FFCCCCCC
+  - 
+  - 0;1;2;3;4;5;6;7;8;9;10;11;12
+  - FF383838
+  - FFFFFF80
+  - FF4F4F4F
+  - FF2CA8CA
+  settingFloatNames:
+  - QTools.QHierarchy_TagAndLayerSizeValuePercent
+  - QTools.QHierarchy_TagAndLayerLabelAlpha
+  settingFloatValues:
+  - .25
+  - .349999994
+  settingIntNames:
+  - QTools.QHierarchy_TagAndLayerSizeShowType
+  - QTools.QHierarchy_TagAndLayerType
+  - QTools.QHierarchy_TagAndLayerAligment
+  - QTools.QHierarchy_TagAndLayerSizeValueType
+  - QTools.QHierarchy_TagAndLayerSizeValuePixel
+  - QTools.QHierarchy_TagAndLayerLabelSize
+  - QTools.QHierarchy_GameObjectIconSize
+  - QTools.QHierarchy_TagIconSize
+  - QTools.QHierarchy_LayerIconSize
+  - QTools.QHierarchy_ChildrenCountLabelSize
+  - QTools.QHierarchy_VerticesAndTrianglesLabelSize
+  - QTools.QHierarchy_ComponentsIconSize
+  - QTools.QHierarchy_AdditionalIdentation
+  settingIntValues: 000000000100000000000000000000004b0000000000000000000000000000000000000000000000000000000200000000000000
+  settingBoolNames:
+  - QTools.QHierarchy_TreeMapShow
+  - QTools.QHierarchy_TreeMapEnhanced
+  - QTools.QHierarchy_TreeMapTransparentBackground
+  - QTools.QHierarchy_MonoBehaviourIconShow
+  - QTools.QHierarchy_MonoBehaviourIconShowDuringPlayMode
+  - QTools.QHierarchy_MonoBehaviourIconIgnoreUnityMonobehaviour
+  - QTools.QHierarchy_SeparatorShow
+  - QTools.QHierarchy_SeparatorShowRowShading
+  - QTools.QHierarchy_VisibilityShow
+  - QTools.QHierarchy_VisibilityShowDuringPlayMode
+  - QTools.QHierarchy_LockShow
+  - QTools.QHierarchy_LockShowDuringPlayMode
+  - QTools.QHierarchy_LockPreventSelectionOfLockedObjects
+  - QTools.QHierarchy_StaticShow
+  - QTools.QHierarchy_StaticShowDuringPlayMode
+  - QTools.QHierarchy_ErrorShow
+  - QTools.QHierarchy_ErrorShowDuringPlayMode
+  - QTools.QHierarchy_ErrorShowIconOnParent
+  - QTools.QHierarchy_ErrorShowScriptIsMissing
+  - QTools.QHierarchy_ErrorShowReferenceIsNull
+  - QTools.QHierarchy_ErrorShowReferenceIsMissing
+  - QTools.QHierarchy_ErrorShowStringIsEmpty
+  - QTools.QHierarchy_ErrorShowMissingEventMethod
+  - QTools.QHierarchy_ErrorShowWhenTagOrLayerIsUndefined
+  - QTools.QHierarchy_ErrorShowForDisabledComponents
+  - QTools.QHierarchy_ErrorShowForDisabledGameObjects
+  - QTools.QHierarchy_RendererShow
+  - QTools.QHierarchy_RendererShowDuringPlayMode
+  - QTools.QHierarchy_PrefabShow
+  - QTools.QHierarchy_PrefabShowBreakedPrefabsOnly
+  - QTools.QHierarchy_TagAndLayerShow
+  - QTools.QHierarchy_TagAndLayerShowDuringPlayMode
+  - QTools.QHierarchy_ColorShow
+  - QTools.QHierarchy_ColorShowDuringPlayMode
+  - QTools.QHierarchy_GameObjectIconShow
+  - QTools.QHierarchy_GameObjectIconShowDuringPlayMode
+  - QTools.QHierarchy_TagIconShow
+  - QTools.QHierarchy_TagIconShowDuringPlayMode
+  - QTools.QHierarchy_TagIconListFoldout
+  - QTools.QHierarchy_LayerIconShow
+  - QTools.QHierarchy_LayerIconShowDuringPlayMode
+  - QTools.QHierarchy_LayerIconListFoldout
+  - QTools.QHierarchy_ChildrenCountShow
+  - QTools.QHierarchy_ChildrenCountShowDuringPlayMode
+  - QTools.QHierarchy_VerticesAndTrianglesShow
+  - QTools.QHierarchy_VerticesAndTrianglesShowDuringPlayMode
+  - QTools.QHierarchy_VerticesAndTrianglesCalculateTotalCount
+  - QTools.QHierarchy_VerticesAndTrianglesShowTriangles
+  - QTools.QHierarchy_VerticesAndTrianglesShowVertices
+  - QTools.QHierarchy_ComponentsShow
+  - QTools.QHierarchy_ComponentsShowDuringPlayMode
+  - QTools.QHierarchy_AdditionalShowObjectListContent
+  - QTools.QHierarchy_AdditionalShowHiddenQHierarchyObjectList
+  - QTools.QHierarchy_AdditionalHideIconsIfNotFit
+  - QTools.QHierarchy_AdditionalShowModifierWarning
+  settingBoolValues: 01010001010101010101010000010001000101000100010101010000000001010101000101010101010100010000000001000000010101

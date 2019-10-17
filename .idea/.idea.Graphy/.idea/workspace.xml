@@ -1,0 +1,1499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="214305c0-e02c-40e6-8aa2-406ae0e28b65" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file leaf-file-name="GraphyManager.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/GraphyManager.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="386" column="31" lean-forward="false" selection-start-line="386" selection-start-column="31" selection-end-line="386" selection-end-column="31" />
+              <folding>
+                <marker date="1520337232305" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+                <marker date="1520337232305" expanded="false" signature="336:512" ph="..." />
+                <marker date="1520337232305" expanded="true" signature="621:26592" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="676:1956" ph="Enums" />
+                <marker date="1520337232305" expanded="true" signature="721:872" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="905:1089" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="1125:1276" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="1318:1403" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="1443:1936" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="1966:6069" ph="Private Variables" />
+                <marker date="1520337232305" expanded="true" signature="6079:14477" ph="Properties" />
+                <marker date="1520337232305" expanded="true" signature="6244:6388" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="6446:6600" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="6651:7019" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="6727:7009" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="7029:7141" ph="/* Fps --------------------------------------------------------------------------- ... */" />
+                <marker date="1520337232305" expanded="true" signature="7199:7381" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="7439:7619" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="7677:7835" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="7892:8056" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="8113:8279" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="8337:8503" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="8560:8732" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="8790:8960" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="9018:9186" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="9609:9721" ph="/* Ram --------------------------------------------------------------------------- ... */" />
+                <marker date="1520337232305" expanded="true" signature="9779:9949" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="10008:10176" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="10233:10399" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="10456:10614" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="10672:10842" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="10900:11068" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="11399:11511" ph="/* Audio ------------------------------------------------------------------------- ... */" />
+                <marker date="1520337232305" expanded="true" signature="11569:11747" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="11805:11967" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="12070:12268" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="12326:12492" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="12550:12726" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="12784:12958" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="13016:13170" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="13228:13388" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="13418:13523" ph="/// Current audio spectrum from the specified AudioListener. ... " />
+                <marker date="1520337232305" expanded="true" signature="13633:13728" ph="/// Maximum DB registered in the current spectrum. ... " />
+                <marker date="1520337232305" expanded="true" signature="13836:13947" ph="/* Advanced --------------------------------------------------------------------- ... */" />
+                <marker date="1520337232305" expanded="true" signature="14005:14192" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="14258:14457" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="14487:14670" ph="Unity Methods" />
+                <marker date="1520337232305" expanded="true" signature="14530:14570" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="14593:14650" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="14680:16083" ph="Public Methods" />
+                <marker date="1520337232305" expanded="true" signature="14795:15398" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="14837:15388" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="15481:16055" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="15523:16045" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="16093:26586" ph="Private Methods" />
+                <marker date="1520337232305" expanded="true" signature="16153:17500" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="16192:16282" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="17546:20429" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="17677:18178" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="18093:18164" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="18217:18486" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="18401:18472" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="18524:18785" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="18700:18771" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="18802:18961" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="18876:18947" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="19089:19606" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="19520:19592" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="19660:19934" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="19848:19920" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="19974:20240" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="20154:20226" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="20257:20419" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="20333:20405" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="20465:24958" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="20572:20641" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="20658:20725" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="20767:24948" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="24995:25617" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="25066:25322" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="25339:25607" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="25670:25732" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="25800:25949" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="26031:26310" ph="{...}" />
+                <marker date="1520337232305" expanded="true" signature="26354:26558" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphyDebugger.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/GraphyDebugger.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7587">
+              <caret line="293" column="0" lean-forward="false" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
+              <folding>
+                <marker date="1517077374753" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+                <marker date="1517077374753" expanded="false" signature="336:594" ph="..." />
+                <marker date="1517077374753" expanded="true" signature="679:17677" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="735:1448" ph="Enums" />
+                <marker date="1517077374753" expanded="true" signature="783:979" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="1014:1171" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="1212:1319" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="1352:1428" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="1458:1873" ph="Structs" />
+                <marker date="1517077374753" expanded="true" signature="1534:1853" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="1883:4590" ph="Helper Class" />
+                <marker date="1517077374753" expanded="true" signature="1960:4570" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="4001:4425" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="4050:4411" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="4263:4393" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="4461:4560" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="4601:4842" ph="Private Variables" />
+                <marker date="1517077374753" expanded="true" signature="4852:5217" ph="Unity Methods" />
+                <marker date="1517077374753" expanded="true" signature="4895:5121" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="5144:5197" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="5227:10994" ph="Public Methods" />
+                <marker date="1517077374753" expanded="true" signature="5259:5330" ph="/// Add a new DebugPacket. ... " />
+                <marker date="1517077374753" expanded="true" signature="5396:5464" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="5474:5545" ph="/// Add a new DebugPacket. ... " />
+                <marker date="1517077374753" expanded="true" signature="5806:6257" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="6267:6338" ph="/// Add a new DebugPacket. ... " />
+                <marker date="1517077374753" expanded="true" signature="6606:7055" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="7065:7136" ph="/// Add a new DebugPacket. ... " />
+                <marker date="1517077374753" expanded="true" signature="7404:7853" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="7863:7934" ph="/// Add a new DebugPacket. ... " />
+                <marker date="1517077374753" expanded="true" signature="8209:8656" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="8666:8862" ph="/// Returns the first Packet with the specified ID in the DebugPacket list. ... " />
+                <marker date="1517077374753" expanded="true" signature="8929:9013" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="9023:9230" ph="/// Returns a list with all the Packets with the specified ID in the DebugPacket list. ... " />
+                <marker date="1517077374753" expanded="true" signature="9302:9388" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="9398:9594" ph="/// Removes the first Packet with the specified ID in the DebugPacket list. ... " />
+                <marker date="1517077374753" expanded="true" signature="9657:9749" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="9759:9954" ph="/// Removes all the Packets with the specified ID in the DebugPacket list. ... " />
+                <marker date="1517077374753" expanded="true" signature="10016:10097" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="10107:10327" ph="/// Add an Action callback to the first Packet with the specified ID in the DebugPacket list. ... " />
+                <marker date="1517077374753" expanded="true" signature="10408:10495" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="10505:10724" ph="/// Add an Action callback to all the Packets with the specified ID in the DebugPacket list. ... " />
+                <marker date="1517077374753" expanded="true" signature="10803:10974" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="10883:10964" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="11004:17671" ph="Private Methods" />
+                <marker date="1517077374753" expanded="true" signature="11037:11150" ph="/// Checks all the Debug Packets to see if they have to be executed. ... " />
+                <marker date="1517077374753" expanded="true" signature="11191:13603" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="11339:13444" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="11388:13430" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="11482:13412" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="11564:13390" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="11812:12090" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="11931:12056" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="12166:12521" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="12337:12487" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="12741:13325" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="12860:13291" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="13043:13205" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="13510:13593" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="13613:13779" ph="/// Returns true if a condition is met. ... " />
+                <marker date="1517077374753" expanded="true" signature="13853:14836" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="13908:14826" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="14846:15032" ph="/// Obtains the requested value from the specified variable. ... " />
+                <marker date="1517077374753" expanded="true" signature="15118:16032" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="15163:16022" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="16042:16191" ph="/// Executes the operations in the DebugPacket specified. ... " />
+                <marker date="1517077374753" expanded="true" signature="16268:17651" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="16318:16377" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="16421:17003" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="16584:16989" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="17048:17406" ph="{...}" />
+                <marker date="1517077374753" expanded="true" signature="17514:17592" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AudioGraph.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioGraph.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1080">
+              <caret line="43" column="48" lean-forward="false" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
+              <folding>
+                <marker date="1519998541370" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+                <marker date="1519998541370" expanded="false" signature="336:408" ph="..." />
+                <marker date="1519998541370" expanded="true" signature="481:4196" ph="{...}" />
+                <marker date="1519998541370" expanded="true" signature="496:812" ph="Private Variables" />
+                <marker date="1519998541370" expanded="true" signature="822:1089" ph="Unity Methods" />
+                <marker date="1519998541370" expanded="true" signature="873:913" ph="{...}" />
+                <marker date="1519998541370" expanded="true" signature="936:1069" ph="{...}" />
+                <marker date="1519998541370" expanded="true" signature="1000:1059" ph="{...}" />
+                <marker date="1519998541370" expanded="true" signature="1099:1295" ph="Public Methods" />
+                <marker date="1519998541370" expanded="true" signature="1161:1275" ph="{...}" />
+                <marker date="1519998541370" expanded="true" signature="1305:4189" ph="Private Methods" />
+                <marker date="1519998541370" expanded="true" signature="1375:2870" ph="{...}" />
+                <marker date="1519998541370" expanded="true" signature="1554:2673" ph="{...}" />
+                <marker date="1519998541370" expanded="true" signature="1673:1801" ph="{...}" />
+                <marker date="1519998541370" expanded="true" signature="1920:2474" ph="{...}" />
+                <marker date="1519998541370" expanded="true" signature="2495:2659" ph="{...}" />
+                <marker date="1519998541370" expanded="true" signature="2730:2816" ph="{...}" />
+                <marker date="1519998541370" expanded="true" signature="2918:3760" ph="{...}" />
+                <marker date="1519998541370" expanded="true" signature="3092:3164" ph="{...}" />
+                <marker date="1519998541370" expanded="true" signature="3790:4169" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AudioManager.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioManager.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4725">
+              <caret line="182" column="9" lean-forward="false" selection-start-line="182" selection-start-column="9" selection-end-line="182" selection-end-column="9" />
+              <folding>
+                <marker date="1520288140240" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+                <marker date="1520288140240" expanded="false" signature="336:479" ph="..." />
+                <marker date="1520288140240" expanded="true" signature="508:6698" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="584:6694" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="600:1311" ph="Private Variables" />
+                <marker date="1520288140240" expanded="true" signature="1321:1498" ph="Unity Methods" />
+                <marker date="1520288140240" expanded="true" signature="1364:1404" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="1426:1478" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="1508:5863" ph="Public Methods" />
+                <marker date="1520288140240" expanded="true" signature="1611:3414" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="1819:3404" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="3477:5303" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="3615:5293" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="3907:4011" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="4036:4144" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="4542:4646" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="4671:4779" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="5347:5412" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="5452:5835" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="5516:5607" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="5873:6688" ph="Private Methods" />
+                <marker date="1520288140240" expanded="true" signature="5925:6501" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="6315:6491" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="6376:6477" ph="{...}" />
+                <marker date="1520288140240" expanded="true" signature="6551:6668" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CUIColorPicker.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Color Picker/CUIColorPicker.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4374">
+              <caret line="169" column="20" lean-forward="false" selection-start-line="169" selection-start-column="20" selection-end-line="169" selection-end-column="20" />
+              <folding>
+                <marker date="1520355419938" expanded="true" signature="0:1132" ph="/* https://github.com/SnapshotGames/cui_color_picker ... */" />
+                <marker date="1520355419938" expanded="true" signature="1140:1188" ph="..." />
+                <marker date="1520355419938" expanded="true" signature="1230:9070" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="1280:9068" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="1449:1513" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="1886:2471" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="2082:2120" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="2149:2230" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="2259:2325" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="2556:2889" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="2957:3062" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="3112:3186" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="3238:8234" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="3646:3834" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="3906:4065" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="4183:4257" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="4719:4986" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="4767:4937" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="4819:4919" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="6483:6578" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="6483:6592" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="6980:7335" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="7035:7321" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="7127:7191" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="7238:7303" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="7363:7777" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="7708:7763" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="7806:8195" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="8126:8181" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="8276:8540" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="8566:8635" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="8665:8996" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="8746:8984" ph="{...}" />
+                <marker date="1520355419938" expanded="true" signature="9019:9062" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomizeGraphy.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/CustomizeGraphy.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1216">
+              <caret line="293" column="40" lean-forward="false" selection-start-line="293" selection-start-column="40" selection-end-line="293" selection-end-column="40" />
+              <folding>
+                <marker date="1520353848533" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+                <marker date="1520353848533" expanded="false" signature="336:480" ph="..." />
+                <marker date="1520353848533" expanded="true" signature="522:12095" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="573:12092" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="3649:3766" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="3865:11545" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="4054:4479" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="4285:4463" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="4934:5153" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="5037:5139" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="5223:5445" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="5326:5431" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="5516:5926" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="5741:5910" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="6000:6419" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="6228:6403" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="6494:6916" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="6723:6900" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="7581:8003" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="7810:7987" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="8079:8504" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="8309:8488" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="8575:8985" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="8800:8969" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="9532:9957" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="9763:9941" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="11581:11807" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="11637:11709" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="11726:11797" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="11845:12086" ph="{...}" />
+                <marker date="1520353848533" expanded="true" signature="11898:12076" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Graph.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Graph/Graph.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="486">
+              <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+              <folding>
+                <marker date="1519385495998" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+                <marker date="1519385495998" expanded="false" signature="336:413" ph="..." />
+                <marker date="1519385495998" expanded="true" signature="442:774" ph="{...}" />
+                <marker date="1519385495998" expanded="true" signature="492:771" ph="{...}" />
+                <marker date="1519385495998" expanded="true" signature="507:576" ph="/// Updates the graph/s. ... " />
+                <marker date="1519385495998" expanded="true" signature="633:717" ph="/// Creates the points for the graph/s. ... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShaderGraph.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Shader/ShaderGraph.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-520">
+              <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+              <folding>
+                <marker date="1520372415597" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+                <marker date="1520372415597" expanded="false" signature="336:393" ph="..." />
+                <marker date="1520372415597" expanded="true" signature="409:4175" ph="{...}" />
+                <marker date="1520372415597" expanded="true" signature="440:4173" ph="{...}" />
+                <marker date="1520372415597" expanded="true" signature="510:596" ph="/* Future implementation pending ... */" />
+                <marker date="1520372415597" expanded="true" signature="1436:2085" ph="/// This is done to avoid a design problem that arrays in shaders have,  ... " />
+                <marker date="1520372415597" expanded="true" signature="2124:2691" ph="{...}" />
+                <marker date="1520372415597" expanded="true" signature="2701:2839" ph="/// Updates the material linked with this shader graph  with the values in the float[] array. ... " />
+                <marker date="1520372415597" expanded="true" signature="2873:2949" ph="{...}" />
+                <marker date="1520372415597" expanded="true" signature="2959:3054" ph="/// Updates the average parameter in the material. ... " />
+                <marker date="1520372415597" expanded="true" signature="3090:3169" ph="{...}" />
+                <marker date="1520372415597" expanded="true" signature="3187:3275" ph="/// Updates the thresholds in the material. ... " />
+                <marker date="1520372415597" expanded="true" signature="3314:3482" ph="{...}" />
+                <marker date="1520372415597" expanded="true" signature="3500:3584" ph="/// Updates the colors in the material. ... " />
+                <marker date="1520372415597" expanded="true" signature="3619:3842" ph="{...}" />
+                <marker date="1520372415597" expanded="true" signature="3852:3962" ph="/// Updates the points in the graph with the set array of values. ... " />
+                <marker date="1520372415597" expanded="true" signature="3997:4167" ph="{...}" />
+                <marker date="1520372415597" expanded="true" signature="4020:4106" ph="/* Requires an array called &quot;name&quot; ... */" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphMobile.shader" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Shaders/GraphMobile.shader">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+              <folding>
+                <marker date="1520372595290" expanded="true" signature="29:3838" ph="{...}" />
+                <marker date="1520372595290" expanded="true" signature="44:459" ph="{...}" />
+                <marker date="1520372595290" expanded="true" signature="475:3836" ph="{...}" />
+                <marker date="1520372595290" expanded="true" signature="477:659" ph="/* Tags ... */" />
+                <marker date="1520372595290" expanded="true" signature="758:3832" ph="{...}" />
+                <marker date="1520372595290" expanded="true" signature="773:3822" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphStandard.shader" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Shaders/GraphStandard.shader">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="756">
+              <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+              <folding>
+                <marker date="1520372563369" expanded="true" signature="31:3828" ph="{...}" />
+                <marker date="1520372563369" expanded="true" signature="46:461" ph="{...}" />
+                <marker date="1520372563369" expanded="true" signature="477:3826" ph="{...}" />
+                <marker date="1520372563369" expanded="true" signature="479:661" ph="/* Tags ... */" />
+                <marker date="1520372563369" expanded="true" signature="760:3822" ph="{...}" />
+                <marker date="1520372563369" expanded="true" signature="775:3812" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>vr</find>
+      <find>canvas</find>
+      <find>root</find>
+    </findStrings>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TestScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/ForceSliderToMultipleOf3.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/UI/IModifiableState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/ForceSliderToPowerOf2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsMonitor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/UpdateTextWithSliderValue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/CustomizeGraphy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Shaders/GraphMobile.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsGraph.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Shaders/GraphStandard.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Ram/RamText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Ram/RamGraph.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Ram/RamManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Ram/RamMonitor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Util/Singleton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Util/ExtensionMethods.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F6949EC5-53D4-4DE3-9F54-5BAB8EBF397B/35/8fa86f57/UnityAction.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioGraph.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioMonitor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Graph/Graph.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Editor/GraphyDebuggerEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Editor/GraphyManagerEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Shader/ShaderGraph.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://Z:/Tintín/_Videojuegos/Proyectos paralelos/Chida Vida/Chida Vida/Assets/QHierarchy/Editor/Scripts/QHierarchyInitializer.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Advanced/AdvancedData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../JobSystemTest/Assets/JobTest.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/GraphyManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F6949EC5-53D4-4DE3-9F54-5BAB8EBF397B/07/1a713799/FFTWindow.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ObjectInstantiator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneChanger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/GraphyDebugger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Color Picker/CUIColorPicker.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/ObjectInstantiator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TestScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Util/Singleton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SceneChanger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Changelog.txt" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Graph/Graph.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Util/ExtensionMethods.cs" />
+        <option value="$PROJECT_DIR$/../../JobSystemTest/Assets/Job.cs" />
+        <option value="$PROJECT_DIR$/../../JobSystemTest/Assets/JobTest.cs" />
+        <option value="Z:/Tintín/_Videojuegos/Proyectos paralelos/Chida Vida/Chida Vida/Assets/QHierarchy/Editor/Scripts/QHierarchyInitializer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Advanced/AdvancedData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Editor/GraphyManagerEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsGraph.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Ram/RamGraph.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsMonitor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioGraph.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioMonitor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Ram/RamText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/CustomizeGraphy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/UpdateTextWithSliderValue.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/ForceSliderToPower.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/ForceSliderToPowerOf2.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/ForceSliderToMultiple.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/ForceSliderToMultipleOf3.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Ram/RamManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Color Picker/CUIColorPicker.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/CustomizeGraphy.cs" />
+        <option value="$PROJECT_DIR$/../Graphy_Test/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/GraphyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/GraphyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Shader/ShaderGraph.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Shaders/Graph.shader" />
+        <option value="$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Shaders/GraphMobile.shader" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="45" />
+    <option name="y" value="62" />
+    <option name="width" value="2595" />
+    <option name="height" value="1635" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>AngularJS</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Graphy (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Graphy (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Graphy (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Graphy (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Scripts" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Graphy (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Tayx" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Graphy (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Tayx" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Graphy - Ultimate Stats Monitor" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Graphy (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Tayx" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Graphy - Ultimate Stats Monitor" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Scripts" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Graphy (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Tayx" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Graphy - Ultimate Stats Monitor" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Scripts" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Graph" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Graphy (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Tayx" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Graphy - Ultimate Stats Monitor" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Scripts" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Shader" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Graphy (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Tayx" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Graphy - Ultimate Stats Monitor" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Shaders" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-file-system" value="false" />
+        <option name="show-all-items" value="false" />
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="214305c0-e02c-40e6-8aa2-406ae0e28b65" name="Default" comment="" />
+      <created>1518043826485</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1518043826485</updated>
+      <workItem from="1518043829299" duration="1068000" />
+      <workItem from="1518110609578" duration="1206000" />
+      <workItem from="1518111838455" duration="715000" />
+      <workItem from="1518112574022" duration="61000" />
+      <workItem from="1518112647889" duration="49000" />
+      <workItem from="1518112712888" duration="5087000" />
+      <workItem from="1518521814822" duration="7409000" />
+      <workItem from="1518776660489" duration="2369000" />
+      <workItem from="1519341012183" duration="142000" />
+      <workItem from="1519382743591" duration="8487000" />
+      <workItem from="1519469945183" duration="6419000" />
+      <workItem from="1519561507456" duration="610000" />
+      <workItem from="1519813088206" duration="14751000" />
+      <workItem from="1520264598637" duration="25777000" />
+      <workItem from="1520371928384" duration="2046000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="76196000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="45" y="62" width="2595" height="1635" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981676" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18927322" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27656674" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27564102" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="5" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsMonitor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Advanced/AdvancedData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="26" column="33" lean-forward="false" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsMonitor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="53" lean-forward="false" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Shaders/Graph.shader">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="60" column="28" lean-forward="true" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Advanced/AdvancedData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="26" column="33" lean-forward="false" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsMonitor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="65" lean-forward="true" selection-start-line="22" selection-start-column="65" selection-end-line="22" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Advanced/AdvancedData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/To-Do.txt" />
+    <entry file="file://$PROJECT_DIR$/Assets/CodeStage/AdvancedFPSCounter/Scripts/Utils/UIUtils.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/CodeStage/AdvancedFPSCounter/Scripts/AFPSCounter.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/ObjectInstantiator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="27" column="12" lean-forward="false" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/TestScript.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/UI/IModifiableState.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Util/Singleton.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="733">
+          <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Editor/GraphyDebuggerEditor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/SceneChanger.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Changelog.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Util/ExtensionMethods.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../JobSystemTest/Assets/JobTest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/Tintín/_Videojuegos/Proyectos paralelos/Chida Vida/Chida Vida/Assets/QHierarchy/Editor/Scripts/QHierarchyInitializer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioText.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="37" column="18" lean-forward="false" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsGraph.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="40" column="18" lean-forward="false" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsMonitor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1269">
+          <caret line="49" column="18" lean-forward="false" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsText.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1134">
+          <caret line="46" column="18" lean-forward="false" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Ram/RamGraph.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1215">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Ram/RamMonitor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="36" column="29" lean-forward="false" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F6949EC5-53D4-4DE3-9F54-5BAB8EBF397B/35/8fa86f57/UnityAction.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Ram/RamText.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1161">
+          <caret line="43" column="9" lean-forward="false" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/CustomizeGraphy.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/UpdateTextWithSliderValue.cs" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F6949EC5-53D4-4DE3-9F54-5BAB8EBF397B/07/1a713799/FFTWindow.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/UpdateTextWithSliderValue.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/ForceSliderToPowerOf2.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="31" column="28" lean-forward="false" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Editor/GraphyManagerEditor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1094">
+          <caret line="499" column="21" lean-forward="false" selection-start-line="494" selection-start-column="20" selection-end-line="499" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/ForceSliderToMultipleOf3.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Advanced/AdvancedData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="187" column="20" lean-forward="false" selection-start-line="187" selection-start-column="20" selection-end-line="187" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioMonitor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4023">
+          <caret line="151" column="17" lean-forward="false" selection-start-line="151" selection-start-column="17" selection-end-line="151" selection-end-column="17" />
+          <folding>
+            <marker date="1519998541385" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+            <marker date="1519998541385" expanded="false" signature="336:409" ph="..." />
+            <marker date="1519998541385" expanded="true" signature="487:4471" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="502:954" ph="Private Variables" />
+            <marker date="1519998541385" expanded="true" signature="964:1544" ph="Properties" />
+            <marker date="1519998541385" expanded="true" signature="992:1097" ph="/// Current audio spectrum from the specified AudioListener. ... " />
+            <marker date="1519998541385" expanded="true" signature="1170:1265" ph="/// Maximum DB registered in the current spectrum. ... " />
+            <marker date="1519998541385" expanded="true" signature="1330:1438" ph="/// Returns true if there is a reference to the audio listener. ... " />
+            <marker date="1519998541385" expanded="true" signature="1554:2449" ph="Unity Methods" />
+            <marker date="1519998541385" expanded="true" signature="1597:1637" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="1660:2418" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="1711:2188" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="1952:2130" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="2019:2112" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="2343:2408" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="2459:3711" ph="Public Methods" />
+            <marker date="1519998541385" expanded="true" signature="2529:3092" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="2964:3029" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="3102:3279" ph="/// Converts spectrum values to decibels using logarithms. ... " />
+            <marker date="1519998541385" expanded="true" signature="3321:3417" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="3427:3589" ph="/// Normalizes a value in decibels between 0-1. ... " />
+            <marker date="1519998541385" expanded="true" signature="3633:3691" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="3721:4463" ph="Private Methods" />
+            <marker date="1519998541385" expanded="true" signature="3754:3854" ph="/// Tries to find an audio listener in the main camera. ... " />
+            <marker date="1519998541385" expanded="true" signature="3895:3988" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="4017:4443" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="4220:4432" ph="{...}" />
+            <marker date="1519998541385" expanded="true" signature="4341:4418" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Fps/FpsManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4941">
+          <caret line="189" column="51" lean-forward="false" selection-start-line="189" selection-start-column="51" selection-end-line="189" selection-end-column="51" />
+          <folding>
+            <marker date="1520288156579" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+            <marker date="1520288156579" expanded="false" signature="336:496" ph="..." />
+            <marker date="1520288156579" expanded="true" signature="597:6932" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="613:1361" ph="Private Variables" />
+            <marker date="1520288156579" expanded="true" signature="1371:1556" ph="Unity Methods" />
+            <marker date="1520288156579" expanded="true" signature="1414:1454" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="1484:1536" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="1566:6117" ph="Public Methods" />
+            <marker date="1520288156579" expanded="true" signature="1669:3154" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="1877:3144" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="3217:5565" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="3355:5555" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="3627:3731" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="3756:3864" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="4192:4296" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="4321:4429" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="4825:4929" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="4954:5062" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="5609:5674" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="5722:6097" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="5786:5877" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="6127:6926" ph="Private Methods" />
+            <marker date="1520288156579" expanded="true" signature="6179:6743" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="6557:6733" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="6618:6719" ph="{...}" />
+            <marker date="1520288156579" expanded="true" signature="6793:6906" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Ram/RamManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4428">
+          <caret line="171" column="51" lean-forward="false" selection-start-line="171" selection-start-column="51" selection-end-line="171" selection-end-column="51" />
+          <folding>
+            <marker date="1520288177381" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+            <marker date="1520288177381" expanded="false" signature="336:479" ph="..." />
+            <marker date="1520288177381" expanded="true" signature="580:6131" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="596:1200" ph="Private Variables" />
+            <marker date="1520288177381" expanded="true" signature="1210:1395" ph="Unity Methods" />
+            <marker date="1520288177381" expanded="true" signature="1253:1293" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="1323:1375" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="1405:5371" ph="Public Methods" />
+            <marker date="1520288177381" expanded="true" signature="1508:2993" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="1716:2983" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="3056:4866" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="3194:4856" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="3486:3590" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="3615:3723" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="4105:4209" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="4234:4342" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="4910:4975" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="5021:5351" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="5085:5176" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="5381:6125" ph="Private Methods" />
+            <marker date="1520288177381" expanded="true" signature="5433:5942" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="5756:5932" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="5817:5918" ph="{...}" />
+            <marker date="1520288177381" expanded="true" signature="5992:6105" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Color Picker/CUIColorPicker.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4374">
+          <caret line="169" column="20" lean-forward="false" selection-start-line="169" selection-start-column="20" selection-end-line="169" selection-end-column="20" />
+          <folding>
+            <marker date="1520355419938" expanded="true" signature="0:1132" ph="/* https://github.com/SnapshotGames/cui_color_picker ... */" />
+            <marker date="1520355419938" expanded="true" signature="1140:1188" ph="..." />
+            <marker date="1520355419938" expanded="true" signature="1230:9070" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="1280:9068" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="1449:1513" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="1886:2471" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="2082:2120" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="2149:2230" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="2259:2325" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="2556:2889" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="2957:3062" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="3112:3186" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="3238:8234" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="3646:3834" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="3906:4065" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="4183:4257" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="4719:4986" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="4767:4937" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="4819:4919" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="6483:6578" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="6483:6592" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="6980:7335" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="7035:7321" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="7127:7191" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="7238:7303" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="7363:7777" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="7708:7763" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="7806:8195" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="8126:8181" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="8276:8540" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="8566:8635" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="8665:8996" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="8746:8984" ph="{...}" />
+            <marker date="1520355419938" expanded="true" signature="9019:9062" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioGraph.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="43" column="48" lean-forward="false" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
+          <folding>
+            <marker date="1519998541370" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+            <marker date="1519998541370" expanded="false" signature="336:408" ph="..." />
+            <marker date="1519998541370" expanded="true" signature="481:4196" ph="{...}" />
+            <marker date="1519998541370" expanded="true" signature="496:812" ph="Private Variables" />
+            <marker date="1519998541370" expanded="true" signature="822:1089" ph="Unity Methods" />
+            <marker date="1519998541370" expanded="true" signature="873:913" ph="{...}" />
+            <marker date="1519998541370" expanded="true" signature="936:1069" ph="{...}" />
+            <marker date="1519998541370" expanded="true" signature="1000:1059" ph="{...}" />
+            <marker date="1519998541370" expanded="true" signature="1099:1295" ph="Public Methods" />
+            <marker date="1519998541370" expanded="true" signature="1161:1275" ph="{...}" />
+            <marker date="1519998541370" expanded="true" signature="1305:4189" ph="Private Methods" />
+            <marker date="1519998541370" expanded="true" signature="1375:2870" ph="{...}" />
+            <marker date="1519998541370" expanded="true" signature="1554:2673" ph="{...}" />
+            <marker date="1519998541370" expanded="true" signature="1673:1801" ph="{...}" />
+            <marker date="1519998541370" expanded="true" signature="1920:2474" ph="{...}" />
+            <marker date="1519998541370" expanded="true" signature="2495:2659" ph="{...}" />
+            <marker date="1519998541370" expanded="true" signature="2730:2816" ph="{...}" />
+            <marker date="1519998541370" expanded="true" signature="2918:3760" ph="{...}" />
+            <marker date="1519998541370" expanded="true" signature="3092:3164" ph="{...}" />
+            <marker date="1519998541370" expanded="true" signature="3790:4169" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Audio/AudioManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4725">
+          <caret line="182" column="9" lean-forward="false" selection-start-line="182" selection-start-column="9" selection-end-line="182" selection-end-column="9" />
+          <folding>
+            <marker date="1520288140240" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+            <marker date="1520288140240" expanded="false" signature="336:479" ph="..." />
+            <marker date="1520288140240" expanded="true" signature="508:6698" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="584:6694" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="600:1311" ph="Private Variables" />
+            <marker date="1520288140240" expanded="true" signature="1321:1498" ph="Unity Methods" />
+            <marker date="1520288140240" expanded="true" signature="1364:1404" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="1426:1478" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="1508:5863" ph="Public Methods" />
+            <marker date="1520288140240" expanded="true" signature="1611:3414" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="1819:3404" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="3477:5303" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="3615:5293" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="3907:4011" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="4036:4144" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="4542:4646" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="4671:4779" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="5347:5412" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="5452:5835" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="5516:5607" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="5873:6688" ph="Private Methods" />
+            <marker date="1520288140240" expanded="true" signature="5925:6501" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="6315:6491" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="6376:6477" ph="{...}" />
+            <marker date="1520288140240" expanded="true" signature="6551:6668" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Graphy_Test/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/GraphyManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="402" column="79" lean-forward="false" selection-start-line="402" selection-start-column="79" selection-end-line="402" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/GraphyDebugger.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7587">
+          <caret line="293" column="0" lean-forward="false" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
+          <folding>
+            <marker date="1517077374753" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+            <marker date="1517077374753" expanded="false" signature="336:594" ph="..." />
+            <marker date="1517077374753" expanded="true" signature="679:17677" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="735:1448" ph="Enums" />
+            <marker date="1517077374753" expanded="true" signature="783:979" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="1014:1171" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="1212:1319" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="1352:1428" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="1458:1873" ph="Structs" />
+            <marker date="1517077374753" expanded="true" signature="1534:1853" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="1883:4590" ph="Helper Class" />
+            <marker date="1517077374753" expanded="true" signature="1960:4570" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="4001:4425" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="4050:4411" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="4263:4393" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="4461:4560" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="4601:4842" ph="Private Variables" />
+            <marker date="1517077374753" expanded="true" signature="4852:5217" ph="Unity Methods" />
+            <marker date="1517077374753" expanded="true" signature="4895:5121" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="5144:5197" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="5227:10994" ph="Public Methods" />
+            <marker date="1517077374753" expanded="true" signature="5259:5330" ph="/// Add a new DebugPacket. ... " />
+            <marker date="1517077374753" expanded="true" signature="5396:5464" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="5474:5545" ph="/// Add a new DebugPacket. ... " />
+            <marker date="1517077374753" expanded="true" signature="5806:6257" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="6267:6338" ph="/// Add a new DebugPacket. ... " />
+            <marker date="1517077374753" expanded="true" signature="6606:7055" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="7065:7136" ph="/// Add a new DebugPacket. ... " />
+            <marker date="1517077374753" expanded="true" signature="7404:7853" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="7863:7934" ph="/// Add a new DebugPacket. ... " />
+            <marker date="1517077374753" expanded="true" signature="8209:8656" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="8666:8862" ph="/// Returns the first Packet with the specified ID in the DebugPacket list. ... " />
+            <marker date="1517077374753" expanded="true" signature="8929:9013" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="9023:9230" ph="/// Returns a list with all the Packets with the specified ID in the DebugPacket list. ... " />
+            <marker date="1517077374753" expanded="true" signature="9302:9388" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="9398:9594" ph="/// Removes the first Packet with the specified ID in the DebugPacket list. ... " />
+            <marker date="1517077374753" expanded="true" signature="9657:9749" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="9759:9954" ph="/// Removes all the Packets with the specified ID in the DebugPacket list. ... " />
+            <marker date="1517077374753" expanded="true" signature="10016:10097" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="10107:10327" ph="/// Add an Action callback to the first Packet with the specified ID in the DebugPacket list. ... " />
+            <marker date="1517077374753" expanded="true" signature="10408:10495" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="10505:10724" ph="/// Add an Action callback to all the Packets with the specified ID in the DebugPacket list. ... " />
+            <marker date="1517077374753" expanded="true" signature="10803:10974" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="10883:10964" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="11004:17671" ph="Private Methods" />
+            <marker date="1517077374753" expanded="true" signature="11037:11150" ph="/// Checks all the Debug Packets to see if they have to be executed. ... " />
+            <marker date="1517077374753" expanded="true" signature="11191:13603" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="11339:13444" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="11388:13430" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="11482:13412" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="11564:13390" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="11812:12090" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="11931:12056" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="12166:12521" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="12337:12487" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="12741:13325" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="12860:13291" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="13043:13205" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="13510:13593" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="13613:13779" ph="/// Returns true if a condition is met. ... " />
+            <marker date="1517077374753" expanded="true" signature="13853:14836" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="13908:14826" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="14846:15032" ph="/// Obtains the requested value from the specified variable. ... " />
+            <marker date="1517077374753" expanded="true" signature="15118:16032" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="15163:16022" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="16042:16191" ph="/// Executes the operations in the DebugPacket specified. ... " />
+            <marker date="1517077374753" expanded="true" signature="16268:17651" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="16318:16377" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="16421:17003" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="16584:16989" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="17048:17406" ph="{...}" />
+            <marker date="1517077374753" expanded="true" signature="17514:17592" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/GraphyManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="386" column="31" lean-forward="false" selection-start-line="386" selection-start-column="31" selection-end-line="386" selection-end-column="31" />
+          <folding>
+            <marker date="1520337232305" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+            <marker date="1520337232305" expanded="false" signature="336:512" ph="..." />
+            <marker date="1520337232305" expanded="true" signature="621:26592" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="676:1956" ph="Enums" />
+            <marker date="1520337232305" expanded="true" signature="721:872" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="905:1089" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="1125:1276" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="1318:1403" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="1443:1936" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="1966:6069" ph="Private Variables" />
+            <marker date="1520337232305" expanded="true" signature="6079:14477" ph="Properties" />
+            <marker date="1520337232305" expanded="true" signature="6244:6388" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="6446:6600" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="6651:7019" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="6727:7009" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="7029:7141" ph="/* Fps --------------------------------------------------------------------------- ... */" />
+            <marker date="1520337232305" expanded="true" signature="7199:7381" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="7439:7619" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="7677:7835" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="7892:8056" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="8113:8279" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="8337:8503" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="8560:8732" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="8790:8960" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="9018:9186" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="9609:9721" ph="/* Ram --------------------------------------------------------------------------- ... */" />
+            <marker date="1520337232305" expanded="true" signature="9779:9949" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="10008:10176" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="10233:10399" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="10456:10614" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="10672:10842" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="10900:11068" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="11399:11511" ph="/* Audio ------------------------------------------------------------------------- ... */" />
+            <marker date="1520337232305" expanded="true" signature="11569:11747" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="11805:11967" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="12070:12268" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="12326:12492" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="12550:12726" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="12784:12958" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="13016:13170" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="13228:13388" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="13418:13523" ph="/// Current audio spectrum from the specified AudioListener. ... " />
+            <marker date="1520337232305" expanded="true" signature="13633:13728" ph="/// Maximum DB registered in the current spectrum. ... " />
+            <marker date="1520337232305" expanded="true" signature="13836:13947" ph="/* Advanced --------------------------------------------------------------------- ... */" />
+            <marker date="1520337232305" expanded="true" signature="14005:14192" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="14258:14457" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="14487:14670" ph="Unity Methods" />
+            <marker date="1520337232305" expanded="true" signature="14530:14570" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="14593:14650" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="14680:16083" ph="Public Methods" />
+            <marker date="1520337232305" expanded="true" signature="14795:15398" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="14837:15388" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="15481:16055" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="15523:16045" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="16093:26586" ph="Private Methods" />
+            <marker date="1520337232305" expanded="true" signature="16153:17500" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="16192:16282" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="17546:20429" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="17677:18178" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="18093:18164" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="18217:18486" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="18401:18472" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="18524:18785" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="18700:18771" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="18802:18961" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="18876:18947" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="19089:19606" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="19520:19592" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="19660:19934" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="19848:19920" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="19974:20240" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="20154:20226" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="20257:20419" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="20333:20405" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="20465:24958" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="20572:20641" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="20658:20725" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="20767:24948" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="24995:25617" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="25066:25322" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="25339:25607" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="25670:25732" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="25800:25949" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="26031:26310" ph="{...}" />
+            <marker date="1520337232305" expanded="true" signature="26354:26558" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Graph/Graph.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding>
+            <marker date="1519385495998" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+            <marker date="1519385495998" expanded="false" signature="336:413" ph="..." />
+            <marker date="1519385495998" expanded="true" signature="442:774" ph="{...}" />
+            <marker date="1519385495998" expanded="true" signature="492:771" ph="{...}" />
+            <marker date="1519385495998" expanded="true" signature="507:576" ph="/// Updates the graph/s. ... " />
+            <marker date="1519385495998" expanded="true" signature="633:717" ph="/// Creates the points for the graph/s. ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scripts/Shader/ShaderGraph.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-520">
+          <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+          <folding>
+            <marker date="1520372415597" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+            <marker date="1520372415597" expanded="false" signature="336:393" ph="..." />
+            <marker date="1520372415597" expanded="true" signature="409:4175" ph="{...}" />
+            <marker date="1520372415597" expanded="true" signature="440:4173" ph="{...}" />
+            <marker date="1520372415597" expanded="true" signature="510:596" ph="/* Future implementation pending ... */" />
+            <marker date="1520372415597" expanded="true" signature="1436:2085" ph="/// This is done to avoid a design problem that arrays in shaders have,  ... " />
+            <marker date="1520372415597" expanded="true" signature="2124:2691" ph="{...}" />
+            <marker date="1520372415597" expanded="true" signature="2701:2839" ph="/// Updates the material linked with this shader graph  with the values in the float[] array. ... " />
+            <marker date="1520372415597" expanded="true" signature="2873:2949" ph="{...}" />
+            <marker date="1520372415597" expanded="true" signature="2959:3054" ph="/// Updates the average parameter in the material. ... " />
+            <marker date="1520372415597" expanded="true" signature="3090:3169" ph="{...}" />
+            <marker date="1520372415597" expanded="true" signature="3187:3275" ph="/// Updates the thresholds in the material. ... " />
+            <marker date="1520372415597" expanded="true" signature="3314:3482" ph="{...}" />
+            <marker date="1520372415597" expanded="true" signature="3500:3584" ph="/// Updates the colors in the material. ... " />
+            <marker date="1520372415597" expanded="true" signature="3619:3842" ph="{...}" />
+            <marker date="1520372415597" expanded="true" signature="3852:3962" ph="/// Updates the points in the graph with the set array of values. ... " />
+            <marker date="1520372415597" expanded="true" signature="3997:4167" ph="{...}" />
+            <marker date="1520372415597" expanded="true" signature="4020:4106" ph="/* Requires an array called &quot;name&quot; ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Shaders/Graph.shader">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Scene/Customization Scripts/CustomizeGraphy.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1216">
+          <caret line="293" column="40" lean-forward="false" selection-start-line="293" selection-start-column="40" selection-end-line="293" selection-end-column="40" />
+          <folding>
+            <marker date="1520353848533" expanded="true" signature="0:328" ph="/* --------------------------------------- ... */" />
+            <marker date="1520353848533" expanded="false" signature="336:480" ph="..." />
+            <marker date="1520353848533" expanded="true" signature="522:12095" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="573:12092" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="3649:3766" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="3865:11545" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="4054:4479" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="4285:4463" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="4934:5153" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="5037:5139" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="5223:5445" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="5326:5431" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="5516:5926" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="5741:5910" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="6000:6419" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="6228:6403" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="6494:6916" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="6723:6900" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="7581:8003" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="7810:7987" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="8079:8504" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="8309:8488" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="8575:8985" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="8800:8969" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="9532:9957" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="9763:9941" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="11581:11807" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="11637:11709" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="11726:11797" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="11845:12086" ph="{...}" />
+            <marker date="1520353848533" expanded="true" signature="11898:12076" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Shaders/GraphMobile.shader">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding>
+            <marker date="1520372595290" expanded="true" signature="29:3838" ph="{...}" />
+            <marker date="1520372595290" expanded="true" signature="44:459" ph="{...}" />
+            <marker date="1520372595290" expanded="true" signature="475:3836" ph="{...}" />
+            <marker date="1520372595290" expanded="true" signature="477:659" ph="/* Tags ... */" />
+            <marker date="1520372595290" expanded="true" signature="758:3832" ph="{...}" />
+            <marker date="1520372595290" expanded="true" signature="773:3822" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Tayx/Graphy - Ultimate Stats Monitor/Shaders/GraphStandard.shader">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+          <folding>
+            <marker date="1520372563369" expanded="true" signature="31:3828" ph="{...}" />
+            <marker date="1520372563369" expanded="true" signature="46:461" ph="{...}" />
+            <marker date="1520372563369" expanded="true" signature="477:3826" ph="{...}" />
+            <marker date="1520372563369" expanded="true" signature="479:661" ph="/* Tags ... */" />
+            <marker date="1520372563369" expanded="true" signature="760:3822" ph="{...}" />
+            <marker date="1520372563369" expanded="true" signature="775:3812" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
