@@ -1,4 +1,10 @@
 -----------------------------
+v1.5.2
+
+- Removed asmdefs to avoid missing reference issues in new Unity alpha versions.
+- Improvements avgFps calculation, changed list to array (thanks @Kaladrius2trip).
+
+-----------------------------
 v1.5.1
 
 - Hide Graphy in Game view when it's be disabled on startup.
