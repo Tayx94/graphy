@@ -66,6 +66,12 @@ namespace Tayx.Graphy.Fps
         
         public void UpdateParameters()
         {
+            if (m_shaderGraph == null)
+            {
+                // TODO: While Graphy is disabled (e.g. by default via Ctrl+H) and while in Editor after a Hot-Swap,
+                // the OnApplicationFocus calls this while m_shaderGraph == null, throwing a NullReferenceException
+                return;
+            }
             switch (m_graphyManager.GraphyMode)
             {
                 case GraphyManager.Mode.FULL:
