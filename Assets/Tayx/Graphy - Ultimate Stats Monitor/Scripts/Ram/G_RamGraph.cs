@@ -164,14 +164,16 @@ namespace Tayx.Graphy.Ram
 
         protected override void CreatePoints()
         {
+            if (m_allocatedArray == null || m_allocatedArray.Length != m_resolution)
+            {
+                m_allocatedArray                = new float[m_resolution];
+                m_reservedArray                 = new float[m_resolution];
+                m_monoArray                     = new float[m_resolution];
 
-            m_shaderGraphAllocated.Array    = new float[m_resolution];
-            m_shaderGraphReserved.Array     = new float[m_resolution];
-            m_shaderGraphMono.Array         = new float[m_resolution];
-
-            m_allocatedArray    = new float[m_resolution];
-            m_reservedArray     = new float[m_resolution];
-            m_monoArray         = new float[m_resolution];
+                m_shaderGraphAllocated.Array    = new float[m_resolution];
+                m_shaderGraphReserved.Array     = new float[m_resolution];
+                m_shaderGraphMono.Array         = new float[m_resolution];
+            }
 
             for (int i = 0; i < m_resolution; i++)
             {

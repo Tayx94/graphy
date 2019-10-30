@@ -137,9 +137,11 @@ namespace Tayx.Graphy.Fps
 
         protected override void CreatePoints()
         {
-            m_shaderGraph.Array = new float[m_resolution];
-
-            m_fpsArray = new int[m_resolution];
+            if (m_fpsArray == null || m_fpsArray.Length != m_resolution)
+            {
+                m_fpsArray              = new int[m_resolution];
+                m_shaderGraph.Array     = new float[m_resolution];
+            }
 
             for (int i = 0; i < m_resolution; i++)
             {

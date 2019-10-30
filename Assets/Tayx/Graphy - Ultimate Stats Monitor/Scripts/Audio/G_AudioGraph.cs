@@ -189,11 +189,13 @@ namespace Tayx.Graphy.Audio
         protected override void CreatePoints()
         {
             // Init Arrays
-            m_shaderGraph.Array                     = new float[m_resolution];
-            m_shaderGraphHighestValues.Array        = new float[m_resolution];
-
-            m_graphArray                            = new float[m_resolution];
-            m_graphArrayHighestValue                = new float[m_resolution];
+            if (m_graphArray == null || m_graphArray.Length != m_resolution)
+            {
+                m_graphArray                                = new float[m_resolution];
+                m_graphArrayHighestValue                    = new float[m_resolution];
+                m_shaderGraph.Array                         = new float[m_resolution];
+                m_shaderGraphHighestValues.Array            = new float[m_resolution];
+            }
 
             for (int i = 0; i < m_resolution; i++)
             {
