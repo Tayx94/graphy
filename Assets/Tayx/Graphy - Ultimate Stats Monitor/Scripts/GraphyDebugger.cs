@@ -389,7 +389,7 @@ namespace Tayx.Graphy
                 return;
             }
 
-            for (var i = 0; i < m_debugPackets.Count; i++)
+            for (int i = 0; i < m_debugPackets.Count; i++)
             {
                 DebugPacket packet = m_debugPackets[i];
 
