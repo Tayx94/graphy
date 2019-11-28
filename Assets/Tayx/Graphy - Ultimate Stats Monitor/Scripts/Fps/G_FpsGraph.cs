@@ -124,6 +124,12 @@ namespace Tayx.Graphy.Fps
 
             m_highestFps = m_highestFps < 1 || m_highestFps <= currentMaxFps ? currentMaxFps : m_highestFps - 1;
 
+            if (m_shaderGraph.Array == null)
+            {
+                m_fpsArray                  = new int[m_resolution];
+                m_shaderGraph.Array         = new float[m_resolution];
+            }
+
             for (int i = 0; i <= m_resolution - 1; i++)
             {
                 m_shaderGraph.Array[i]      = m_fpsArray[i] / (float) m_highestFps;
@@ -143,7 +149,7 @@ namespace Tayx.Graphy.Fps
 
         protected override void CreatePoints()
         {
-            if (m_fpsArray == null || m_fpsArray.Length != m_resolution)
+            if (m_shaderGraph.Array == null || m_fpsArray.Length != m_resolution)
             {
                 m_fpsArray              = new int[m_resolution];
                 m_shaderGraph.Array     = new float[m_resolution];

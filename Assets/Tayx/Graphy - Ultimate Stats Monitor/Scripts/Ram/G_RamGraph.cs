@@ -164,7 +164,7 @@ namespace Tayx.Graphy.Ram
 
         protected override void CreatePoints()
         {
-            if (m_allocatedArray == null || m_allocatedArray.Length != m_resolution)
+            if (m_shaderGraphAllocated.Array == null || m_shaderGraphAllocated.Array.Length != m_resolution)
             {
                 m_allocatedArray                = new float[m_resolution];
                 m_reservedArray                 = new float[m_resolution];
