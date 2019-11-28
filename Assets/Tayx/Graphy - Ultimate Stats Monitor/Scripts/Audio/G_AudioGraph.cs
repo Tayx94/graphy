@@ -195,7 +195,7 @@ namespace Tayx.Graphy.Audio
         protected override void CreatePoints()
         {
             // Init Arrays
-            if (m_graphArray == null || m_graphArray.Length != m_resolution)
+            if (m_shaderGraph.Array == null || m_shaderGraph.Array.Length != m_resolution)
             {
                 m_graphArray                                = new float[m_resolution];
                 m_graphArrayHighestValue                    = new float[m_resolution];
