@@ -93,3 +93,16 @@ You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussi
 ## License
 
 Graphy is released under the [MIT license](https://github.com/Tayx94/graphy/blob/master/LICENSE). Although I don't require attribution, I would love to know if you decide to use it in a project! Let me know on [Twitter](https://twitter.com/martinTayx) or by [email](martintayx@gmail.com).
+
+## dev-upm branch
+If you have git installed on your system, add `"com.tayx.graphy": "https://github.com/Tayx94/graphy.git#dev-upm"` to `Packages/manifest.json`
+```
+{
+  "dependencies": {
+    ...
+    "com.tayx.graphy": "https://github.com/Tayx94/graphy.git#dev-upm",
+    ...
+  }
+}
+```
+If you don't have git installed, you could download this branch, extract it, and add packages via file and choose graphy `package.json`
