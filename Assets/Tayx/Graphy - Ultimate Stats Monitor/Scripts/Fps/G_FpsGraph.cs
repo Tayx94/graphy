@@ -31,7 +31,7 @@ namespace Tayx.Graphy.Fps
         [SerializeField] private    Shader          ShaderLight = null;
 
         // This keeps track of whether Init() has run or not
-        [SerializeField] private bool               m_isInitialized = false;
+        [SerializeField] private    bool            m_isInitialized = false;
 
         #endregion
 

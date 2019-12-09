@@ -36,6 +36,9 @@ namespace Tayx.Graphy.Ram
         [SerializeField] private    Shader          ShaderFull = null;
         [SerializeField] private    Shader          ShaderLight = null;
 
+        // This keeps track of whether Init() has run or not
+        [SerializeField] private    bool            m_isInitialized = false;
+
         #endregion
 
         #region Variables -> Private
@@ -59,11 +62,6 @@ namespace Tayx.Graphy.Ram
         #endregion
 
         #region Methods -> Unity Callbacks
-
-        private void OnEnable()
-        {
-            Init();
-        }
 
         private void Update()
         {
@@ -121,6 +119,13 @@ namespace Tayx.Graphy.Ram
 
         protected override void UpdateGraph()
         {
+            // Since we no longer initialize by default OnEnable(), 
+            // we need to check here, and Init() if needed
+            if (!m_isInitialized)
+            {
+                Init();
+            }
+
             float allocatedMemory   = m_ramMonitor.AllocatedRam;
             float reservedMemory    = m_ramMonitor.ReservedRam;
             float monoMemory        = m_ramMonitor.MonoRam;
@@ -252,6 +257,8 @@ namespace Tayx.Graphy.Ram
             m_shaderGraphMono       .Image = m_imageMono;
             
             UpdateParameters();
+
+            m_isInitialized = true;
         }
 
         #endregion
