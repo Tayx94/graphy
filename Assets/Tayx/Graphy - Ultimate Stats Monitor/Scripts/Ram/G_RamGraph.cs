@@ -73,12 +73,22 @@ namespace Tayx.Graphy.Ram
         #region Methods -> Public
 
         public void UpdateParameters()
-        {
+        { 
             if (    m_shaderGraphAllocated  == null
                 ||  m_shaderGraphReserved   == null
                 ||  m_shaderGraphMono       == null)
             {
-                Init();
+                /*
+                 * Note: this is fine, since we don't much
+                 * care what granularity we use if the graph
+                 * has not been initialized, i.e. it's disabled.
+                 * There is no chance that for some reason 
+                 * parameters will not stay up to date if
+                 * at some point in the future the graph is enabled:
+                 * at the end of Init(), UpdateParameters() is
+                 * called again.
+                 */
+                return;
             }
              
             switch (m_graphyManager.GraphyMode)
