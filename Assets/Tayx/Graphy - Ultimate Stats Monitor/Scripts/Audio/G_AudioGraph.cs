@@ -54,6 +54,25 @@ namespace Tayx.Graphy.Audio
 
         #region Methods -> Unity Callbacks
 
+        private void OnEnable()
+        {
+            /* ----- NOTE: ----------------------------
+             * We used to Init() here regardless of
+             * whether this module was enabled.
+             * The reason we don't Init() here
+             * anymore is that some users are on 
+             * platforms that do not support the arrays 
+             * in the Shaders.
+             *
+             * See: https://github.com/Tayx94/graphy/issues/17
+             * 
+             * Even though we don't Init() competely
+             * here anymore, we still need 
+             * m_audioMonitor for in Update()
+             * --------------------------------------*/
+            m_audioMonitor = GetComponent<G_AudioMonitor>();
+        }
+
         private void Update()
         {
             if (m_audioMonitor.SpectrumDataAvailable)
