@@ -1,4 +1,4 @@
-﻿/* ---------------------------------------
+/* ---------------------------------------
  * Author:          Started by David Mkrtchyan, modified by Martin Pane (martintayx@gmail.com) (@tayx94)
  * Collaborators:   Lars Aalbertsen (@Rockylars)
  * Project:         Graphy - Ultimate Stats Monitor
@@ -17,7 +17,6 @@ namespace Tayx.Graphy.Utils.NumString
     {
         /* ----- TODO: ----------------------------
          * Try and move the Init to a core method.
-         * Try and replace the Pow function with a better algorithm.
          * --------------------------------------*/
 
         #region Variables -> Private
@@ -207,14 +206,18 @@ namespace Tayx.Graphy.Utils.NumString
 
         #region Methods -> Private
 
-        //TODO: Replace this with a better algorithm.
-        private static int Pow(int f, int p)
-        {
-            for (int i = 1; i < p; i++)
-            {
-                f *= f;
+        // With the loop there is p operations, but with this method there is log2(p) operations
+        // source : https://en.wikipedia.org/wiki/Exponentiation_by_squaring
+        private static int Pow (int f, int p) {
+            if (0 == p) {
+                return 1;
+            } else if (1 == p) {
+                return f;
+            } else if (0 == p % 2) {
+                return Pow (f * f, p / 2);
+            } else {
+                return f * Pow (f * f, (p - 1) / 2);
             }
-            return f;
         }
 
         private static int ToIndex(this float f)
