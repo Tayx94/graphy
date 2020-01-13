@@ -36,6 +36,9 @@ namespace Tayx.Graphy.Ram
         [SerializeField] private    Shader          ShaderFull = null;
         [SerializeField] private    Shader          ShaderLight = null;
 
+        // This keeps track of whether Init() has run or not
+        [SerializeField] private    bool            m_isInitialized = false;
+
         #endregion
 
         #region Variables -> Private
@@ -60,11 +63,6 @@ namespace Tayx.Graphy.Ram
 
         #region Methods -> Unity Callbacks
 
-        private void OnEnable()
-        {
-            Init();
-        }
-
         private void Update()
         {
             UpdateGraph();
@@ -75,12 +73,22 @@ namespace Tayx.Graphy.Ram
         #region Methods -> Public
 
         public void UpdateParameters()
-        {
+        { 
             if (    m_shaderGraphAllocated  == null
                 ||  m_shaderGraphReserved   == null
                 ||  m_shaderGraphMono       == null)
             {
-                Init();
+                /*
+                 * Note: this is fine, since we don't much
+                 * care what granularity we use if the graph
+                 * has not been initialized, i.e. it's disabled.
+                 * There is no chance that for some reason 
+                 * parameters will not stay up to date if
+                 * at some point in the future the graph is enabled:
+                 * at the end of Init(), UpdateParameters() is
+                 * called again.
+                 */
+                return;
             }
              
             switch (m_graphyManager.GraphyMode)
@@ -121,6 +129,13 @@ namespace Tayx.Graphy.Ram
 
         protected override void UpdateGraph()
         {
+            // Since we no longer initialize by default OnEnable(), 
+            // we need to check here, and Init() if needed
+            if (!m_isInitialized)
+            {
+                Init();
+            }
+
             float allocatedMemory   = m_ramMonitor.AllocatedRam;
             float reservedMemory    = m_ramMonitor.ReservedRam;
             float monoMemory        = m_ramMonitor.MonoRam;
@@ -252,6 +267,8 @@ namespace Tayx.Graphy.Ram
             m_shaderGraphMono       .Image = m_imageMono;
             
             UpdateParameters();
+
+            m_isInitialized = true;
         }
 
         #endregion

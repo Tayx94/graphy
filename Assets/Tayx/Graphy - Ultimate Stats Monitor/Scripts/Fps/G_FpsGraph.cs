@@ -30,6 +30,9 @@ namespace Tayx.Graphy.Fps
         [SerializeField] private    Shader          ShaderFull = null;
         [SerializeField] private    Shader          ShaderLight = null;
 
+        // This keeps track of whether Init() has run or not
+        [SerializeField] private    bool            m_isInitialized = false;
+
         #endregion
 
         #region Variables -> Private
@@ -49,11 +52,6 @@ namespace Tayx.Graphy.Fps
         #endregion
 
         #region Methods -> Unity Callbacks
-
-        private void OnEnable()
-        {
-            Init();
-        }
 
         private void Update()
         {
@@ -98,6 +96,13 @@ namespace Tayx.Graphy.Fps
 
         protected override void UpdateGraph()
         {
+            // Since we no longer initialize by default OnEnable(), 
+            // we need to check here, and Init() if needed
+            if (!m_isInitialized)
+            {
+                Init();
+            }
+            
             int fps = (int)(1 / Time.unscaledDeltaTime);
 
             int currentMaxFps = 0;
@@ -185,6 +190,8 @@ namespace Tayx.Graphy.Fps
             };
 
             UpdateParameters();
+
+            m_isInitialized = true;
         }
 
         #endregion
