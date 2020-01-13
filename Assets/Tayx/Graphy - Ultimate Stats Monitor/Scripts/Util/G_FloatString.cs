@@ -17,7 +17,6 @@ namespace Tayx.Graphy.Utils.NumString
     {
         /* ----- TODO: ----------------------------
          * Try and move the Init to a core method.
-         * Try and replace the Pow function with a better algorithm.
          * --------------------------------------*/
 
         #region Variables -> Private
@@ -98,7 +97,7 @@ namespace Tayx.Graphy.Utils.NumString
         /// </param>
         public static void Init(float minNegativeValue, float maxPositiveValue, int decimals = 1)
         {
-            decimalMultiplier = Pow(10, Mathf.Clamp(decimals, 1, 5));
+            decimalMultiplier = Mathf.Pow(10, Mathf.Clamp(decimals, 1, 5));
 
             int negativeLength = minNegativeValue.ToIndex();
             int positiveLength = maxPositiveValue.ToIndex();
@@ -206,16 +205,6 @@ namespace Tayx.Graphy.Utils.NumString
         #endregion
 
         #region Methods -> Private
-
-        //TODO: Replace this with a better algorithm.
-        private static int Pow(int f, int p)
-        {
-            for (int i = 1; i < p; i++)
-            {
-                f *= f;
-            }
-            return f;
-        }
 
         private static int ToIndex(this float f)
         {

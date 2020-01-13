@@ -520,7 +520,7 @@ namespace Tayx.Graphy
                     break;
 
                 default:
-                    //throw new ArgumentOutOfRangeException();
+                    Debug.LogWarning( "[GraphyManager]::SetPreset - Tried to set a preset that is not supported." );
                     break;
             }
         }
