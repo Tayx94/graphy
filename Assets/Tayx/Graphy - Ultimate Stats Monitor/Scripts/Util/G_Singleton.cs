@@ -106,7 +106,10 @@ namespace Tayx.Graphy.Utils
         /// </summary>
         void OnDestroy()
         {
-            _applicationIsQuitting = true;
+            if (_instance == this)
+            {
+                _applicationIsQuitting = true;
+            }
         }
 
         #endregion
