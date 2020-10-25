@@ -34,16 +34,17 @@ namespace Tayx.Graphy
 
         static GraphyEditorStyle()
         {
+            string managerLogoGuid = AssetDatabase.FindAssets( $"Manager_Logo_{(EditorGUIUtility.isProSkin ? "White" : "Dark")}" )[0];
+            string debuggerLogoGuid = AssetDatabase.FindAssets( $"Debugger_Logo_{(EditorGUIUtility.isProSkin ? "White" : "Dark")}" )[0];
+
             _managerLogoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>
             (
-                "Packages/com.tayx.graphy/Textures/Manager_Logo_" +
-                (EditorGUIUtility.isProSkin ? "White.png" : "Dark.png")
+                AssetDatabase.GUIDToAssetPath( managerLogoGuid )
             );
 
             _debuggerLogoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>
             (
-                "Packages/com.tayx.graphy/Textures/Debugger_Logo_" +
-                (EditorGUIUtility.isProSkin ? "White.png" : "Dark.png")
+                AssetDatabase.GUIDToAssetPath( debuggerLogoGuid )
             );
 
             m_skin = AssetDatabase.LoadAssetAtPath<GUISkin>
