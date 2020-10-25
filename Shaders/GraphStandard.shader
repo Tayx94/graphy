@@ -47,9 +47,7 @@
 					float4 vertex    : POSITION;
 					float4 color     : COLOR;
 					float2 texcoord  : TEXCOORD0;
-#if UNITY_2017_1_OR_NEWER
 					UNITY_VERTEX_INPUT_INSTANCE_ID
-#endif
 				};
 
 				struct v2f
@@ -57,9 +55,7 @@
 					float4 vertex    : SV_POSITION;
 					fixed4 color	 : COLOR;
 					float2 texcoord  : TEXCOORD0;
-#if UNITY_2017_1_OR_NEWER
 					UNITY_VERTEX_OUTPUT_STEREO
-#endif
 				};
 
 				fixed4 _Color;
@@ -68,11 +64,9 @@
 				{
 					v2f OUT;
 
-#if UNITY_2017_1_OR_NEWER
 					UNITY_SETUP_INSTANCE_ID(IN);
 					UNITY_INITIALIZE_OUTPUT(v2f, OUT);
 					UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
-#endif
 
 					OUT.vertex = UnityObjectToClipPos(IN.vertex);
 					OUT.texcoord = IN.texcoord;
