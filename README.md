@@ -9,9 +9,9 @@
 
 [![Chat Discord](https://img.shields.io/discord/406037880314789889)](https://discord.gg/2KgNEHK?)
 
-[![Twitter](https://img.shields.io/twitter/follow/martintayx?label=Follow&style=social)](https://twitter.com/martinTayx)
+[![Twitter](https://img.shields.io/twitter/follow/martintayx?label=Follow&style=social)](http://twitter.com/intent/user?screen_name=martinTayx)
 
-**Links:** [Discord](https://discord.gg/2KgNEHK?) | [Mail](mailto:martintayx@gmail.com) | [Twitter](https://twitter.com/martinTayx) | [Asset store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778) | [Forum post](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/) | [Donations](https://www.paypal.me/MartinPaneUK)
+**Links:** [Discord](https://discord.gg/2KgNEHK?) | [Mail](mailto:martintayx@gmail.com) | [Twitter](http://twitter.com/intent/user?screen_name=martinTayx) | [Asset store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778) | [Forum post](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/) | [Donations](https://www.paypal.me/MartinPaneUK)
 
 **WINNER** of the **BEST DEVELOPMENT ASSET** in the **Unity Awards 2018**.
 
