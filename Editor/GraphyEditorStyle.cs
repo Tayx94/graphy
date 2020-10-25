@@ -9,7 +9,8 @@ namespace Tayx.Graphy
     {
         #region Variables -> Private
 
-        private static Texture2D m_logoTexture = null;
+        private static Texture2D _managerLogoTexture = null;
+        private static Texture2D _debuggerLogoTexture = null;
         private static GUISkin m_skin = null;
         private static GUIStyle m_headerStyle1 = null;
         private static GUIStyle m_headerStyle2 = null;
@@ -20,7 +21,8 @@ namespace Tayx.Graphy
 
         #region Properties -> Public
 
-        public static Texture2D LogoTexture { get { return m_logoTexture; } }
+        public static Texture2D ManagerLogoTexture { get { return _managerLogoTexture; } }
+        public static Texture2D DebuggerLogoTexture { get { return _debuggerLogoTexture; } }
         public static GUISkin Skin { get { return m_skin;  } }
         public static GUIStyle HeaderStyle1 { get { return m_headerStyle1; } }
         public static GUIStyle HeaderStyle2 { get { return m_headerStyle2; } }
@@ -32,9 +34,15 @@ namespace Tayx.Graphy
 
         static GraphyEditorStyle()
         {
-            m_logoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>
+            _managerLogoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>
             (
                 "Packages/com.tayx.graphy/Textures/Manager_Logo_" +
+                (EditorGUIUtility.isProSkin ? "White.png" : "Dark.png")
+            );
+
+            _debuggerLogoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>
+            (
+                "Packages/com.tayx.graphy/Textures/Debugger_Logo_" +
                 (EditorGUIUtility.isProSkin ? "White.png" : "Dark.png")
             );
 

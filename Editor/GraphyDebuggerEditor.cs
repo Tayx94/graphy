@@ -70,11 +70,11 @@ namespace Tayx.Graphy
 
             #region Section -> Logo
 
-            if (GraphyEditorStyle.LogoTexture != null)
+            if (GraphyEditorStyle.DebuggerLogoTexture != null)
             {
                 GUILayout.Label
                 (
-                    image: GraphyEditorStyle.LogoTexture,
+                    image: GraphyEditorStyle.DebuggerLogoTexture,
                     style: new GUIStyle(GUI.skin.GetStyle("Label"))
                     {
                         alignment = TextAnchor.UpperCenter
