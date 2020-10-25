@@ -45,6 +45,17 @@ The debugger allows you to set one or more conditions, that if met will have the
 - [Twitter](https://twitter.com/martinTayx)
 - [Discord](https://discord.gg/2KgNEHK?)
 
+## Installation
+1. The package is available on the [openupm registry](https://openupm.com). You can install it via [openupm-cli](https://github.com/openupm/openupm-cli).
+```
+openupm add com.tayx.graphy
+```
+2. You can also install via git url by adding this entry in your **manifest.json**
+```
+"com.tayx.graphy": "https://github.com/Tayx94/graphy.git",
+```
+3. You can also download it from the [Asset Store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778)
+
 ## Development of Graphy
 
 Maintainer and main developer: **Martín Pane**
@@ -97,17 +108,3 @@ You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussi
 ## License
 
 Graphy is released under the [MIT license](https://github.com/Tayx94/graphy/blob/master/LICENSE). Although I don't require attribution, I would love to know if you decide to use it in a project! Let me know on [Twitter](https://twitter.com/martinTayx) or by [email](martintayx@gmail.com).
-
-## UPM
-
-If you have git installed on your system, add `"com.tayx.graphy": "https://github.com/Tayx94/graphy.git"` to `Packages/manifest.json`
-```
-{
-  "dependencies": {
-    ...
-    "com.tayx.graphy": "https://github.com/Tayx94/graphy.git",
-    ...
-  }
-}
-```
-If you don't have git installed, you could download this branch, extract it, and add packages via file and choose graphy `package.json`
