@@ -2,7 +2,7 @@
 
 [![openupm](https://img.shields.io/npm/v/com.tayx.graphy?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.tayx.graphy/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/Tayx94/graphy/blob/master/LICENSE)
-[![Unity 2019.3+](https://img.shields.io/badge/unity-2018.3%2B-blue.svg)](https://unity3d.com/get-unity/download)
+[![Unity 2019.3+](https://img.shields.io/badge/unity-2019.3%2B-blue.svg)](https://unity3d.com/get-unity/download)
 
 **Links:** [Discord](https://discord.gg/2KgNEHK?) | [Mail](martintayx@gmail.com) | [Twitter](https://twitter.com/martinTayx) | [Asset store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778) | [Forum post](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/) | [Donations](https://www.paypal.me/MartinPaneUK)
 
