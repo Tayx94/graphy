@@ -4,7 +4,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/Tayx94/graphy/blob/master/LICENSE)
 [![Unity 2019.3+](https://img.shields.io/badge/unity-2019.3%2B-blue.svg)](https://unity3d.com/get-unity/download)
 
-**Links:** [Discord](https://discord.gg/2KgNEHK?) | [Mail](martintayx@gmail.com) | [Twitter](https://twitter.com/martinTayx) | [Asset store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778) | [Forum post](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/) | [Donations](https://www.paypal.me/MartinPaneUK)
+[![Open Issues](https://img.shields.io/github/issues-raw/tayx94/graphy)](https://github.com/Tayx94/graphy/issues)
+[![Downloads](https://img.shields.io/github/downloads/tayx94/graphy/total)](https://github.com/Tayx94/graphy/releases)
+
+[![Chat Discord](https://img.shields.io/discord/406037880314789889)](https://discord.gg/2KgNEHK?)
+
+[![Twitter](https://img.shields.io/twitter/follow/martintayx?label=Follow&style=social)](https://twitter.com/martinTayx)
+
+**Links:** [Discord](https://discord.gg/2KgNEHK?) | [Mail](mailto:martintayx@gmail.com) | [Twitter](https://twitter.com/martinTayx) | [Asset store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778) | [Forum post](https://forum.unity.com/threads/graphy-ultimate-stats-monitor-debugger-released.517387/) | [Donations](https://www.paypal.me/MartinPaneUK)
 
 **WINNER** of the **BEST DEVELOPMENT ASSET** in the **Unity Awards 2018**.
 
