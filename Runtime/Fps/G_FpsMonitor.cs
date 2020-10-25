@@ -45,7 +45,7 @@ namespace Tayx.Graphy.Fps
         private                     float           m_timeToResetMinFpsPassed   = 0f;
         private                     float           m_timeToResetMaxFpsPassed   = 0f;
 
-        private                     float           unscaledDeltaTime           = 0f;
+        private                     float           m_unscaledDeltaTime           = 0f;
 
         #endregion
 
@@ -68,21 +68,24 @@ namespace Tayx.Graphy.Fps
 
         private void Update()
         {
-            unscaledDeltaTime = Time.unscaledDeltaTime;
+            m_unscaledDeltaTime = Time.unscaledDeltaTime;
 
-            m_timeToResetMinFpsPassed += unscaledDeltaTime;
-            m_timeToResetMaxFpsPassed += unscaledDeltaTime;
+            m_timeToResetMinFpsPassed += m_unscaledDeltaTime;
+            m_timeToResetMaxFpsPassed += m_unscaledDeltaTime;
 
             // Update fps and ms
 
-            m_currentFps = 1 / unscaledDeltaTime;
+            m_currentFps = 1 / m_unscaledDeltaTime;
 
             // Update avg fps
 
             m_avgFps = 0;
 
-            m_averageFpsSamples[m_indexSample++] = m_currentFps;
-            if (m_indexSample == m_avgFpsSamplesCapacity) m_indexSample = 0;
+            m_indexSample++;
+
+            if ( m_indexSample >= m_avgFpsSamplesCapacity ) m_indexSample = 0;
+
+            m_averageFpsSamples[ m_indexSample] = m_currentFps;
             
             if (m_avgFpsSamplesCount < m_avgFpsSamplesCapacity)
             {
@@ -94,27 +97,27 @@ namespace Tayx.Graphy.Fps
                 m_avgFps += m_averageFpsSamples[i];
             }
 
-            m_avgFps /= m_avgFpsSamplesCount;
+            m_avgFps /= (float)m_avgFpsSamplesCount;
 
             // Checks to reset min and max fps
 
             if (    m_timeToResetMinMaxFps    > 0 
                 &&  m_timeToResetMinFpsPassed > m_timeToResetMinMaxFps)
             {
-                m_minFps = 0;
+                m_minFps = float.MaxValue;
                 m_timeToResetMinFpsPassed = 0;
             }
 
             if (    m_timeToResetMinMaxFps    > 0 
                 &&  m_timeToResetMaxFpsPassed > m_timeToResetMinMaxFps)
             {
-                m_maxFps = 0;
+                m_maxFps = float.MinValue;
                 m_timeToResetMaxFpsPassed = 0;
             }
 
             // Update min fps
 
-            if (m_currentFps < m_minFps || m_minFps <= 0)
+            if (m_currentFps < m_minFps)
             {
                 m_minFps = m_currentFps;
 
@@ -123,7 +126,7 @@ namespace Tayx.Graphy.Fps
 
             // Update max fps
 
-            if (m_currentFps > m_maxFps || m_maxFps <= 0)
+            if (m_currentFps > m_maxFps)
             {
                 m_maxFps = m_currentFps;
 
