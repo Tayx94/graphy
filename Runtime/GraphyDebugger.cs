@@ -11,6 +11,7 @@
 
 using UnityEngine;
 using UnityEngine.Events;
+using Debug = UnityEngine.Debug;
 
 using System;
 using System.Collections.Generic;
