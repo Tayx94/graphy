@@ -50,22 +50,22 @@ namespace Tayx.Graphy.Audio
         /// <summary>
         /// Current audio spectrum from the specified AudioListener.
         /// </summary>
-        public float[] Spectrum                 { get { return m_spectrum; } }
+        public float[] Spectrum => m_spectrum;
 
         /// <summary>
         /// Highest audio spectrum from the specified AudioListener in the last few seconds.
         /// </summary>
-        public float[] SpectrumHighestValues    { get { return m_spectrumHighestValues; } }
+        public float[] SpectrumHighestValues => m_spectrumHighestValues;
 
         /// <summary>
         /// Maximum DB registered in the current spectrum.
         /// </summary>
-        public float MaxDB                      { get { return m_maxDB; } }
+        public float MaxDB => m_maxDB;
 
         /// <summary>
         /// Returns true if there is a reference to the audio listener.
         /// </summary>
-        public bool SpectrumDataAvailable       {  get { return m_audioListener != null;} }
+        public bool SpectrumDataAvailable => m_audioListener != null;
 
         #endregion
 

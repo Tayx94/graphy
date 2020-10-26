@@ -36,10 +36,10 @@ namespace Tayx.Graphy.Ram
 
         #region Properties -> Public
 
-        public float AllocatedRam   { get { return m_allocatedRam; } }
-        public float ReservedRam    { get { return m_reservedRam; } }
-        public float MonoRam        { get { return m_monoRam; } }
-        
+        public float AllocatedRam => m_allocatedRam;
+        public float ReservedRam => m_reservedRam;
+        public float MonoRam => m_monoRam;
+
         #endregion
 
         #region Methods -> Unity Callbacks

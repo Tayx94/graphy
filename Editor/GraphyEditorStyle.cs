@@ -113,27 +113,6 @@ namespace Tayx.Graphy
             guiStyle.onFocused.textColor = color;
         }
 
-        private static string GetPath()
-        {
-            ScriptableObject dummy = ScriptableObject.CreateInstance<G_SODummy>();
-            MonoScript ms = MonoScript.FromScriptableObject(dummy);
-
-            string filePath = AssetDatabase.GetAssetPath(ms);
-            FileInfo fi = new FileInfo(filePath);
-
-            if (fi.Directory != null)
-            {
-                filePath = fi.Directory.ToString();
-
-                return filePath.Replace
-                (
-                    oldChar: '\\',
-                    newChar: '/'
-                );
-            }
-            return null;
-        }
-
         #endregion
     }
 }

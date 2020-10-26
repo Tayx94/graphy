@@ -50,35 +50,17 @@ namespace Tayx.Graphy.Utils.NumString
         /// <summary>
         /// Have the int buffers been initialized?
         /// </summary>
-        public static bool Inited
-        {
-            get
-            {
-                return negativeBuffer.Length > 0 || positiveBuffer.Length > 0;
-            }
-        }
+        public static bool Inited => negativeBuffer.Length > 0 || positiveBuffer.Length > 0;
 
         /// <summary>
         /// The lowest float value of the existing number buffer.
         /// </summary>
-        public static float MinValue
-        {
-            get
-            {
-                return -(negativeBuffer.Length - 1).FromIndex();
-            }
-        }
+        public static float MinValue => -(negativeBuffer.Length - 1).FromIndex();
 
         /// <summary>
         /// The highest float value of the existing number buffer.
         /// </summary>
-        public static float MaxValue
-        {
-            get
-            {
-                return (positiveBuffer.Length - 1).FromIndex();
-            }
-        }
+        public static float MaxValue => (positiveBuffer.Length - 1).FromIndex();
 
         #endregion
 

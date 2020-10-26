@@ -193,9 +193,9 @@ namespace Tayx.Graphy
 
         [SerializeField] private    ModuleState             m_advancedModuleState               = ModuleState.FULL;
 
-#endregion
+        #endregion
 
-#region Variables -> Private
+        #region Variables -> Private
 
         private                     bool                    m_initialized                       = false;
         private                     bool                    m_active                            = true;
@@ -212,10 +212,10 @@ namespace Tayx.Graphy
 
         private                     ModulePreset            m_modulePresetState                 = ModulePreset.FPS_BASIC_ADVANCED_FULL;
 
-#endregion
+        #endregion
 
         //TODO: Maybe sort these into Get and GetSet sections.
-#region Properties -> Public
+        #region Properties -> Public
 
         public Mode GraphyMode                          { get { return m_graphyMode; }
                                                           set { m_graphyMode = value; UpdateAllParameters(); } }
@@ -356,9 +356,9 @@ namespace Tayx.Graphy
         public ModulePosition AdvancedModulePosition    { get { return m_advancedModulePosition; } 
                                                           set { m_advancedModulePosition = value; m_advancedData.SetPosition(m_advancedModulePosition); } }
 
-#endregion
+        #endregion
 
-#region Methods -> Unity Callbacks
+        #region Methods -> Unity Callbacks
 
         private void Start()
         {
@@ -383,9 +383,9 @@ namespace Tayx.Graphy
             }
         }
 
-#endregion
+        #endregion
 
-#region Methods -> Public
+        #region Methods -> Public
 
         public void SetModulePosition(ModuleType moduleType, ModulePosition modulePosition)
         {
@@ -584,9 +584,9 @@ namespace Tayx.Graphy
             }
         }
 
-#endregion
+        #endregion
 
-#region Methods -> Private
+        #region Methods -> Private
 
         private void Init()
         {

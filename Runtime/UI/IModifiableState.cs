@@ -26,5 +26,4 @@ namespace Tayx.Graphy.UI
         /// </param>
         void SetState(GraphyManager.ModuleState newState, bool silentUpdate);
     }
-
 }
