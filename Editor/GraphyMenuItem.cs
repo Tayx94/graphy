@@ -14,11 +14,14 @@ namespace Tayx.Graphy
                 AssetDatabase.CreateFolder("Assets", "Graphy - Ultimate Stats Monitor");
             }
 
-            if (!AssetDatabase.IsValidFolder("Assets/Graphy - Ultimate Stats Monitor/Prefab")) {
+            if (!AssetDatabase.IsValidFolder("Assets/Graphy - Ultimate Stats Monitor/Prefab"))
+            {
                 AssetDatabase.CreateFolder("Assets/Graphy - Ultimate Stats Monitor", "Prefab");
             }
 
-            Object originalPrefab = (GameObject)AssetDatabase.LoadAssetAtPath("Packages/com.tayx.graphy/Prefab/[Graphy].prefab", typeof(GameObject));
+            string graphyPrefabGuid = AssetDatabase.FindAssets( "[Graphy]" )[ 0 ];
+
+            Object originalPrefab = (GameObject)AssetDatabase.LoadAssetAtPath( AssetDatabase.GUIDToAssetPath( graphyPrefabGuid ), typeof(GameObject));
             GameObject objectSource = PrefabUtility.InstantiatePrefab(originalPrefab) as GameObject;
             GameObject prefabVariant = PrefabUtility.SaveAsPrefabAsset(objectSource, "Assets/Graphy - Ultimate Stats Monitor/Prefab/[Graphy].prefab");
 
@@ -26,17 +29,16 @@ namespace Tayx.Graphy
 
             foreach(SceneView scene in SceneView.sceneViews)
             {
-                scene.ShowNotification(new GUIContent("Prefab Variant Created at Assets/Graphy - Ultimate Stats Monitor/Prefab"));
+                scene.ShowNotification(new GUIContent( "Prefab Variant Created at \"Assets/Graphy - Ultimate Stats Monitor/Prefab\"!" ) );
             }
         }
-        [MenuItem("Tools/Graphy/Import Graphy Customizer Scene")]
-        static void ImportGraphy()
+
+        [MenuItem("Tools/Graphy/Import Graphy Customization Scene")]
+        static void ImportGraphyCustomizationScene()
         {
-#if GRAPHY_NEW_INPUT
-            AssetDatabase.ImportPackage("Packages/com.tayx.graphy/Customize Scene New Input System.unitypackage", true);
-#else
-            AssetDatabase.ImportPackage("Packages/com.tayx.graphy/Customize Scene.unitypackage", true);
-#endif
+            string customizationSceneGuid = AssetDatabase.FindAssets( "Graphy_CustomizationScene" )[ 0 ];
+
+            AssetDatabase.ImportPackage( AssetDatabase.GUIDToAssetPath( customizationSceneGuid ), true);
         }
     }
 }

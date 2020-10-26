@@ -36,6 +36,7 @@ namespace Tayx.Graphy
         {
             string managerLogoGuid = AssetDatabase.FindAssets( $"Manager_Logo_{(EditorGUIUtility.isProSkin ? "White" : "Dark")}" )[0];
             string debuggerLogoGuid = AssetDatabase.FindAssets( $"Debugger_Logo_{(EditorGUIUtility.isProSkin ? "White" : "Dark")}" )[0];
+            string guiSkinGuid = AssetDatabase.FindAssets( "GraphyGUISkin" )[ 0 ];
 
             _managerLogoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>
             (
@@ -49,7 +50,7 @@ namespace Tayx.Graphy
 
             m_skin = AssetDatabase.LoadAssetAtPath<GUISkin>
             (
-                "Packages/com.tayx.graphy/GUI/Graphy.guiskin"
+                AssetDatabase.GUIDToAssetPath( guiSkinGuid )
             );
 
             if (m_skin != null)
