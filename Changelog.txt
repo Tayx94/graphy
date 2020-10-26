@@ -2,7 +2,7 @@
 v2.0.0
 
 - Now supports UPM (Unity Package Manager).
-- Minimum official supported version is now Unity 2019.3.0.
+- Minimum official supported version is now Unity 2019.3.0. If you want a version that supports 5.4+, go to Github to download it.
 - Lots of minor tweaks, optimizations and bugfixes.
 - Added support for VR single pass instanced rendering.
 
