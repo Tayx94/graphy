@@ -6,6 +6,9 @@
 
 [![Open Issues](https://img.shields.io/github/issues-raw/tayx94/graphy)](https://github.com/Tayx94/graphy/issues)
 [![Downloads](https://img.shields.io/github/downloads/tayx94/graphy/total)](https://github.com/Tayx94/graphy/releases)
+[![Contributors](https://img.shields.io/github/contributors/tayx94/graphy)](https://github.com/Tayx94/graphy/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/Tayx94/graphy)](https://github.com/Tayx94/graphy)
+[![Forks](https://img.shields.io/github/forks/Tayx94/graphy)](https://github.com/Tayx94/graphy)
 
 [![Chat Discord](https://img.shields.io/discord/406037880314789889)](https://discord.gg/2KgNEHK?)
 
