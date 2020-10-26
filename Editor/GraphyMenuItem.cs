@@ -1,4 +1,17 @@
-﻿using UnityEditor;
+﻿/* ---------------------------------------
+ * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Contributors:    https://github.com/Tayx94/graphy/graphs/contributors
+ * Project:         Graphy - Ultimate Stats Monitor
+ * Date:            20-Dec-17
+ * Studio:          Tayx
+ *
+ * Git repo:        https://github.com/Tayx94/graphy
+ *
+ * This project is released under the MIT license.
+ * Attribution is not required, but it is always welcomed!
+ * -------------------------------------*/
+
+using UnityEditor;
 using UnityEngine;
 
 namespace Tayx.Graphy
@@ -35,14 +48,6 @@ namespace Tayx.Graphy
             {
                 scene.ShowNotification(new GUIContent( "Prefab Variant Created at \"Assets/Graphy - Ultimate Stats Monitor/Prefab\"!" ) );
             }
-        }
-
-        [MenuItem("Tools/Graphy/Import Graphy Customization Scene")]
-        static void ImportGraphyCustomizationScene()
-        {
-            string customizationSceneGuid = AssetDatabase.FindAssets( "Graphy_CustomizationScene" )[ 0 ];
-
-            AssetDatabase.ImportPackage( AssetDatabase.GUIDToAssetPath( customizationSceneGuid ), true);
         }
     }
 }
