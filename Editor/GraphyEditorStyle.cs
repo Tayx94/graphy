@@ -34,12 +34,12 @@ namespace Tayx.Graphy
 
         #region Properties -> Public
 
-        public static Texture2D ManagerLogoTexture { get { return _managerLogoTexture; } }
-        public static Texture2D DebuggerLogoTexture { get { return _debuggerLogoTexture; } }
-        public static GUISkin Skin { get { return m_skin;  } }
-        public static GUIStyle HeaderStyle1 { get { return m_headerStyle1; } }
-        public static GUIStyle HeaderStyle2 { get { return m_headerStyle2; } }
-        public static GUIStyle FoldoutStyle { get { return m_foldoutStyle; } }
+        public static Texture2D ManagerLogoTexture => _managerLogoTexture;
+        public static Texture2D DebuggerLogoTexture => _debuggerLogoTexture;
+        public static GUISkin Skin => m_skin;
+        public static GUIStyle HeaderStyle1 => m_headerStyle1;
+        public static GUIStyle HeaderStyle2 => m_headerStyle2;
+        public static GUIStyle FoldoutStyle => m_foldoutStyle;
 
         #endregion
 
