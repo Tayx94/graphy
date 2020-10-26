@@ -14,16 +14,20 @@ namespace Tayx.Graphy
                 AssetDatabase.CreateFolder("Assets", "Graphy - Ultimate Stats Monitor");
             }
 
-            if (!AssetDatabase.IsValidFolder("Assets/Graphy - Ultimate Stats Monitor/Prefab"))
+            if (!AssetDatabase.IsValidFolder( "Assets/Graphy - Ultimate Stats Monitor/Prefab Variants" ) )
             {
-                AssetDatabase.CreateFolder("Assets/Graphy - Ultimate Stats Monitor", "Prefab");
+                AssetDatabase.CreateFolder("Assets/Graphy - Ultimate Stats Monitor", "Prefab Variants" );
             }
 
             string graphyPrefabGuid = AssetDatabase.FindAssets( "[Graphy]" )[ 0 ];
 
             Object originalPrefab = (GameObject)AssetDatabase.LoadAssetAtPath( AssetDatabase.GUIDToAssetPath( graphyPrefabGuid ), typeof(GameObject));
             GameObject objectSource = PrefabUtility.InstantiatePrefab(originalPrefab) as GameObject;
-            GameObject prefabVariant = PrefabUtility.SaveAsPrefabAsset(objectSource, "Assets/Graphy - Ultimate Stats Monitor/Prefab/[Graphy].prefab");
+
+            int prefabVariantCount =
+                AssetDatabase.FindAssets( "Graphy_Variant", new []{ "Assets/Graphy - Ultimate Stats Monitor/Prefab Variants" } ).Length;
+
+            GameObject prefabVariant = PrefabUtility.SaveAsPrefabAsset(objectSource, $"Assets/Graphy - Ultimate Stats Monitor/Prefab Variants/Graphy_Variant_{prefabVariantCount}.prefab" );
 
             Object.DestroyImmediate(objectSource);
 
