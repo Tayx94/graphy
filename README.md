@@ -65,7 +65,7 @@ openupm add com.tayx.graphy
 {
   "dependencies": {
     ...
-    "com.tayx.graphy": "https://github.com/Tayx94/graphy.git#dev-upm",
+    "com.tayx.graphy": "https://github.com/Tayx94/graphy.git",
     ...
   }
 }
