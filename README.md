@@ -62,7 +62,13 @@ openupm add com.tayx.graphy
 ```
 2. You can also install via git url by adding this entry in your **manifest.json**
 ```
-"com.tayx.graphy": "https://github.com/Tayx94/graphy.git",
+{
+  "dependencies": {
+    ...
+    "com.tayx.graphy": "https://github.com/Tayx94/graphy.git#dev-upm",
+    ...
+  }
+}
 ```
 3. You can also download it from the [Asset Store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778)
 
