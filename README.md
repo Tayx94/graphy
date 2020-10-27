@@ -66,6 +66,9 @@ openupm add com.tayx.graphy
 ```
 3. You can also download it from the [Asset Store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778)
 
+4. Click here for old version that supports Unity 5.4+: 
+[![Unity 5.4+](https://img.shields.io/badge/unity-5.4%2B-blue.svg)](https://github.com/Tayx94/graphy/releases/tag/v1.6.0-Unity5.4)
+
 ## Development of Graphy
 
 Maintainer and main developer: **Martín Pane**
