@@ -1,6 +1,6 @@
-/* ---------------------------------------
+/* --------------------------------------------------------------
  * Author:          Davina Armstrong (davina@playableworlds.com)
- * -------------------------------------*/
+ * --------------------------------------------------------------*/
 
 using UnityEngine;
 using UnityEngine.Profiling;
@@ -26,15 +26,10 @@ namespace Tayx.Graphy.Network
 
         private void Update()
         {
+            Bootstrap.ClientWorld.GetExistingSystem<ApathyTransportClientSystem>();
             m_bytesReceived = network_recv()
         }
 
         #endregion
-
-        #region Methods -> Private
-
-        // pattern copied from StarsReach NativeBindings.cs
-        [DllImport(m_dllName, CallingConvention = CallingConvention.Cdecl]
-        private static int network_recv(long sock, void* buffer, int len, ref int error);
     }
 }
