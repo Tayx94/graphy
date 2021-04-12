@@ -21,15 +21,6 @@ namespace Tayx.Graphy.Audio
 {
     public class G_AudioManager : MonoBehaviour, IMovable, IModifiableState
     {
-        /* ----- TODO: ----------------------------
-         * Add summaries to the variables.
-         * Add summaries to the functions.
-         * Check if we should add a "RequireComponent" for "RectTransform".
-         * Check if we should add a "RequireComponent" for "AudioGraph".
-         * Check if we should add a "RequireComponent" for "AudioMonitor".
-         * Check if we should add a "RequireComponent" for "AudioText".
-         * --------------------------------------*/
-
         #region Variables -> Serialized Private
 
         [SerializeField] private    GameObject                  m_audioGraphGameObject = null;

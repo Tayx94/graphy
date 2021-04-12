@@ -19,12 +19,6 @@ namespace Tayx.Graphy.Audio
 {
     public class G_AudioGraph : G_Graph
     {
-        /* ----- TODO: ----------------------------
-         * Add summaries to the variables.
-         * Add summaries to the functions.
-         * Check if we should add a "RequireComponent" for "AudioMonitor".
-         * --------------------------------------*/
-
         #region Variables -> Serialized Private
 
         [SerializeField] private    Image           m_imageGraph = null;
@@ -33,7 +27,6 @@ namespace Tayx.Graphy.Audio
         [SerializeField] private    Shader          ShaderFull = null;
         [SerializeField] private    Shader          ShaderLight = null;
 
-        // This keeps track of whether Init() has run or not
         [SerializeField] private    bool            m_isInitialized = false;
 
         #endregion
@@ -171,7 +164,7 @@ namespace Tayx.Graphy.Audio
 
             for (int i = 0; i <= m_resolution - 1; i++)
             {
-                m_shaderGraph.Array[i] = m_graphArray[i];
+                m_shaderGraph.ShaderArrayValues[i] = m_graphArray[i];
             }
 
             m_shaderGraph.UpdatePoints();
@@ -211,7 +204,7 @@ namespace Tayx.Graphy.Audio
 
             for (int i = 0; i <= m_resolution - 1; i++)
             {
-                m_shaderGraphHighestValues.Array[i] = m_graphArrayHighestValue[i];
+                m_shaderGraphHighestValues.ShaderArrayValues[i] = m_graphArrayHighestValue[i];
             }
 
             m_shaderGraphHighestValues.UpdatePoints();
@@ -221,18 +214,18 @@ namespace Tayx.Graphy.Audio
         protected override void CreatePoints()
         {
             // Init Arrays
-            if (m_shaderGraph.Array == null || m_shaderGraph.Array.Length != m_resolution)
+            if (m_shaderGraph.ShaderArrayValues == null || m_shaderGraph.ShaderArrayValues.Length != m_resolution)
             {
                 m_graphArray                                = new float[m_resolution];
                 m_graphArrayHighestValue                    = new float[m_resolution];
-                m_shaderGraph.Array                         = new float[m_resolution];
-                m_shaderGraphHighestValues.Array            = new float[m_resolution];
+                m_shaderGraph.ShaderArrayValues                         = new float[m_resolution];
+                m_shaderGraphHighestValues.ShaderArrayValues            = new float[m_resolution];
             }
 
             for (int i = 0; i < m_resolution; i++)
             {
-                m_shaderGraph.Array[i]              = 0;
-                m_shaderGraphHighestValues.Array[i] = 0;
+                m_shaderGraph.ShaderArrayValues[i]              = 0;
+                m_shaderGraphHighestValues.ShaderArrayValues[i] = 0;
             }
 
             // Color

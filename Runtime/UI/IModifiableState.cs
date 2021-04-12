@@ -15,9 +15,6 @@ namespace Tayx.Graphy.UI
 {
     public interface IModifiableState
     {
-        /* ----- TODO: ----------------------------
-         * --------------------------------------*/
-
         /// <summary>
         /// Set the module state.
         /// </summary>

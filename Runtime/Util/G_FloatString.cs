@@ -17,10 +17,6 @@ namespace Tayx.Graphy.Utils.NumString
 {
     public static class G_FloatString
     {
-        /* ----- TODO: ----------------------------
-         * Try and move the Init to a core method.
-         * --------------------------------------*/
-
         #region Variables -> Private
 
         /// <summary>
@@ -31,7 +27,7 @@ namespace Tayx.Graphy.Utils.NumString
         /// <summary>
         /// The currently defined, globally used decimal multiplier.
         /// </summary>
-        private static  float       decimalMultiplier   = 1f;
+        private static  float       decimalMultiplier   = 10f;
 
         /// <summary>
         /// List of negative floats casted to strings.
@@ -48,11 +44,6 @@ namespace Tayx.Graphy.Utils.NumString
         #region Properties -> Public
 
         /// <summary>
-        /// Have the int buffers been initialized?
-        /// </summary>
-        public static bool Inited => negativeBuffer.Length > 0 || positiveBuffer.Length > 0;
-
-        /// <summary>
         /// The lowest float value of the existing number buffer.
         /// </summary>
         public static float MinValue => -(negativeBuffer.Length - 1).FromIndex();
@@ -66,7 +57,6 @@ namespace Tayx.Graphy.Utils.NumString
 
         #region Methods -> Public
 
-        //TODO: Figure out what the negative buffer doe, why we dont have default values and why the range is so high.
         /// <summary>
         /// Initialize the buffers.
         /// </summary>
@@ -76,31 +66,26 @@ namespace Tayx.Graphy.Utils.NumString
         /// <param name="maxPositiveValue">
         /// Highest positive value allowed.
         /// </param>
-        /// <param name="decimals">
-        /// How many decimals will the values use?
-        /// </param>
-        public static void Init(float minNegativeValue, float maxPositiveValue, int decimals = 1)
+        public static void Init( float minNegativeValue, float maxPositiveValue )
         {
-            decimalMultiplier = Mathf.Pow(10, Mathf.Clamp(decimals, 1, 5));
-
             int negativeLength = minNegativeValue.ToIndex();
             int positiveLength = maxPositiveValue.ToIndex();
 
-            if (negativeLength >= 0)
+            if ( MinValue > minNegativeValue && negativeLength >= 0 )
             {
-                negativeBuffer = new string[negativeLength];
-                for (int i = 0; i < negativeLength; i++)
+                negativeBuffer = new string[ negativeLength ];
+                for ( int i = 0; i < negativeLength; i++ )
                 {
-                    negativeBuffer[i] = (-i).FromIndex().ToString(floatFormat);
+                    negativeBuffer[ i ] = (-i - 1).FromIndex().ToString( floatFormat );
                 }
             }
 
-            if (positiveLength >= 0)
+            if ( MaxValue < maxPositiveValue && positiveLength >= 0 )
             {
-                positiveBuffer = new string[positiveLength];
-                for (int i = 0; i < positiveLength; i++)
+                positiveBuffer = new string[ positiveLength + 1 ];
+                for ( int i = 0; i < positiveLength + 1; i++ )
                 {
-                    positiveBuffer[i] = i.FromIndex().ToString(floatFormat);
+                    positiveBuffer[ i ] = i.FromIndex().ToString( floatFormat );
                 }
             }
         }

@@ -16,14 +16,13 @@ using UnityEngine.SceneManagement;
 
 namespace Tayx.Graphy.Audio
 {
+    /// <summary>
+    /// Note: this class only works with Unity's AudioListener.
+    /// If you're using a custom audio engine (like FMOD or WWise) it won't work,
+    /// although you can always adapt it.
+    /// </summary>
     public class G_AudioMonitor : MonoBehaviour
     {
-        /* ----- TODO: ----------------------------
-         * Add summaries to the variables.
-         * Add summaries to the functions.
-         * Make the "FindAudioListener" not constantly use "Camera.main".
-         * --------------------------------------*/
-
         #region Variables -> Private
 
         private const   float                               m_refValue                          = 1f;
@@ -38,11 +37,6 @@ namespace Tayx.Graphy.Audio
 
         private         int                                 m_spectrumSize                      = 512;
 
-        private         float[]                             m_spectrum;
-        private         float[]                             m_spectrumHighestValues;
-
-        private         float                               m_maxDB;
-
         #endregion
 
         #region Properties -> Public
@@ -50,17 +44,17 @@ namespace Tayx.Graphy.Audio
         /// <summary>
         /// Current audio spectrum from the specified AudioListener.
         /// </summary>
-        public float[] Spectrum => m_spectrum;
+        public float[] Spectrum { get; private set; }
 
         /// <summary>
         /// Highest audio spectrum from the specified AudioListener in the last few seconds.
         /// </summary>
-        public float[] SpectrumHighestValues => m_spectrumHighestValues;
+        public float[] SpectrumHighestValues { get; private set; }
 
         /// <summary>
         /// Maximum DB registered in the current spectrum.
         /// </summary>
-        public float MaxDB => m_maxDB;
+        public float MaxDB { get; private set; }
 
         /// <summary>
         /// Returns true if there is a reference to the audio listener.
@@ -82,39 +76,39 @@ namespace Tayx.Graphy.Audio
             {
                 // Use this data to calculate the dB value
 
-                AudioListener.GetOutputData(m_spectrum, 0);
+                AudioListener.GetOutputData(Spectrum, 0);
 
                 float sum = 0;
 
-                for (int i = 0; i < m_spectrum.Length; i++)
+                for (int i = 0; i < Spectrum.Length; i++)
                 {
-                    sum += m_spectrum[i] * m_spectrum[i]; // sum squared samples
+                    sum += Spectrum[i] * Spectrum[i]; // sum squared samples
                 }
 
-                float rmsValue = Mathf.Sqrt(sum / m_spectrum.Length); // rms = square root of average
+                float rmsValue = Mathf.Sqrt(sum / Spectrum.Length); // rms = square root of average
 
-                m_maxDB = 20 * Mathf.Log10(rmsValue / m_refValue); // calculate dB
+                MaxDB = 20 * Mathf.Log10(rmsValue / m_refValue); // calculate dB
 
-                if (m_maxDB < -80) m_maxDB = -80; // clamp it to -80dB min
+                if (MaxDB < -80) MaxDB = -80; // clamp it to -80dB min
 
                 // Use this data to draw the spectrum in the graphs
 
-                AudioListener.GetSpectrumData(m_spectrum, 0, m_FFTWindow);
+                AudioListener.GetSpectrumData(Spectrum, 0, m_FFTWindow);
 
-                for (int i = 0; i < m_spectrum.Length; i++)
+                for (int i = 0; i < Spectrum.Length; i++)
                 {
                     // Update the highest value if its lower than the current one
-                    if (m_spectrum[i] > m_spectrumHighestValues[i])
+                    if (Spectrum[i] > SpectrumHighestValues[i])
                     {
-                        m_spectrumHighestValues[i] = m_spectrum[i];
+                        SpectrumHighestValues[i] = Spectrum[i];
                     }
 
                     // Slowly lower the value 
                     else
                     {
-                        m_spectrumHighestValues[i] = Mathf.Clamp
+                        SpectrumHighestValues[i] = Mathf.Clamp
                         (
-                            value: m_spectrumHighestValues[i] - m_spectrumHighestValues[i] * Time.deltaTime * 2,
+                            value: SpectrumHighestValues[i] - SpectrumHighestValues[i] * Time.deltaTime * 2,
                             min: 0,
                             max: 1
                         );
@@ -151,8 +145,8 @@ namespace Tayx.Graphy.Audio
                 m_audioListener = FindAudioListener();
             }
 
-            m_spectrum              = new float[m_spectrumSize];
-            m_spectrumHighestValues = new float[m_spectrumSize];
+            Spectrum              = new float[m_spectrumSize];
+            SpectrumHighestValues = new float[m_spectrumSize];
         }
 
         /// <summary>
@@ -184,16 +178,12 @@ namespace Tayx.Graphy.Audio
         /// </summary>
         private AudioListener FindAudioListener()
         {
-            Camera mainCamera = Camera.main;
+            if ( Camera.main.TryGetComponent( out AudioListener audioListener ) )
+            {
+                return audioListener;
+            }
 
-            if (mainCamera != null)
-            {
-                return mainCamera.GetComponent<AudioListener>();
-            }
-            else
-            {
-                return null;
-            }
+            return null;
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)

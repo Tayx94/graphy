@@ -11,53 +11,34 @@
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
+using System;
+using System.Xml.Linq;
 using UnityEngine;
-using System.Runtime.CompilerServices;
 
 namespace Tayx.Graphy.Fps
 {
     public class G_FpsMonitor : MonoBehaviour
     {
-        /* ----- TODO: ----------------------------
-         * Add summaries to the variables.
-         * Add summaries to the functions.
-         * --------------------------------------*/
-
-        #region Variables -> Serialized Private
-
-        [SerializeField] private    int             m_averageSamples            = 200;
-
-        #endregion
-
         #region Variables -> Private
 
-        private GraphyManager                       m_graphyManager;
+        private                     short[]        m_fpsSamples;
+        private                     short[]        m_fpsSamplesSorted;
+        private                     short          m_fpsSamplesCapacity        = 1024;
+        private                     short          m_onePercentSamples         = 10;
+        private                     short          m_zero1PercentSamples       = 1;
+        private                     short          m_fpsSamplesCount           = 0;
+        private                     short          m_indexSample               = 0;
 
-        private                     float           m_currentFps                = 0f;
-        private                     float           m_avgFps                    = 0f;
-        private                     float           m_minFps                    = 0f;
-        private                     float           m_maxFps                    = 0f;
-
-        private                     float[]         m_averageFpsSamples;
-        private                     int             m_avgFpsSamplesCapacity     = 0;
-        private                     int             m_avgFpsSamplesCount        = 0;
-        private                     int             m_timeToResetMinMaxFps      = 10;
-        private                     int             m_indexSample               = 0;
-
-        private                     float           m_timeToResetMinFpsPassed   = 0f;
-        private                     float           m_timeToResetMaxFpsPassed   = 0f;
-
-        private                     float           m_unscaledDeltaTime         = 0f;
+        private                     float          m_unscaledDeltaTime         = 0f;
 
         #endregion
 
         #region Properties -> Public
 
-        public                      float           CurrentFPS => m_currentFps;
-        public                      float           AverageFPS => m_avgFps;
-
-        public                      float           MinFPS => m_minFps;
-        public                      float           MaxFPS => m_maxFps;
+        public                      short          CurrentFPS      { get; private set; } = 0;
+        public                      short          AverageFPS      { get; private set; } = 0;
+        public                      short          OnePercentFPS   { get; private set; } = 0;
+        public                      short          Zero1PercentFps { get; private set; } = 0;
 
         #endregion
 
@@ -72,68 +53,75 @@ namespace Tayx.Graphy.Fps
         {
             m_unscaledDeltaTime = Time.unscaledDeltaTime;
 
-            m_timeToResetMinFpsPassed += m_unscaledDeltaTime;
-            m_timeToResetMaxFpsPassed += m_unscaledDeltaTime;
-
             // Update fps and ms
 
-            m_currentFps = 1 / m_unscaledDeltaTime;
+            CurrentFPS = (short)(Mathf.RoundToInt(1f / m_unscaledDeltaTime));
 
             // Update avg fps
 
-            m_avgFps = 0;
+            uint averageAddedFps = 0;
 
             m_indexSample++;
 
-            if ( m_indexSample >= m_avgFpsSamplesCapacity ) m_indexSample = 0;
+            if ( m_indexSample >= m_fpsSamplesCapacity ) m_indexSample = 0;
 
-            m_averageFpsSamples[ m_indexSample] = m_currentFps;
+            m_fpsSamples[ m_indexSample ] = CurrentFPS;
             
-            if (m_avgFpsSamplesCount < m_avgFpsSamplesCapacity)
+            if (m_fpsSamplesCount < m_fpsSamplesCapacity)
             {
-                m_avgFpsSamplesCount++;
+                m_fpsSamplesCount++;
             }
 
-            for (int i = 0; i < m_avgFpsSamplesCount; i++)
+            for (int i = 0; i < m_fpsSamplesCount; i++)
             {
-                m_avgFps += m_averageFpsSamples[i];
+                averageAddedFps += (uint)m_fpsSamples[i];
             }
 
-            m_avgFps /= (float)m_avgFpsSamplesCount;
+            AverageFPS = (short)((float)averageAddedFps / (float)m_fpsSamplesCount);
 
-            // Checks to reset min and max fps
+            // Update percent lows
 
-            if (    m_timeToResetMinMaxFps    > 0 
-                &&  m_timeToResetMinFpsPassed > m_timeToResetMinMaxFps)
+            m_fpsSamples.CopyTo( m_fpsSamplesSorted, 0 );
+
+            /*
+             * TODO: Find a faster way to do this.
+             *      We can probably avoid copying the full array everytime
+             *      and insert the new item already sorted in the list.
+             */
+            Array.Sort(m_fpsSamplesSorted, (x, y) => x.CompareTo(y)); // The lambda expression avoids garbage generation
+
+            bool zero1PercentCalculated = false;
+
+            uint totalAddedFps = 0;
+
+            short samplesToIterateThroughForOnePercent = m_fpsSamplesCount < m_onePercentSamples 
+                ? m_fpsSamplesCount : m_onePercentSamples;
+
+            short samplesToIterateThroughForZero1Percent = m_fpsSamplesCount < m_zero1PercentSamples
+                ? m_fpsSamplesCount : m_zero1PercentSamples;
+
+            for ( short i = 0; i < samplesToIterateThroughForOnePercent; i++ )
             {
-                m_minFps = float.MaxValue;
-                m_timeToResetMinFpsPassed = 0;
+                // We skip entries that are 0 because they will contaminate data on initialize.
+                if ( m_fpsSamplesSorted[ i ] == 0 )
+                {
+                    samplesToIterateThroughForOnePercent++;
+                    samplesToIterateThroughForZero1Percent++;
+                }
+                else
+                {
+                    totalAddedFps += (ushort)m_fpsSamplesSorted[i];
+
+                    if (!zero1PercentCalculated && i >= samplesToIterateThroughForZero1Percent - 1)
+                    {
+                        zero1PercentCalculated = true;
+
+                        Zero1PercentFps = (short)((float)totalAddedFps / (float)m_zero1PercentSamples);
+                    }
+                }
             }
 
-            if (    m_timeToResetMinMaxFps    > 0 
-                &&  m_timeToResetMaxFpsPassed > m_timeToResetMinMaxFps)
-            {
-                m_maxFps = float.MinValue;
-                m_timeToResetMaxFpsPassed = 0;
-            }
-
-            // Update min fps
-
-            if (m_currentFps < m_minFps)
-            {
-                m_minFps = m_currentFps;
-
-                m_timeToResetMinFpsPassed = 0;
-            }
-
-            // Update max fps
-
-            if (m_currentFps > m_maxFps)
-            {
-                m_maxFps = m_currentFps;
-
-                m_timeToResetMaxFpsPassed = 0;
-            }
+            OnePercentFPS = (short)((float)totalAddedFps / (float)m_onePercentSamples);
         }
 
         #endregion
@@ -142,7 +130,8 @@ namespace Tayx.Graphy.Fps
 
         public void UpdateParameters()
         {
-            m_timeToResetMinMaxFps = m_graphyManager.TimeToResetMinMaxFps;
+            m_onePercentSamples = (short)(m_fpsSamplesCapacity / 100);
+            m_zero1PercentSamples = (short)(m_fpsSamplesCapacity / 1000);
         }
 
         #endregion
@@ -151,21 +140,12 @@ namespace Tayx.Graphy.Fps
 
         private void Init()
         {
-            m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
+            m_fpsSamples          = new short[m_fpsSamplesCapacity];
+            m_fpsSamplesSorted    = new short[m_fpsSamplesCapacity];
 
-            ResizeSamplesBuffer(m_averageSamples);
-            
             UpdateParameters();
         }
 
-        
-        private void ResizeSamplesBuffer(int size)
-        {
-            m_avgFpsSamplesCapacity = Mathf.NextPowerOfTwo(size);
-
-            m_averageFpsSamples = new float[m_avgFpsSamplesCapacity];
-        }
-        
         #endregion
     }
 }

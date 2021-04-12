@@ -21,16 +21,6 @@ namespace Tayx.Graphy.Fps
 {
     public class G_FpsManager : MonoBehaviour, IMovable, IModifiableState
     {
-        /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
-         * Add summaries to the variables.
-         * Add summaries to the functions.
-         * Check if we should add a "RequireComponent" for "RectTransform".
-         * Check if we should add a "RequireComponent" for "FpsGraph".
-         * Check if we should add a "RequireComponent" for "FpsMonitor".
-         * Check if we should add a "RequireComponent" for "FpsText".
-         * --------------------------------------*/
-
         #region Variables -> Serialized Private
 
         [SerializeField] private    GameObject                  m_fpsGraphGameObject = null;

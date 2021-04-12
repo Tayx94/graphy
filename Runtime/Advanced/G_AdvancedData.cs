@@ -27,14 +27,9 @@ namespace Tayx.Graphy.Advanced
 {
     public class G_AdvancedData : MonoBehaviour, IMovable, IModifiableState
     {
-        /* ----- TODO: ----------------------------
-         * Add summaries to the variables.
-         * Add summaries to the functions.
-         * --------------------------------------*/
-
         #region Variables -> Serialized Private
 
-        [SerializeField] private    List<Image>                 m_backgroundImages              = new List<Image>();
+        [SerializeField] private    List<Image>                 m_backgroundImages = new List<Image>();
 
         [SerializeField] private    Text                        m_graphicsDeviceVersionText = null;
 
@@ -99,7 +94,7 @@ namespace Tayx.Graphy.Advanced
                     .Append(m_windowStrings[1]).Append(Screen.height.ToStringNonAlloc())
                     .Append(m_windowStrings[2]).Append(Screen.currentResolution.refreshRate.ToStringNonAlloc())
                     .Append(m_windowStrings[3])
-                    .Append(m_windowStrings[4]).Append(Screen.dpi.ToStringNonAlloc())
+                    .Append(m_windowStrings[4]).Append(((int)Screen.dpi).ToStringNonAlloc())
                     .Append(m_windowStrings[5]);
 
                 m_gameWindowResolutionText.text = m_sb.ToString();
@@ -262,17 +257,7 @@ namespace Tayx.Graphy.Advanced
 
         private void Init()
         {
-            //TODO: Replace this with one activated from the core and figure out the min value.
-            if (!G_FloatString.Inited
-                || G_FloatString.MinValue > -1000f
-                || G_FloatString.MaxValue < 16384f)
-            {
-                G_FloatString.Init
-                (
-                    minNegativeValue: -1001f,
-                    maxPositiveValue: 16386f
-                );
-            }
+            G_IntString.Init( 0, 7680 );
 
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
@@ -359,12 +344,12 @@ namespace Tayx.Graphy.Advanced
             m_backgroundImages[0].rectTransform.SetSizeWithCurrentAnchors
             (
                 axis: RectTransform.Axis.Horizontal,
-                size: preferredWidth + 10
+                size: preferredWidth + 25
             );
 
             m_backgroundImages[0].rectTransform.anchoredPosition = new Vector2
             (
-                x: (preferredWidth + 15) / 2 * Mathf.Sign(m_backgroundImages[0].rectTransform.anchoredPosition.x),
+                x: (preferredWidth + 25) / 2 * Mathf.Sign(m_backgroundImages[0].rectTransform.anchoredPosition.x),
                 y: m_backgroundImages[0].rectTransform.anchoredPosition.y
             );
 

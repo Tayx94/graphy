@@ -26,6 +26,9 @@ using Tayx.Graphy.Utils;
 
 namespace Tayx.Graphy
 {
+    /// <summary>
+    /// Main class to access the Graphy Debugger API.
+    /// </summary>
     public class GraphyDebugger : G_Singleton<GraphyDebugger>
     {
         /* ----- TODO: ----------------------------
@@ -78,7 +81,7 @@ namespace Tayx.Graphy
 
         #region Structs -> Public
 
-        [Serializable]
+        [System.Serializable]
         public struct DebugCondition
         {
             [Tooltip("Variable to compare against")]
@@ -93,7 +96,7 @@ namespace Tayx.Graphy
 
         #region Helper Classes
 
-        [Serializable]
+        [System.Serializable]
         public class DebugPacket
         {
 
@@ -194,10 +197,7 @@ namespace Tayx.Graphy
         /// </summary>
         public void AddNewDebugPacket(DebugPacket newDebugPacket)
         {
-            if (m_debugPackets != null)
-            {
-                m_debugPackets.Add(newDebugPacket);
-            }
+            m_debugPackets?.Add(newDebugPacket);
         }
 
         /// <summary>
@@ -489,9 +489,9 @@ namespace Tayx.Graphy
                 case DebugVariable.Fps:
                     return m_fpsMonitor != null     ? m_fpsMonitor.CurrentFPS   : 0;
                 case DebugVariable.Fps_Min:
-                    return m_fpsMonitor != null     ? m_fpsMonitor.MinFPS       : 0;
+                    return m_fpsMonitor != null     ? m_fpsMonitor.OnePercentFPS       : 0;
                 case DebugVariable.Fps_Max:
-                    return m_fpsMonitor != null     ? m_fpsMonitor.MaxFPS       : 0;
+                    return m_fpsMonitor != null     ? m_fpsMonitor.Zero1PercentFps       : 0;
                 case DebugVariable.Fps_Avg:
                     return m_fpsMonitor != null     ? m_fpsMonitor.AverageFPS   : 0;
 

@@ -19,13 +19,6 @@ namespace Tayx.Graphy.Ram
 {
     public class G_RamText : MonoBehaviour
     {
-        /* ----- TODO: ----------------------------
-         * Add summaries to the variables.
-         * Add summaries to the functions.
-         * Check if we should add a "RequireComponent" for "RamMonitor".
-         * Improve the FloatString Init to come from the core instead.
-         * --------------------------------------*/
-
         #region Variables -> Serialized Private
 
         [SerializeField] private    Text            m_allocatedSystemMemorySizeText         = null;
@@ -44,8 +37,6 @@ namespace Tayx.Graphy.Ram
 
         private                     float           m_deltaTime                             = 0.0f;
 
-        private readonly            string          m_memoryStringFormat                    = "0.0";
-
         #endregion
 
         #region Methods -> Unity Callbacks
@@ -62,9 +53,9 @@ namespace Tayx.Graphy.Ram
             if (m_deltaTime > 1f / m_updateRate)
             {
                 // Update allocated, mono and reserved memory
-                m_allocatedSystemMemorySizeText .text = m_ramMonitor.AllocatedRam.ToStringNonAlloc(m_memoryStringFormat);
-                m_reservedSystemMemorySizeText  .text = m_ramMonitor.ReservedRam.ToStringNonAlloc(m_memoryStringFormat);
-                m_monoSystemMemorySizeText      .text = m_ramMonitor.MonoRam.ToStringNonAlloc(m_memoryStringFormat);
+                m_allocatedSystemMemorySizeText .text = ((int)m_ramMonitor.AllocatedRam).ToStringNonAlloc();
+                m_reservedSystemMemorySizeText  .text = ((int)m_ramMonitor.ReservedRam).ToStringNonAlloc();
+                m_monoSystemMemorySizeText      .text = ((int)m_ramMonitor.MonoRam).ToStringNonAlloc();
 
                 m_deltaTime                     = 0f;
             }
@@ -89,15 +80,9 @@ namespace Tayx.Graphy.Ram
 
         private void Init()
         {
-            //TODO: Replace this with one activated from the core and figure out the min value.
-            if (!G_FloatString.Inited || G_FloatString.MinValue > -1000f || G_FloatString.MaxValue < 16384f)
-            {
-                G_FloatString.Init
-                (
-                    minNegativeValue: -1001f,
-                    maxPositiveValue: 16386f
-                );
-            }
+            // We assume no game will consume more than 16GB of RAM.
+            // If it does, who cares about some minuscule garbage allocation lol.
+            G_IntString.Init( 0, 16386 ); 
 
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 

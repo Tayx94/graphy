@@ -73,8 +73,6 @@ namespace Tayx.Graphy
 
         private SerializedProperty m_fpsModuleState;
 
-        private SerializedProperty m_timeToResetMinMaxFps;
-
         private SerializedProperty m_goodFpsColor;
         private SerializedProperty m_goodFpsThreshold;
 
@@ -177,8 +175,6 @@ namespace Tayx.Graphy
             #region Section -> FPS
 
             m_fpsModuleState = serObj.FindProperty("m_fpsModuleState");
-
-            m_timeToResetMinMaxFps = serObj.FindProperty("m_timeToResetMinMaxFps");
 
             m_goodFpsColor = serObj.FindProperty("m_goodFpsColor");
             m_goodFpsThreshold = serObj.FindProperty("m_goodFpsThreshold");
@@ -571,24 +567,6 @@ namespace Tayx.Graphy
                         rightValue: m_graphyMode.intValue == 0 ? 300 : 128
                     );
                 }
-
-                EditorGUIUtility.labelWidth = 180;
-                EditorGUIUtility.fieldWidth = 35;
-
-                m_timeToResetMinMaxFps.intValue = EditorGUILayout.IntSlider
-                (
-                    new GUIContent
-                    (
-                        text: "Time to reset min/max values",
-                        tooltip: "If the min/max value doesn't change in the specified time, they will be reset. This allows tracking the min/max fps in a shorter interval. \n\nSet it to 0 if you don't want it to reset."
-                    ),
-                    m_timeToResetMinMaxFps.intValue,
-                    leftValue: 0,
-                    rightValue: 120
-                );
-
-                EditorGUIUtility.labelWidth = 155;
-                EditorGUIUtility.fieldWidth = 35;
 
                 m_fpsTextUpdateRate.intValue = EditorGUILayout.IntSlider
                 (

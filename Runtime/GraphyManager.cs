@@ -25,14 +25,11 @@ using UnityEngine.InputSystem;
 
 namespace Tayx.Graphy
 {
-    //[ExecuteInEditMode]
+    /// <summary>
+    /// Main class to access the Graphy API.
+    /// </summary>
     public class GraphyManager : G_Singleton<GraphyManager>
     {
-        /* ----- TODO: ----------------------------
-         * Add summaries to the variables.
-         * Add summaries to the functions.
-         * --------------------------------------*/
-
         protected GraphyManager () { }
 
         //Enums
@@ -132,10 +129,6 @@ namespace Tayx.Graphy
         // Fps ---------------------------------------------------------------------------
 
         [SerializeField] private    ModuleState             m_fpsModuleState                    = ModuleState.FULL;
-
-        [Range(0, 200)]
-        [Tooltip("Time (in seconds) to reset the minimum and maximum framerates if they don't change in the specified time. Set to 0 if you don't want it to reset.")]
-        [SerializeField] private    int                     m_timeToResetMinMaxFps              = 10;
 
         [SerializeField] private    Color                   m_goodFpsColor                      = new Color32(118, 212, 58, 255);
         [SerializeField] private    int                     m_goodFpsThreshold                  = 60;
@@ -249,9 +242,6 @@ namespace Tayx.Graphy
         public ModuleState FpsModuleState               { get { return m_fpsModuleState; }             
                                                           set { m_fpsModuleState = value; m_fpsManager.SetState(m_fpsModuleState); } }
 
-        public int TimeToResetMinMaxFps                 { get { return m_timeToResetMinMaxFps; }       
-                                                          set { m_timeToResetMinMaxFps = value; m_fpsManager.UpdateParameters(); } }
-
         public Color GoodFPSColor                       { get { return m_goodFpsColor; } 
                                                           set { m_goodFpsColor = value; m_fpsManager.UpdateParameters(); } }
         public Color CautionFPSColor                    { get { return m_cautionFpsColor; } 
@@ -274,8 +264,8 @@ namespace Tayx.Graphy
 
         public float CurrentFPS                         { get { return m_fpsMonitor.CurrentFPS; } }
         public float AverageFPS                         { get { return m_fpsMonitor.AverageFPS; } }
-        public float MinFPS                             { get { return m_fpsMonitor.MinFPS; } }
-        public float MaxFPS                             { get { return m_fpsMonitor.MaxFPS; } }
+        public float MinFPS                             { get { return m_fpsMonitor.OnePercentFPS; } }
+        public float MaxFPS                             { get { return m_fpsMonitor.Zero1PercentFps; } }
 
         // Ram ---------------------------------------------------------------------------
 

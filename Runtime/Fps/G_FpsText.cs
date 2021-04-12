@@ -19,21 +19,14 @@ namespace Tayx.Graphy.Fps
 {
     public class G_FpsText : MonoBehaviour
     {
-        /* ----- TODO: ----------------------------
-         * Add summaries to the variables.
-         * Add summaries to the functions.
-         * Check if we should add a "RequireComponent" for "FpsMonitor".
-         * Improve the IntString Init to come from the core instead.
-         * --------------------------------------*/
-
         #region Variables -> Serialized Private
 
-        [SerializeField] private    Text            m_fpsText           = null;
-        [SerializeField] private    Text            m_msText            = null;
+        [SerializeField] private    Text            m_fpsText               = null;
+        [SerializeField] private    Text            m_msText                = null;
 
-        [SerializeField] private    Text            m_avgFpsText        = null;
-        [SerializeField] private    Text            m_minFpsText        = null;
-        [SerializeField] private    Text            m_maxFpsText        = null;
+        [SerializeField] private    Text            m_avgFpsText            = null;
+        [SerializeField] private    Text            m_onePercentFpsText     = null;
+        [SerializeField] private    Text            m_zero1PercentFpsText   = null;
 
         #endregion
 
@@ -51,8 +44,7 @@ namespace Tayx.Graphy.Fps
 
         private                     float           m_fps               = 0f;
 
-        private const               int             m_minFps            = 0;
-        private const               int             m_maxFps            = 10000;
+        private                     float           m_ms               = 0f;
 
         private const               string          m_msStringFormat    = "0.0";
 
@@ -76,32 +68,29 @@ namespace Tayx.Graphy.Fps
             if (m_deltaTime > 1f / m_updateRate)
             {
                 m_fps = m_frameCount / m_deltaTime;
+                m_ms = m_deltaTime / m_frameCount * 1000f;
 
-                // Update fps and ms
-
+                // Update fps
                 m_fpsText.text = Mathf.RoundToInt(m_fps).ToStringNonAlloc();
-                m_msText.text = (m_deltaTime / m_frameCount * 1000f).ToStringNonAlloc(m_msStringFormat);
+                SetFpsRelatedTextColor(m_fpsText, m_fps);
 
-                // Update min fps
+                // Update ms
+                m_msText.text = m_ms.ToStringNonAlloc(m_msStringFormat);
+                SetFpsRelatedTextColor(m_msText, m_fps);
 
-                m_minFpsText.text = m_fpsMonitor.MinFPS.ToInt().ToStringNonAlloc();
+                // Update 1% fps
+                m_onePercentFpsText.text = ((int)(m_fpsMonitor.OnePercentFPS)).ToStringNonAlloc();
+                SetFpsRelatedTextColor(m_onePercentFpsText, m_fpsMonitor.OnePercentFPS);
 
-                SetFpsRelatedTextColor(m_minFpsText, m_fpsMonitor.MinFPS);
-
-                // Update max fps
-
-                m_maxFpsText.text = m_fpsMonitor.MaxFPS.ToInt().ToStringNonAlloc();
-
-                SetFpsRelatedTextColor(m_maxFpsText, m_fpsMonitor.MaxFPS);
+                // Update 0.1% fps
+                m_zero1PercentFpsText.text = ((int)(m_fpsMonitor.Zero1PercentFps)).ToStringNonAlloc();
+                SetFpsRelatedTextColor(m_zero1PercentFpsText, m_fpsMonitor.Zero1PercentFps);
 
                 // Update avg fps
-
-                m_avgFpsText.text = m_fpsMonitor.AverageFPS.ToInt().ToStringNonAlloc();
-
+                m_avgFpsText.text = ((int)(m_fpsMonitor.AverageFPS)).ToStringNonAlloc();
                 SetFpsRelatedTextColor(m_avgFpsText, m_fpsMonitor.AverageFPS);
 
                 // Reset variables
-
                 m_deltaTime = 0f;
                 m_frameCount = 0;
             }
@@ -150,15 +139,8 @@ namespace Tayx.Graphy.Fps
 
         private void Init()
         {
-            //TODO: Replace this with one activated from the core and figure out the min value.
-            if (!G_IntString.Inited || G_IntString.MinValue > m_minFps || G_IntString.MaxValue < m_maxFps)
-            {
-                G_IntString.Init
-                (
-                    minNegativeValue: m_minFps,
-                    maxPositiveValue: m_maxFps
-                );
-            }
+            G_IntString.Init( 0, 2000 );  // Max fps expected
+            G_FloatString.Init( 0, 100 ); // Max ms expected per frame
 
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 

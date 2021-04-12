@@ -23,12 +23,6 @@ namespace Tayx.Graphy.Ram
 {
     public class G_RamGraph : G_Graph
     {
-        /* ----- TODO: ----------------------------
-         * Add summaries to the variables.
-         * Add summaries to the functions.
-         * Check if we should add a "RequireComponent" for "RamMonitor".
-         * --------------------------------------*/
-
         #region Variables -> Serialized Private
 
         [SerializeField] private    Image           m_imageAllocated = null;
@@ -38,7 +32,6 @@ namespace Tayx.Graphy.Ram
         [SerializeField] private    Shader          ShaderFull = null;
         [SerializeField] private    Shader          ShaderLight = null;
 
-        // This keeps track of whether Init() has run or not
         [SerializeField] private    bool            m_isInitialized = false;
 
         #endregion
@@ -167,11 +160,11 @@ namespace Tayx.Graphy.Ram
 
             for (int i = 0; i <= m_resolution - 1; i++)
             {
-                m_shaderGraphAllocated.Array[i] = m_allocatedArray[i] / m_highestMemory;
+                m_shaderGraphAllocated.ShaderArrayValues[i] = m_allocatedArray[i] / m_highestMemory;
 
-                m_shaderGraphReserved.Array[i]  = m_reservedArray[i] / m_highestMemory;
+                m_shaderGraphReserved.ShaderArrayValues[i]  = m_reservedArray[i] / m_highestMemory;
 
-                m_shaderGraphMono.Array[i]      = m_monoArray[i] / m_highestMemory;
+                m_shaderGraphMono.ShaderArrayValues[i]      = m_monoArray[i] / m_highestMemory;
             }
 
             m_shaderGraphAllocated.UpdatePoints();
@@ -181,22 +174,22 @@ namespace Tayx.Graphy.Ram
 
         protected override void CreatePoints()
         {
-            if (m_shaderGraphAllocated.Array == null || m_shaderGraphAllocated.Array.Length != m_resolution)
+            if (m_shaderGraphAllocated.ShaderArrayValues == null || m_shaderGraphAllocated.ShaderArrayValues.Length != m_resolution)
             {
                 m_allocatedArray                = new float[m_resolution];
                 m_reservedArray                 = new float[m_resolution];
                 m_monoArray                     = new float[m_resolution];
 
-                m_shaderGraphAllocated.Array    = new float[m_resolution];
-                m_shaderGraphReserved.Array     = new float[m_resolution];
-                m_shaderGraphMono.Array         = new float[m_resolution];
+                m_shaderGraphAllocated.ShaderArrayValues    = new float[m_resolution];
+                m_shaderGraphReserved.ShaderArrayValues     = new float[m_resolution];
+                m_shaderGraphMono.ShaderArrayValues         = new float[m_resolution];
             }
 
             for (int i = 0; i < m_resolution; i++)
             {
-                m_shaderGraphAllocated.Array[i] = 0;
-                m_shaderGraphReserved.Array[i]  = 0;
-                m_shaderGraphMono.Array[i]      = 0;
+                m_shaderGraphAllocated.ShaderArrayValues[i] = 0;
+                m_shaderGraphReserved.ShaderArrayValues[i]  = 0;
+                m_shaderGraphMono.ShaderArrayValues[i]      = 0;
             }
 
             // Initialize the material values

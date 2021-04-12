@@ -25,11 +25,6 @@ namespace Tayx.Graphy.Utils
     /// </summary>
     public class G_Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        /* ----- TODO: ----------------------------
-         * Check if we can seal this class.
-         * Add summaries to the variables.
-         * Add summaries to the functions.
-         * --------------------------------------*/
 
         #region Variables -> Private
 

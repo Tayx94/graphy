@@ -17,40 +17,31 @@ namespace Tayx.Graphy.Utils.NumString
 {
     public static class G_IntString
     {
-        /* ----- TODO: ----------------------------
-         * Try and move the Init to a core method.
-         * --------------------------------------*/
-
         #region Variables -> Private
 
         /// <summary>
         /// List of negative ints casted to strings.
         /// </summary>
-        private static string[] negativeBuffer = new string[0];
+        private static string[] m_negativeBuffer = new string[0];
 
         /// <summary>
         /// List of positive ints casted to strings.
         /// </summary>
-        private static string[] positiveBuffer = new string[0];
+        private static string[] m_positiveBuffer = new string[0];
 
         #endregion
 
         #region Properties -> Public
 
         /// <summary>
-        /// Have the int buffers been initialized?
-        /// </summary>
-        public static bool Inited => negativeBuffer.Length > 0 || positiveBuffer.Length > 0;
-
-        /// <summary>
         /// The lowest int value of the existing number buffer.
         /// </summary>
-        public static int MinValue => -(negativeBuffer.Length - 1);
+        public static int MinValue => -(m_negativeBuffer.Length - 1);
 
         /// <summary>
         /// The highest int value of the existing number buffer.
         /// </summary>
-        public static int MaxValue => positiveBuffer.Length - 1;
+        public static int MaxValue => m_positiveBuffer.Length;
 
         #endregion
 
@@ -65,27 +56,31 @@ namespace Tayx.Graphy.Utils.NumString
         /// <param name="maxPositiveValue">
         /// Highest positive value allowed.
         /// </param>
-        public static void Init(int minNegativeValue, int maxPositiveValue)
+        public static void Init( int minNegativeValue, int maxPositiveValue )
         {
-            if (minNegativeValue <= 0)
+            if ( MinValue > minNegativeValue && minNegativeValue <= 0 )
             {
-                int length = Mathf.Abs(minNegativeValue);
-                negativeBuffer = new string[length];
-                for (int i = 0; i < length; i++)
+                int length = Mathf.Abs( minNegativeValue );
+
+                m_negativeBuffer = new string[ length ];
+
+                for ( int i = 0; i < length; i++ )
                 {
-                    negativeBuffer[i] = (-i).ToString();
+                    m_negativeBuffer[ i ] = (-i - 1).ToString();
                 }
             }
-            if (maxPositiveValue >= 0)
+
+            if ( MaxValue < maxPositiveValue && maxPositiveValue >= 0 )
             {
-                positiveBuffer = new string[maxPositiveValue];
-                for (int i = 0; i < maxPositiveValue; i++)
+                m_positiveBuffer = new string[ maxPositiveValue + 1 ];
+
+                for ( int i = 0; i < maxPositiveValue + 1; i++ )
                 {
-                    positiveBuffer[i] = i.ToString();
+                    m_positiveBuffer[ i ] = i.ToString();
                 }
             }
         }
-        
+
         /// <summary>
         /// Returns this int as a cached string.
         /// </summary>
@@ -93,20 +88,21 @@ namespace Tayx.Graphy.Utils.NumString
         /// The required int.
         /// </param>
         /// <returns>
-        /// A cached number string.
+        /// A cached number string if within the buffer ranges.
         /// </returns>
         public static string ToStringNonAlloc(this int value)
         {
-            if (value < 0 && -value < negativeBuffer.Length)
+            if (value < 0 && -value <= m_negativeBuffer.Length)
             {
-                return negativeBuffer[-value];
+                return m_negativeBuffer[-value - 1];
             }
 
-            if (value >= 0 && value < positiveBuffer.Length)
+            if (value >= 0 && value < m_positiveBuffer.Length)
             {
-                return positiveBuffer[value];
+                return m_positiveBuffer[value];
             }
 
+            // If the value is not within the buffer ranges, just do a normal .ToString()
             return value.ToString();
         }
 

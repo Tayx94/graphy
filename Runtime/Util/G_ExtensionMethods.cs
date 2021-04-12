@@ -19,10 +19,6 @@ namespace Tayx.Graphy.Utils
 {
     public static class G_ExtensionMethods
     {
-        /* ----- TODO: ----------------------------
-         * Add summaries to the functions.
-         * --------------------------------------*/
-
         #region Methods -> Extension Methods
 
         /// <summary>

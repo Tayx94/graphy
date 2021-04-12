@@ -19,12 +19,6 @@ namespace Tayx.Graphy.Fps
 {
     public class G_FpsGraph : G_Graph
     {
-        /* ----- TODO: ----------------------------
-         * Add summaries to the variables.
-         * Add summaries to the functions.
-         * Check if we should add a "RequireComponent" for "FpsMonitor".
-         * --------------------------------------*/
-
         #region Variables -> Serialized Private
 
         [SerializeField] private    Image           m_imageGraph = null;
@@ -105,7 +99,7 @@ namespace Tayx.Graphy.Fps
                 Init();
             }
             
-            int fps = (int)(1 / Time.unscaledDeltaTime);
+            short fps = (short)(1 / Time.unscaledDeltaTime);
 
             int currentMaxFps = 0;
 
@@ -131,15 +125,17 @@ namespace Tayx.Graphy.Fps
 
             m_highestFps = m_highestFps < 1 || m_highestFps <= currentMaxFps ? currentMaxFps : m_highestFps - 1;
 
-            if (m_shaderGraph.Array == null)
+            m_highestFps = m_highestFps > 0 ? m_highestFps : 1;
+
+            if (m_shaderGraph.ShaderArrayValues == null)
             {
                 m_fpsArray                  = new int[m_resolution];
-                m_shaderGraph.Array         = new float[m_resolution];
+                m_shaderGraph.ShaderArrayValues         = new float[m_resolution];
             }
 
             for (int i = 0; i <= m_resolution - 1; i++)
             {
-                m_shaderGraph.Array[i]      = m_fpsArray[i] / (float) m_highestFps;
+                m_shaderGraph.ShaderArrayValues[i]      = m_fpsArray[i] / (float) m_highestFps;
             }
 
             // Update the material values
@@ -156,15 +152,15 @@ namespace Tayx.Graphy.Fps
 
         protected override void CreatePoints()
         {
-            if (m_shaderGraph.Array == null || m_fpsArray.Length != m_resolution)
+            if (m_shaderGraph.ShaderArrayValues == null || m_fpsArray.Length != m_resolution)
             {
                 m_fpsArray              = new int[m_resolution];
-                m_shaderGraph.Array     = new float[m_resolution];
+                m_shaderGraph.ShaderArrayValues     = new float[m_resolution];
             }
 
             for (int i = 0; i < m_resolution; i++)
             {
-                m_shaderGraph.Array[i] = 0;
+                m_shaderGraph.ShaderArrayValues[i] = 0;
             }
 
             m_shaderGraph.GoodColor     = m_graphyManager.GoodFPSColor;

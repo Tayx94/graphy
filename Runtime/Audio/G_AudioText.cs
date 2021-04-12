@@ -19,13 +19,6 @@ namespace Tayx.Graphy.Audio
 {
     public class G_AudioText : MonoBehaviour
     {
-        /* ----- TODO: ----------------------------
-         * Add summaries to the variables.
-         * Add summaries to the functions.
-         * Check if we should add a "RequireComponent" for "AudioMonitor".
-         * Improve the FloatString Init to come from the core instead.
-         * --------------------------------------*/
-
         #region Variables -> Serialized Private
 
         [SerializeField] private    Text            m_DBText            = null;
@@ -59,7 +52,7 @@ namespace Tayx.Graphy.Audio
                 {
                     m_deltaTimeOffset = 0f;
 
-                    m_DBText.text = Mathf.Clamp(m_audioMonitor.MaxDB, -80f, 0f).ToStringNonAlloc();
+                    m_DBText.text = Mathf.Clamp((int)m_audioMonitor.MaxDB, -80, 0).ToStringNonAlloc();
                 }
                 else
                 {
@@ -83,15 +76,7 @@ namespace Tayx.Graphy.Audio
 
         private void Init()
         {
-            //TODO: Replace this with one activated from the core and figure out the min value.
-            if (!G_FloatString.Inited || G_FloatString.MinValue > -1000f || G_FloatString.MaxValue < 16384f)
-            {
-                G_FloatString.Init
-                (
-                    minNegativeValue: -1001f,
-                    maxPositiveValue: 16386f
-                );
-            }
+            G_IntString.Init( -80, 0 ); // dB range
 
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
