@@ -1,4 +1,12 @@
 -----------------------------
+v2.1.0
+
+- Pretty big refactor.
+- Lots of optimization.
+- Removed min/max fps for 1% and 0.1% lows, which is the industry standard now.
+- Improved UI. Added rounded corners and a better default color palette.
+
+-----------------------------
 v2.0.1
 
 - Updated package.json to 2.0.1.
