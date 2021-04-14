@@ -20,12 +20,9 @@ namespace Tayx.Graphy.Utils
     /// Be aware this will not prevent a non singleton constructor
     ///   such as `T myT = new T();`
     /// To prevent that, add `protected T () {}` to your singleton class.
-    /// 
-    /// As a note, this is made as MonoBehaviour because we need Coroutines.
     /// </summary>
     public class G_Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-
         #region Variables -> Private
 
         private static  T       _instance;
@@ -40,33 +37,17 @@ namespace Tayx.Graphy.Utils
         {
             get
             {
-                
-                if (_applicationIsQuitting)
-                {
-                    return null;
-                }
-                
                 lock (_lock)
                 {
                     if (_instance == null)
                     {
-                        _instance = (T)FindObjectOfType(typeof(T));
-
-                        if (FindObjectsOfType(typeof(T)).Length > 1)
-                        {
-                            return _instance;
-                        }
-
-                        if (_instance == null)
-                        {
-                            Debug.Log
-                            (
-                                "[Singleton] An instance of " + typeof(T) +
-                                " is trying to be accessed, but it wasn't initialized first. " +
-                                "Make sure to add an instance of " + typeof(T) + " in the scene before " +
-                                " trying to access it."
-                            );
-                        }
+                        Debug.Log
+                        (
+                            "[Singleton] An instance of " + typeof(T) +
+                            " is trying to be accessed, but it wasn't initialized first. " +
+                            "Make sure to add an instance of " + typeof(T) + " in the scene before " +
+                            " trying to access it."
+                        );
                     }
 
                     return _instance;
@@ -90,20 +71,11 @@ namespace Tayx.Graphy.Utils
             }
         }
 
-        private static bool _applicationIsQuitting = false;
-        /// <summary>
-        /// When Unity quits, it destroys objects in a random order.
-        /// In principle, a Singleton is only destroyed when application quits.
-        /// If any script calls Instance after it has been destroyed, 
-        ///   it will create a buggy ghost object that will stay on the Editor scene
-        ///   even after stopping playing the Application. Really bad!
-        /// So, this was made to be sure we're not creating that buggy ghost object.
-        /// </summary>
         void OnDestroy()
         {
             if (_instance == this)
             {
-                _applicationIsQuitting = true;
+                _instance = null;
             }
         }
 
