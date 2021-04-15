@@ -95,34 +95,17 @@ You can also join the [Discord](https://discord.gg/2KgNEHK?) for active discussi
 
 ### Roadmap
 
-**Planned features (DEFINITELY YES):**
+**Planned features (No ETA):**
 
-  - Console Module: (developed in the [console-module](https://github.com/Tayx94/graphy/tree/console-module) branch)
-    - Show Debug.Log messages from Unity in this module.
-    - Log Graphy messages to this module.
-    - Integrate Graphy commands into it.
-    - Allow custom commands from user.
   - Add GfxDriver stats to the RAM module.
-  - Prewarm framerates: X seconds where min/max fps are not registered to avoid loading spikes registering.
   - Scale Canvas (GetComponent<Canvas>().scaleFactor *= multiplier;) -> If it changes, set again.
   - Make a template for a graph + text module so people can create their own easily.
-  - Make UI layout adapt on the fly to compact it when not showing graphs.
-  - Show the UnityStats (batches, draw calls, etc.) data in the Editor.
-    
-**Other features (DEFINITELY MAYBE):** 
-
-  - Network Stats Module.
-  - Audio Module:
-  	- Average of the whole sound.
-	- Indicator for LUFS.
   - Allow storing FPS for a predetermined time to allow benchmarks.
   - Dump all Graphy Data as a string to:
   	- File.
 	- Send to server.
 	- Send mail.
   - Add a preprocessor key #GRAPHY to avoid adding the asset in builds.
-  - Click on the graph to change to a minimalised version.
-  - Be able to only show one type of ram in the graph (mostly to be able to see the "mono" ram value spikes with more ease).
   
 ## License
 
