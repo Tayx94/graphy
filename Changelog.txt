@@ -1,4 +1,11 @@
 -----------------------------
+v2.1.1
+
+- Small hotfix for a index of out bounds error.
+- Simplified Singleton class to allow Graphy to be Destroyed.
+- Deallocating cached strings on Destroy to free up memory.
+
+-----------------------------
 v2.1.0
 
 - Pretty big refactor.
