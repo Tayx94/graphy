@@ -77,7 +77,7 @@ openupm add com.tayx.graphy
 
 ## Development of Graphy
 
-Maintainer and main developer: **Martín Pane**
+Maintainer and main developer: **Martín Pane** [![Twitter](https://img.shields.io/twitter/follow/martintayx?label=Follow&style=social)](http://twitter.com/intent/user?screen_name=martinTayx)
 
 Graphy is **FREE** to use, but if it helped you and you want to contribute to its development, feel free to leave a donation! 
 
