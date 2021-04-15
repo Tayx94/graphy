@@ -18,6 +18,7 @@ using Tayx.Graphy.Fps;
 using Tayx.Graphy.Ram;
 using Tayx.Graphy.Utils;
 using Tayx.Graphy.Advanced;
+using Tayx.Graphy.Utils.NumString;
 
 #if GRAPHY_NEW_INPUT
 using UnityEngine.InputSystem;
@@ -353,6 +354,12 @@ namespace Tayx.Graphy
         private void Start()
         {
             Init();
+        }
+
+        private void OnDestroy()
+        {
+            G_IntString.Dispose();
+            G_FloatString.Dispose();
         }
 
         private void Update()

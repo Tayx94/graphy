@@ -81,6 +81,12 @@ namespace Tayx.Graphy.Utils.NumString
             }
         }
 
+        public static void Dispose()
+        {
+            m_negativeBuffer = new string[ 0 ];
+            m_positiveBuffer = new string[ 0 ];
+        }
+
         /// <summary>
         /// Returns this int as a cached string.
         /// </summary>

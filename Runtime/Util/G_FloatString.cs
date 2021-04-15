@@ -22,22 +22,22 @@ namespace Tayx.Graphy.Utils.NumString
         /// <summary>
         /// Float represented as a string, formatted.
         /// </summary>
-        private const   string      floatFormat         = "0.0";
+        private const   string      m_floatFormat         = "0.0";
 
         /// <summary>
         /// The currently defined, globally used decimal multiplier.
         /// </summary>
-        private static  float       decimalMultiplier   = 10f;
+        private static  float       m_decimalMultiplier   = 10f;
 
         /// <summary>
         /// List of negative floats casted to strings.
         /// </summary>
-        private static  string[]    negativeBuffer      = new string[0];
+        private static  string[]    m_negativeBuffer      = new string[0];
 
         /// <summary>
         /// List of positive floats casted to strings.
         /// </summary>
-        private static  string[]    positiveBuffer      = new string[0];
+        private static  string[]    m_positiveBuffer      = new string[0];
 
         #endregion
 
@@ -46,12 +46,12 @@ namespace Tayx.Graphy.Utils.NumString
         /// <summary>
         /// The lowest float value of the existing number buffer.
         /// </summary>
-        public static float MinValue => -(negativeBuffer.Length - 1).FromIndex();
+        public static float MinValue => -(m_negativeBuffer.Length - 1).FromIndex();
 
         /// <summary>
         /// The highest float value of the existing number buffer.
         /// </summary>
-        public static float MaxValue => (positiveBuffer.Length - 1).FromIndex();
+        public static float MaxValue => (m_positiveBuffer.Length - 1).FromIndex();
 
         #endregion
 
@@ -73,21 +73,27 @@ namespace Tayx.Graphy.Utils.NumString
 
             if ( MinValue > minNegativeValue && negativeLength >= 0 )
             {
-                negativeBuffer = new string[ negativeLength ];
+                m_negativeBuffer = new string[ negativeLength ];
                 for ( int i = 0; i < negativeLength; i++ )
                 {
-                    negativeBuffer[ i ] = (-i - 1).FromIndex().ToString( floatFormat );
+                    m_negativeBuffer[ i ] = (-i - 1).FromIndex().ToString( m_floatFormat );
                 }
             }
 
             if ( MaxValue < maxPositiveValue && positiveLength >= 0 )
             {
-                positiveBuffer = new string[ positiveLength + 1 ];
+                m_positiveBuffer = new string[ positiveLength + 1 ];
                 for ( int i = 0; i < positiveLength + 1; i++ )
                 {
-                    positiveBuffer[ i ] = i.FromIndex().ToString( floatFormat );
+                    m_positiveBuffer[ i ] = i.FromIndex().ToString( m_floatFormat );
                 }
             }
+        }
+
+        public static void Dispose()
+        {
+            m_negativeBuffer = new string[0];
+            m_positiveBuffer = new string[0];
         }
 
         /// <summary>
@@ -103,20 +109,20 @@ namespace Tayx.Graphy.Utils.NumString
         {
             int valIndex = value.ToIndex();
 
-            if (value < 0 && valIndex < negativeBuffer.Length)
+            if (value < 0 && valIndex < m_negativeBuffer.Length)
             {
-                return negativeBuffer[valIndex];
+                return m_negativeBuffer[valIndex];
             }
 
-            if (value >= 0 && valIndex < positiveBuffer.Length)
+            if (value >= 0 && valIndex < m_positiveBuffer.Length)
             {
-                return positiveBuffer[valIndex];
+                return m_positiveBuffer[valIndex];
             }
 
             return value.ToString();
         }
 
-        //TODO: Convert this to use floatFormat instead, but investigate which functions require and dont require one first.
+        //TODO: Convert this to use m_floatFormat instead, but investigate which functions require and dont require one first.
         /// <summary>
         /// Returns this float as a cached string.
         /// </summary>
@@ -130,14 +136,14 @@ namespace Tayx.Graphy.Utils.NumString
         {
             int valIndex = value.ToIndex();
 
-            if (value < 0 && valIndex < negativeBuffer.Length)
+            if (value < 0 && valIndex < m_negativeBuffer.Length)
             {
-                return negativeBuffer[valIndex];
+                return m_negativeBuffer[valIndex];
             }
 
-            if (value >= 0 && valIndex < positiveBuffer.Length)
+            if (value >= 0 && valIndex < m_positiveBuffer.Length)
             {
-                return positiveBuffer[valIndex];
+                return m_positiveBuffer[valIndex];
             }
 
             return value.ToString(format);
@@ -177,12 +183,12 @@ namespace Tayx.Graphy.Utils.NumString
 
         private static int ToIndex(this float f)
         {
-            return Mathf.Abs((f * decimalMultiplier).ToInt());
+            return Mathf.Abs((f * m_decimalMultiplier).ToInt());
         }
 
         private static float FromIndex(this int i)
         {
-            return (i.ToFloat() / decimalMultiplier);
+            return (i.ToFloat() / m_decimalMultiplier);
         }
 
         #endregion
