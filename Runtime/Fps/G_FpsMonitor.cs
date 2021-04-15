@@ -14,6 +14,7 @@
 using System;
 using System.Xml.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Tayx.Graphy.Fps
 {
@@ -66,7 +67,7 @@ namespace Tayx.Graphy.Fps
             if ( m_indexSample >= m_fpsSamplesCapacity ) m_indexSample = 0;
 
             m_fpsSamples[ m_indexSample ] = CurrentFPS;
-            
+
             if (m_fpsSamplesCount < m_fpsSamplesCapacity)
             {
                 m_fpsSamplesCount++;
@@ -85,7 +86,7 @@ namespace Tayx.Graphy.Fps
 
             /*
              * TODO: Find a faster way to do this.
-             *      We can probably avoid copying the full array everytime
+             *      We can probably avoid copying the full array every time
              *      and insert the new item already sorted in the list.
              */
             Array.Sort(m_fpsSamplesSorted, (x, y) => x.CompareTo(y)); // The lambda expression avoids garbage generation
@@ -100,24 +101,17 @@ namespace Tayx.Graphy.Fps
             short samplesToIterateThroughForZero1Percent = m_fpsSamplesCount < m_zero1PercentSamples
                 ? m_fpsSamplesCount : m_zero1PercentSamples;
 
-            for ( short i = 0; i < samplesToIterateThroughForOnePercent; i++ )
+            short sampleToStartIn = (short)(m_fpsSamplesCapacity - m_fpsSamplesCount);
+
+            for ( short i = sampleToStartIn; i < sampleToStartIn + samplesToIterateThroughForOnePercent; i++ )
             {
-                // We skip entries that are 0 because they will contaminate data on initialize.
-                if ( m_fpsSamplesSorted[ i ] == 0 )
-                {
-                    samplesToIterateThroughForOnePercent++;
-                    samplesToIterateThroughForZero1Percent++;
-                }
-                else
-                {
-                    totalAddedFps += (ushort)m_fpsSamplesSorted[i];
+                totalAddedFps += (ushort)m_fpsSamplesSorted[i];
 
-                    if (!zero1PercentCalculated && i >= samplesToIterateThroughForZero1Percent - 1)
-                    {
-                        zero1PercentCalculated = true;
+                if (!zero1PercentCalculated && i >= samplesToIterateThroughForZero1Percent - 1)
+                {
+                    zero1PercentCalculated = true;
 
-                        Zero1PercentFps = (short)((float)totalAddedFps / (float)m_zero1PercentSamples);
-                    }
+                    Zero1PercentFps = (short)((float)totalAddedFps / (float)m_zero1PercentSamples);
                 }
             }
 
