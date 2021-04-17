@@ -772,20 +772,41 @@ namespace Tayx.Graphy
 #if GRAPHY_NEW_INPUT
         private bool CheckFor1KeyPress(Key key)
         {
-            return Keyboard.current[key].wasPressedThisFrame;
+            Keyboard currentKeyboard = Keyboard.current;
+
+            if (currentKeyboard != null)
+            {
+                return Keyboard.current[key].wasPressedThisFrame;
+            }
+
+            return false;
         }
 
         private bool CheckFor2KeyPress(Key key1, Key key2)
         {
-            return Keyboard.current[key1].wasPressedThisFrame && Keyboard.current[key2].isPressed
-                || Keyboard.current[key2].wasPressedThisFrame && Keyboard.current[key1].isPressed;
+            Keyboard currentKeyboard = Keyboard.current;
+
+            if (currentKeyboard != null)
+            {
+                return Keyboard.current[key1].wasPressedThisFrame && Keyboard.current[key2].isPressed
+                    || Keyboard.current[key2].wasPressedThisFrame && Keyboard.current[key1].isPressed;
+            }
+
+            return false;
         }
 
         private bool CheckFor3KeyPress(Key key1, Key key2, Key key3)
         {
-            return Keyboard.current[key1].wasPressedThisFrame && Keyboard.current[key2].isPressed && Keyboard.current[key3].isPressed
-                || Keyboard.current[key2].wasPressedThisFrame && Keyboard.current[key1].isPressed && Keyboard.current[key3].isPressed
-                || Keyboard.current[key3].wasPressedThisFrame && Keyboard.current[key1].isPressed && Keyboard.current[key2].isPressed;
+            Keyboard currentKeyboard = Keyboard.current;
+
+            if (currentKeyboard != null)
+            {
+                return Keyboard.current[key1].wasPressedThisFrame && Keyboard.current[key2].isPressed && Keyboard.current[key3].isPressed
+                       || Keyboard.current[key2].wasPressedThisFrame && Keyboard.current[key1].isPressed && Keyboard.current[key3].isPressed
+                       || Keyboard.current[key3].wasPressedThisFrame && Keyboard.current[key1].isPressed && Keyboard.current[key2].isPressed;
+            }
+
+            return false;
         }
 #else
         private bool CheckFor1KeyPress(KeyCode key)
