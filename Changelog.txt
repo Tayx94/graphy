@@ -1,4 +1,9 @@
 -----------------------------
+v2.1.2
+
+- Fixed NullRef in AudioMonitor if no main camera is in the scene.
+
+-----------------------------
 v2.1.1
 
 - Small hotfix for a index of out bounds error.
