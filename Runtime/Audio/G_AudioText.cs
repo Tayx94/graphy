@@ -1,5 +1,5 @@
 ﻿/* ---------------------------------------
- * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Author:          Martin Pane (martintayx@gmail.com) (@martinTayx)
  * Contributors:    https://github.com/Tayx94/graphy/graphs/contributors
  * Project:         Graphy - Ultimate Stats Monitor
  * Date:            15-Dec-17
@@ -21,19 +21,19 @@ namespace Tayx.Graphy.Audio
     {
         #region Variables -> Serialized Private
 
-        [SerializeField] private    Text            m_DBText            = null;
+        [SerializeField] private Text m_DBText = null;
 
         #endregion
 
         #region Variables -> Private
 
-        private                     GraphyManager   m_graphyManager     = null;
+        private GraphyManager m_graphyManager = null;
 
-        private                     G_AudioMonitor  m_audioMonitor      = null;
+        private G_AudioMonitor m_audioMonitor = null;
 
-        private                     int             m_updateRate        = 4;
+        private int m_updateRate = 4;
 
-        private                     float           m_deltaTimeOffset   = 0;
+        private float m_deltaTimeOffset = 0;
 
         #endregion
 
@@ -46,13 +46,13 @@ namespace Tayx.Graphy.Audio
 
         private void Update()
         {
-            if (m_audioMonitor.SpectrumDataAvailable)
+            if( m_audioMonitor.SpectrumDataAvailable )
             {
-                if (m_deltaTimeOffset > 1f / m_updateRate)
+                if( m_deltaTimeOffset > 1f / m_updateRate )
                 {
                     m_deltaTimeOffset = 0f;
 
-                    m_DBText.text = Mathf.Clamp((int)m_audioMonitor.MaxDB, -80, 0).ToStringNonAlloc();
+                    m_DBText.text = Mathf.Clamp( (int) m_audioMonitor.MaxDB, -80, 0 ).ToStringNonAlloc();
                 }
                 else
                 {
@@ -81,7 +81,7 @@ namespace Tayx.Graphy.Audio
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
 
             m_audioMonitor = GetComponent<G_AudioMonitor>();
-                       
+
             UpdateParameters();
         }
 

@@ -1,5 +1,5 @@
 ﻿/* ---------------------------------------
- * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Author:          Martin Pane (martintayx@gmail.com) (@martinTayx)
  * Contributors:    https://github.com/Tayx94/graphy/graphs/contributors
  * Project:         Graphy - Ultimate Stats Monitor
  * Date:            05-Dec-17
@@ -13,15 +13,14 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR;
+
 using System.Collections.Generic;
 using System.Text;
+
 using Tayx.Graphy.UI;
 using Tayx.Graphy.Utils;
 using Tayx.Graphy.Utils.NumString;
-
-#if UNITY_5_5_OR_NEWER
-using UnityEngine.Profiling;
-#endif
 
 namespace Tayx.Graphy.Advanced
 {
@@ -29,40 +28,43 @@ namespace Tayx.Graphy.Advanced
     {
         #region Variables -> Serialized Private
 
-        [SerializeField] private    List<Image>                 m_backgroundImages = new List<Image>();
+        [SerializeField] private List<Image> m_backgroundImages = new List<Image>();
 
-        [SerializeField] private    Text                        m_graphicsDeviceVersionText = null;
+        [SerializeField] private Text m_graphicsDeviceVersionText = null;
 
-        [SerializeField] private    Text                        m_processorTypeText = null;
+        [SerializeField] private Text m_processorTypeText = null;
 
-        [SerializeField] private    Text                        m_operatingSystemText = null;
+        [SerializeField] private Text m_operatingSystemText = null;
 
-        [SerializeField] private    Text                        m_systemMemoryText = null;
+        [SerializeField] private Text m_systemMemoryText = null;
 
-        [SerializeField] private    Text                        m_graphicsDeviceNameText = null;
-        [SerializeField] private    Text                        m_graphicsMemorySizeText = null;
-        [SerializeField] private    Text                        m_screenResolutionText = null;
-        [SerializeField] private    Text                        m_gameWindowResolutionText = null;
-
-        [Range(1, 60)]
-        [SerializeField] private    float                       m_updateRate                    = 1f;  // 1 update per sec.
+        [SerializeField] private Text m_graphicsDeviceNameText = null;
+        [SerializeField] private Text m_graphicsMemorySizeText = null;
+        [SerializeField] private Text m_screenResolutionText = null;
+        [SerializeField] private Text m_gameWindowResolutionText = null;
+        [SerializeField] private Text m_gameVRResolutionText = null;
+        
+        private readonly List<XRDisplaySubsystem> m_displaySubsystems = new List<XRDisplaySubsystem>();
+        
+        [Range( 1, 60 )] [SerializeField] private float m_updateRate = 1f; // 1 update per sec.
 
         #endregion
 
         #region Variables -> Private
 
-        private                     GraphyManager               m_graphyManager = null;
+        private GraphyManager m_graphyManager = null;
 
-        private                     RectTransform               m_rectTransform = null;
+        private RectTransform m_rectTransform = null;
+        private Vector2 m_origPosition = Vector2.zero;
 
-        private                     float                       m_deltaTime                     = 0.0f;
+        private float m_deltaTime = 0.0f;
 
-        private                     StringBuilder               m_sb = null;
+        private StringBuilder m_sb = null;
 
-        private                     GraphyManager.ModuleState   m_previousModuleState = GraphyManager.ModuleState.FULL;
-        private                     GraphyManager.ModuleState   m_currentModuleState = GraphyManager.ModuleState.FULL;
+        private GraphyManager.ModuleState m_previousModuleState = GraphyManager.ModuleState.FULL;
+        private GraphyManager.ModuleState m_currentModuleState = GraphyManager.ModuleState.FULL;
 
-        private readonly            string[]                    m_windowStrings =
+        private readonly string[] m_windowStrings =
         {
             "Window: ",
             "x",
@@ -70,6 +72,14 @@ namespace Tayx.Graphy.Advanced
             "Hz",
             "[",
             "dpi]"
+        };
+        
+        private readonly string[] m_vrStrings =
+        {
+            "VR: (",
+            "*2)x",
+            "@",
+            "Hz"
         };
 
         #endregion
@@ -85,19 +95,44 @@ namespace Tayx.Graphy.Advanced
         {
             m_deltaTime += Time.unscaledDeltaTime;
 
-            if (m_deltaTime > 1f / m_updateRate)
+            if( m_deltaTime > 1f / m_updateRate )
             {
                 // Update screen window resolution
                 m_sb.Length = 0;
 
-                m_sb.Append(m_windowStrings[0]).Append(Screen.width.ToStringNonAlloc())
-                    .Append(m_windowStrings[1]).Append(Screen.height.ToStringNonAlloc())
-                    .Append(m_windowStrings[2]).Append(Screen.currentResolution.refreshRate.ToStringNonAlloc())
-                    .Append(m_windowStrings[3])
-                    .Append(m_windowStrings[4]).Append(((int)Screen.dpi).ToStringNonAlloc())
-                    .Append(m_windowStrings[5]);
+                m_sb.Append( m_windowStrings[ 0 ] ).Append( Screen.width.ToStringNonAlloc() )
+                    .Append( m_windowStrings[ 1 ] ).Append( Screen.height.ToStringNonAlloc() )
+                    .Append( m_windowStrings[ 2 ] ).Append( Screen.currentResolution.refreshRate.ToStringNonAlloc() )
+                    .Append( m_windowStrings[ 3 ] )
+                    .Append( m_windowStrings[ 4 ] ).Append( ((int) Screen.dpi).ToStringNonAlloc() )
+                    .Append( m_windowStrings[ 5 ] );
 
                 m_gameWindowResolutionText.text = m_sb.ToString();
+
+                // If VR enabled, update screen VR resolution
+                if( XRSettings.enabled )
+                {
+                    m_sb.Length = 0;
+
+#if UNITY_2020_2_OR_NEWER
+                    SubsystemManager.GetSubsystems( m_displaySubsystems );
+#else
+                    SubsystemManager.GetInstances( m_displaySubsystems );
+#endif
+                    float refreshRate = -1;
+
+                    if( m_displaySubsystems.Count > 0 )
+                    {
+                        m_displaySubsystems[ 0 ].TryGetDisplayRefreshRate( out refreshRate );
+                    }
+
+                    m_sb.Append( m_vrStrings[ 0 ] ).Append( XRSettings.eyeTextureWidth.ToStringNonAlloc() )
+                        .Append( m_vrStrings[ 1 ] ).Append( XRSettings.eyeTextureHeight.ToStringNonAlloc() )
+                        .Append( m_vrStrings[ 2 ] ).Append( Mathf.RoundToInt( refreshRate ).ToStringNonAlloc() )
+                        .Append( m_vrStrings[ 3 ] );
+
+                    m_gameVRResolutionText.text = m_sb.ToString();
+                }
 
                 // Reset variables
                 m_deltaTime = 0f;
@@ -108,104 +143,88 @@ namespace Tayx.Graphy.Advanced
 
         #region Methods -> Public
 
-        public void SetPosition(GraphyManager.ModulePosition newModulePosition)
+        public void SetPosition( GraphyManager.ModulePosition newModulePosition, Vector2 offset )
         {
-            float xSideOffsetBackgroundImage    = Mathf.Abs(m_backgroundImages[0].rectTransform.anchoredPosition.x);
-            float ySideOffset                   = Mathf.Abs(m_rectTransform.anchoredPosition.y);
+            if ( newModulePosition == GraphyManager.ModulePosition.FREE )
+                return;
+            
+            m_rectTransform.anchoredPosition = m_origPosition;
 
-            switch (newModulePosition)
+            float xSideOffset = Mathf.Abs( m_rectTransform.anchoredPosition.x ) + offset.x;
+            float ySideOffset = Mathf.Abs( m_rectTransform.anchoredPosition.y ) + offset.y;
+
+            switch( newModulePosition )
             {
                 case GraphyManager.ModulePosition.TOP_LEFT:
 
-                    m_rectTransform.anchorMax                               = Vector2.one;
-                    m_rectTransform.anchorMin                               = Vector2.up;
-                    m_rectTransform.anchoredPosition                        = new Vector2(0, -ySideOffset);
-                    
-                    
-                    m_backgroundImages[0].rectTransform.anchorMax           = Vector2.up;
-                    m_backgroundImages[0].rectTransform.anchorMin           = Vector2.zero;
-                    m_backgroundImages[0].rectTransform.anchoredPosition    = new Vector2(xSideOffsetBackgroundImage, 0);
+                    m_rectTransform.anchorMax = Vector2.up;
+                    m_rectTransform.anchorMin = Vector2.up;
+                    m_rectTransform.anchoredPosition = new Vector2( xSideOffset, -ySideOffset );
 
                     break;
 
                 case GraphyManager.ModulePosition.TOP_RIGHT:
 
-                    m_rectTransform.anchorMax                               = Vector2.one;
-                    m_rectTransform.anchorMin                               = Vector2.up;
-                    m_rectTransform.anchoredPosition                        = new Vector2(0, -ySideOffset);
+                    m_rectTransform.anchorMax = Vector2.one;
+                    m_rectTransform.anchorMin = Vector2.one;
+                    m_rectTransform.anchoredPosition = new Vector2( -xSideOffset, -ySideOffset );
 
-                    m_backgroundImages[0].rectTransform.anchorMax           = Vector2.one;
-                    m_backgroundImages[0].rectTransform.anchorMin           = Vector2.right;
-                    m_backgroundImages[0].rectTransform.anchoredPosition    = new Vector2(-xSideOffsetBackgroundImage, 0);
-                    
                     break;
 
                 case GraphyManager.ModulePosition.BOTTOM_LEFT:
 
-                    m_rectTransform.anchorMax                               = Vector2.right;
-                    m_rectTransform.anchorMin                               = Vector2.zero;
-                    m_rectTransform.anchoredPosition                        = new Vector2(0, ySideOffset);
+                    m_rectTransform.anchorMax = Vector2.zero;
+                    m_rectTransform.anchorMin = Vector2.zero;
+                    m_rectTransform.anchoredPosition = new Vector2( xSideOffset, ySideOffset );
 
-                    m_backgroundImages[0].rectTransform.anchorMax           = Vector2.up;
-                    m_backgroundImages[0].rectTransform.anchorMin           = Vector2.zero;
-                    m_backgroundImages[0].rectTransform.anchoredPosition    = new Vector2(xSideOffsetBackgroundImage, 0);
-                    
                     break;
 
                 case GraphyManager.ModulePosition.BOTTOM_RIGHT:
 
-                    m_rectTransform.anchorMax                               = Vector2.right;
-                    m_rectTransform.anchorMin                               = Vector2.zero;
-                    m_rectTransform.anchoredPosition                        = new Vector2(0, ySideOffset);
+                    m_rectTransform.anchorMax = Vector2.right;
+                    m_rectTransform.anchorMin = Vector2.right;
+                    m_rectTransform.anchoredPosition = new Vector2( -xSideOffset, ySideOffset );
 
-                    m_backgroundImages[0].rectTransform.anchorMax           = Vector2.one;
-                    m_backgroundImages[0].rectTransform.anchorMin           = Vector2.right;
-                    m_backgroundImages[0].rectTransform.anchoredPosition    = new Vector2(-xSideOffsetBackgroundImage, 0);
-                    
-                    break;
-
-                case GraphyManager.ModulePosition.FREE:
                     break;
             }
 
-            switch (newModulePosition)
+            switch( newModulePosition )
             {
                 case GraphyManager.ModulePosition.TOP_LEFT:
                 case GraphyManager.ModulePosition.BOTTOM_LEFT:
 
-                    m_processorTypeText             .alignment = TextAnchor.UpperLeft;
-                    m_systemMemoryText              .alignment = TextAnchor.UpperLeft;
-                    m_graphicsDeviceNameText        .alignment = TextAnchor.UpperLeft;
-                    m_graphicsDeviceVersionText     .alignment = TextAnchor.UpperLeft;
-                    m_graphicsMemorySizeText        .alignment = TextAnchor.UpperLeft;
-                    m_screenResolutionText          .alignment = TextAnchor.UpperLeft;
-                    m_gameWindowResolutionText      .alignment = TextAnchor.UpperLeft;
-                    m_operatingSystemText           .alignment = TextAnchor.UpperLeft;
+                    m_processorTypeText.alignment = TextAnchor.UpperLeft;
+                    m_systemMemoryText.alignment = TextAnchor.UpperLeft;
+                    m_graphicsDeviceNameText.alignment = TextAnchor.UpperLeft;
+                    m_graphicsDeviceVersionText.alignment = TextAnchor.UpperLeft;
+                    m_graphicsMemorySizeText.alignment = TextAnchor.UpperLeft;
+                    m_screenResolutionText.alignment = TextAnchor.UpperLeft;
+                    m_gameWindowResolutionText.alignment = TextAnchor.UpperLeft;
+                    m_gameVRResolutionText.alignment = TextAnchor.UpperLeft;
+                    m_operatingSystemText.alignment = TextAnchor.UpperLeft;
 
                     break;
 
                 case GraphyManager.ModulePosition.TOP_RIGHT:
                 case GraphyManager.ModulePosition.BOTTOM_RIGHT:
 
-                    m_processorTypeText             .alignment = TextAnchor.UpperRight;
-                    m_systemMemoryText              .alignment = TextAnchor.UpperRight;
-                    m_graphicsDeviceNameText        .alignment = TextAnchor.UpperRight;
-                    m_graphicsDeviceVersionText     .alignment = TextAnchor.UpperRight;
-                    m_graphicsMemorySizeText        .alignment = TextAnchor.UpperRight;
-                    m_screenResolutionText          .alignment = TextAnchor.UpperRight;
-                    m_gameWindowResolutionText      .alignment = TextAnchor.UpperRight;
-                    m_operatingSystemText           .alignment = TextAnchor.UpperRight;
-                    
-                    break;
+                    m_processorTypeText.alignment = TextAnchor.UpperRight;
+                    m_systemMemoryText.alignment = TextAnchor.UpperRight;
+                    m_graphicsDeviceNameText.alignment = TextAnchor.UpperRight;
+                    m_graphicsDeviceVersionText.alignment = TextAnchor.UpperRight;
+                    m_graphicsMemorySizeText.alignment = TextAnchor.UpperRight;
+                    m_screenResolutionText.alignment = TextAnchor.UpperRight;
+                    m_gameWindowResolutionText.alignment = TextAnchor.UpperRight;
+                    m_gameVRResolutionText.alignment = TextAnchor.UpperRight;
+                    m_operatingSystemText.alignment = TextAnchor.UpperRight;
 
-                case GraphyManager.ModulePosition.FREE:
                     break;
             }
         }
 
-        public void SetState(GraphyManager.ModuleState state, bool silentUpdate = false)
+        public void SetState( GraphyManager.ModuleState state, bool silentUpdate = false )
         {
-            if (!silentUpdate)
+            if( !silentUpdate )
             {
                 m_previousModuleState = m_currentModuleState;
             }
@@ -216,9 +235,9 @@ namespace Tayx.Graphy.Advanced
                           || state == GraphyManager.ModuleState.TEXT
                           || state == GraphyManager.ModuleState.BASIC;
 
-            gameObject.SetActive(active);
+            gameObject.SetActive( active );
 
-            m_backgroundImages.SetAllActive(active && m_graphyManager.Background);
+            m_backgroundImages.SetAllActive( active && m_graphyManager.Background );
         }
 
         /// <summary>
@@ -226,29 +245,29 @@ namespace Tayx.Graphy.Advanced
         /// </summary>
         public void RestorePreviousState()
         {
-            SetState(m_previousModuleState);
+            SetState( m_previousModuleState );
         }
-        
+
         public void UpdateParameters()
         {
-            foreach (var image in m_backgroundImages)
+            foreach( var image in m_backgroundImages )
             {
                 image.color = m_graphyManager.BackgroundColor;
             }
-            
-            SetPosition(m_graphyManager.AdvancedModulePosition);
-            SetState(m_graphyManager.AdvancedModuleState);
+
+            SetPosition( m_graphyManager.AdvancedModulePosition, Vector2.zero );
+            SetState( m_graphyManager.AdvancedModuleState );
         }
 
         public void RefreshParameters()
         {
-            foreach (var image in m_backgroundImages)
+            foreach( var image in m_backgroundImages )
             {
                 image.color = m_graphyManager.BackgroundColor;
             }
 
-            SetPosition(m_graphyManager.AdvancedModulePosition);
-            SetState(m_currentModuleState, true);
+            SetPosition( m_graphyManager.AdvancedModulePosition, Vector2.zero );
+            SetState( m_currentModuleState, true );
         }
 
         #endregion
@@ -265,58 +284,58 @@ namespace Tayx.Graphy.Advanced
 
             m_rectTransform = GetComponent<RectTransform>();
 
-            #region Section -> Text
-
             m_processorTypeText.text
                 = "CPU: "
-                + SystemInfo.processorType
-                + " ["
-                + SystemInfo.processorCount
-                + " cores]";
+                  + SystemInfo.processorType
+                  + " ["
+                  + SystemInfo.processorCount
+                  + " cores]";
 
             m_systemMemoryText.text
                 = "RAM: "
-                + SystemInfo.systemMemorySize
-                + " MB";
+                  + SystemInfo.systemMemorySize
+                  + " MB";
 
             m_graphicsDeviceVersionText.text
                 = "Graphics API: "
-                + SystemInfo.graphicsDeviceVersion;
+                  + SystemInfo.graphicsDeviceVersion;
 
             m_graphicsDeviceNameText.text
                 = "GPU: "
-                + SystemInfo.graphicsDeviceName;
+                  + SystemInfo.graphicsDeviceName;
 
             m_graphicsMemorySizeText.text
                 = "VRAM: "
-                + SystemInfo.graphicsMemorySize
-                + "MB. Max texture size: "
-                + SystemInfo.maxTextureSize
-                + "px. Shader level: "
-                + SystemInfo.graphicsShaderLevel;
+                  + SystemInfo.graphicsMemorySize
+                  + "MB. Max texture size: "
+                  + SystemInfo.maxTextureSize
+                  + "px. Shader level: "
+                  + SystemInfo.graphicsShaderLevel;
 
             Resolution res = Screen.currentResolution;
 
             m_screenResolutionText.text
                 = "Screen: "
-                + res.width
-                + "x"
-                + res.height
-                + "@"
-                + res.refreshRate
-                + "Hz";
+                  + res.width
+                  + "x"
+                  + res.height
+                  + "@"
+                  + res.refreshRate
+                  + "Hz";
 
             m_operatingSystemText.text
                 = "OS: "
-                + SystemInfo.operatingSystem
-                + " ["
-                + SystemInfo.deviceType
-                + "]";
+                  + SystemInfo.operatingSystem
+                  + " ["
+                  + SystemInfo.deviceType
+                  + "]";
 
+            m_gameVRResolutionText.text = "VR: Not active";
+            
             float preferredWidth = 0;
-            
+
             // Resize the background overlay
-            
+
             List<Text> texts = new List<Text>()
             {
                 m_graphicsDeviceVersionText,
@@ -329,31 +348,28 @@ namespace Tayx.Graphy.Advanced
                 m_operatingSystemText
             };
 
-            foreach (var text in texts)
+            foreach( var text in texts )
             {
-                if (text.preferredWidth > preferredWidth)
+                if( text.preferredWidth > preferredWidth )
                 {
                     preferredWidth = text.preferredWidth;
                 }
             }
-
-            #endregion
-
-            #region Section -> Background Images
-
-            m_backgroundImages[0].rectTransform.SetSizeWithCurrentAnchors
+            
+            m_rectTransform.SetSizeWithCurrentAnchors
             (
                 axis: RectTransform.Axis.Horizontal,
                 size: preferredWidth + 25
             );
 
-            m_backgroundImages[0].rectTransform.anchoredPosition = new Vector2
+            m_rectTransform.anchoredPosition = new Vector2
             (
-                x: (preferredWidth + 25) / 2 * Mathf.Sign(m_backgroundImages[0].rectTransform.anchoredPosition.x),
-                y: m_backgroundImages[0].rectTransform.anchoredPosition.y
+                x: m_rectTransform.anchoredPosition.x - m_rectTransform.rect.width / 2
+                   + m_rectTransform.rect.width / 2 * Mathf.Sign( m_rectTransform.anchoredPosition.x ),
+                y: m_rectTransform.anchoredPosition.y
             );
 
-            #endregion
+            m_origPosition = m_rectTransform.anchoredPosition;
 
             UpdateParameters();
         }

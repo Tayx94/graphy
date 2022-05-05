@@ -1,5 +1,5 @@
 ﻿/* ---------------------------------------
- * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Author:          Martin Pane (martintayx@gmail.com) (@martinTayx)
  * Contributors:    https://github.com/Tayx94/graphy/graphs/contributors
  * Project:         Graphy - Ultimate Stats Monitor
  * Date:            15-Dec-17
@@ -12,10 +12,7 @@
  * -------------------------------------*/
 
 using UnityEngine;
-
-#if UNITY_5_5_OR_NEWER
 using UnityEngine.Profiling;
-#endif
 
 namespace Tayx.Graphy.Ram
 {
@@ -33,11 +30,11 @@ namespace Tayx.Graphy.Ram
 
         private void Update()
         {
-            AllocatedRam = Profiler.GetTotalAllocatedMemoryLong()/ 1048576f;
-            ReservedRam  = Profiler.GetTotalReservedMemoryLong() / 1048576f;
-            MonoRam      = Profiler.GetMonoUsedSizeLong()        / 1048576f;
+            AllocatedRam = Profiler.GetTotalAllocatedMemoryLong() / 1048576f;
+            ReservedRam = Profiler.GetTotalReservedMemoryLong() / 1048576f;
+            MonoRam = Profiler.GetMonoUsedSizeLong() / 1048576f;
         }
 
-        #endregion 
+        #endregion
     }
 }

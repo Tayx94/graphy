@@ -1,5 +1,5 @@
 ﻿/* ---------------------------------------
- * Author:      Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Author:      Martin Pane (martintayx@gmail.com) (@martinTayx)
  * Contributors:    https://github.com/Tayx94/graphy/graphs/contributors
  * Project:     Graphy - Ultimate Stats Monitor
  * Date:        04-Jan-18
@@ -30,31 +30,31 @@ namespace Tayx.Graphy.Utils
         /// <param name="active">
         /// Wether to turn them on or off.
         /// </param>
-        public static List<GameObject> SetAllActive(this List<GameObject> gameObjects, bool active)
+        public static List<GameObject> SetAllActive( this List<GameObject> gameObjects, bool active )
         {
-            foreach (var gameObj in gameObjects)
+            foreach( var gameObj in gameObjects )
             {
-                gameObj.SetActive(active);
+                gameObj.SetActive( active );
             }
 
             return gameObjects;
         }
 
-        public static List<Image> SetOneActive(this List<Image> images, int active)
+        public static List<Image> SetOneActive( this List<Image> images, int active )
         {
-            for (int i = 0; i < images.Count; i++)
+            for( int i = 0; i < images.Count; i++ )
             {
-                images[i].gameObject.SetActive(i == active);
+                images[ i ].gameObject.SetActive( i == active );
             }
 
             return images;
         }
-        
-        public static List<Image> SetAllActive(this List<Image> images, bool active)
+
+        public static List<Image> SetAllActive( this List<Image> images, bool active )
         {
-            foreach (var image in images)
+            foreach( var image in images )
             {
-                image.gameObject.SetActive(active);
+                image.gameObject.SetActive( active );
             }
 
             return images;

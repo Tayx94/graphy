@@ -1,5 +1,5 @@
 ﻿/* ---------------------------------------
- * Author:          Martin Pane (martintayx@gmail.com) (@tayx94)
+ * Author:          Martin Pane (martintayx@gmail.com) (@martinTayx)
  * Contributors:    https://github.com/Tayx94/graphy/graphs/contributors
  * Project:         Graphy - Ultimate Stats Monitor
  * Date:            03-Jan-18
@@ -21,6 +21,6 @@ namespace Tayx.Graphy.UI
         /// <param name="newState">
         /// The new state.
         /// </param>
-        void SetState(GraphyManager.ModuleState newState, bool silentUpdate);
+        void SetState( GraphyManager.ModuleState newState, bool silentUpdate );
     }
 }

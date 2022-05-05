@@ -1,6 +1,6 @@
 ﻿/* ---------------------------------------
  * Sourced from:    https://wiki.unity3d.com/index.php/Singleton
- * Modified by:     Martín Pane (martintayx@gmail.com) (@tayx94)
+ * Modified by:     Martín Pane (martintayx@gmail.com) (@martinTayx)
  * Contributors:    https://github.com/Tayx94/graphy/graphs/contributors
  * Project:         Graphy - Ultimate Stats Monitor
  * Date:            07-Jul-17
@@ -25,9 +25,9 @@ namespace Tayx.Graphy.Utils
     {
         #region Variables -> Private
 
-        private static  T       _instance;
+        private static T _instance;
 
-        private static  object  _lock       = new object();
+        private static object _lock = new object();
 
         #endregion
 
@@ -37,15 +37,15 @@ namespace Tayx.Graphy.Utils
         {
             get
             {
-                lock (_lock)
+                lock( _lock )
                 {
-                    if (_instance == null)
+                    if( _instance == null )
                     {
                         Debug.Log
                         (
-                            "[Singleton] An instance of " + typeof(T) +
+                            "[Singleton] An instance of " + typeof( T ) +
                             " is trying to be accessed, but it wasn't initialized first. " +
-                            "Make sure to add an instance of " + typeof(T) + " in the scene before " +
+                            "Make sure to add an instance of " + typeof( T ) + " in the scene before " +
                             " trying to access it."
                         );
                     }
@@ -61,9 +61,9 @@ namespace Tayx.Graphy.Utils
 
         void Awake()
         {
-            if (_instance != null)
+            if( _instance != null )
             {
-                Destroy(gameObject);
+                Destroy( gameObject );
             }
             else
             {
@@ -73,7 +73,7 @@ namespace Tayx.Graphy.Utils
 
         void OnDestroy()
         {
-            if (_instance == this)
+            if( _instance == this )
             {
                 _instance = null;
             }

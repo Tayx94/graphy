@@ -47,8 +47,8 @@ namespace Tayx.Graphy
 
         static GraphyEditorStyle()
         {
-            string managerLogoGuid = AssetDatabase.FindAssets( $"Manager_Logo_{(EditorGUIUtility.isProSkin ? "White" : "Dark")}" )[0];
-            string debuggerLogoGuid = AssetDatabase.FindAssets( $"Debugger_Logo_{(EditorGUIUtility.isProSkin ? "White" : "Dark")}" )[0];
+            string managerLogoGuid = AssetDatabase.FindAssets( $"Manager_Logo_{(EditorGUIUtility.isProSkin ? "White" : "Dark")}" )[ 0 ];
+            string debuggerLogoGuid = AssetDatabase.FindAssets( $"Debugger_Logo_{(EditorGUIUtility.isProSkin ? "White" : "Dark")}" )[ 0 ];
             string guiSkinGuid = AssetDatabase.FindAssets( "GraphyGUISkin" )[ 0 ];
 
             _managerLogoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>
@@ -66,10 +66,10 @@ namespace Tayx.Graphy
                 AssetDatabase.GUIDToAssetPath( guiSkinGuid )
             );
 
-            if (m_skin != null)
+            if( m_skin != null )
             {
-                m_headerStyle1 = m_skin.GetStyle("Header1");
-                m_headerStyle2 = m_skin.GetStyle("Header2");
+                m_headerStyle1 = m_skin.GetStyle( "Header1" );
+                m_headerStyle2 = m_skin.GetStyle( "Header2" );
 
                 SetGuiStyleFontColor
                 (
@@ -83,7 +83,7 @@ namespace Tayx.Graphy
                 m_headerStyle2 = EditorStyles.boldLabel;
             }
 
-            m_foldoutStyle = new GUIStyle(EditorStyles.foldout)
+            m_foldoutStyle = new GUIStyle( EditorStyles.foldout )
             {
                 font = m_headerStyle2.font,
                 fontStyle = m_headerStyle2.fontStyle,
@@ -101,7 +101,7 @@ namespace Tayx.Graphy
 
         #region Methods -> Private
 
-        private static void SetGuiStyleFontColor(GUIStyle guiStyle, Color color)
+        private static void SetGuiStyleFontColor( GUIStyle guiStyle, Color color )
         {
             guiStyle.normal.textColor = color;
             guiStyle.hover.textColor = color;
