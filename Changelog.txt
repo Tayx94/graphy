@@ -1,9 +1,14 @@
 -----------------------------
+v3.0.1
+
+- Added GRAPHY_VR scripting define.
+
+-----------------------------
 v3.0.0
 
-Added beta support for VR!
-Added support for an offset in all modules.
-Big refactor and cleanup.
+- Added beta support for VR!
+- Added support for an offset in all modules.
+- Big refactor and cleanup.
 
 -----------------------------
 v2.1.3
