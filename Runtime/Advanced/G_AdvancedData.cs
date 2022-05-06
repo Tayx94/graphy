@@ -109,7 +109,8 @@ namespace Tayx.Graphy.Advanced
 
                 m_gameWindowResolutionText.text = m_sb.ToString();
 
-                // If VR enabled, update screen VR resolution
+#if GRAPHY_VR
+                // If XR enabled, update screen XR resolution
                 if( XRSettings.enabled )
                 {
                     m_sb.Length = 0;
@@ -133,7 +134,8 @@ namespace Tayx.Graphy.Advanced
 
                     m_gameVRResolutionText.text = m_sb.ToString();
                 }
-
+#endif
+                
                 // Reset variables
                 m_deltaTime = 0f;
             }
@@ -345,6 +347,7 @@ namespace Tayx.Graphy.Advanced
                 m_graphicsMemorySizeText,
                 m_screenResolutionText,
                 m_gameWindowResolutionText,
+                m_gameVRResolutionText,
                 m_operatingSystemText
             };
 

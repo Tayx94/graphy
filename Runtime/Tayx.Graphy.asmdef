@@ -15,6 +15,11 @@
             "name": "com.unity.inputsystem",
             "expression": "",
             "define": "GRAPHY_NEW_INPUT"
+        },
+        {
+            "name": "com.unity.modules.xr",
+            "expression": "",
+            "define": "GRAPHY_VR"
         }
     ],
     "noEngineReferences": false
