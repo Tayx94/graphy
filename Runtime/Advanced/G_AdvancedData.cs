@@ -86,7 +86,7 @@ namespace Tayx.Graphy.Advanced
 
         #region Methods -> Unity Callbacks
 
-        private void OnEnable()
+        private void Awake()
         {
             Init();
         }
