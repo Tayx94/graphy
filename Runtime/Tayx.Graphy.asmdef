@@ -19,7 +19,7 @@
         {
             "name": "com.unity.modules.xr",
             "expression": "",
-            "define": "GRAPHY_VR"
+            "define": "GRAPHY_XR"
         }
     ],
     "noEngineReferences": false

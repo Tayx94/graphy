@@ -14,7 +14,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-#if GRAPHY_VR
+#if GRAPHY_XR
 using UnityEngine.XR;
 #endif
 
@@ -47,7 +47,7 @@ namespace Tayx.Graphy.Advanced
         [SerializeField] private Text m_gameWindowResolutionText = null;
         [SerializeField] private Text m_gameVRResolutionText = null;
         
-#if GRAPHY_VR
+#if GRAPHY_XR
         private readonly List<XRDisplaySubsystem> m_displaySubsystems = new List<XRDisplaySubsystem>();
 #endif
         
@@ -114,7 +114,7 @@ namespace Tayx.Graphy.Advanced
 
                 m_gameWindowResolutionText.text = m_sb.ToString();
 
-#if GRAPHY_VR
+#if GRAPHY_XR
                 // If XR enabled, update screen XR resolution
                 if( XRSettings.enabled )
                 {
