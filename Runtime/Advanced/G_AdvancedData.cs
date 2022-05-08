@@ -13,7 +13,10 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+
+#if GRAPHY_VR
 using UnityEngine.XR;
+#endif
 
 using System.Collections.Generic;
 using System.Text;
@@ -44,7 +47,9 @@ namespace Tayx.Graphy.Advanced
         [SerializeField] private Text m_gameWindowResolutionText = null;
         [SerializeField] private Text m_gameVRResolutionText = null;
         
+#if GRAPHY_VR
         private readonly List<XRDisplaySubsystem> m_displaySubsystems = new List<XRDisplaySubsystem>();
+#endif
         
         [Range( 1, 60 )] [SerializeField] private float m_updateRate = 1f; // 1 update per sec.
 
