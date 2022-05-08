@@ -1,4 +1,10 @@
 -----------------------------
+v3.0.2
+
+- Renamed GRAPHY_VR to GRAPHY_XR
+- Added GRAPHY_XR to missing places to fix code compilation
+
+-----------------------------
 v3.0.1
 
 - Added GRAPHY_VR scripting define.
