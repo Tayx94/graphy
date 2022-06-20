@@ -477,7 +477,8 @@ namespace Tayx.Graphy
             (
                 m_fpsModuleInspectorToggle,
                 content: " [ FPS ]",
-                style: GraphyEditorStyle.FoldoutStyle
+                style: GraphyEditorStyle.FoldoutStyle,
+                toggleOnLabelClick: true
             );
 
             GUILayout.Space( 5 );
@@ -607,7 +608,8 @@ namespace Tayx.Graphy
             (
                 m_ramModuleInspectorToggle,
                 content: " [ RAM ]",
-                style: GraphyEditorStyle.FoldoutStyle
+                style: GraphyEditorStyle.FoldoutStyle,
+                toggleOnLabelClick: true
             );
 
             GUILayout.Space( 5 );
@@ -687,7 +689,8 @@ namespace Tayx.Graphy
             (
                 m_audioModuleInspectorToggle,
                 content: " [ AUDIO ]",
-                style: GraphyEditorStyle.FoldoutStyle
+                style: GraphyEditorStyle.FoldoutStyle,
+                toggleOnLabelClick: true
             );
 
             GUILayout.Space( 5 );
@@ -822,7 +825,8 @@ namespace Tayx.Graphy
             (
                 m_advancedModuleInspectorToggle,
                 content: " [ ADVANCED DATA ]",
-                style: GraphyEditorStyle.FoldoutStyle
+                style: GraphyEditorStyle.FoldoutStyle,
+                toggleOnLabelClick: true
             );
 
             GUILayout.Space( 5 );
