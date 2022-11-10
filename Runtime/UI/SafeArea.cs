@@ -8,32 +8,24 @@ namespace Graphy.Runtime.UI
     [ExecuteAlways]
     public sealed class SafeArea : MonoBehaviour
     {
-        private Canvas m_canvas;
+        [SerializeField] [HideInInspector] private RectTransform rectTransform;
+        [SerializeField] [HideInInspector] private Canvas canvas;
+
+        [SerializeField]
+        [Tooltip("If false, this will be applied only at initialization. " +
+                 "If your app's screen orientation changes at runtime, set to true.")]
+        private bool checkSafeAreaSizeAtRuntime;
+
         private bool m_isInitialized;
         private Rect m_latestSafeArea;
-        private RectTransform m_rectTransform;
         private DrivenRectTransformTracker m_rectTransformTracker;
 
-        private RectTransform RectTransform
+        private void Awake()
         {
-            get
-            {
-                if (m_rectTransform == null)
-                    m_rectTransform = (RectTransform)transform;
-
-                return m_rectTransform;
-            }
-        }
-
-        private Canvas Canvas
-        {
-            get
-            {
-                if (m_canvas == null)
-                    m_canvas = GetComponentInParent<Canvas>();
-
-                return m_canvas;
-            }
+            if (rectTransform == null)
+                rectTransform = (RectTransform)transform;
+            if (canvas == null)
+                canvas = GetComponentInParent<Canvas>();
         }
 
         private void Update()
@@ -44,7 +36,7 @@ namespace Graphy.Runtime.UI
                 m_rectTransformTracker.Clear();
                 m_rectTransformTracker.Add(
                     this,
-                    RectTransform,
+                    rectTransform,
                     DrivenTransformProperties.AnchoredPosition
                     | DrivenTransformProperties.SizeDelta
                     | DrivenTransformProperties.AnchorMin
@@ -65,14 +57,30 @@ namespace Graphy.Runtime.UI
         /// <returns>True if the RectTransform was changed.</returns>
         private bool Apply()
         {
-            if (Canvas == null)
+            if (canvas == null)
                 return false;
 
-            // Force update if anchorMax is not zero because the RectTransform value will be incorrect if the RectTransform value is changed and undo.
-            if (RectTransform.anchorMax != Vector2.zero && m_isInitialized && Screen.safeArea == m_latestSafeArea)
-                return false;
+            if (m_isInitialized)
+            {
+                if (Application.isPlaying)
+                {
+                    // If this flag is set to false, we apply the safe area only at initialization.
+                    if (!checkSafeAreaSizeAtRuntime)
+                        return false;
 
-            SetTransform(Canvas, RectTransform);
+                    // If the safe area hasn't changed, do nothing.
+                    if (Screen.safeArea == m_latestSafeArea)
+                        return false;
+                }
+                else
+                {
+                    // In Edit Mode, force update if anchorMax is zero because the RectTransform value will be incorrect if the RectTransform value is changed and undo.
+                    if (rectTransform.anchorMax != Vector2.zero && Screen.safeArea == m_latestSafeArea)
+                        return false;
+                }
+            }
+
+            SetTransform(canvas, rectTransform);
 
             m_latestSafeArea = Screen.safeArea;
             m_isInitialized = true;
