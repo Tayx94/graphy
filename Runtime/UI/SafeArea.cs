@@ -30,61 +30,48 @@ namespace Graphy.Runtime.UI
 
         private void Update()
         {
-            var changed = Apply();
-            if (changed)
-            {
-                m_rectTransformTracker.Clear();
-                m_rectTransformTracker.Add(
-                    this,
-                    rectTransform,
-                    DrivenTransformProperties.AnchoredPosition
-                    | DrivenTransformProperties.SizeDelta
-                    | DrivenTransformProperties.AnchorMin
-                    | DrivenTransformProperties.AnchorMax
-                    | DrivenTransformProperties.Pivot
-                );
-            }
-        }
-
-        private void OnDisable()
-        {
-            m_rectTransformTracker.Clear();
-        }
-
-        /// <summary>
-        ///     Applies the safe area to the RectTransform.
-        /// </summary>
-        /// <returns>True if the RectTransform was changed.</returns>
-        private bool Apply()
-        {
-            if (canvas == null)
-                return false;
-
             if (m_isInitialized)
             {
                 if (Application.isPlaying)
                 {
                     // If this flag is set to false, we apply the safe area only at initialization.
                     if (!checkSafeAreaSizeAtRuntime)
-                        return false;
+                        return;
 
                     // If the safe area hasn't changed, do nothing.
                     if (Screen.safeArea == m_latestSafeArea)
-                        return false;
+                        return;
                 }
                 else
                 {
                     // In Edit Mode, force update if anchorMax is zero because the RectTransform value will be incorrect if the RectTransform value is changed and undo.
                     if (rectTransform.anchorMax != Vector2.zero && Screen.safeArea == m_latestSafeArea)
-                        return false;
+                        return;
                 }
             }
 
+            // Update transform.
             SetTransform(canvas, rectTransform);
+
+            // Make the rectTransform not editable in the inspector.
+            m_rectTransformTracker.Clear();
+            m_rectTransformTracker.Add(
+                this,
+                rectTransform,
+                DrivenTransformProperties.AnchoredPosition
+                | DrivenTransformProperties.SizeDelta
+                | DrivenTransformProperties.AnchorMin
+                | DrivenTransformProperties.AnchorMax
+                | DrivenTransformProperties.Pivot
+            );
 
             m_latestSafeArea = Screen.safeArea;
             m_isInitialized = true;
-            return true;
+        }
+
+        private void OnDisable()
+        {
+            m_rectTransformTracker.Clear();
         }
 
         private static void SetTransform(Canvas canvas, RectTransform rectTransform)
