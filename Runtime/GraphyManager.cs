@@ -905,73 +905,79 @@ namespace Tayx.Graphy
             }
 #else
             // Toggle Mode ---------------------------------------
-            if (m_toggleModeCtrl && m_toggleModeAlt)
+            if (m_toggleModeKeyCode != KeyCode.None)
             {
-                if (CheckFor3KeyPress(m_toggleModeKeyCode, KeyCode.LeftControl, KeyCode.LeftAlt)
-                    || CheckFor3KeyPress(m_toggleModeKeyCode, KeyCode.RightControl, KeyCode.LeftAlt)
-                    || CheckFor3KeyPress(m_toggleModeKeyCode, KeyCode.RightControl, KeyCode.RightAlt)
-                    || CheckFor3KeyPress(m_toggleModeKeyCode, KeyCode.LeftControl, KeyCode.RightAlt))
+                if (m_toggleModeCtrl && m_toggleModeAlt)
                 {
-                    ToggleModes();
+                    if (   CheckFor3KeyPress(m_toggleModeKeyCode, KeyCode.LeftControl, KeyCode.LeftAlt)
+                        || CheckFor3KeyPress(m_toggleModeKeyCode, KeyCode.RightControl, KeyCode.LeftAlt)
+                        || CheckFor3KeyPress(m_toggleModeKeyCode, KeyCode.RightControl, KeyCode.RightAlt)
+                        || CheckFor3KeyPress(m_toggleModeKeyCode, KeyCode.LeftControl, KeyCode.RightAlt))
+                    {
+                        ToggleModes();
+                    }
                 }
-            }
-            else if (m_toggleModeCtrl)
-            {
-                if (    CheckFor2KeyPress(m_toggleModeKeyCode, KeyCode.LeftControl)
-                    ||  CheckFor2KeyPress(m_toggleModeKeyCode, KeyCode.RightControl))
+                else if (m_toggleModeCtrl)
                 {
-                    ToggleModes();
+                    if (    CheckFor2KeyPress(m_toggleModeKeyCode, KeyCode.LeftControl)
+                        ||  CheckFor2KeyPress(m_toggleModeKeyCode, KeyCode.RightControl))
+                    {
+                        ToggleModes();
+                    }
                 }
-            }
-            else if (m_toggleModeAlt)
-            {
-                if (    CheckFor2KeyPress(m_toggleModeKeyCode, KeyCode.LeftAlt)
-                    ||  CheckFor2KeyPress(m_toggleModeKeyCode, KeyCode.RightAlt))
+                else if (m_toggleModeAlt)
                 {
-                    ToggleModes();
+                    if (    CheckFor2KeyPress(m_toggleModeKeyCode, KeyCode.LeftAlt)
+                        ||  CheckFor2KeyPress(m_toggleModeKeyCode, KeyCode.RightAlt))
+                    {
+                        ToggleModes();
+                    }
                 }
-            }
-            else
-            {
-                if (CheckFor1KeyPress(m_toggleModeKeyCode))
+                else
                 {
-                    ToggleModes();
+                    if (CheckFor1KeyPress(m_toggleModeKeyCode))
+                    {
+                        ToggleModes();
+                    }
                 }
             }
 
             // Toggle Active -------------------------------------
-            if (m_toggleActiveCtrl && m_toggleActiveAlt)
+            if (m_toggleActiveKeyCode != KeyCode.None)
             {
-                if (    CheckFor3KeyPress(m_toggleActiveKeyCode, KeyCode.LeftControl, KeyCode.LeftAlt)
-                    ||  CheckFor3KeyPress(m_toggleActiveKeyCode, KeyCode.RightControl, KeyCode.LeftAlt)
-                    ||  CheckFor3KeyPress(m_toggleActiveKeyCode, KeyCode.RightControl, KeyCode.RightAlt)
-                    ||  CheckFor3KeyPress(m_toggleActiveKeyCode, KeyCode.LeftControl, KeyCode.RightAlt))
+                if (m_toggleActiveCtrl && m_toggleActiveAlt)
                 {
-                    ToggleActive();
+                    if (    CheckFor3KeyPress(m_toggleActiveKeyCode, KeyCode.LeftControl, KeyCode.LeftAlt)
+                        ||  CheckFor3KeyPress(m_toggleActiveKeyCode, KeyCode.RightControl, KeyCode.LeftAlt)
+                        ||  CheckFor3KeyPress(m_toggleActiveKeyCode, KeyCode.RightControl, KeyCode.RightAlt)
+                        ||  CheckFor3KeyPress(m_toggleActiveKeyCode, KeyCode.LeftControl, KeyCode.RightAlt))
+                    {
+                        ToggleActive();
+                    }
                 }
-            }
-            
-            else if (m_toggleActiveCtrl)
-            {
-                if (    CheckFor2KeyPress(m_toggleActiveKeyCode, KeyCode.LeftControl)
-                    ||  CheckFor2KeyPress(m_toggleActiveKeyCode, KeyCode.RightControl))
+                
+                else if (m_toggleActiveCtrl)
                 {
-                    ToggleActive();
+                    if (    CheckFor2KeyPress(m_toggleActiveKeyCode, KeyCode.LeftControl)
+                        ||  CheckFor2KeyPress(m_toggleActiveKeyCode, KeyCode.RightControl))
+                    {
+                        ToggleActive();
+                    }
                 }
-            }
-            else if (m_toggleActiveAlt)
-            {
-                if (    CheckFor2KeyPress(m_toggleActiveKeyCode, KeyCode.LeftAlt)
-                    ||  CheckFor2KeyPress(m_toggleActiveKeyCode, KeyCode.RightAlt))
+                else if (m_toggleActiveAlt)
                 {
-                    ToggleActive();
+                    if (    CheckFor2KeyPress(m_toggleActiveKeyCode, KeyCode.LeftAlt)
+                        ||  CheckFor2KeyPress(m_toggleActiveKeyCode, KeyCode.RightAlt))
+                    {
+                        ToggleActive();
+                    }
                 }
-            }
-            else
-            {
-                if (CheckFor1KeyPress(m_toggleActiveKeyCode))
+                else
                 {
-                    ToggleActive();
+                    if (CheckFor1KeyPress(m_toggleActiveKeyCode))
+                    {
+                        ToggleActive();
+                    }
                 }
             }
 #endif
