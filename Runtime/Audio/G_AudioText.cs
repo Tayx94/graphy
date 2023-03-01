@@ -14,6 +14,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Tayx.Graphy.Utils.NumString;
+using TMPro;
 
 namespace Tayx.Graphy.Audio
 {
@@ -21,7 +22,7 @@ namespace Tayx.Graphy.Audio
     {
         #region Variables -> Serialized Private
 
-        [SerializeField] private Text m_DBText = null;
+        [SerializeField] private TMP_Text m_DBText = null;
 
         #endregion
 

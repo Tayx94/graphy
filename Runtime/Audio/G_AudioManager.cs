@@ -16,6 +16,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using Tayx.Graphy.UI;
 using Tayx.Graphy.Utils;
+using TMPro;
 
 namespace Tayx.Graphy.Audio
 {
@@ -24,7 +25,7 @@ namespace Tayx.Graphy.Audio
         #region Variables -> Serialized Private
 
         [SerializeField] private GameObject m_audioGraphGameObject = null;
-        [SerializeField] private Text m_audioDbText = null;
+        [SerializeField] private TMP_Text m_audioDbText = null;
 
         [SerializeField] private List<Image> m_backgroundImages = new List<Image>();
 
@@ -74,7 +75,7 @@ namespace Tayx.Graphy.Audio
             float xSideOffset = Mathf.Abs( m_rectTransform.anchoredPosition.x ) + offset.x;
             float ySideOffset = Mathf.Abs( m_rectTransform.anchoredPosition.y ) + offset.y;
 
-            m_audioDbText.alignment = TextAnchor.UpperRight;
+            m_audioDbText.alignment = TextAlignmentOptions.TopRight;
 
             switch( newModulePosition )
             {

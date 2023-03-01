@@ -1,6 +1,6 @@
 {
     "name": "com.tayx.graphy",
-    "version": "3.0.2",
+    "version": "3.1.0",
     "displayName": "Graphy - Ultimate FPS Counter",
     "description": "Graphy is the ultimate, easy to use, feature packed FPS Counter, stats monitor and debugger for your Unity project.",
     "unity": "2019.3",
@@ -16,5 +16,8 @@
 	    "name": "Martin Pane",
 	    "email": "martintayx@gmail.com",
 	    "url": "https://twitter.com/martinTayx"
-  	}
+  	},
+	"dependencies": {
+      "com.unity.textmeshpro": "2.0.1"
+    }
 }
