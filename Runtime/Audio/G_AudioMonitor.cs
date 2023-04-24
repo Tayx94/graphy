@@ -180,8 +180,9 @@ namespace Tayx.Graphy.Audio
         private AudioListener FindAudioListener()
         {
             Camera mainCamera = Camera.main;
+            AudioListener audioListener;
 
-            if( mainCamera != null && mainCamera.TryGetComponent( out AudioListener audioListener ) )
+            if( mainCamera != null && ( audioListener = mainCamera.GetComponent<AudioListener>() ) != null )
             {
                 return audioListener;
             }
