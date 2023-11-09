@@ -327,7 +327,11 @@ namespace Tayx.Graphy.Advanced
                   + "x"
                   + res.height
                   + "@"
+#if UNITY_2022_2_OR_NEWER
+                  + res.refreshRateRatio.value.ToString("F2")
+#else
                   + res.refreshRate
+#endif
                   + "Hz";
 
             m_operatingSystemText.text

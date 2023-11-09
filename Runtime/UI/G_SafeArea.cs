@@ -6,7 +6,7 @@ namespace Graphy.Runtime.UI
     ///     Component that matches the size of the RectTransform to the safe area.
     /// </summary>
     [ExecuteAlways]
-    public sealed class SafeArea : MonoBehaviour
+    public sealed class G_SafeArea : MonoBehaviour
     {
         [SerializeField] [HideInInspector] private RectTransform rectTransform;
         [SerializeField] [HideInInspector] private Canvas canvas;

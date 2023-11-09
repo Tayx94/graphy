@@ -12,9 +12,7 @@
  * -------------------------------------*/
 
 using System;
-using System.Xml.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Tayx.Graphy.Fps
 {

@@ -1,4 +1,11 @@
 -----------------------------
+v3.0.3
+
+- Fixed some comments and removed unused using statements.
+- Fixed Resolution.refreshRate is obsolete warning for Unity 2022.2 and newer.
+- Increased minimum version to recommended Unity 2019.4 LTS.
+
+-----------------------------
 v3.0.2
 
 - Renamed GRAPHY_VR to GRAPHY_XR

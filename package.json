@@ -1,9 +1,9 @@
 {
     "name": "com.tayx.graphy",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "displayName": "Graphy - Ultimate FPS Counter",
     "description": "Graphy is the ultimate, easy to use, feature packed FPS Counter, stats monitor and debugger for your Unity project.",
-    "unity": "2019.3",
+    "unity": "2019.4",
     "license": "MIT",
     "keywords": [
         "fps",

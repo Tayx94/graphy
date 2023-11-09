@@ -14,7 +14,6 @@
 using Tayx.Graphy.Graph;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Profiling;
 
 namespace Tayx.Graphy.Ram
 {
@@ -222,9 +221,9 @@ namespace Tayx.Graphy.Ram
             m_shaderGraphMono.CautionThreshold = 0;
             m_shaderGraphMono.UpdateThresholds();
 
-            m_shaderGraphAllocated.UpdateArray();
-            m_shaderGraphReserved.UpdateArray();
-            m_shaderGraphMono.UpdateArray();
+            m_shaderGraphAllocated.UpdateArrayValuesLength();
+            m_shaderGraphReserved.UpdateArrayValuesLength();
+            m_shaderGraphMono.UpdateArrayValuesLength();
 
             // Average
 

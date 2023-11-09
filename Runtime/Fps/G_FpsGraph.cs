@@ -169,7 +169,7 @@ namespace Tayx.Graphy.Fps
 
             m_shaderGraph.UpdateColors();
 
-            m_shaderGraph.UpdateArray();
+            m_shaderGraph.UpdateArrayValuesLength();
         }
 
         #endregion
