@@ -1,4 +1,9 @@
 -----------------------------
+v3.0.4
+
+- Fixed small oversight in Resolution.refreshRate is obsolete warning fix.
+
+-----------------------------
 v3.0.3
 
 - Fixed some comments and removed unused using statements.
