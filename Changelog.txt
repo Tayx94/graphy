@@ -1,4 +1,9 @@
 -----------------------------
+v3.0.5
+
+- Fixed small issue with Safe Area not being updated when the screen resolution changes.
+
+-----------------------------
 v3.0.4
 
 - Fixed small oversight in Resolution.refreshRate is obsolete warning fix.

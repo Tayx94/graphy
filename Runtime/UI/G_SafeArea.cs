@@ -2,89 +2,87 @@ using UnityEngine;
 
 namespace Graphy.Runtime.UI
 {
-    /// <summary>
-    ///     Component that matches the size of the RectTransform to the safe area.
-    /// </summary>
-    [ExecuteAlways]
+    [RequireComponent(typeof(RectTransform))]
     public sealed class G_SafeArea : MonoBehaviour
     {
-        [SerializeField] [HideInInspector] private RectTransform rectTransform;
-        [SerializeField] [HideInInspector] private Canvas canvas;
-
-        [SerializeField]
-        [Tooltip("If false, this will be applied only at initialization. " +
-                 "If your app's screen orientation changes at runtime, set to true.")]
-        private bool checkSafeAreaSizeAtRuntime;
-
-        private bool m_isInitialized;
-        private Rect m_latestSafeArea;
+        [SerializeField] private bool m_conformX = true;  // Conform to screen safe area on X-axis (default true, disable to ignore)
+        [SerializeField] private bool m_conformY = true;  // Conform to screen safe area on Y-axis (default true, disable to ignore)
+        
+        private RectTransform m_rectTransform;
+        private Rect m_lastSafeArea = new Rect (0, 0, 0, 0);
+        
+#if UNITY_EDITOR
         private DrivenRectTransformTracker m_rectTransformTracker;
+#endif
 
         private void Awake()
         {
-            if (rectTransform == null)
-                rectTransform = (RectTransform)transform;
-            if (canvas == null)
-                canvas = GetComponentInParent<Canvas>();
+            m_rectTransform = GetComponent<RectTransform> ();
+
+            Refresh();
         }
 
         private void Update()
         {
-            if (m_isInitialized)
-            {
-                if (Application.isPlaying)
-                {
-                    // If this flag is set to false, we apply the safe area only at initialization.
-                    if (!checkSafeAreaSizeAtRuntime)
-                        return;
+            Refresh();
+        }
+        
+#if UNITY_EDITOR
+        private void OnDisable()
+        {
+            m_rectTransformTracker.Clear();
+        }
+#endif
 
-                    // If the safe area hasn't changed, do nothing.
-                    if (Screen.safeArea == m_latestSafeArea)
-                        return;
-                }
-                else
-                {
-                    // In Edit Mode, force update if anchorMax is zero because the RectTransform value will be incorrect if the RectTransform value is changed and undo.
-                    if (rectTransform.anchorMax != Vector2.zero && Screen.safeArea == m_latestSafeArea)
-                        return;
-                }
-            }
-
-            // Update transform.
-            SetTransform(canvas, rectTransform);
-
+        private void Refresh()
+        {
+#if UNITY_EDITOR
             // Make the rectTransform not editable in the inspector.
             m_rectTransformTracker.Clear();
             m_rectTransformTracker.Add(
                 this,
-                rectTransform,
+                m_rectTransform,
                 DrivenTransformProperties.AnchoredPosition
                 | DrivenTransformProperties.SizeDelta
                 | DrivenTransformProperties.AnchorMin
                 | DrivenTransformProperties.AnchorMax
                 | DrivenTransformProperties.Pivot
             );
+#endif
+            
+            Rect safeArea = Screen.safeArea;
 
-            m_latestSafeArea = Screen.safeArea;
-            m_isInitialized = true;
+            if (safeArea != m_lastSafeArea)
+                ApplySafeArea (safeArea);
         }
 
-        private void OnDisable()
+        private void ApplySafeArea(Rect r)
         {
-            m_rectTransformTracker.Clear();
-        }
+            m_lastSafeArea = r;
 
-        private static void SetTransform(Canvas canvas, RectTransform rectTransform)
-        {
-            var scaleFactor = canvas.scaleFactor;
-            var position = Screen.safeArea.position / scaleFactor;
-            var size = Screen.safeArea.size / scaleFactor;
+            // Ignore x-axis?
+            if (!m_conformX)
+            {
+                r.x = 0;
+                r.width = Screen.width;
+            }
 
-            rectTransform.anchorMin = Vector2.zero;
-            rectTransform.anchorMax = Vector2.zero;
-            rectTransform.pivot = Vector2.zero;
-            rectTransform.anchoredPosition = position;
-            rectTransform.sizeDelta = size;
+            // Ignore y-axis?
+            if (!m_conformY)
+            {
+                r.y = 0;
+                r.height = Screen.height;
+            }
+
+            // Convert safe area rectangle from absolute pixels to normalised anchor coordinates
+            Vector2 anchorMin = r.position;
+            Vector2 anchorMax = r.position + r.size;
+            anchorMin.x /= Screen.width;
+            anchorMin.y /= Screen.height;
+            anchorMax.x /= Screen.width;
+            anchorMax.y /= Screen.height;
+            m_rectTransform.anchorMin = anchorMin;
+            m_rectTransform.anchorMax = anchorMax;
         }
     }
 }
