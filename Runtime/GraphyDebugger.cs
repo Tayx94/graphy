@@ -500,9 +500,9 @@ namespace Tayx.Graphy
                 case DebugVariable.Ram_Allocated:
                     return m_ramMonitor != null ? m_ramMonitor.AllocatedRam : 0;
                 case DebugVariable.Ram_Reserved:
-                    return m_ramMonitor != null ? m_ramMonitor.AllocatedRam : 0;
+                    return m_ramMonitor != null ? m_ramMonitor.ReservedRam : 0;
                 case DebugVariable.Ram_Mono:
-                    return m_ramMonitor != null ? m_ramMonitor.AllocatedRam : 0;
+                    return m_ramMonitor != null ? m_ramMonitor.MonoRam : 0;
 
                 case DebugVariable.Audio_DB:
                     return m_audioMonitor != null ? m_audioMonitor.MaxDB : 0;
