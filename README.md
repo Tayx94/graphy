@@ -60,7 +60,22 @@ The debugger allows you to set one or more conditions, that if met will have the
 ```
 openupm add com.tayx.graphy
 ```
-2. You can also install via git url by adding this entry in your **manifest.json**
+2. You can add this package in Unity Package Manager by adding it to the Scoped Registries at Edit > Project Settings > Package Manager > Scoped Registries
+
+Add a section on the left called package.openupm.com
+On the right, add 
+Name: package.openupm.com
+URL: https://package.openupm.com
+Scopes:
+com.openupm
+com.tayx.graphy
+
+![image](https://github.com/ROBYER1/graphy/assets/10745594/0a6328d1-4a00-47d4-97d0-964535c37400)
+
+Then in Window > Package Manager, you can select Packages: My Registry to see Graphy as a package to download
+![image](https://github.com/ROBYER1/graphy/assets/10745594/dbf18c6e-a170-4128-b6c6-f12d9cb75ea6)
+
+3. After step 2, you can also install via git url by adding this entry in your **manifest.json**
 ```
 {
   "dependencies": {
@@ -70,9 +85,9 @@ openupm add com.tayx.graphy
   }
 }
 ```
-3. You can also download it from the [Asset Store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778)
+4. You can also download it from the [Asset Store](https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-stats-monitor-debugger-105778)
 
-4. Click here for old version that supports Unity 5.4+: 
+5. Click here for old version that supports Unity 5.4+: 
 [![Unity 5.4+](https://img.shields.io/badge/unity-5.4%2B-blue.svg)](https://github.com/Tayx94/graphy/releases/tag/v1.6.0-Unity5.4)
 
 ## Development of Graphy
