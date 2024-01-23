@@ -59,7 +59,7 @@ namespace Tayx.Graphy.Utils
 
         #region Methods -> Unity Callbacks
 
-        void Awake()
+        protected virtual void Awake()
         {
             if( _instance != null )
             {
@@ -71,7 +71,7 @@ namespace Tayx.Graphy.Utils
             }
         }
 
-        void OnDestroy()
+        protected virtual void OnDestroy()
         {
             if( _instance == this )
             {

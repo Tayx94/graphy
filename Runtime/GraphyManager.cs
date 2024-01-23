@@ -547,10 +547,12 @@ namespace Tayx.Graphy
             Init();
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
             G_IntString.Dispose();
             G_FloatString.Dispose();
+
+            base.OnDestroy();
         }
 
         private void Update()
