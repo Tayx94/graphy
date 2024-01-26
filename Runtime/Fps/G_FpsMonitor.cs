@@ -12,6 +12,8 @@
  * -------------------------------------*/
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Tayx.Graphy.Fps
@@ -29,6 +31,7 @@ namespace Tayx.Graphy.Fps
         private short m_indexSample = 0;
 
         private float m_unscaledDeltaTime = 0f;
+        private static readonly IComparer<short> sampleValueComparer = Comparer<short>.Create((x, y) => x.CompareTo(y));
 
         #endregion
 
@@ -64,6 +67,7 @@ namespace Tayx.Graphy.Fps
 
             if( m_indexSample >= m_fpsSamplesCapacity ) m_indexSample = 0;
 
+            short removeTargetSampledValue = m_fpsSamples[ m_indexSample ];
             m_fpsSamples[ m_indexSample ] = CurrentFPS;
 
             if( m_fpsSamplesCount < m_fpsSamplesCapacity )
@@ -79,16 +83,26 @@ namespace Tayx.Graphy.Fps
             AverageFPS = (short) ((float) averageAddedFps / (float) m_fpsSamplesCount);
 
             // Update percent lows
+            int sortedReplaceIndex = Array.BinarySearch(m_fpsSamplesSorted, removeTargetSampledValue, sampleValueComparer);
+            int sortedInsertIndex = Array.BinarySearch(m_fpsSamplesSorted, CurrentFPS, sampleValueComparer);
+            if( sortedInsertIndex < 0 )
+                sortedInsertIndex = ~sortedInsertIndex;
+            if( sortedInsertIndex > sortedReplaceIndex )
+                sortedInsertIndex--;
 
-            m_fpsSamples.CopyTo( m_fpsSamplesSorted, 0 );
+            int step = sizeof(short);
+            int sortedReplaceOffset = sortedReplaceIndex * step;
+            int sortedInsertOffset = sortedInsertIndex * step;
 
-            /*
-             * TODO: Find a faster way to do this.
-             *      We can probably avoid copying the full array every time
-             *      and insert the new item already sorted in the list.
-             */
-            Array.Sort( m_fpsSamplesSorted,
-                ( x, y ) => x.CompareTo( y ) ); // The lambda expression avoids garbage generation
+            if( sortedInsertIndex > sortedReplaceIndex )
+            {
+                Buffer.BlockCopy(m_fpsSamplesSorted, sortedReplaceOffset + step, m_fpsSamplesSorted, sortedReplaceOffset, sortedInsertOffset - sortedReplaceOffset);
+            }
+            else if( sortedInsertIndex < sortedReplaceIndex )
+            {
+                Buffer.BlockCopy(m_fpsSamplesSorted, sortedInsertOffset, m_fpsSamplesSorted, sortedInsertOffset + step, sortedReplaceOffset - sortedInsertOffset);
+            }
+            m_fpsSamplesSorted[ sortedInsertIndex ] = CurrentFPS;
 
             bool zero1PercentCalculated = false;
 
