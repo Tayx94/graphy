@@ -98,6 +98,11 @@ namespace Tayx.Graphy.Utils.NumString
         /// </returns>
         public static string ToStringNonAlloc( this int value )
         {
+            if (value == int.MinValue)
+            {
+                return "N/A";
+            }
+
             if( value < 0 && -value <= m_negativeBuffer.Length )
             {
                 return m_negativeBuffer[ -value - 1 ];
