@@ -87,8 +87,7 @@ openupm add com.tayx.graphy
 	* Include `com.tayx.graphy` under Scopes
 	* Graphy will then appear in Package Manager for installation ![image](https://github.com/ROBYER1/graphy/assets/10745594/dbf18c6e-a170-4128-b6c6-f12d9cb75ea6)
 ![image](https://github.com/ROBYER1/graphy/assets/10745594/0a6328d1-4a00-47d4-97d0-964535c37400) 
-2. **Git URL:** If you're comfortable with direct Git integration, this method allows you to track the latest commits or specific branches.
-	* Add the Git URL to your `manifest.json` dependencies.
+2. **Git URL:** If you're comfortable with direct Git integration, you may add the Git URL to your `manifest.json` dependencies. (After adding the Scoped Registry)
 	```
 	{
 	  "dependencies": {
@@ -98,11 +97,6 @@ openupm add com.tayx.graphy
 	  }
 	}
 	```
-## Choosing an Installation Method
--   Use the **Asset Store** for the simplest installation process, directly through Unity's interface.
--   The **openupm-cli** method is best for those who use openupm and prefer command-line tools.
--   **Scoped Registries** offer a balance between ease of use and control, directly integrating with Unity's built-in package management system.
--   The **Git URL** method provides the most control and is best suited for those tracking development closely or needing specific revisions.
 
 ## Quick Start Guide
 
