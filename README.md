@@ -4,7 +4,6 @@
    - [Unity Asset Store](#unity-asset-store)
    - [OpenUPM](#openupm)
    - [Unity Package Manager](#unity-package-manager)
-   - [Choosing an Installation Method](#choosing-an-installation-method)
 3. [Quick Start Guide](#quick-start-guide)
 4. [Practical Use Cases](#practical-use-cases)
 5. [Development of Graphy](#development-of-graphy)
@@ -145,7 +144,7 @@ Graphy is **FREE** to use, but if it helped you and you want to contribute to it
 
 - [Donation Link](https://www.paypal.me/MartinPaneUK)
 
-### Contributing
+## Contributing
 
 Let's make Graphy the go-to for stats monitoring in Unity!
 
