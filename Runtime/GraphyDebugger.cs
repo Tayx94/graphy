@@ -19,7 +19,10 @@ using Debug = UnityEngine.Debug;
 using System.Collections.Generic;
 using System.Linq;
 
+#if GRAPHY_BUILTIN_AUDIO
 using Tayx.Graphy.Audio;
+#endif // GRAPHY_BUILTIN_AUDIO
+
 using Tayx.Graphy.Fps;
 using Tayx.Graphy.Ram;
 using Tayx.Graphy.Utils;
@@ -46,7 +49,9 @@ namespace Tayx.Graphy
             Ram_Allocated,
             Ram_Reserved,
             Ram_Mono,
+#if GRAPHY_BUILTIN_AUDIO
             Audio_DB
+#endif // GRAPHY_BUILTIN_AUDIO
         }
 
         public enum DebugComparer
@@ -171,7 +176,10 @@ namespace Tayx.Graphy
 
         private G_FpsMonitor m_fpsMonitor = null;
         private G_RamMonitor m_ramMonitor = null;
+
+#if GRAPHY_BUILTIN_AUDIO
         private G_AudioMonitor m_audioMonitor = null;
+#endif // GRAPHY_BUILTIN_AUDIO
 
         #endregion
 
@@ -181,7 +189,10 @@ namespace Tayx.Graphy
         {
             m_fpsMonitor = GetComponentInChildren<G_FpsMonitor>();
             m_ramMonitor = GetComponentInChildren<G_RamMonitor>();
+
+#if GRAPHY_BUILTIN_AUDIO
             m_audioMonitor = GetComponentInChildren<G_AudioMonitor>();
+#endif // GRAPHY_BUILTIN_AUDIO
         }
 
         private void Update()
@@ -504,8 +515,10 @@ namespace Tayx.Graphy
                 case DebugVariable.Ram_Mono:
                     return m_ramMonitor != null ? m_ramMonitor.MonoRam : 0;
 
+#if GRAPHY_BUILTIN_AUDIO
                 case DebugVariable.Audio_DB:
                     return m_audioMonitor != null ? m_audioMonitor.MaxDB : 0;
+#endif // GRAPHY_BUILTIN_AUDIO
 
                 default:
                     return 0;

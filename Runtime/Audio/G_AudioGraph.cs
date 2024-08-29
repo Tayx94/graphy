@@ -17,6 +17,9 @@ using UnityEngine.UI;
 
 namespace Tayx.Graphy.Audio
 {
+#if !GRAPHY_BUILTIN_AUDIO
+    public class G_AudioGraph : MonoBehaviour { }
+#else
     public class G_AudioGraph : G_Graph
     {
         #region Variables -> Serialized Private
@@ -291,4 +294,5 @@ namespace Tayx.Graphy.Audio
 
         #endregion
     }
+#endif // !GRAPHY_BUILTIN_AUDIO
 }

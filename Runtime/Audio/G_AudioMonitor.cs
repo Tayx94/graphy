@@ -23,6 +23,7 @@ namespace Tayx.Graphy.Audio
     /// </summary>
     public class G_AudioMonitor : MonoBehaviour
     {
+#if GRAPHY_BUILTIN_AUDIO
         #region Variables -> Private
 
         private const float m_refValue = 1f;
@@ -207,5 +208,6 @@ namespace Tayx.Graphy.Audio
         }
 
         #endregion
+#endif
     }
 }

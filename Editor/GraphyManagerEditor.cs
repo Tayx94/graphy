@@ -100,6 +100,7 @@ namespace Tayx.Graphy
         #endregion
 
         #region Section -> Audio
+#if GRAPHY_BUILTIN_AUDIO
 
         private bool m_audioModuleInspectorToggle = true;
 
@@ -119,6 +120,7 @@ namespace Tayx.Graphy
 
         private SerializedProperty m_spectrumSize;
 
+#endif // GRAPHY_BUILTIN_AUDIO
         #endregion
 
         #region Section -> Advanced Settings
@@ -205,6 +207,7 @@ namespace Tayx.Graphy
             #endregion
 
             #region Section -> Audio
+#if GRAPHY_BUILTIN_AUDIO
 
             m_findAudioListenerInCameraIfNull = serObj.FindProperty( "m_findAudioListenerInCameraIfNull" );
 
@@ -222,6 +225,7 @@ namespace Tayx.Graphy
 
             m_spectrumSize = serObj.FindProperty( "m_spectrumSize" );
 
+#endif // GRAPHY_BUILTIN_AUDIO
             #endregion
 
             #region Section -> Advanced Settings
@@ -681,9 +685,12 @@ namespace Tayx.Graphy
 
             #endregion
 
+#if GRAPHY_BUILTIN_AUDIO
             GUILayout.Space( 20 );
+#endif // GRAPHY_BUILTIN_AUDIO
 
             #region Section -> Audio
+#if GRAPHY_BUILTIN_AUDIO
 
             m_audioModuleInspectorToggle = EditorGUILayout.Foldout
             (
@@ -815,6 +822,7 @@ namespace Tayx.Graphy
                 );
             }
 
+#endif // GRAPHY_BUILTIN_AUDIO
             #endregion
 
             GUILayout.Space( 20 );

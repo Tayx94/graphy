@@ -545,8 +545,10 @@ namespace Tayx.Graphy
                 case GraphyDebugger.DebugVariable.Ram_Mono:
                     return "Ram Mono";
 
+#if GRAPHY_BUILTIN_AUDIO
                 case GraphyDebugger.DebugVariable.Audio_DB:
                     return "Audio DB";
+#endif // GRAPHY_BUILTIN_AUDIO
 
                 default:
                     return null;

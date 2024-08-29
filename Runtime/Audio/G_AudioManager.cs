@@ -19,6 +19,9 @@ using Tayx.Graphy.Utils;
 
 namespace Tayx.Graphy.Audio
 {
+#if !GRAPHY_BUILTIN_AUDIO
+    public class G_AudioManager : MonoBehaviour { }
+#else
     public class G_AudioManager : MonoBehaviour, IMovable, IModifiableState
     {
         #region Variables -> Serialized Private
@@ -236,4 +239,5 @@ namespace Tayx.Graphy.Audio
 
         #endregion
     }
+#endif // !GRAPHY_BUILTIN_AUDIO
 }

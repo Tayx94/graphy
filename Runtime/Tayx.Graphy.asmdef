@@ -20,6 +20,11 @@
             "name": "com.unity.modules.xr",
             "expression": "",
             "define": "GRAPHY_XR"
+        },
+        {
+            "name": "com.unity.modules.audio",
+            "expression": "",
+            "define": "GRAPHY_BUILTIN_AUDIO"
         }
     ],
     "noEngineReferences": false

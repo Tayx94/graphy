@@ -19,6 +19,7 @@ namespace Tayx.Graphy.Audio
 {
     public class G_AudioText : MonoBehaviour
     {
+#if GRAPHY_BUILTIN_AUDIO
         #region Variables -> Serialized Private
 
         [SerializeField] private Text m_DBText = null;
@@ -86,5 +87,6 @@ namespace Tayx.Graphy.Audio
         }
 
         #endregion
+#endif // GRAPHY_BUILTIN_AUDIO
     }
 }
