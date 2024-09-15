@@ -129,6 +129,16 @@ namespace Tayx.Graphy.Fps
             m_zero1PercentSamples = (short) (m_fpsSamplesCapacity / 1000);
         }
 
+        public void Reset()
+        {
+            for( int i = 0; i < m_fpsSamplesCapacity; i++ )
+            {
+                m_fpsSamples[ i ] = 0;
+            }
+            m_fpsSamplesCount = 0;
+            m_indexSample = 0;
+        }
+
         #endregion
 
         #region Methods -> Private

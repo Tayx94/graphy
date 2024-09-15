@@ -57,6 +57,9 @@ namespace Tayx.Graphy
         private SerializedProperty m_toggleActiveCtrl;
         private SerializedProperty m_toggleActiveAlt;
 
+        private SerializedProperty m_resetFpsMonitorKeyCode;
+        private SerializedProperty m_resetFpsMonitorCtrl;
+        private SerializedProperty m_resetFpsMonitorAlt;
 
         private SerializedProperty m_graphModulePosition;
         private SerializedProperty m_graphModuleOffset;
@@ -165,6 +168,11 @@ namespace Tayx.Graphy
 
             m_toggleActiveCtrl = serObj.FindProperty( "m_toggleActiveCtrl" );
             m_toggleActiveAlt = serObj.FindProperty( "m_toggleActiveAlt" );
+
+            m_resetFpsMonitorKeyCode = serObj.FindProperty( "m_resetFpsMonitorKeyCode" );
+
+            m_resetFpsMonitorCtrl = serObj.FindProperty( "m_resetFpsMonitorCtrl" );
+            m_resetFpsMonitorAlt = serObj.FindProperty( "m_resetFpsMonitorAlt" );
 
             m_graphModulePosition = serObj.FindProperty( "m_graphModulePosition" );
 
@@ -437,6 +445,46 @@ namespace Tayx.Graphy
                         tooltip: "If ticked, it will require clicking Alt and the other keys you have set up."
                     ),
                     value: m_toggleActiveAlt.boolValue
+                );
+
+                EditorGUILayout.EndHorizontal();
+
+                EditorGUILayout.BeginHorizontal();
+
+                EditorGUIUtility.labelWidth = 130;
+                EditorGUIUtility.fieldWidth = 35;
+
+                EditorGUILayout.PropertyField
+                (
+                    m_resetFpsMonitorKeyCode,
+                    new GUIContent
+                    (
+                        text: "Reset Fps Monitor Key",
+                        tooltip: "If ticked, it will require clicking this key and the other ones you have set up."
+                    )
+                );
+
+                EditorGUIUtility.labelWidth = 30;
+                EditorGUIUtility.fieldWidth = 35;
+
+                m_resetFpsMonitorCtrl.boolValue = EditorGUILayout.Toggle
+                (
+                    new GUIContent
+                    (
+                        text: "Ctrl",
+                        tooltip: "If ticked, it will require clicking Ctrl and the other keys you have set up."
+                    ),
+                    value: m_resetFpsMonitorCtrl.boolValue
+                );
+
+                m_resetFpsMonitorAlt.boolValue = EditorGUILayout.Toggle
+                (
+                    new GUIContent
+                    (
+                        text: "Alt",
+                        tooltip: "If ticked, it will require clicking Alt and the other keys you have set up."
+                    ),
+                    value: m_resetFpsMonitorAlt.boolValue
                 );
 
                 EditorGUILayout.EndHorizontal();
