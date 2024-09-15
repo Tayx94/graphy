@@ -1,5 +1,5 @@
 /* ---------------------------------------
- * Author:          Martin Pane (martintayx@gmail.com) (@martinTayx)
+ * Author:          Martin Pane (martintayx@gmail.com) (@martinTayx), modified by Paul Sinnett (paul.sinnett@gmail.com) (@paulsinnett)
  * Contributors:    https://github.com/Tayx94/graphy/graphs/contributors
  * Project:         Graphy - Ultimate Stats Monitor
  * Date:            15-Dec-17
@@ -11,7 +11,7 @@
  * Attribution is not required, but it is always welcomed!
  * -------------------------------------*/
 
-using System;
+using Tayx.Graphy.Utils;
 using UnityEngine;
 
 namespace Tayx.Graphy.Fps
@@ -20,15 +20,19 @@ namespace Tayx.Graphy.Fps
     {
         #region Variables -> Private
 
-        private short[] m_fpsSamples;
+        private G_DoubleEndedQueue m_fpsSamples;
         private short[] m_fpsSamplesSorted;
         private short m_fpsSamplesCapacity = 1024;
         private short m_onePercentSamples = 10;
-        private short m_zero1PercentSamples = 1;
         private short m_fpsSamplesCount = 0;
-        private short m_indexSample = 0;
-
         private float m_unscaledDeltaTime = 0f;
+        private int m_fpsAverageWindowSum = 0;
+        private G_Histogram m_histogram;
+
+        // This cap prevents the histogram from re-allocating memory in the
+        // case of an unexpectedly high frame rate. The limit is somewhat
+        // arbitrary. The only real cost to a higher cap is memory.
+        private const short m_histogramFpsCap = 999;
 
         #endregion
 
@@ -60,63 +64,25 @@ namespace Tayx.Graphy.Fps
 
             uint averageAddedFps = 0;
 
-            m_indexSample++;
+            m_fpsSamplesCount = UpdateStatistics( CurrentFPS );
 
-            if( m_indexSample >= m_fpsSamplesCapacity ) m_indexSample = 0;
-
-            m_fpsSamples[ m_indexSample ] = CurrentFPS;
-
-            if( m_fpsSamplesCount < m_fpsSamplesCapacity )
-            {
-                m_fpsSamplesCount++;
-            }
-
-            for( int i = 0; i < m_fpsSamplesCount; i++ )
-            {
-                averageAddedFps += (uint) m_fpsSamples[ i ];
-            }
+            averageAddedFps = (uint) m_fpsAverageWindowSum;
 
             AverageFPS = (short) ((float) averageAddedFps / (float) m_fpsSamplesCount);
 
             // Update percent lows
 
-            m_fpsSamples.CopyTo( m_fpsSamplesSorted, 0 );
+            short samplesBelowOnePercent = (short) Mathf.Min( m_fpsSamplesCount - 1, m_onePercentSamples );
 
-            /*
-             * TODO: Find a faster way to do this.
-             *      We can probably avoid copying the full array every time
-             *      and insert the new item already sorted in the list.
-             */
-            Array.Sort( m_fpsSamplesSorted,
-                ( x, y ) => x.CompareTo( y ) ); // The lambda expression avoids garbage generation
+            m_histogram.WriteToSortedArray( m_fpsSamplesSorted, samplesBelowOnePercent + 1 );
 
-            bool zero1PercentCalculated = false;
+            // Calculate 0.1% and 1% quantiles, these values represent the fps
+            // values below which fall 0.1% and 1% of the samples within the
+            // moving window.
 
-            uint totalAddedFps = 0;
+            Zero1PercentFps = (short) Mathf.RoundToInt( CalculateQuantile( 0.001f ) );
 
-            short samplesToIterateThroughForOnePercent = m_fpsSamplesCount < m_onePercentSamples
-                ? m_fpsSamplesCount
-                : m_onePercentSamples;
-
-            short samplesToIterateThroughForZero1Percent = m_fpsSamplesCount < m_zero1PercentSamples
-                ? m_fpsSamplesCount
-                : m_zero1PercentSamples;
-
-            short sampleToStartIn = (short) (m_fpsSamplesCapacity - m_fpsSamplesCount);
-
-            for( short i = sampleToStartIn; i < sampleToStartIn + samplesToIterateThroughForOnePercent; i++ )
-            {
-                totalAddedFps += (ushort) m_fpsSamplesSorted[ i ];
-
-                if( !zero1PercentCalculated && i >= samplesToIterateThroughForZero1Percent - 1 )
-                {
-                    zero1PercentCalculated = true;
-
-                    Zero1PercentFps = (short) ((float) totalAddedFps / (float) m_zero1PercentSamples);
-                }
-            }
-
-            OnePercentFPS = (short) ((float) totalAddedFps / (float) m_onePercentSamples);
+            OnePercentFPS = (short) Mathf.RoundToInt( CalculateQuantile( 0.01f ) );
         }
 
         #endregion
@@ -126,7 +92,10 @@ namespace Tayx.Graphy.Fps
         public void UpdateParameters()
         {
             m_onePercentSamples = (short) (m_fpsSamplesCapacity / 100);
-            m_zero1PercentSamples = (short) (m_fpsSamplesCapacity / 1000);
+            if( m_onePercentSamples + 1 > m_fpsSamplesSorted.Length )
+            {
+                m_fpsSamplesSorted = new short[ m_onePercentSamples + 1 ];
+            }
         }
 
         #endregion
@@ -135,10 +104,40 @@ namespace Tayx.Graphy.Fps
 
         private void Init()
         {
-            m_fpsSamples = new short[m_fpsSamplesCapacity];
-            m_fpsSamplesSorted = new short[m_fpsSamplesCapacity];
-
+            m_fpsSamples = new G_DoubleEndedQueue( m_fpsSamplesCapacity );
+            m_fpsSamplesSorted = new short[ m_onePercentSamples + 1 ];
+            m_histogram = new G_Histogram( 0, m_histogramFpsCap );
             UpdateParameters();
+        }
+
+        private short UpdateStatistics( short fps )
+        {
+            if( m_fpsSamples.Full )
+            {
+                short remove = m_fpsSamples.PopFront();
+                m_fpsAverageWindowSum -= remove;
+                m_histogram.RemoveSample( remove );
+            }
+            m_fpsSamples.PushBack( fps );
+            m_fpsAverageWindowSum += fps;
+            m_histogram.AddSample( fps );
+            return m_fpsSamples.Count;
+        }
+
+        private float CalculateQuantile( float quantile )
+        {
+            // If there aren't enough samples to calculate the quantile yet,
+            // this function will instead return the lowest value in the
+            // histogram.
+
+            short samples = m_fpsSamples.Count;
+            float position = ( samples + 1 ) * quantile - 1;
+            short indexLow = (short) ( position > 0 ? Mathf.FloorToInt( position ) : 0 );
+            short indexHigh = (short) ( indexLow + 1 < samples? indexLow + 1 : indexLow );
+            float valueLow = m_fpsSamplesSorted[ indexLow ];
+            float valueHigh = m_fpsSamplesSorted[ indexHigh ];
+            float lerp = Mathf.Max( position - indexLow, 0 );
+            return Mathf.Lerp( valueLow, valueHigh, lerp );
         }
 
         #endregion
