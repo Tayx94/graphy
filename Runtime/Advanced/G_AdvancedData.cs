@@ -87,6 +87,10 @@ namespace Tayx.Graphy.Advanced
             "Hz"
         };
 
+#if UNITY_2022_2_OR_NEWER
+        private SortedList<RefreshRate, string> m_refreshRates = new SortedList<RefreshRate, string>();
+#endif
+
         #endregion
 
         #region Methods -> Unity Callbacks
@@ -94,6 +98,20 @@ namespace Tayx.Graphy.Advanced
         private void Awake()
         {
             Init();
+        }
+
+        private string RefreshRateToString( Resolution resolution )
+        {
+#if UNITY_2022_2_OR_NEWER
+            if( !m_refreshRates.TryGetValue( resolution.refreshRateRatio, out string refreshRate ) )
+            {
+                refreshRate = resolution.refreshRateRatio.value.ToString( "0.###" );
+                m_refreshRates.Add( resolution.refreshRateRatio, refreshRate );
+            }
+            return refreshRate;
+#else
+            return resolution.refreshRate.ToStringNonAlloc();
+#endif
         }
 
         private void Update()
@@ -107,13 +125,7 @@ namespace Tayx.Graphy.Advanced
 
                 m_sb.Append( m_windowStrings[ 0 ] ).Append( Screen.width.ToStringNonAlloc() )
                     .Append( m_windowStrings[ 1 ] ).Append( Screen.height.ToStringNonAlloc() )
-                    .Append( m_windowStrings[ 2 ] ).Append(
-#if UNITY_2022_2_OR_NEWER
-                        ((int)Screen.currentResolution.refreshRateRatio.value).ToStringNonAlloc()
-#else
-                        Screen.currentResolution.refreshRate.ToStringNonAlloc()
-#endif
-                        )
+                    .Append( m_windowStrings[ 2 ] ).Append( RefreshRateToString( Screen.currentResolution ) )
                     .Append( m_windowStrings[ 3 ] )
                     .Append( m_windowStrings[ 4 ] ).Append( ((int) Screen.dpi).ToStringNonAlloc() )
                     .Append( m_windowStrings[ 5 ] );
@@ -333,11 +345,7 @@ namespace Tayx.Graphy.Advanced
                   + "x"
                   + res.height
                   + "@"
-#if UNITY_2022_2_OR_NEWER
-                  + ((int)Screen.currentResolution.refreshRateRatio.value).ToStringNonAlloc()
-#else
-                  + res.refreshRate
-#endif
+                  + RefreshRateToString( res )
                   + "Hz";
 
             m_operatingSystemText.text
