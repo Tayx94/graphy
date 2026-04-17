@@ -538,6 +538,8 @@ namespace Tayx.Graphy
             }
         }
 
+        public Vector2 AdvancedModuleOffset => m_advancedModuleOffset;
+
         #endregion
 
         #region Methods -> Unity Callbacks
@@ -592,7 +594,7 @@ namespace Tayx.Graphy
                     break;
 
                 case ModuleType.ADVANCED:
-                    m_advancedData.SetPosition( modulePosition, Vector2.zero );
+                    m_advancedData.SetPosition( modulePosition, m_advancedModuleOffset );
                     break;
             }
         }

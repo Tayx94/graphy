@@ -268,7 +268,7 @@ namespace Tayx.Graphy.Advanced
                 image.color = m_graphyManager.BackgroundColor;
             }
 
-            SetPosition( m_graphyManager.AdvancedModulePosition, Vector2.zero );
+            SetPosition( m_graphyManager.AdvancedModulePosition, m_graphyManager.AdvancedModuleOffset );
             SetState( m_graphyManager.AdvancedModuleState );
         }
 
@@ -279,7 +279,7 @@ namespace Tayx.Graphy.Advanced
                 image.color = m_graphyManager.BackgroundColor;
             }
 
-            SetPosition( m_graphyManager.AdvancedModulePosition, Vector2.zero );
+            SetPosition( m_graphyManager.AdvancedModulePosition, m_graphyManager.AdvancedModuleOffset );
             SetState( m_currentModuleState, true );
         }
 
