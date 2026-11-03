@@ -71,7 +71,8 @@ namespace Tayx.Graphy.Advanced
 
         private float m_deltaTime = 0.0f;
 
-        private StringBuilder m_sb = null;
+        // Not serialized, so a script reload during Play Mode would leave it null if created in Awake.
+        private readonly StringBuilder m_sb = new StringBuilder();
 
         private GraphyManager.ModuleState m_previousModuleState = GraphyManager.ModuleState.FULL;
         private GraphyManager.ModuleState m_currentModuleState = GraphyManager.ModuleState.FULL;
@@ -335,8 +336,6 @@ namespace Tayx.Graphy.Advanced
             G_IntString.Init( 0, 7680 );
 
             m_graphyManager = transform.root.GetComponentInChildren<GraphyManager>();
-
-            m_sb = new StringBuilder();
 
             m_rectTransform = GetComponent<RectTransform>();
             m_origScale = m_rectTransform.localScale;
